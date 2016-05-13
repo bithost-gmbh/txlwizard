@@ -106,7 +106,7 @@ class TXLConverterCLI(object):
             FullFilePath = self.Configuration['TXLFolderPath']
         else:
             FullFilePath = self.Configuration['TXLFolderPath'] + '/' + self.Configuration['TXLFilename']
-        TXLConverter.TXL2SVG(
+        TXLConverter.TXLConverter(
             FullFilePath,
             Width=self.Configuration['SampleWidth'],
             Height=self.Configuration['SampleHeight'],
@@ -127,5 +127,3 @@ class TXLConverterCLI(object):
 
         print(Prefix + Message + Suffix)
 
-
-TXLConverterCLIObject = TXLConverterCLI()

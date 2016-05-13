@@ -2,7 +2,7 @@ from . import TXLWriter
 import os.path
 import pprint
 import traceback
-class TXL2SVG(object):
+class TXLConverter(object):
     def __init__(self, Filename, **kwargs):
         self.AttributeMapping = {
             'LAYER':{'Attribute':'Layer','Type':'Integer'},
