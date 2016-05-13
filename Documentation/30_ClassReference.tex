@@ -1,16 +1,30 @@
 \section{Class Reference}
-
-    \subsection{TXLWriter}
+    \subsection{TXLWizard.TXLWriter}
         \subsubsection{Description}
             Controller class for generating TXL / SVG / HTML output.
+            Here we can add structures (definitions and content) which will be rendered in the output.
         \subsubsection{Methods}
-            \paragraph{__init__}
-                \subparagraph{Parameters}
+            \paragraph{\_\_init\_\_}
+                \subparagraph{Description} Constructor method
+                \subparagraph{Parameters}\mbox \\
+                    \textit{Keyword Arguments}
                     \begin{itemize}
-
+                        \item \textbf{Width}\superscript{*} \keyword{int} Width of the sample in um. Used to draw coordinate system.
+                        \item \textbf{Height}\superscript{*} \keyword{int} Height of the sample in um. Used to draw coordinate system.
+                        \item \textbf{ShowCoordinateSystem}\superscript{*} \keyword{bool} Show the coordinate system or not
+                        \item \textbf{GridDistance}\superscript{*} \keyword{int} Coordinate Sytem Grid Spacing in um.
+                        \item \textbf{SubGridDistance}\superscript{*} \keyword{int} Coordinate System Sub-Grid Spacing in um
                     \end{itemize}
-
         \subsubsection{Properties}
+        \subsubsection{Example Usage}
+            \begin{lstlisting}
+import TXLWizard.TXLWriter
+
+TXLWriter = TXLWizard.TXLWriter.TXLWriter(
+    Width=500,
+    Height=400
+)
+            \end{lstlisting}
 
     \subsection{Strukturen}
         \subsubsection{DataStructure}

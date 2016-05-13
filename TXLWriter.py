@@ -5,8 +5,7 @@ import os.path
 class TXLWriter(object):
     '''
     Controller class for generating TXL / SVG / HTML output.
-
-
+    Here we can add structures (definitions and content) which will be rendered in the output.
     '''
     def __init__(self,**kwargs):
         '''
@@ -28,40 +27,48 @@ class TXLWriter(object):
         '''
 
         #: :class:`Definitions`: container for definition structures
-        self.Definitions = Definitions.Definitions()
+        self._Definitions = Definitions.Definitions()
 
         #: int: Width of the sample in um. Used to draw coordinate system.
-        self.Width = 800
+        self._Width = 800
         #: int: Height of the sample in um. Used to draw coordinate system.
-        self.Height = 800
+        self._Height = 800
 
         #: int: Coordinate Sytem Grid Spacing in um.
-        self.GridDistance = 100
+        self._GridDistance = 100
 
         #: int: Coordinate Sytem Sub Grid Spacing in um.
-        self.SubGridDistance = 10
+        self._SubGridDistance = 10
 
         #: int: Width of the SVG Image in pixels
-        self.SVGWidth = 800
+        self._SVGWidth = 800
 
         #: int: Height of the SVG Image in pixels
-        self.SVGHeight = 800
+        self._SVGHeight = 800
 
         #: bool: Show the coordinate system or not
-        self.ShowCoordinateSystem = True
+        self._ShowCoordinateSystem = True
+
+        #: dict: dictionary of all content structures
+        self._ContentStructures = {}
+
+        #: List[str]: list of indices of content structures, needed for correct order
+        self._ContentStructuresIndexList = []
+
+        #: dict: dictionary of all helper structures
+        self._HelperStructures = {}
+
+        #: List[str]: list of indices of helper structures, needed for correct order
+        self._HelperStructuresIndexList = []
 
         for i in ['Width','Height','GridDistance','SubGridDistance','ShowCoordinateSystem']:
             if i in kwargs:
                 setattr(self,i,kwargs[i])
 
-        self.ContentStructures = {}
-        self.ContentStructuresIndexList = []
-        self.HelperStructures = {}
-        self.HelperStructuresIndexList = []
-        if self.ShowCoordinateSystem:
-            self.DrawCoordinateSystem()
+        if self._ShowCoordinateSystem:
+            self._DrawCoordinateSystem()
 
-    def DrawCoordinateSystem(self):
+    def _DrawCoordinateSystem(self):
         '''
         Draws the coordinate system (grid and sub-grid)
         '''
@@ -70,34 +77,35 @@ class TXLWriter(object):
 
         CoordinateXAxis = self.AddHelperStructure('CoordinateXAxis')
         CoordinateXAxis.AddPattern('Polygon',Points=[
-            [-self.Width/2,0],
-            [self.Width/2,0]
-        ],PathOnly = True,StrokeWidth = LineWidth)
+            [-self._Width/2,0],
+            [self._Width/2,0]
+        ],PathOnly = True, StrokeWidth = LineWidth)
+
         CoordinateYAxis = self.AddHelperStructure('CoordinateYAxis')
         CoordinateYAxis.AddPattern('Polygon',Points=[
-            [0,-self.Height/2],
-            [0,self.Height/2]
-        ],PathOnly = True,StrokeWidth = LineWidth)
+            [0,-self._Height/2],
+            [0,self._Height/2]
+        ],PathOnly = True, StrokeWidth = LineWidth)
 
         Grids = {}
 
         for GridName in ['Grid','SubGrid']:
             Grid = self.AddHelperStructure(GridName)
             Grids[GridName] = Grid
-            GridDistance = self.__getattribute__(GridName+'Distance')
+            GridDistance = self.__getattribute__('_'+GridName+'Distance')
             if GridName == 'SubGrid':
                 LineWidth = 1./2.
-            for i in range(0,int(round(self.Width/GridDistance/2))):
+            for i in range(0,int(round(self._Width/GridDistance/2))):
                 for j in [-i*GridDistance,i*GridDistance]:
                     Grid.AddPattern('Polygon',Points=[
-                        [1.*j,-self.Height/2.],
-                        [1.*j,self.Height/2.]
+                        [1.*j,-self._Height/2.],
+                        [1.*j,self._Height/2.]
                     ],PathOnly = True,StrokeWidth = LineWidth)
-            for i in range(0,int(round(self.Height/GridDistance/2))):
+            for i in range(0,int(round(self._Height/GridDistance/2))):
                 for j in [-i*GridDistance,i*GridDistance]:
                     Grid.AddPattern('Polygon',Points=[
-                        [-self.Width/2.,1.*j],
-                        [self.Width/2.,1.*j]
+                        [-self._Width/2.,1.*j],
+                        [self._Width/2.,1.*j]
                     ],PathOnly = True,StrokeWidth = LineWidth)
 
 
@@ -118,9 +126,9 @@ class TXLWriter(object):
 
         '''
         StructureObject = Structure.Structure(Index,**kwargs)
-        self.HelperStructures[Index] = StructureObject
-        self.HelperStructuresIndexList.append(Index)
-        return self.HelperStructures[Index]
+        self._HelperStructures[Index] = StructureObject
+        self._HelperStructuresIndexList.append(Index)
+        return self._HelperStructures[Index]
 
     def AddContentStructure(self, Index, **kwargs):
         '''
@@ -139,9 +147,9 @@ class TXLWriter(object):
 
         '''
         StructureObject = Structure.Structure(Index,**kwargs)
-        self.ContentStructures[Index] = StructureObject
-        self.ContentStructuresIndexList.append(Index)
-        return self.ContentStructures[Index]
+        self._ContentStructures[Index] = StructureObject
+        self._ContentStructuresIndexList.append(Index)
+        return self._ContentStructures[Index]
 
 
     def AddDefinitionStructure(self, Index, **kwargs):
@@ -161,7 +169,7 @@ class TXLWriter(object):
 
         '''
         StructureObject = Structure.Structure(Index,**kwargs)
-        self.Definitions.AddStructure(Index,StructureObject)
+        self._Definitions.AddStructure(Index,StructureObject)
         return StructureObject
 
     def GenerateFiles(self,Filename,TXL=True,SVG=True,HTML=True):
@@ -187,15 +195,15 @@ class TXLWriter(object):
             os.makedirs(Path)
 
         if TXL:
-            self.GenerateTXLFile(Filename)
+            self._GenerateTXLFile(Filename)
 
         if SVG:
-            self.GenerateSVGFile(Filename)
+            self._GenerateSVGFile(Filename)
 
         if HTML:
-            self.GenerateHTMLFile(Filename)
+            self._GenerateHTMLFile(Filename)
 
-    def GenerateTXLFile(self,Filename):
+    def _GenerateTXLFile(self,Filename):
         '''
         Generate the TXL file.
 
@@ -211,24 +219,33 @@ class TXLWriter(object):
         f.write('RESOLVE 0.0001'+'\n')
         f.write('BEGLIB'+'\n')
         f.write('\n\n'+'! ### Definitions Start ###'+'\n')
-        f.write(self.Definitions.GetTXLOutput())
+        f.write(self._Definitions.GetTXLOutput())
         f.write('\n\n'+'! ### Definitions End ###'+'\n\n')
         f.write('\n\n'+'! ### Content Structures Start ###'+'\n')
-        for i in self.ContentStructuresIndexList:
-            if self.ContentStructures[i].TXLOutput:
-                f.write(self.ContentStructures[i].GetTXLOutput())
+        for i in self._ContentStructuresIndexList:
+            if self._ContentStructures[i].TXLOutput:
+                f.write(self._ContentStructures[i].GetTXLOutput())
         f.write('\n\n'+'! ### Content Structures End ###'+'\n')
 
         f.write('ENDLIB')
         f.close()
 
-    def GenerateSVGFile(self,Filename):
+    def _GenerateSVGFile(self,Filename):
+        '''
+        Generate the TXL file.
+
+        Parameters
+        ----------
+        Filename: str
+            Path / Filename without extension.
+
+        '''
         #See https://developer.mozilla.org/en-US/docs/Web/SVG
 
         f = open(Filename+'.svg','w')
         f.write('<svg version="1.1" baseProfile="full" width="800" height="800" '+
                 'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '+
-                'id="SVGImage" viewBox="{:d} {:d} {:d} {:d}">'.format(int(-self.Width/2),int(-self.Height/2),int(self.Width),int(self.Height))+'\n')
+                'id="SVGImage" viewBox="{:d} {:d} {:d} {:d}">'.format(int(-self._Width/2),int(-self._Height/2),int(self._Width),int(self._Height))+'\n')
         f.write('''
             <style type="text/css">
               <![CDATA[
@@ -249,21 +266,30 @@ class TXLWriter(object):
               ]]>
             </style>
         ''')
-        f.write(self.Definitions.GetSVGOutput())
-        f.write('<g transform="translate({:1.2f},{:1.2f}),matrix(1,0,0,-1,0,0)">'.format(1.*self.SVGWidth/2.,1.*self.SVGHeight/2.)+'\n')
+        f.write(self._Definitions.GetSVGOutput())
+        f.write('<g transform="translate({:1.2f},{:1.2f}),matrix(1,0,0,-1,0,0)">'.format(1.*self._SVGWidth/2.,1.*self._SVGHeight/2.)+'\n')
         f.write('<g id="HelperStructures">'+'\n')
-        for i in self.HelperStructuresIndexList:
-            f.write(self.HelperStructures[i].GetSVGOutput())
+        for i in self._HelperStructuresIndexList:
+            f.write(self._HelperStructures[i].GetSVGOutput())
         f.write('</g>')
         f.write('<g id="ContentStructures">'+'\n')
-        for i in self.ContentStructuresIndexList:
-            f.write(self.ContentStructures[i].GetSVGOutput())
+        for i in self._ContentStructuresIndexList:
+            f.write(self._ContentStructures[i].GetSVGOutput())
         f.write('</g>')
         f.write('</g>')
         f.write('</svg>')
         f.close()
 
-    def GenerateHTMLFile(self,Filename):
+    def _GenerateHTMLFile(self,Filename):
+        '''
+        Generate the TXL file.
+
+        Parameters
+        ----------
+        Filename: str
+            Path / Filename without extension.
+
+        '''
         f = open(Filename+'.svg','r')
         SVGData = f.read()
         f.close()
