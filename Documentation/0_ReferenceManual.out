@@ -2,14 +2,15 @@
 \BOOKMARK [2][-]{subsection.1.1}{What does it do?}{section.1}% 2
 \BOOKMARK [2][-]{subsection.1.2}{Technical Information}{section.1}% 3
 \BOOKMARK [1][-]{section.2}{TXLWizard Example}{}% 4
-\BOOKMARK [1][-]{section.3}{Technische Dokumentation}{}% 5
-\BOOKMARK [2][-]{subsection.3.1}{Module}{section.3}% 6
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Methoden}{subsection.3.1}% 7
-\BOOKMARK [3][-]{subsubsection.3.1.2}{Eigenschaften}{subsection.3.1}% 8
+\BOOKMARK [1][-]{section.3}{Class Reference}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{TXLWriter}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Methods}{subsection.3.1}% 7
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Properties}{subsection.3.1}% 8
 \BOOKMARK [2][-]{subsection.3.2}{Strukturen}{section.3}% 9
 \BOOKMARK [3][-]{subsubsection.3.2.1}{DataStructure}{subsection.3.2}% 10
 \BOOKMARK [3][-]{subsubsection.3.2.2}{FieldStructure}{subsection.3.2}% 11
 \BOOKMARK [3][-]{subsubsection.3.2.3}{PageStructure}{subsection.3.2}% 12
 \BOOKMARK [3][-]{subsubsection.3.2.4}{FormFieldStructure}{subsection.3.2}% 13
-\BOOKMARK [1][-]{section*.2}{Appendices}{}% 14
-\BOOKMARK [1][-]{Appendix.a.A}{TXLWizard: Advanced Example}{}% 15
+\BOOKMARK [1][-]{section.4}{TXLConverter}{}% 14
+\BOOKMARK [1][-]{section*.2}{Appendices}{}% 15
+\BOOKMARK [1][-]{Appendix.a.A}{TXLWizard: Advanced Example}{}% 16

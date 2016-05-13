@@ -62,6 +62,7 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     OriginPoint=[0.5e3, 1. * SampleParameters['Height'] / 2. - 500],
     FontSize=150,
     StrokeWidth=20,
+    RoundCaps=True,
     Layer=1
 )
 
@@ -105,5 +106,5 @@ CircleArray.AddPattern('Array',
 #########################
 
 # Note: The suffix (.txl, .html, .svg) will be appended automatically
-TXLWriter.GenerateFiles('Masks/EM160509_Demo_Simple')
+TXLWriter.GenerateFiles('Masks/Example_Simple')
 

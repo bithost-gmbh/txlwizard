@@ -74,6 +74,7 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     OriginPoint=[0.5e3, 1. * SampleParameters['Height'] / 2. - 500],
     FontSize=150,
     StrokeWidth=20,
+    RoundCaps=True,
     Layer=1
 )
 # ...and some other information
@@ -82,8 +83,8 @@ Alphabet = TXLWizard.ShapeLibrary.Label.GetLabel(
     'abcdefghijklmnopqrstuvwxyz0123456789 megamega ggg ah extraaaa rischaaaar',
     OriginPoint=[0.5e3, 1. * SampleParameters['Height'] / 2. - 600],
     FontSize=50,
-    ShowBar=False,
     StrokeWidth=3,
+    RoundCaps=True,
     Layer=1
 )
 
@@ -163,6 +164,7 @@ for Row in range(1, StructureParameters['CornerCubeArray']['Rows'] + 1):
                 * (Row - 1) + StructureParameters['CornerCube']['LabelYOffset']],
             FontSize=16,
             StrokeWidth=3,
+            RoundCaps=True,
             Layer=1,
             RotationAngle=45
         )
@@ -173,5 +175,5 @@ for Row in range(1, StructureParameters['CornerCubeArray']['Rows'] + 1):
 #########################
 
 # Note: The suffix (.txl, .html, .svg) will be appended automatically
-TXLWriter.GenerateFiles('Masks/EM160509_GOI_Demo_CornerCube')
+TXLWriter.GenerateFiles('Masks/Example_Advanced')
 

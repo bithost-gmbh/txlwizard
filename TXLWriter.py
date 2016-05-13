@@ -3,17 +3,51 @@ from .Patterns import Structure
 import os.path
 
 class TXLWriter(object):
+    '''
+    Controller class for generating TXL / SVG / HTML output.
+
+
+    '''
     def __init__(self,**kwargs):
+        '''
+        Constructor
+
+        Parameters
+        ----------
+        Width : Optional[int],
+            Width of the sample in um. Used to draw coordinate system.
+        Height : Optional[int]
+            Height of the sample in um. Used to draw coordinate system.
+        ShowCoordinateSystem : Optional[bool]
+            Show the coordinate system or not
+        GridDistance : Optional[int]
+            Coordinate Sytem Grid Spacing in um.
+        SubGridDistance : Optional[int]
+            Coordinate System Sub-Grid Spacing in um
+
+        '''
+
+        #: :class:`Definitions`: container for definition structures
         self.Definitions = Definitions.Definitions()
+
+        #: int: Width of the sample in um. Used to draw coordinate system.
         self.Width = 800
+        #: int: Height of the sample in um. Used to draw coordinate system.
         self.Height = 800
 
+        #: int: Coordinate Sytem Grid Spacing in um.
         self.GridDistance = 100
+
+        #: int: Coordinate Sytem Sub Grid Spacing in um.
         self.SubGridDistance = 10
 
+        #: int: Width of the SVG Image in pixels
         self.SVGWidth = 800
+
+        #: int: Height of the SVG Image in pixels
         self.SVGHeight = 800
 
+        #: bool: Show the coordinate system or not
         self.ShowCoordinateSystem = True
 
         for i in ['Width','Height','GridDistance','SubGridDistance','ShowCoordinateSystem']:
@@ -28,6 +62,9 @@ class TXLWriter(object):
             self.DrawCoordinateSystem()
 
     def DrawCoordinateSystem(self):
+        '''
+        Draws the coordinate system (grid and sub-grid)
+        '''
         LineWidth = 10*1./2.
 
 
@@ -65,12 +102,42 @@ class TXLWriter(object):
 
 
     def AddHelperStructure(self, Index, **kwargs):
+        '''
+        Add helper structure. Helper structures are only visible in the HTML / SVG Output.
+
+        Parameters
+        ----------
+        Index: str
+            Identification of the structure
+        kwargs: dict
+            keyword arguments passed to the structure constructor
+
+        Returns
+        -------
+        :class:`Structure` structure instance
+
+        '''
         StructureObject = Structure.Structure(Index,**kwargs)
         self.HelperStructures[Index] = StructureObject
         self.HelperStructuresIndexList.append(Index)
         return self.HelperStructures[Index]
 
     def AddContentStructure(self, Index, **kwargs):
+        '''
+        Add content structure. A content structure can hold patterns that will render in the output.
+
+        Parameters
+        ----------
+        Index: str
+            Identification of the structure
+        kwargs: dict
+            keyword arguments passed to the structure constructor
+
+        Returns
+        -------
+        :class:`Structure` structure instance
+
+        '''
         StructureObject = Structure.Structure(Index,**kwargs)
         self.ContentStructures[Index] = StructureObject
         self.ContentStructuresIndexList.append(Index)
@@ -78,11 +145,43 @@ class TXLWriter(object):
 
 
     def AddDefinitionStructure(self, Index, **kwargs):
+        '''
+        Add definition structure. A definition structure can be referenced by a content structure
+
+        Parameters
+        ----------
+        Index: str
+            Identification of the structure
+        kwargs: dict
+            keyword arguments passed to the structure constructor
+
+        Returns
+        -------
+        :class:`Structure` structure instance
+
+        '''
         StructureObject = Structure.Structure(Index,**kwargs)
         self.Definitions.AddStructure(Index,StructureObject)
         return StructureObject
 
     def GenerateFiles(self,Filename,TXL=True,SVG=True,HTML=True):
+        '''
+        Generate the output files.
+
+        Parameters
+        ----------
+        Filename: str
+            Path / Filename without extension.
+            The corresponding path will be created if it does not exist
+        TXL: Optional[bool]
+            Enable TXL Output
+        SVG: Optional[bool]
+            Enable SVG Output
+        HTML: Optional[bool]
+            Enable HTML Output
+
+
+        '''
         Path = os.path.dirname(Filename)
         if len(Path) and not os.path.exists(Path):
             os.makedirs(Path)
@@ -97,6 +196,15 @@ class TXLWriter(object):
             self.GenerateHTMLFile(Filename)
 
     def GenerateTXLFile(self,Filename):
+        '''
+        Generate the TXL file.
+
+        Parameters
+        ----------
+        Filename: str
+            Path / Filename without extension.
+
+        '''
         f = open(Filename+'.txl','w')
         f.write('LETXTLIB 1.0.0'+'\n')
         f.write('UNIT MICRON'+'\n')

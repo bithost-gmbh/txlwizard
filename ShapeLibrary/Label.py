@@ -1,4 +1,4 @@
-def GetLabel(TXLWriter, Text, OriginPoint = [0,0], FontSize=20, StrokeWidth=1, RotationAngle = 0, FillCharacters=True, Layer = 1,**kwargs):
+def GetLabel(TXLWriter, Text, OriginPoint = [0,0], FontSize=20, StrokeWidth=1, RotationAngle = 0, FillCharacters=True, RoundCaps=False, Layer = 1,**kwargs):
     ID = 'Label_{:1.3f}_{:1.3f}'.format(OriginPoint[0], OriginPoint[1])
     Label = TXLWriter.AddDefinitionStructure(
             ID, Layer = Layer, StrokeWidth = StrokeWidth)
@@ -98,7 +98,7 @@ def GetLabel(TXLWriter, Text, OriginPoint = [0,0], FontSize=20, StrokeWidth=1, R
                     CurrentTextXOffset+StructureMap[j][k][0]*(1.*CharacterWidth/2.),
                     CurrentTextYOffset+StructureMap[j][k][1]*(1.*CharacterHeight/2.),
                 ])
-            Label.AddPattern('Polygon',Points = PolygonPoints,PathOnly=True,RoundCaps=True)
+            Label.AddPattern('Polygon',Points = PolygonPoints,PathOnly=True,RoundCaps=RoundCaps)
 
         if FillCharacters and Character.upper() in CharacterFillMap:
             FillStructureIndex = CharacterFillMap[Character.upper()]
