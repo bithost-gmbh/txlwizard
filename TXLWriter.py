@@ -1,38 +1,47 @@
+'''
+Module `TXLWriter` contains the :class:`TXLWizard.TXLWriter.TXLWriter` class
+'''
+
 from .Patterns import Definitions
 from .Patterns import Structure
 import os.path
 
 class TXLWriter(object):
     '''
-    Controller class for generating TXL / SVG / HTML output.
+    Controller class for generating TXL / SVG / HTML output.\n
     Here we can add structures (definitions and content) which will be rendered in the output.
+    Optionally a coordinate system grid is drawn.
+
+    Parameters
+    ----------
+    ShowGrid : bool, optional
+        Show the coordinate system grid or not.\n
+        Defaults to True
+    GridWidth : int, optional
+        Full width of the coordinate system grid in um.\n
+        Defaults to 800
+    GridHeight : int, optional
+        Full height of the coordinate system grid in um.\n
+        Defaults to 800
+    GridSpacing : int, optional
+        Coordinate Sytem Grid Spacing in um.\n
+        Defaults to 100
+    SubGridSpacing : int, optional
+        Coordinate System Sub-Grid Spacing in um.\n
+        Defaults to 10
     '''
     def __init__(self,**kwargs):
-        '''
-        Constructor
 
-        Parameters
-        ----------
-        Width : int, optional
-            Width of the sample in um. Used to draw coordinate system.
-        Height : int, optional
-            Height of the sample in um. Used to draw coordinate system.
-        ShowCoordinateSystem : bool, optional
-            Show the coordinate system or not
-        GridSpacing : int, optional
-            Coordinate Sytem Grid Spacing in um.
-        SubGridSpacing : int, optional
-            Coordinate System Sub-Grid Spacing in um
-
-        '''
-
-        #: :class:`Definitions`: container for definition structures
+        #: :class:`TXLWizard.Patterns.Definitions.Definitions`: container for definition structures
         self._Definitions = Definitions.Definitions()
 
-        #: int: Width of the sample in um. Used to draw coordinate system.
-        self._Width = 800
-        #: int: Height of the sample in um. Used to draw coordinate system.
-        self._Height = 800
+        #: bool: Show the coordinate system grid or not
+        self._ShowGrid = True
+
+        #: int: Full width of the coordinate system grid in um
+        self._GridWidth = 800
+        #: int: Full height of the coordinate system grid in um
+        self._GridHeight = 800
 
         #: int: Coordinate Sytem Grid Spacing in um.
         self._GridSpacing = 100
@@ -46,45 +55,44 @@ class TXLWriter(object):
         #: int: Height of the SVG Image in pixels
         self._SVGHeight = 800
 
-        #: bool: Show the coordinate system or not
-        self._ShowCoordinateSystem = True
+
 
         #: dict: dictionary of all content structures
         self._ContentStructures = {}
 
-        #: List[str]: list of indices of content structures, needed for correct order
+        #: list of str: list of indices of content structures, needed for correct order
         self._ContentStructuresIndexList = []
 
         #: dict: dictionary of all helper structures
         self._HelperStructures = {}
 
-        #: List[str]: list of indices of helper structures, needed for correct order
+        #: list of str: list of indices of helper structures, needed for correct order
         self._HelperStructuresIndexList = []
 
-        for i in ['Width','Height','GridSpacing','SubGridSpacing','ShowCoordinateSystem']:
+        for i in ['Width','Height','GridSpacing','SubGridSpacing','ShowGrid']:
             if i in kwargs:
                 setattr(self,i,kwargs[i])
 
-        if self._ShowCoordinateSystem:
-            self._DrawCoordinateSystem()
+        if self._ShowGrid:
+            self._DrawGrid()
 
-    def _DrawCoordinateSystem(self):
+    def _DrawGrid(self):
         '''
-        Draws the coordinate system (grid and sub-grid)
+        Draws the coordinate system grids (grid and sub-grid)
         '''
         LineWidth = 10*1./2.
 
 
         CoordinateXAxis = self.AddHelperStructure('CoordinateXAxis')
         CoordinateXAxis.AddPattern('Polygon',Points=[
-            [-self._Width/2,0],
-            [self._Width/2,0]
+            [-self._GridWidth/2,0],
+            [self._GridWidth/2,0]
         ],PathOnly = True, StrokeWidth = LineWidth)
 
         CoordinateYAxis = self.AddHelperStructure('CoordinateYAxis')
         CoordinateYAxis.AddPattern('Polygon',Points=[
-            [0,-self._Height/2],
-            [0,self._Height/2]
+            [0,-self._GridHeight/2],
+            [0,self._GridHeight/2]
         ],PathOnly = True, StrokeWidth = LineWidth)
 
         Grids = {}
@@ -95,56 +103,54 @@ class TXLWriter(object):
             GridSpacing = self.__getattribute__('_'+GridName+'Spacing')
             if GridName == 'SubGrid':
                 LineWidth = 1./2.
-            for i in range(0,int(round(self._Width/GridSpacing/2))):
+            for i in range(0,int(round(self._GridWidth/GridSpacing/2))):
                 for j in [-i*GridSpacing,i*GridSpacing]:
                     Grid.AddPattern('Polygon',Points=[
-                        [1.*j,-self._Height/2.],
-                        [1.*j,self._Height/2.]
+                        [1.*j,-self._GridHeight/2.],
+                        [1.*j,self._GridHeight/2.]
                     ],PathOnly = True,StrokeWidth = LineWidth)
-            for i in range(0,int(round(self._Height/GridSpacing/2))):
+            for i in range(0,int(round(self._GridHeight/GridSpacing/2))):
                 for j in [-i*GridSpacing,i*GridSpacing]:
                     Grid.AddPattern('Polygon',Points=[
-                        [-self._Width/2.,1.*j],
-                        [self._Width/2.,1.*j]
+                        [-self._GridWidth/2.,1.*j],
+                        [self._GridWidth/2.,1.*j]
                     ],PathOnly = True,StrokeWidth = LineWidth)
 
-
-    def AddHelperStructure(self, Index, **kwargs):
+    def AddDefinitionStructure(self, Index, **kwargs):
         '''
-        Add helper structure. Helper structures are only visible in the HTML / SVG Output.
+        Add definition structure. A definition structure can be referenced by a content structure.\n
+        A structure corresponds to the "STRUCT" command in the TXL file format.
 
         Parameters
         ----------
         Index: str
-            Identification of the structure
+            Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
             keyword arguments passed to the structure constructor
 
         Returns
         -------
-        :class:`Structure` structure instance
-
+        :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
         StructureObject = Structure.Structure(Index,**kwargs)
-        self._HelperStructures[Index] = StructureObject
-        self._HelperStructuresIndexList.append(Index)
-        return self._HelperStructures[Index]
+        self._Definitions.AddStructure(Index,StructureObject)
+        return StructureObject
 
     def AddContentStructure(self, Index, **kwargs):
         '''
-        Add content structure. A content structure can hold patterns that will render in the output.
+        Add content structure. A content structure can hold patterns that will render in the output.\n
+        A structure corresponds to the "STRUCT" command in the TXL file format.
 
         Parameters
         ----------
         Index: str
-            Identification of the structure
+            Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
             keyword arguments passed to the structure constructor
 
         Returns
         -------
-        :class:`Structure` structure instance
-
+        :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
         StructureObject = Structure.Structure(Index,**kwargs)
         self._ContentStructures[Index] = StructureObject
@@ -152,29 +158,35 @@ class TXLWriter(object):
         return self._ContentStructures[Index]
 
 
-    def AddDefinitionStructure(self, Index, **kwargs):
+
+    def AddHelperStructure(self, Index, **kwargs):
         '''
-        Add definition structure. A definition structure can be referenced by a content structure
+        Add helper structure. Helper structures are only visible in the HTML / SVG Output.\n
+        A structure corresponds to the "STRUCT" command in the TXL file format.
 
         Parameters
         ----------
         Index: str
-            Identification of the structure
+            Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
             keyword arguments passed to the structure constructor
 
         Returns
         -------
-        :class:`Structure` structure instance
-
+        :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
         StructureObject = Structure.Structure(Index,**kwargs)
-        self._Definitions.AddStructure(Index,StructureObject)
-        return StructureObject
+        self._HelperStructures[Index] = StructureObject
+        self._HelperStructuresIndexList.append(Index)
+        return self._HelperStructures[Index]
+
+
+
+
 
     def GenerateFiles(self,Filename,TXL=True,SVG=True,HTML=True):
         '''
-        Generate the output files.
+        Generate the output files (.txl, .svg, .html).
 
         Parameters
         ----------
@@ -187,8 +199,6 @@ class TXLWriter(object):
             Enable SVG Output
         HTML: Optional[bool]
             Enable HTML Output
-
-
         '''
         Path = os.path.dirname(Filename)
         if len(Path) and not os.path.exists(Path):
@@ -211,7 +221,6 @@ class TXLWriter(object):
         ----------
         Filename: str
             Path / Filename without extension.
-
         '''
         f = open(Filename+'.txl','w')
         f.write('LETXTLIB 1.0.0'+'\n')
@@ -238,14 +247,13 @@ class TXLWriter(object):
         ----------
         Filename: str
             Path / Filename without extension.
-
         '''
         #See https://developer.mozilla.org/en-US/docs/Web/SVG
 
         f = open(Filename+'.svg','w')
         f.write('<svg version="1.1" baseProfile="full" width="800" height="800" '+
                 'xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '+
-                'id="SVGImage" viewBox="{:d} {:d} {:d} {:d}">'.format(int(-self._Width/2),int(-self._Height/2),int(self._Width),int(self._Height))+'\n')
+                'id="SVGImage" viewBox="{:d} {:d} {:d} {:d}">'.format(int(-self._GridWidth/2),int(-self._GridHeight/2),int(self._GridWidth),int(self._GridHeight))+'\n')
         f.write('''
             <style type="text/css">
               <![CDATA[
@@ -288,7 +296,6 @@ class TXLWriter(object):
         ----------
         Filename: str
             Path / Filename without extension.
-
         '''
         f = open(Filename+'.svg','r')
         SVGData = f.read()
