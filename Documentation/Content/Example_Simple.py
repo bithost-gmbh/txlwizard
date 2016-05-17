@@ -59,10 +59,12 @@ TXLWriter = TXLWizard.TXLWriter.TXLWriter(
 SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
     SampleParameters['Label'],
-    OriginPoint=[0.5e3, 1. * SampleParameters['Height'] / 2. - 500],
+    OriginPoint=[
+        0.5e3, 1. * SampleParameters['Height'] / 2. - 500
+    ],
     FontSize=150,
     StrokeWidth=20,
-    RoundCaps=True,
+    RoundCaps=True, # Set to False to improve e-Beam performance
     Layer=1
 )
 

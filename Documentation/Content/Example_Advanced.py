@@ -71,20 +71,24 @@ TXLWriter = TXLWizard.TXLWriter.TXLWriter(
 SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
     SampleParameters['Label'],
-    OriginPoint=[0.5e3, 1. * SampleParameters['Height'] / 2. - 500],
+    OriginPoint=[
+        0.5e3, 1. * SampleParameters['Height'] / 2. - 500
+    ],
     FontSize=150,
     StrokeWidth=20,
-    RoundCaps=True,
+    RoundCaps=True,# Set to False to improve e-Beam performance
     Layer=1
 )
 # ...and some other information
 Alphabet = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
     'abcdefghijklmnopqrstuvwxyz0123456789 megamega ggg ah extraaaa rischaaaar',
-    OriginPoint=[0.5e3, 1. * SampleParameters['Height'] / 2. - 600],
+    OriginPoint=[
+        0.5e3, 1. * SampleParameters['Height'] / 2. - 600
+    ],
     FontSize=50,
     StrokeWidth=3,
-    RoundCaps=True,
+    RoundCaps=True, # Set to False to improve e-Beam performance
     Layer=1
 )
 
@@ -164,7 +168,7 @@ for Row in range(1, StructureParameters['CornerCubeArray']['Rows'] + 1):
                 * (Row - 1) + StructureParameters['CornerCube']['LabelYOffset']],
             FontSize=16,
             StrokeWidth=3,
-            RoundCaps=True,
+            RoundCaps=True,# Set to False to improve e-Beam performance
             Layer=1,
             RotationAngle=45
         )
