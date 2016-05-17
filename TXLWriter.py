@@ -13,15 +13,15 @@ class TXLWriter(object):
 
         Parameters
         ----------
-        Width : Optional[int],
+        Width : int, optional
             Width of the sample in um. Used to draw coordinate system.
-        Height : Optional[int]
+        Height : int, optional
             Height of the sample in um. Used to draw coordinate system.
-        ShowCoordinateSystem : Optional[bool]
+        ShowCoordinateSystem : bool, optional
             Show the coordinate system or not
-        GridDistance : Optional[int]
+        GridSpacing : int, optional
             Coordinate Sytem Grid Spacing in um.
-        SubGridDistance : Optional[int]
+        SubGridSpacing : int, optional
             Coordinate System Sub-Grid Spacing in um
 
         '''
@@ -35,10 +35,10 @@ class TXLWriter(object):
         self._Height = 800
 
         #: int: Coordinate Sytem Grid Spacing in um.
-        self._GridDistance = 100
+        self._GridSpacing = 100
 
         #: int: Coordinate Sytem Sub Grid Spacing in um.
-        self._SubGridDistance = 10
+        self._SubGridSpacing = 10
 
         #: int: Width of the SVG Image in pixels
         self._SVGWidth = 800
@@ -61,7 +61,7 @@ class TXLWriter(object):
         #: List[str]: list of indices of helper structures, needed for correct order
         self._HelperStructuresIndexList = []
 
-        for i in ['Width','Height','GridDistance','SubGridDistance','ShowCoordinateSystem']:
+        for i in ['Width','Height','GridSpacing','SubGridSpacing','ShowCoordinateSystem']:
             if i in kwargs:
                 setattr(self,i,kwargs[i])
 
@@ -92,17 +92,17 @@ class TXLWriter(object):
         for GridName in ['Grid','SubGrid']:
             Grid = self.AddHelperStructure(GridName)
             Grids[GridName] = Grid
-            GridDistance = self.__getattribute__('_'+GridName+'Distance')
+            GridSpacing = self.__getattribute__('_'+GridName+'Spacing')
             if GridName == 'SubGrid':
                 LineWidth = 1./2.
-            for i in range(0,int(round(self._Width/GridDistance/2))):
-                for j in [-i*GridDistance,i*GridDistance]:
+            for i in range(0,int(round(self._Width/GridSpacing/2))):
+                for j in [-i*GridSpacing,i*GridSpacing]:
                     Grid.AddPattern('Polygon',Points=[
                         [1.*j,-self._Height/2.],
                         [1.*j,self._Height/2.]
                     ],PathOnly = True,StrokeWidth = LineWidth)
-            for i in range(0,int(round(self._Height/GridDistance/2))):
-                for j in [-i*GridDistance,i*GridDistance]:
+            for i in range(0,int(round(self._Height/GridSpacing/2))):
+                for j in [-i*GridSpacing,i*GridSpacing]:
                     Grid.AddPattern('Polygon',Points=[
                         [-self._Width/2.,1.*j],
                         [self._Width/2.,1.*j]
