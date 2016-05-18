@@ -1,3 +1,7 @@
+'''
+Module `TXLWizard.TXLConverter` contains the :class:`TXLWizard.TXLConverter.TXLConverter` class
+'''
+
 from . import TXLWriter
 import os.path
 import traceback
@@ -12,7 +16,7 @@ class TXLConverter(object):
     ----------
     Filename : str
         Path / Filename of the .txl file
-    LayersToProcess : List[int], optional
+    LayersToProcess : list of int, optional
         if given, only layers in this list are processed / shown
     '''
 
@@ -111,21 +115,17 @@ class TXLConverter(object):
                 ]
             },
             'P': {
-                'Pattern': 'Polygon',
+                'Pattern': 'Polyline',
                 'Parameters': [
                     {'Name': 'Points', 'Type': 'Point', 'List': True},
                 ],
-                'AdditionalParameters': {
-                    'PathOnly': True
-                }
             },
             'PR': {
-                'Pattern': 'Polygon',
+                'Pattern': 'Polyline',
                 'Parameters': [
                     {'Name': 'Points', 'Type': 'Point', 'List': True},
                 ],
                 'AdditionalParameters': {
-                    'PathOnly': True,
                     'RoundCaps': True
                 }
             },

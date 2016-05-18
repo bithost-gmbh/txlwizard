@@ -59,8 +59,8 @@ vector graphics application.</p>
 <p>Moreover, a command line interface <cite>TXLConverter</cite> provides conversion of existing TXL files to HTML / SVG
 (See Section <a class="reference internal" href="30_TXLConverter.html#sec-txlconverter"><span class="std std-ref">TXLConverter</span></a>).</p>
 </div>
-<div class="section" id="technical-information">
-<h2>Technical Information<a class="headerlink" href="#technical-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>The &#8220;TXLWizard&#8221; is written in python and will run in Python version 2.7+ and 3.1+.</p>
 <div class="line-block">
 <div class="line">In order to use it, the <cite>TXLWizard</cite> package must be available as</div>
@@ -75,6 +75,49 @@ vector graphics application.</p>
 <div class="line-block">
 <div class="line"><code class="docutils literal"><span class="pre">sys.path.append('path</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">folder</span> <span class="pre">containing</span> <span class="pre">TXLWizard')</span></code></div>
 </div>
+</div>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<p>The following terms are used throughout this manual:</p>
+<div class="section" id="structure">
+<h3><cite>Structure</cite><a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
+<p>Refers to an object containing one or more <cite>Pattern</cite>.
+A <cite>Structure</cite> corresponds to the <cite>STRUCT</cite> command in TXL files.</p>
+</div>
+<div class="section" id="pattern">
+<h3><cite>Pattern</cite><a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<p>Refers to a pattern such as a circle, a polygon, an ellipse, a path, etc.
+The following patterns with the corresponding TXL command in brackets are supported:</p>
+<ul class="simple">
+<li><cite>Circle</cite> (<cite>C</cite>)</li>
+<li><cite>Ellipse</cite> (<cite>ELP</cite>)</li>
+<li><cite>Polygon</cite> (<cite>P</cite>)</li>
+<li><cite>Reference</cite> (<cite>SREF</cite>)</li>
+<li><cite>Array</cite> (<cite>AREF</cite>)</li>
+</ul>
+<p>For more information, supported parameters, etc., see Section <span class="xref std std-ref">PythonModuleReferencePatterns</span>.</p>
+</div>
+<div class="section" id="attribute">
+<h3><cite>Attribute</cite><a class="headerlink" href="#attribute" title="Permalink to this headline">¶</a></h3>
+<p>Refers to an property of a <cite>Pattern</cite> determining the visual appearance of the <cite>Pattern</cite>.
+The following attributes with the corresponding TXL command in brackets are supported:</p>
+<ul class="simple">
+<li><cite>Layer</cite> (<cite>LAYER</cite>)</li>
+<li><cite>DataType</cite> (<cite>DATATYPE</cite>)</li>
+<li><cite>RotationAngle</cite> (<cite>ANGLE</cite>)</li>
+<li><cite>StrokeWidth</cite> (<cite>WIDTH</cite>)</li>
+<li><cite>ScaleFactor</cite> (<cite>MAG</cite>)</li>
+</ul>
+<p>Please note that the <cite>TXLWizard</cite> strictly implements the specification of the TXL format.
+This implies some peculiarities, such as</p>
+<ul class="simple">
+<li><cite>Attribute</cite> commands preceed the corresponding <cite>Pattern</cite> in a <cite>Structure</cite> and are valid for all patterns that follow
+unless the attribute value is changed. Therefore, when adding a <cite>Pattern</cite> to a <cite>Structure</cite> with certain attributes,
+the attributes are valid for any subsequently added pattern, unless a different attribute value is specified.</li>
+<li><cite>Attribute</cite> commands are valid for all patterns, except for <cite>Reference</cite> (<cite>SREF</cite>) and <cite>Array</cite> (<cite>AREF</cite>).
+Therefore the attributes of a pattern can only be specified in the structure where the pattern is added / defined.</li>
+</ul>
 </div>
 </div>
 <div class="section" id="example-svg-output">
@@ -97,7 +140,13 @@ vector graphics application.</p>
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#what-does-it-do">What does it do?</a></li>
-<li><a class="reference internal" href="#technical-information">Technical Information</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#glossary">Glossary</a><ul>
+<li><a class="reference internal" href="#structure"><cite>Structure</cite></a></li>
+<li><a class="reference internal" href="#pattern"><cite>Pattern</cite></a></li>
+<li><a class="reference internal" href="#attribute"><cite>Attribute</cite></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#example-svg-output">Example SVG Output</a></li>
 </ul>
 </li>

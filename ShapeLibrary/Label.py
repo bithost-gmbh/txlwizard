@@ -92,13 +92,13 @@ def GetLabel(TXLWriter, Text, OriginPoint = [0,0], FontSize=20, StrokeWidth=1, R
         if Character.upper() in CharacterMap:
             StructureIndex = CharacterMap[Character.upper()]
         for j in StructureIndex:
-            PolygonPoints = []
+            PolylinePoints = []
             for k in [0,1]:
-                PolygonPoints.append([
+                PolylinePoints.append([
                     CurrentTextXOffset+StructureMap[j][k][0]*(1.*CharacterWidth/2.),
                     CurrentTextYOffset+StructureMap[j][k][1]*(1.*CharacterHeight/2.),
                 ])
-            Label.AddPattern('Polygon',Points = PolygonPoints,PathOnly=True,RoundCaps=RoundCaps)
+            Label.AddPattern('Polyline',Points = PolylinePoints,RoundCaps=RoundCaps)
 
         if FillCharacters and Character.upper() in CharacterFillMap:
             FillStructureIndex = CharacterFillMap[Character.upper()]

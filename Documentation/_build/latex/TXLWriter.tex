@@ -176,31 +176,51 @@ Moreover, a command line interface \titleref{TXLConverter} provides conversion o
 \section{Technical Information}
 \label{Chapters/10_Introduction:technical-information}
 The ``TXLWizard'' is written in python and will run in Python version 2.7+ and 3.1+.
-In order to use it, the \titleref{TXLWizard} package must be available as
-a python package, i.e. either it must be copied to
-\begin{quote}
 
-\code{Path\_to\_my\_python\_installation/site-packages/}
-\end{quote}
+\begin{DUlineblock}{0em}
+\item[] In order to use it, the \titleref{TXLWizard} package must be available as
+\item[] a python package, i.e. either it must be copied to
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] \code{Path\_to\_my\_python\_installation/site-packages/}
+\end{DUlineblock}
+\item[] or to the path where your script is located.
+\end{DUlineblock}
 
-or to the path where your script is located.
-\begin{description}
-\item[{Alternatively, you can also prepend the following command to your python script:}] \leavevmode
-\code{sys.path.append('path to the folder containing TXLWizard')}
+\begin{DUlineblock}{0em}
+\item[] Alternatively, you can also prepend the following command to your python script:
+\item[]
+\begin{DUlineblock}{\DUlineblockindent}
+\item[] \code{sys.path.append('path to the folder containing TXLWizard')}
+\end{DUlineblock}
+\end{DUlineblock}
 
-\end{description}
+
+\section{Example SVG Output}
+\label{Chapters/10_Introduction:example-svg-output}
+An example output can be seen here:
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\includegraphics{{Mask_Example}.png}
+\caption{Example SVG output for a mask}\label{Chapters/10_Introduction:id1}\end{figure}
 
 
 \chapter{TXLWizard Example}
 \label{Chapters/20_Example:txlwizard-example}\label{Chapters/20_Example::doc}
-\begin{DUlineblock}{0em}
-\item[] The following code demonstrates a simple example usage of the \titleref{TXLWizard} for
+The following code demonstrates a simple example usage of the \titleref{TXLWizard} for
 generating TXL files with python code.
-\item[] The code can be found in the file \code{/Content/Example\_Simple.py}.
-\item[] The resulting image is shown in Figure \DUrole{xref,std,std-ref}{fig-TXLWizardSimpleExample}.
-\item[] A more advanced example is shown in Section \DUrole{xref,std,std-ref}{AppendixTXLWizardExampleAdvanced}
-\end{DUlineblock}
 
+The code can be found in the file \code{Content/Example\_Simple.py}.
+
+The resulting image is shown in Figure {\hyperref[Chapters/20_Example:fig\string-txlwizardsimpleexample]{\crossref{\DUrole{std,std-ref}{Simple Example: Generated Mask}}}}.
+
+A more advanced example is shown in Section {\hyperref[Chapters/50_ExampleAdvanced:appendixtxlwizardexampleadvanced]{\crossref{\DUrole{std,std-ref}{TXLWizard Advanced Example}}}}
+
+
+\section{Code}
+\label{Chapters/20_Example:code}
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
 \PYG{c+c1}{\PYGZsh{} Import Libraries \PYGZsh{}}
@@ -320,7 +340,7 @@ generating TXL files with python code.
 \capstart
 
 \includegraphics{{Example_Simple}.pdf}
-\caption{Simple Example: Generated Mask}\label{Chapters/20_Example:fig-txlwizardsimpleexample}\label{Chapters/20_Example:id2}\end{figure}
+\caption{Simple Example: Generated Mask}\label{Chapters/20_Example:fig-txlwizardsimpleexample}\label{Chapters/20_Example:id1}\end{figure}
 
 
 \chapter{TXLConverter}
@@ -329,7 +349,9 @@ blub
 
 
 \chapter{Python Module Reference}
-\label{Chapters/40_PythonModuleReference:python-module-reference}\label{Chapters/40_PythonModuleReference:module-TXLWizard.TXLWriter}\label{Chapters/40_PythonModuleReference::doc}\index{TXLWizard.TXLWriter (module)}\index{TXLWriter (class in TXLWizard.TXLWriter)}
+\label{Chapters/40_PythonModuleReference:python-module-reference}\label{Chapters/40_PythonModuleReference:module-TXLWizard.TXLWriter}\label{Chapters/40_PythonModuleReference::doc}\index{TXLWizard.TXLWriter (module)}
+Module \titleref{TXLWriter} contains the {\hyperref[Chapters/40_PythonModuleReference:TXLWizard.TXLWriter.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter.TXLWriter}}}} class
+\index{TXLWriter (class in TXLWizard.TXLWriter)}
 
 \begin{fulllineitems}
 \phantomsection\label{Chapters/40_PythonModuleReference:TXLWizard.TXLWriter.TXLWriter}\pysiglinewithargsret{\strong{class }\code{TXLWizard.TXLWriter.}\bfcode{TXLWriter}}{\emph{**kwargs}}{}
@@ -398,7 +420,7 @@ A structure corresponds to the ``STRUCT'' command in the TXL file format.
 
 
 \item[{Return type}] \leavevmode
-\code{Structure} structure instance
+\code{TXLWizard.Patterns.Structure.Structure} structure instance
 
 \end{description}\end{quote}
 
@@ -425,7 +447,7 @@ A structure corresponds to the ``STRUCT'' command in the TXL file format.
 
 
 \item[{Return type}] \leavevmode
-\code{Structure} structure instance
+\code{TXLWizard.Patterns.Structure.Structure} structure instance
 
 \end{description}\end{quote}
 
@@ -452,7 +474,7 @@ A structure corresponds to the ``STRUCT'' command in the TXL file format.
 
 
 \item[{Return type}] \leavevmode
-\code{Structure} structure instance
+\code{TXLWizard.Patterns.Structure.Structure} structure instance
 
 \end{description}\end{quote}
 
@@ -487,6 +509,212 @@ The corresponding path will be created if it does not exist
 
 \end{fulllineitems}
 
+
+
+\chapter{TXLWizard Advanced Example}
+\label{Chapters/50_ExampleAdvanced:appendixtxlwizardexampleadvanced}\label{Chapters/50_ExampleAdvanced:txlwizard-advanced-example}\label{Chapters/50_ExampleAdvanced::doc}
+The following code demonstrates an advanced example usage of the \titleref{TXLWizard} for
+generating TXL files with python code.
+
+The code can be found in the file \code{Content/Example\_Advanced.py}.
+
+The resulting image is shown in Figure {\hyperref[Chapters/50_ExampleAdvanced:fig\string-txlwizardadvancedexample]{\crossref{\DUrole{std,std-ref}{Simple Example: Generated Mask}}}}.
+
+
+\section{Code}
+\label{Chapters/50_ExampleAdvanced:code}
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Import Libraries \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Import TXLWriter, the main class for generating TXL Output}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{TXLWriter}
+
+\PYG{c+c1}{\PYGZsh{} Import Pre\PYGZhy{}Defined Shapes / Structures wrapped in functions}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{EndpointDetectionWindows}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{Markers}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{Label}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{CornerCube}
+
+\PYG{c+c1}{\PYGZsh{} Import math module for calculations}
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Sample / Structure Parameters \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Define all sample parameters}
+\PYG{n}{SampleParameters} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Width}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{n}{e3}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{n}{e3}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{GOI Demo CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{} Define all structure parameters}
+\PYG{n}{StructureParameters} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{BridgeLength}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{8}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ParabolaFocus}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{9}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{XCutoff}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{9}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapX}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{50}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{R}\PYG{l+s+si}{\PYGZob{}:d\PYGZcb{}}\PYG{l+s+s1}{C}\PYG{l+s+si}{\PYGZob{}:d\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} \PYGZob{}:d\PYGZcb{} will be replaced}
+                               \PYG{c+c1}{\PYGZsh{} by str.format() with the corresponding row / column}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Layer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{2}
+    \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Radius}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Layer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}
+    \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{500}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{500}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mf}{0.75e3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{n}{e3}\PYG{p}{]}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Initialize TXLWriter \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}
+    \PYG{n}{GridWidth}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Width}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{GridHeight}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Define Structures \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Sample Label \PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Give the sample a nice label...}
+\PYG{n}{SampleLabelObject} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Label}\PYG{o}{.}\PYG{n}{GetLabel}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,}
+    \PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+        \PYG{l+m+mf}{0.5e3}\PYG{p}{,} \PYG{l+m+mf}{1.} \PYG{o}{*} \PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{/} \PYG{l+m+mf}{2.} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{500}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
+    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,}
+    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,}\PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} ...and some other information}
+\PYG{n}{Alphabet} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Label}\PYG{o}{.}\PYG{n}{GetLabel}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{abcdefghijklmnopqrstuvwxyz0123456789 megamega ggg ah extraaaa rischaaaar}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+        \PYG{l+m+mf}{0.5e3}\PYG{p}{,} \PYG{l+m+mf}{1.} \PYG{o}{*} \PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{/} \PYG{l+m+mf}{2.} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{600}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Endpoint Detection \PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Use Pre\PYGZhy{}Defined Endpoint Detection Windows}
+\PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{EndpointDetectionWindows}\PYG{o}{.}\PYG{n}{GetEndpointDetectionWindows}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,} \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Alignment Markers \PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Use Pre\PYGZhy{}Defined Alignment Markers}
+\PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Markers}\PYG{o}{.}\PYG{n}{GetMarkers}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,} \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} User Structure: Corner Cube \PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Create Definition Structure for Corner Cube that will be reused}
+\PYG{n}{CornerCubeDefinition} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{CornerCube}\PYG{o}{.}\PYG{n}{GetCornerCube}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,}
+    \PYG{n}{ParabolaFocus}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ParabolaFocus}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{XCutoff}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{XCutoff}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{AirGapX}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapX}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{AirGapY}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Layer}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Layer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Create Definition Structure for combination of cornercube and additional circle}
+\PYG{n}{FullCornerCubeNoRotation} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddDefinitionStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{FullCornerCubeNoRotation}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{FullCornerCubeNoRotation}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Reference}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+    \PYG{n}{ReferencedStructureID}\PYG{o}{=}\PYG{n}{CornerCubeDefinition}\PYG{o}{.}\PYG{n}{ID}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mf}{1.} \PYG{o}{*} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{BridgeLength}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{/} \PYG{l+m+mf}{2.}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{p}{)}
+\PYG{n}{FullCornerCubeNoRotation}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Radius}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Radius}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Layer}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Layer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Create definition structure with rotation of entire referenced structure}
+\PYG{n}{FullCornerCube} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddDefinitionStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{FullCornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+                                                  \PYG{n}{RotationAngle}\PYG{o}{=}\PYG{l+m+mi}{45}\PYG{p}{)}
+\PYG{n}{FullCornerCube}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Reference}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+    \PYG{n}{ReferencedStructureID}\PYG{o}{=}\PYG{n}{FullCornerCubeNoRotation}\PYG{o}{.}\PYG{n}{ID}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Create array of the definition structure above}
+\PYG{n}{CornerCubeArrayFine} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArrayFine}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{CornerCubeArrayFine}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Array}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+    \PYG{n}{ReferencedStructureID}\PYG{o}{=}\PYG{n}{FullCornerCube}\PYG{o}{.}\PYG{n}{ID}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{PositionDelta1}\PYG{o}{=}\PYG{p}{[}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,} \PYG{l+m+mi}{0}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{PositionDelta2}\PYG{o}{=}\PYG{p}{[}
+        \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Repetitions1}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Repetitions2}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{} Add Labels to each array element}
+\PYG{k}{for} \PYG{n}{Row} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{:}
+    \PYG{k}{for} \PYG{n}{Column} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{:}
+        \PYG{n}{RowColumnCountLabel} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Label}\PYG{o}{.}\PYG{n}{GetLabel}\PYG{p}{(}
+            \PYG{n}{TXLWriter}\PYG{p}{,}
+            \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{Row}\PYG{p}{,} \PYG{n}{Column}\PYG{p}{)}\PYG{p}{,}
+            \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+                \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+                \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+                \PYG{o}{*} \PYG{p}{(}\PYG{n}{Column} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+                \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+                \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+                \PYG{o}{*} \PYG{p}{(}\PYG{n}{Row} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,}
+            \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{,}
+            \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+            \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,}\PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+            \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+            \PYG{n}{RotationAngle}\PYG{o}{=}\PYG{l+m+mi}{45}
+        \PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Generate Output Files \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Note: The suffix (.txl, .html, .svg) will be appended automatically}
+\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{GenerateFiles}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Masks/Example\PYGZus{}Advanced}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+\end{Verbatim}
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\includegraphics{{Example_Advanced}.pdf}
+\caption{Simple Example: Generated Mask}\label{Chapters/50_ExampleAdvanced:fig-txlwizardadvancedexample}\label{Chapters/50_ExampleAdvanced:id1}\end{figure}
 
 
 \chapter{Indices and tables}

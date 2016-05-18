@@ -1,14 +1,43 @@
+'''
+Module `TXLWizard.Patterns.Definitions` contains the :class:`TXLWizard.Patterns.Definitions.Definitions` class
+'''
 from . import AbstractPattern
 class Definitions(AbstractPattern.AbstractPattern):
+    '''
+    Implements a class for `Pattern` objects of type `Definitions`.
+    Intended for storing definition structures.
+    For internal use only.
+
+    Parameters
+    ----------
+    **kwargs
+        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
+    '''
     def __init__(self,**kwargs):
         super(Definitions, self).__init__(**kwargs)
+
+        #: str: specifies the type of the pattern. Set to 'Definitions'
         self.Type = 'Definitions'
+
+        #: dict: Dictionary of :class:`TXLWizard.Patterns.Structure.Structure` instances. The key is the ID of the structure.
         self.Structures = {}
+
+        #: list of str: Index of the keys in `self.Structures`
         self.StructuresIndex = []
 
-    def AddStructure(self,Index,Structure):
-        self.Structures[Index] = Structure
-        self.StructuresIndex.append(Index)
+    def AddStructure(self,ID,Structure):
+        '''
+        Add a definition structure.
+
+        Parameters
+        ----------
+        ID: str
+            Unique identification of the structure
+        Structure: :class:`TXLWizard.Patterns.Structure.Structure`
+            `Structure` instance to be added
+        '''
+        self.Structures[ID] = Structure
+        self.StructuresIndex.append(ID)
 
     def GetTXLOutput(self):
         TXL = ''

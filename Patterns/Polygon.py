@@ -1,52 +1,53 @@
+'''
+Module `TXLWizard.Patterns.Polygon` contains the :class:`TXLWizard.Patterns.Polygon.Polygon` class
+'''
 from . import AbstractPattern
+
+
 class Polygon(AbstractPattern.AbstractPattern):
-    def __init__(self,Points,**kwargs):
+    '''
+    Implements a class for `Pattern` objects of type `Polygon`.
+    Corresponds to the TXL command `B`
+    Renders an polygon. The boundary is always closed so the last point connects to the starting point
+
+    Parameters
+    ----------
+    Points: list of list of float
+        List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the polygon
+    **kwargs
+        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
+        Can specify attributes of the current pattern.
+    '''
+
+    def __init__(self, Points, **kwargs):
         super(Polygon, self).__init__(**kwargs)
+
+        #: str: specifies the type of the pattern. Set to 'Polygon'
         self.Type = 'Polygon'
+
+        #: list of float: x- and y- coordinates of the origin point of the pattern
+        self._OriginPoint = [0, 0]
+
+        #: list of list of float: List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the polygon
         self.Points = Points
-        self.OriginPoint = [0,0]
-        self.RoundCaps = False
-
-        self.PathOnly = False
-
-        for i in ['PathOnly','RoundCaps']:
-            if i in kwargs:
-                setattr(self,i,kwargs[i])
-
 
     def GetTXLOutput(self):
-        if self.PathOnly:
-            CommandString = 'P'
-            EndCommandString = CommandString
-            if self.RoundCaps:
-                CommandString += 'R'
-        else:
-            CommandString = 'B'
-            EndCommandString = CommandString
+        CommandString = 'B'
+        EndCommandString = CommandString
         TXL = ''
-        TXL += CommandString+' '
+        TXL += CommandString + ' '
         for Point in self.Points:
-            TXL += '{:1.4f},{:1.4f} '.format(Point[0],Point[1])
-        TXL += 'END'+EndCommandString+'\n'
+            TXL += '{:1.4f},{:1.4f} '.format(Point[0], Point[1])
+        TXL += 'END' + EndCommandString + '\n'
         return TXL
-
 
     def GetSVGOutput(self):
         SVG = ''
 
         PointsString = ''
         for Point in self.Points:
-            PointsString += '{:1.4f},{:1.4f} '.format(Point[0],Point[1])
-        SVGAttributes = {'points':PointsString}
-        if self.PathOnly:
-            SVGAttributes['style'] = ['fill:none','stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth'])]
-            if self.RoundCaps:
-                SVGAttributes['stroke-linecap'] = 'round'
-            SVG += '<polyline '+self.GetSVGAttributesString(SVGAttributes)+' />'+'\n'
-        else:
-            SVG += '<polygon '+self.GetSVGAttributesString(SVGAttributes)+' />'+'\n'
-
-
-
+            PointsString += '{:1.4f},{:1.4f} '.format(Point[0], Point[1])
+        SVGAttributes = {'points': PointsString}
+        SVG += '<polygon ' + self._GetSVGAttributesString(SVGAttributes) + ' />' + '\n'
 
         return SVG

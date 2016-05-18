@@ -1,5 +1,5 @@
 '''
-Module `TXLWriter` contains the :class:`TXLWizard.TXLWriter.TXLWriter` class
+Module `TXLWizard.TXLWriter` contains the :class:`TXLWizard.TXLWriter.TXLWriter` class
 '''
 
 from .Patterns import Definitions
@@ -116,14 +116,14 @@ class TXLWriter(object):
                         [self._GridWidth/2.,1.*j]
                     ],PathOnly = True,StrokeWidth = LineWidth)
 
-    def AddDefinitionStructure(self, Index, **kwargs):
+    def AddDefinitionStructure(self, ID, **kwargs):
         '''
         Add definition structure. A definition structure can be referenced by a content structure.\n
         A structure corresponds to the "STRUCT" command in the TXL file format.
 
         Parameters
         ----------
-        Index: str
+        ID: str
             Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
             keyword arguments passed to the structure constructor
@@ -132,18 +132,18 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
-        StructureObject = Structure.Structure(Index,**kwargs)
-        self._Definitions.AddStructure(Index,StructureObject)
+        StructureObject = Structure.Structure(ID,**kwargs)
+        self._Definitions.AddStructure(ID,StructureObject)
         return StructureObject
 
-    def AddContentStructure(self, Index, **kwargs):
+    def AddContentStructure(self, ID, **kwargs):
         '''
         Add content structure. A content structure can hold patterns that will render in the output.\n
         A structure corresponds to the "STRUCT" command in the TXL file format.
 
         Parameters
         ----------
-        Index: str
+        ID: str
             Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
             keyword arguments passed to the structure constructor
@@ -152,21 +152,21 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
-        StructureObject = Structure.Structure(Index,**kwargs)
-        self._ContentStructures[Index] = StructureObject
-        self._ContentStructuresIndexList.append(Index)
-        return self._ContentStructures[Index]
+        StructureObject = Structure.Structure(ID,**kwargs)
+        self._ContentStructures[ID] = StructureObject
+        self._ContentStructuresIndexList.append(ID)
+        return self._ContentStructures[ID]
 
 
 
-    def AddHelperStructure(self, Index, **kwargs):
+    def AddHelperStructure(self, ID, **kwargs):
         '''
         Add helper structure. Helper structures are only visible in the HTML / SVG Output.\n
         A structure corresponds to the "STRUCT" command in the TXL file format.
 
         Parameters
         ----------
-        Index: str
+        ID: str
             Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
             keyword arguments passed to the structure constructor
@@ -175,10 +175,10 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
-        StructureObject = Structure.Structure(Index,**kwargs)
-        self._HelperStructures[Index] = StructureObject
-        self._HelperStructuresIndexList.append(Index)
-        return self._HelperStructures[Index]
+        StructureObject = Structure.Structure(ID,**kwargs)
+        self._HelperStructures[ID] = StructureObject
+        self._HelperStructuresIndexList.append(ID)
+        return self._HelperStructures[ID]
 
 
 

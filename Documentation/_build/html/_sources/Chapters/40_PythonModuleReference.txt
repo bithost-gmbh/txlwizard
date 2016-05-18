@@ -1,5 +1,18 @@
 Python Module Reference
 =======================
 
+Base Classes
+------------
 .. automodule:: TXLWizard.TXLWriter
    :members:
+
+
+.. _PythonModuleReferencePatterns:
+Patterns
+--------
+as
+
+.. _PythonModuleReferenceShapeLibrary:
+Shape Library
+-------------
+as
