@@ -2,7 +2,7 @@
 Implements a class for `Pattern` objects of type `Definitions`.
 Intended for storing definition structures.
 '''
-from . import AbstractPattern
+import AbstractPattern
 class Definitions(AbstractPattern.AbstractPattern):
     '''
     Implements a class for `Pattern` objects of type `Definitions`.\n

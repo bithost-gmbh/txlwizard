@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
 
+
 '''
 Provides a command line interface for the :class:`TXLWizard.TXLConverter.TXLConverter` class.
 '''
 
+if __name__ == '__main__' and __package__ == None:
+    import sys
+    import os.path
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+    __package__ = 'TXLWizard.TXLConverterCLI'
+    import TXLWizard.TXLConverterCLI
+
+from Helpers import Tuttifrutti
+import TXLConverter
+
 import json
 import os
 import os.path
-from .Helpers import Tuttifrutti
 import traceback
-from . import TXLConverter
+
 
 
 class TXLConverterCLI(object):
@@ -29,6 +39,14 @@ class TXLConverterCLI(object):
     OverrideConfiguration: dict, optional
         Dictionary with configuration options overriding the default / stored configuration.
         Defaults to {}
+
+
+    Examples
+    --------
+
+    Start the command line interface
+
+    >>> TXLWizard.TXLConverterCLI.TXLConverterCLI()
     '''
 
     def __init__(self, JSONConfigurationFile='TXLConverterConfiguration.json', UpdateConfigurationFile=True,
@@ -183,3 +201,6 @@ class TXLConverterCLI(object):
 
         print(Prefix + Message + Suffix)
 
+
+if __name__ == '__main__':
+    TXLConverterCLIInstance = TXLConverterCLI()

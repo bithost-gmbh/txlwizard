@@ -2,7 +2,7 @@
 Implements a class for `Pattern` objects of type `Ellipse` (`ELP`).\n
 Renders an ellipse.
 '''
-from . import AbstractPattern
+import AbstractPattern
 import math
 class Ellipse(AbstractPattern.AbstractPattern):
     '''

@@ -2,7 +2,7 @@
 Implements a class for `Pattern` objects of type `Polygon` (`B`).\n
 Renders an polygon.
 '''
-from . import AbstractPattern
+import AbstractPattern
 
 
 class Polygon(AbstractPattern.AbstractPattern):

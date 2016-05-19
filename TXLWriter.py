@@ -3,8 +3,8 @@ Controller class for generating TXL / SVG / HTML output.\n
 Here we can add structures (definitions and content) which will be rendered in the output.
 '''
 
-from .Patterns import Definitions
-from .Patterns import Structure
+from Patterns import Definitions
+from Patterns import Structure
 import os.path
 
 
@@ -44,7 +44,7 @@ class TXLWriter(object):
     Add a definition structure and add a pattern of type `Circle`
 
     >>> MyDefinitionStructure = TXLWriter.AddDefinitionStructure('MyDefinition')
-    >>> MyDefinitionStructure.AddPattern('Circle', Center=[0,0], Radius=20)
+    >>> MyDefinitionStructure.AddPattern('Circle', Center=[0,0], Radius=20, Layer=3)
 
     Add a content structure with a pattern `Reference` to reuse the definition structure.
 

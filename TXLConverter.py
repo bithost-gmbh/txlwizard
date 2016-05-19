@@ -2,7 +2,8 @@
 Class for parsing TXL files and converting them to html / svg using :class:`TXLWizard.TXLWriter`
 '''
 
-from . import TXLWriter
+
+import TXLWriter
 import os.path
 import traceback
 

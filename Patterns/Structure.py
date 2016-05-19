@@ -3,7 +3,7 @@ Implements a class for `Structure` objects (`STRUCT`).\n
 A `Structure` is a container for `Pattern` objects.
 '''
 
-from . import AbstractPattern
+import AbstractPattern
 from ..Helpers import Tuttifrutti
 import copy
 import importlib

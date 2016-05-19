@@ -2,7 +2,7 @@
 Implements a class for `Pattern` objects of type `Array` (`AREF`).\n
 Replicates the referenced structure in two directions.
 '''
-from . import AbstractPattern
+import AbstractPattern
 
 
 class Array(AbstractPattern.AbstractPattern):

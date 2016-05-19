@@ -1,5 +1,5 @@
 '''
-Provides an abstract class for `Pattern` objects.
+Provides an abstract class for `Pattern` objects
 '''
 
 from ..Helpers import Tuttifrutti
@@ -85,9 +85,7 @@ class AbstractPattern(object):
         }
         if not self.Type in ['Structure','Array','Reference']:
             SVGAttributes['class'].append('Pattern')
-        #SVGAttributes['class'].append(self.Type)
-        #SVGAttributes['class'].append('Object')
-
+        
         Tuttifrutti.update(SVGAttributes,OverrideSVGAttributes,True)
 
         SVGAttributesString = ''

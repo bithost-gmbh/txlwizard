@@ -2,7 +2,7 @@
 Implements a class for `Pattern` objects of type `Reference` (`SREF`).\n
 Renders a copy of the referenced structure.
 '''
-from . import AbstractPattern
+import AbstractPattern
 
 
 class Reference(AbstractPattern.AbstractPattern):

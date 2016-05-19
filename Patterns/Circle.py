@@ -2,7 +2,7 @@
 Implements a class for `Pattern` objects of type `Circle` (`C`).\n
 Renders a circle.
 '''
-from . import AbstractPattern
+import AbstractPattern
 import math
 
 

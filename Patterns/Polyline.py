@@ -3,7 +3,7 @@ Implements a class for `Pattern` objects of type `Polyline` (`B`).\n
 Renders an path specified by points.
 '''
 
-from . import AbstractPattern
+import AbstractPattern
 
 
 class Polyline(AbstractPattern.AbstractPattern):
