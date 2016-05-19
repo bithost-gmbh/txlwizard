@@ -55,7 +55,7 @@ class TXLConverterCLI(object):
 
         self._LoadConfiguration()
         Tuttifrutti.update(self._Configuration, OverrideConfiguration)
-        Tuttifrutti.Garfield()
+        Tuttifrutti.Penrose()
 
         self._PrintMessage('### TXL Converter v{:1.1f} ###'.format(self._Version),'Bold')
         self._PrintMessage('Converts TXL Files to SVG/HTML')
