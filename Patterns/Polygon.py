@@ -1,14 +1,16 @@
 '''
-Module `TXLWizard.Patterns.Polygon` contains the :class:`TXLWizard.Patterns.Polygon.Polygon` class
+Implements a class for `Pattern` objects of type `Polygon` (`B`).\n
+Renders an polygon.
 '''
 from . import AbstractPattern
 
 
 class Polygon(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Polygon`.
-    Corresponds to the TXL command `B`
-    Renders an polygon. The boundary is always closed so the last point connects to the starting point
+    Implements a class for `Pattern` objects of type `Polygon`.\n
+    Corresponds to the TXL command `B`\n
+    Renders an polygon. \n
+    The boundary is always closed so the last point connects to the starting point
 
     Parameters
     ----------

@@ -1,18 +1,48 @@
+.. _PythonModuleReference:
+
 Python Module Reference
 =======================
 
-Base Classes
-------------
-.. automodule:: TXLWizard.TXLWriter
-   :members:
+TXLWriter
+---------
+.. autosummary::
+   :toctree: PythonModuleReference/TXLWriter
+   :template: ../_templates/module.rst
 
+   TXLWizard.TXLWriter
 
 .. _PythonModuleReferencePatterns:
 Patterns
 --------
-as
+.. autosummary::
+   :toctree: PythonModuleReference/Patterns
+   :template: ../_templates/module.rst
+
+   TXLWizard.Patterns.AbstractPattern
+   TXLWizard.Patterns.Array
+   TXLWizard.Patterns.Circle
+   TXLWizard.Patterns.Ellipse
+   TXLWizard.Patterns.Polygon
+   TXLWizard.Patterns.Polyline
+   TXLWizard.Patterns.Reference
+   TXLWizard.Patterns.Structure
 
 .. _PythonModuleReferenceShapeLibrary:
 Shape Library
 -------------
-as
+.. autosummary::
+   :toctree: PythonModuleReference/ShapeLibrary
+   :template: ../_templates/module.rst
+
+   TXLWizard.ShapeLibrary.Label
+   TXLWizard.ShapeLibrary.EndpointDetectionWindows
+   TXLWizard.ShapeLibrary.AlignmentMarkers
+
+TXLConverter
+------------
+.. autosummary::
+   :toctree: PythonModuleReference/TXLConverter
+   :template: ../_templates/module.rst
+
+   TXLWizard.TXLConverter
+   TXLWizard.TXLConverterCLI

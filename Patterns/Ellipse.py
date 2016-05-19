@@ -1,14 +1,15 @@
 '''
-Module `TXLWizard.Patterns.Ellipse` contains the :class:`TXLWizard.Patterns.Ellipse.Ellipse` class
+Implements a class for `Pattern` objects of type `Ellipse` (`ELP`).\n
+Renders an ellipse.
 '''
 from . import AbstractPattern
 import math
 class Ellipse(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Ellipse`.
-    Corresponds to the TXL command `ELP`.
-    Renders an ellipse. Optionally, only a sector is shown when specifying `StartAngle` and `EndAngle`.
-    If `NumberOfPoints` is given, the number of path segments defining the ellipse can be specified.
+    Implements a class for `Pattern` objects of type `Ellipse`.\n
+    Corresponds to the TXL command `ELP`.\n
+    Renders an ellipse. Optionally, only a sector is shown when specifying `StartAngle` and `EndAngle`.\n
+    If `NumberOfPoints` is given, the number of path segments defining the ellipse can be specified.\n
     If `PathOnly` is set to True, only the arc of the ellipse is shown.
 
     Parameters

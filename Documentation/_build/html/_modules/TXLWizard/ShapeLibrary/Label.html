@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TXLWizard.ShapeLibrary.Label &mdash; TXLWriter 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="TXLWriter 1.0.0 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for TXLWizard.ShapeLibrary.Label</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Module `TXLWizard.ShapeLibrary.Label` contains the function `GetLabel`</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="GetLabel"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label.html#TXLWizard.ShapeLibrary.Label.GetLabel">[docs]</a><span class="k">def</span> <span class="nf">GetLabel</span><span class="p">(</span><span class="n">TXLWriter</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">FontSize</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">RotationAngle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">FillCharacters</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+             <span class="n">RoundCaps</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Renders arbitrary text.</span>
+<span class="sd">    Will have an automatically generated ID.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    TXLWriter: :class:`TXLWizard.TXLWriter.TXLWriter`</span>
+<span class="sd">        Current Instance of :class:`TXLWizard.TXLWriter.TXLWriter`</span>
+<span class="sd">    Text: str</span>
+<span class="sd">        Text to be displayed</span>
+<span class="sd">    OriginPoint: list of float, optional</span>
+<span class="sd">        x- and y-coordinates of the origin point of the label.</span>
+<span class="sd">        Defaults to [0,0]</span>
+<span class="sd">    FontSize: float, optional</span>
+<span class="sd">        Font size. Character height = font size.</span>
+<span class="sd">        Defaults to 100</span>
+<span class="sd">    StrokeWidth: float</span>
+<span class="sd">        line thickness of the letters.</span>
+<span class="sd">        Defaults to 10</span>
+<span class="sd">    RotationAngle: float</span>
+<span class="sd">        Angle by which the text is rotated.</span>
+<span class="sd">        Defaults to 0</span>
+<span class="sd">    FillCharacters: bool, optional</span>
+<span class="sd">        If set to True, closed boundaries will be filled.</span>
+<span class="sd">        Can be useful if there should be no free-standing parts.</span>
+<span class="sd">        Defaults to True</span>
+<span class="sd">    RoundCaps: bool, optional</span>
+<span class="sd">        If set to True, the paths will habe rounded ends. Should be set to False for better e-Beam Performance</span>
+<span class="sd">        Defaults to False.</span>
+<span class="sd">    Layer: int, optional</span>
+<span class="sd">        Layer the text should be rendered in.</span>
+<span class="sd">        Defaults to 1</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        keyword arguments</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`TXLWizard.Patterns.Structure.Structure`</span>
+<span class="sd">        `Structure` object containing the patterns representing the text</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">ID</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">_GetAutoStructureID</span><span class="p">()</span>
+
+    <span class="n">Label</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddDefinitionStructure</span><span class="p">(</span>
+        <span class="n">ID</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="n">Layer</span><span class="p">,</span> <span class="n">StrokeWidth</span><span class="o">=</span><span class="n">StrokeWidth</span><span class="p">)</span>
+
+    <span class="n">CharacterWidth</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">FontSize</span> <span class="o">/</span> <span class="mf">2.</span>
+    <span class="n">CharacterHeight</span> <span class="o">=</span> <span class="n">FontSize</span>
+    <span class="n">CharacterSpacing</span> <span class="o">=</span> <span class="n">CharacterWidth</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">+</span> <span class="n">StrokeWidth</span>
+    <span class="n">BarXOffset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">BarYOffset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">PolygonPoints</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">CurrentTextXOffset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CurrentTextYOffset</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">CharacterMap</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+        <span class="s1">&#39;J&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+        <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s1">&#39;O&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+        <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span>
+        <span class="s1">&#39;U&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+        <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+        <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span>
+        <span class="s1">&#39;Z&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+        <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;7&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+        <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+        <span class="s1">&#39;9&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39;_&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+        <span class="s1">&#39;-&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+        <span class="s1">&#39; &#39;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+    <span class="n">CharacterFillMap</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;O&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+        <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+        <span class="s1">&#39;9&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="p">}</span>
+    <span class="n">StructureMap</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+        <span class="mi">5</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">6</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+        <span class="mi">7</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+        <span class="mi">8</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+        <span class="mi">9</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">10</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">11</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">12</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">13</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">14</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">15</span><span class="p">:</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+        <span class="mi">16</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Small</span>
+    <span class="k">for</span> <span class="n">Character</span> <span class="ow">in</span> <span class="n">Text</span><span class="p">:</span>
+        <span class="n">StructureIndex</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">Character</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">in</span> <span class="n">CharacterMap</span><span class="p">:</span>
+            <span class="n">StructureIndex</span> <span class="o">=</span> <span class="n">CharacterMap</span><span class="p">[</span><span class="n">Character</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">StructureIndex</span><span class="p">:</span>
+            <span class="n">PolylinePoints</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">PolylinePoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                    <span class="n">CurrentTextXOffset</span> <span class="o">+</span> <span class="n">StructureMap</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">*</span> <span class="n">CharacterWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">),</span>
+                    <span class="n">CurrentTextYOffset</span> <span class="o">+</span> <span class="n">StructureMap</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">*</span> <span class="n">CharacterHeight</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">),</span>
+                <span class="p">])</span>
+            <span class="n">Label</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polyline&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="n">PolylinePoints</span><span class="p">,</span> <span class="n">RoundCaps</span><span class="o">=</span><span class="n">RoundCaps</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">FillCharacters</span> <span class="ow">and</span> <span class="n">Character</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">in</span> <span class="n">CharacterFillMap</span><span class="p">:</span>
+            <span class="n">FillStructureIndex</span> <span class="o">=</span> <span class="n">CharacterFillMap</span><span class="p">[</span><span class="n">Character</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span>
+            <span class="n">PolygonPoints</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">FillStructureIndex</span><span class="p">:</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                    <span class="n">CurrentTextXOffset</span> <span class="o">+</span> <span class="n">StructureMap</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">*</span> <span class="n">CharacterWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">),</span>
+                    <span class="n">CurrentTextYOffset</span> <span class="o">+</span> <span class="n">StructureMap</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">*</span> <span class="n">CharacterHeight</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">),</span>
+                <span class="p">])</span>
+            <span class="n">Label</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polygon&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="n">PolygonPoints</span><span class="p">)</span>
+
+        <span class="n">CurrentTextXOffset</span> <span class="o">+=</span> <span class="n">FontSize</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">+</span> <span class="n">CharacterSpacing</span>
+
+    <span class="n">LabelContent</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span>
+        <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;Content&#39;</span><span class="p">,</span>
+        <span class="n">Layer</span><span class="o">=</span><span class="n">Layer</span>
+    <span class="p">)</span>
+    <span class="n">LabelContent</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Reference&#39;</span><span class="p">,</span>
+                            <span class="n">ReferencedStructureID</span><span class="o">=</span><span class="n">Label</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+                            <span class="n">OriginPoint</span><span class="o">=</span><span class="n">OriginPoint</span><span class="p">,</span>
+                            <span class="n">RotationAngle</span><span class="o">=</span><span class="n">RotationAngle</span>
+                            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">LabelContent</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Esteban Marin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

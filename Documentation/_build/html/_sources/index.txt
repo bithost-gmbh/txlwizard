@@ -15,10 +15,9 @@ Contents:
    :maxdepth: 3
 
    Chapters/10_Introduction
-   Chapters/20_Example
+   Chapters/20_Examples
    Chapters/30_TXLConverter
    Chapters/40_PythonModuleReference
-   Chapters/50_ExampleAdvanced
 
 
 

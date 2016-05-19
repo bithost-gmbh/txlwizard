@@ -1,0 +1,87 @@
+TXLWizard Examples
+==================
+
+
+
+Introductory Example
+--------------------
+The following code demonstrates an introductory example usage of the `TXLWizard` for
+generating TXL files with python code.
+
+The code can be found in the file :download:`Content/Example_Introduction.py </Content/Example_Introduction.py>`.
+
+Have a look at more advanced examples in Sections :ref:`TXLWizardExampleAdvanced` and :ref:`TXLWizardExampleAdvanced`
+and at the :ref:`PythonModuleReference`.
+
+Code
+^^^^
+.. literalinclude:: /Content/Example_Introduction.py
+   :linenos:
+
+
+
+.. _TXLWizardExampleSimple:
+
+Simple Example
+--------------
+The following code demonstrates a simple example usage of the `TXLWizard` for
+generating TXL files with python code.
+
+The code can be found in the file :download:`Content/Example_Simple.py </Content/Example_Simple.py>`.
+
+.. only:: html
+
+    The resulting image is shown in :download:`Content/Masks/Example_Simple.pdf </Content/Masks/Example_Simple.pdf>`
+
+.. only:: latex
+
+    The resulting image is shown in Figure :ref:`fig-TXLWizardSimpleExample`.
+
+A more advanced example is shown in Section :ref:`TXLWizardExampleAdvanced`
+
+Code
+^^^^
+.. literalinclude:: /Content/Example_Simple.py
+   :linenos:
+
+
+.. only:: latex
+
+    .. _fig-TXLWizardSimpleExample:
+
+    .. figure:: /Content/Masks/Example_Simple.pdf
+
+        Simple Example: Generated Mask
+
+
+
+.. _TXLWizardExampleAdvanced:
+
+Advanced Example
+----------------
+
+The following code demonstrates an advanced example usage of the `TXLWizard` for
+generating TXL files with python code.
+
+The code can be found in the file :download:`Content/Example_Advanced.py </Content/Example_Advanced.py>`.
+
+.. only:: html
+
+    The resulting image is shown in :download:`Content/Masks/Example_Advanced.pdf </Content/Masks/Example_Advanced.pdf>`
+
+.. only:: latex
+
+    The resulting image is shown in Figure :ref:`fig-TXLWizardAdvancedExample`.
+
+Code
+^^^^
+.. literalinclude:: /Content/Example_Advanced.py
+   :linenos:
+
+
+.. only:: latex
+
+    .. _fig-TXLWizardAdvancedExample:
+    .. figure:: /Content/Masks/Example_Advanced.pdf
+
+        Simple Example: Generated Mask

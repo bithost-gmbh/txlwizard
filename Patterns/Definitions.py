@@ -1,11 +1,12 @@
 '''
-Module `TXLWizard.Patterns.Definitions` contains the :class:`TXLWizard.Patterns.Definitions.Definitions` class
+Implements a class for `Pattern` objects of type `Definitions`.
+Intended for storing definition structures.
 '''
 from . import AbstractPattern
 class Definitions(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Definitions`.
-    Intended for storing definition structures.
+    Implements a class for `Pattern` objects of type `Definitions`.\n
+    Intended for storing definition structures.\n
     For internal use only.
 
     Parameters

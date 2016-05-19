@@ -78,7 +78,7 @@ TXLWizard.ShapeLibrary.EndpointDetectionWindows.GetEndpointDetectionWindows(
 ## User Structure: Circle ##
 
 # Create Definition Structure for Circle that will be reused
-CircleStructure = TXLWriter.AddDefinitionStructure('Circle')
+CircleStructure = TXLWriter.AddDefinitionStructure('MyCircleID')
 CircleStructure.AddPattern('Circle',
     Center=[0, 0],
     Radius=StructureParameters['Circle']['Radius'],
@@ -87,7 +87,7 @@ CircleStructure.AddPattern('Circle',
 )
 
 # Create array of the definition structure above
-CircleArray = TXLWriter.AddContentStructure('CircleArray')
+CircleArray = TXLWriter.AddContentStructure('MyCircleArray')
 CircleArray.AddPattern('Array',
     ReferencedStructureID=CircleStructure.ID,
     OriginPoint=StructureParameters['CircleArray']['ArrayOrigin'],

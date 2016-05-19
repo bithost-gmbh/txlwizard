@@ -1,19 +1,21 @@
 '''
-Module `TXLWizard.Patterns.Array` contains the :class:`TXLWizard.Patterns.Array.Array` class
+Implements a class for `Pattern` objects of type `Array` (`AREF`).\n
+Replicates the referenced structure in two directions.
 '''
 from . import AbstractPattern
 
 
 class Array(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Array`.
-    Corresponds to the TXL command `AREF`.
+    Implements a class for `Pattern` objects of type `Array`.\n
+    Corresponds to the TXL command `AREF`.\n
     Replicates the referenced structure `ReferencedStructureID` in two directions `PositionDelta1` and `PositionDelta2`
     for the number of times specified in `Repetitions1` and `Repetitions2`,
-    starting at `OriginPoint`.
+    starting at `OriginPoint`.\n
     The x- and y-coordinates of the replicated objects are calculated as follows:
-    `OriginPoint`+`i`*`PositionDelta1`+`j`* `PositionDelta2`
-    where `i` is an integer that ranges from 0 to `Repetitions1` and `j` is an integer that ranges from 0 to `Repetitions2`
+    `OriginPoint+i*PositionDelta1+j*PositionDelta2`
+    where `i` is an integer that ranges from 0 to `Repetitions1`
+    and `j` is an integer that ranges from 0 to `Repetitions2`
 
     Parameters
     ----------

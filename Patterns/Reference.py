@@ -1,15 +1,15 @@
 '''
-Module `TXLWizard.Patterns.Reference` contains the :class:`TXLWizard.Patterns.Reference.Reference` class
+Implements a class for `Pattern` objects of type `Reference` (`SREF`).\n
+Renders a copy of the referenced structure.
 '''
 from . import AbstractPattern
 
 
 class Reference(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Reference`.
-    Corresponds to the TXL command `SREF`.
-    Renders a copy of the structure identified by `ReferencedStructureID` at `OriginPoint`
-
+    Implements a class for `Pattern` objects of type `Reference`.\n
+    Corresponds to the TXL command `SREF`.\n
+    Renders a copy of the structure identified by `ReferencedStructureID` at `OriginPoint`.
 
     Parameters
     ----------

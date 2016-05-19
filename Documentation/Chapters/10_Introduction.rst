@@ -13,8 +13,10 @@ See the following links:
 * http://cad035.psi.ch/LB_index.html
 * http://cad035.psi.ch/LBDoc/BEAMER_Manual.pdf
 
+The `TXLWizard` currently implements version `4.8` of the TextLIB (TXL) standard.
+
 The generated TXL files are also converted to HTML / SVG for presentation in any modern browser or
-vector graphics application.
+vector graphics application and allow rapid mask development.
 
 Moreover, a command line interface `TXLConverter` provides conversion of existing TXL files to HTML / SVG
 (See Section :ref:`sec-TXLConverter`).

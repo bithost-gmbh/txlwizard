@@ -1,5 +1,5 @@
 '''
-Module `TXLWizard.TXLConverter` contains the :class:`TXLWizard.TXLConverter.TXLConverter` class
+Class for parsing TXL files and converting them to html / svg using :class:`TXLWizard.TXLWriter`
 '''
 
 from . import TXLWriter
@@ -10,7 +10,7 @@ import traceback
 class TXLConverter(object):
     '''
     Class for parsing TXL files and converting them to
-    html / svg using :class:`TXLWriter`
+    html / svg using :class:`TXLWizard.TXLWriter`
 
     Parameters
     ----------

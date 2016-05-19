@@ -1,5 +1,6 @@
 '''
-Module `TXLWizard.Patterns.Circle` contains the :class:`TXLWizard.Patterns.Circle.Circle` class
+Implements a class for `Pattern` objects of type `Circle` (`C`).\n
+Renders a circle.
 '''
 from . import AbstractPattern
 import math
@@ -7,10 +8,11 @@ import math
 
 class Circle(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Circle`.
-    Corresponds to the TXL command `C` (`CP` if `PathOnly` is specified, `CPR` if `RoundCaps` and `CPE` if `Extended`).
-    Renders a circle. Optionally, only a sector is shown when specifying `StartAngle` and `EndAngle`.
-    If `NumberOfPoints` is given, the number of path segments defining the circle can be specified.
+    Implements a class for `Pattern` objects of type `Circle`.\n
+    Corresponds to the TXL command `C` (`CP` if `PathOnly` is specified, `CPR` if `RoundCaps` and `CPE` if `Extended`).\n
+    Renders a circle. \n
+    Optionally, only a sector is shown when specifying `StartAngle` and `EndAngle`.\n
+    If `NumberOfPoints` is given, the number of path segments defining the circle can be specified.\n
     If `PathOnly` is set to True, only the arc of the circle is shown. Optionally, the ends of the path are rounded by
     specifying `RoundCaps` or extended by specifying `Extended` along with `PathOnly`.
 

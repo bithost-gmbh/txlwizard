@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Module `TXLWizard.TXLConverterCLI` contains the :class:`TXLWizard.TXLConverterCLI.TXLConverterCLI` class
+Provides a command line interface for the :class:`TXLWizard.TXLConverter.TXLConverter` class.
 '''
 
 import json
@@ -14,7 +14,7 @@ from . import TXLConverter
 
 class TXLConverterCLI(object):
     '''
-    Provides a command line interface for the :class:`TXLWizard.TXLConverter.TXLConverter` class.
+    Provides a command line interface for the :class:`TXLWizard.TXLConverter.TXLConverter` class.\n
     The configuration is read and stored in the JSON format in the file specified  in `JSONConfigurationFile`.
 
 

@@ -41,18 +41,19 @@
             
   <h1>Source code for TXLWizard.TXLWriter</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Module `TXLWriter` contains the :class:`TXLWizard.TXLWriter.TXLWriter` class</span>
+<span class="sd">Controller class for generating TXL / SVG / HTML output.\n</span>
+<span class="sd">Here we can add structures (definitions and content) which will be rendered in the output.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">from</span> <span class="nn">.Patterns</span> <span class="kn">import</span> <span class="n">Definitions</span>
 <span class="kn">from</span> <span class="nn">.Patterns</span> <span class="kn">import</span> <span class="n">Structure</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 
-<div class="viewcode-block" id="TXLWriter"><a class="viewcode-back" href="../../Chapters/40_PythonModuleReference.html#TXLWizard.TXLWriter.TXLWriter">[docs]</a><span class="k">class</span> <span class="nc">TXLWriter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLWriter"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter">[docs]</a><span class="k">class</span> <span class="nc">TXLWriter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Controller class for generating TXL / SVG / HTML output.\n</span>
-<span class="sd">    Here we can add structures (definitions and content) which will be rendered in the output.</span>
-<span class="sd">    Optionally a coordinate system grid is drawn.</span>
+<span class="sd">    Here we can add structures (definitions and content) which will be rendered in the output.\n</span>
+<span class="sd">    Optionally, a coordinate system grid is drawn.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -97,7 +98,8 @@
         <span class="c1">#: int: Height of the SVG Image in pixels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_SVGHeight</span> <span class="o">=</span> <span class="mi">800</span>
 
-
+        <span class="c1">#: int: incrementing number for automatically created indices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_AutoIndexIncrement</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="c1">#: dict: dictionary of all content structures</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span> <span class="o">=</span> <span class="p">{}</span>
@@ -158,14 +160,14 @@
                         <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span><span class="mf">1.</span><span class="o">*</span><span class="n">j</span><span class="p">]</span>
                     <span class="p">],</span><span class="n">PathOnly</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">StrokeWidth</span> <span class="o">=</span> <span class="n">LineWidth</span><span class="p">)</span>
 
-<div class="viewcode-block" id="TXLWriter.AddDefinitionStructure"><a class="viewcode-back" href="../../Chapters/40_PythonModuleReference.html#TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddDefinitionStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Index</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLWriter.AddDefinitionStructure"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddDefinitionStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Add definition structure. A definition structure can be referenced by a content structure.\n</span>
 <span class="sd">        A structure corresponds to the &quot;STRUCT&quot; command in the TXL file format.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Index: str</span>
+<span class="sd">        ID: str</span>
 <span class="sd">            Unique identification of the structure. Must be used when referencing to this structure.</span>
 <span class="sd">        kwargs: dict</span>
 <span class="sd">            keyword arguments passed to the structure constructor</span>
@@ -174,18 +176,18 @@
 <span class="sd">        -------</span>
 <span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">Index</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">AddStructure</span><span class="p">(</span><span class="n">Index</span><span class="p">,</span><span class="n">StructureObject</span><span class="p">)</span>
+        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">AddStructure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="n">StructureObject</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">StructureObject</span></div>
 
-<div class="viewcode-block" id="TXLWriter.AddContentStructure"><a class="viewcode-back" href="../../Chapters/40_PythonModuleReference.html#TXLWizard.TXLWriter.TXLWriter.AddContentStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddContentStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Index</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLWriter.AddContentStructure"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.AddContentStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddContentStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Add content structure. A content structure can hold patterns that will render in the output.\n</span>
 <span class="sd">        A structure corresponds to the &quot;STRUCT&quot; command in the TXL file format.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Index: str</span>
+<span class="sd">        ID: str</span>
 <span class="sd">            Unique identification of the structure. Must be used when referencing to this structure.</span>
 <span class="sd">        kwargs: dict</span>
 <span class="sd">            keyword arguments passed to the structure constructor</span>
@@ -194,21 +196,21 @@
 <span class="sd">        -------</span>
 <span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">Index</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="n">StructureObject</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructuresIndexList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span></div>
+        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">StructureObject</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructuresIndexList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span></div>
 
 
 
-<div class="viewcode-block" id="TXLWriter.AddHelperStructure"><a class="viewcode-back" href="../../Chapters/40_PythonModuleReference.html#TXLWizard.TXLWriter.TXLWriter.AddHelperStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddHelperStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Index</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLWriter.AddHelperStructure"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.AddHelperStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddHelperStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Add helper structure. Helper structures are only visible in the HTML / SVG Output.\n</span>
 <span class="sd">        A structure corresponds to the &quot;STRUCT&quot; command in the TXL file format.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Index: str</span>
+<span class="sd">        ID: str</span>
 <span class="sd">            Unique identification of the structure. Must be used when referencing to this structure.</span>
 <span class="sd">        kwargs: dict</span>
 <span class="sd">            keyword arguments passed to the structure constructor</span>
@@ -217,16 +219,35 @@
 <span class="sd">        -------</span>
 <span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">Index</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="n">StructureObject</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructuresIndexList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Index</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span></div>
+        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">StructureObject</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructuresIndexList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_GetAutoStructureID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Prefix</span> <span class="o">=</span> <span class="s1">&#39;ID&#39;</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generates a unique structure ID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Prefix: str, optional</span>
+<span class="sd">            Prefix of the ID</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            generated ID</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">ID</span> <span class="o">=</span> <span class="n">Prefix</span><span class="o">+</span><span class="s1">&#39;_{:d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_AutoIndexIncrement</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_AutoIndexIncrement</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">ID</span>
 
 
 
-
-
-<div class="viewcode-block" id="TXLWriter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/40_PythonModuleReference.html#TXLWizard.TXLWriter.TXLWriter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Filename</span><span class="p">,</span><span class="n">TXL</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">SVG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">HTML</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLWriter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Filename</span><span class="p">,</span><span class="n">TXL</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">SVG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">HTML</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Generate the output files (.txl, .svg, .html).</span>
 

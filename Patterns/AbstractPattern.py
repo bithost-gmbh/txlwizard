@@ -1,5 +1,5 @@
 '''
-Module `TXLWizard.Patterns.AbstractPattern` contains the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` class
+Provides an abstract class for `Pattern` objects.
 '''
 
 from ..Helpers import Tuttifrutti

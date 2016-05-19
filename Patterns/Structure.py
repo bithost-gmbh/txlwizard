@@ -1,5 +1,6 @@
 '''
-Module `TXLWizard.Patterns.Structure` contains the :class:`TXLWizard.Patterns.Structure.Structure` class
+Implements a class for `Structure` objects (`STRUCT`).\n
+A `Structure` is a container for `Pattern` objects.
 '''
 
 from . import AbstractPattern
@@ -10,11 +11,11 @@ import importlib
 
 class Structure(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Structure` objects.
-    Corresponds to the TXL command `STRUCT`.
+    Implements a class for `Structure` objects.\n
+    Corresponds to the TXL command `STRUCT`.\n
     A `Structure` is a container for `Pattern` objects.
 
-    Paramters
+    Parameters
     ---------
     ID: str
         Unique identification of the structure. Also used when referencing to this structure.
@@ -55,7 +56,7 @@ class Structure(AbstractPattern.AbstractPattern):
         '''
         Adds a `Pattern` of type `PatternType` to the structure.
         Creates an instance of `TXLWizard.Patterns.{PatternType}.{PatternType}`.
-        The `**kwargs` are passed to the corresponding constructor and allow specifying
+        The `kwargs` are passed to the corresponding constructor and allow specifying
         pattern parameters as defined in the constructor of the corresponding pattern class
         and attributes as defined in :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern`.
 

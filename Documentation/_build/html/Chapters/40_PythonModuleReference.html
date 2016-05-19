@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="TXLWriter 1.0.0 documentation" href="../index.html" />
-    <link rel="next" title="TXLWizard Advanced Example" href="50_ExampleAdvanced.html" />
+    <link rel="next" title="TXLWizard.TXLWriter" href="PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html" />
     <link rel="prev" title="TXLConverter" href="30_TXLConverter.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -41,147 +41,92 @@
           <div class="body" role="main">
             
   <div class="section" id="python-module-reference">
-<h1>Python Module Reference<a class="headerlink" href="#python-module-reference" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-TXLWizard.TXLWriter">
-<span id="base-classes"></span><h2>Base Classes<a class="headerlink" href="#module-TXLWizard.TXLWriter" title="Permalink to this headline">¶</a></h2>
-<p>Module <cite>TXLWriter</cite> contains the <a class="reference internal" href="#TXLWizard.TXLWriter.TXLWriter" title="TXLWizard.TXLWriter.TXLWriter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLWriter.TXLWriter</span></code></a> class</p>
-<dl class="class">
-<dt id="TXLWizard.TXLWriter.TXLWriter">
-<em class="property">class </em><code class="descclassname">TXLWizard.TXLWriter.</code><code class="descname">TXLWriter</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TXLWizard/TXLWriter.html#TXLWriter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Controller class for generating TXL / SVG / HTML output.</p>
-<p>Here we can add structures (definitions and content) which will be rendered in the output.
-Optionally a coordinate system grid is drawn.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<span id="pythonmodulereference"></span><h1>Python Module Reference<a class="headerlink" href="#python-module-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="txlwriter">
+<h2>TXLWriter<a class="headerlink" href="#txlwriter" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ShowGrid</strong> (<em>bool, optional</em>) &#8211; <p>Show the coordinate system grid or not.</p>
-<p>Defaults to True</p>
-</li>
-<li><strong>GridWidth</strong> (<em>int, optional</em>) &#8211; <p>Full width of the coordinate system grid in um.</p>
-<p>Defaults to 800</p>
-</li>
-<li><strong>GridHeight</strong> (<em>int, optional</em>) &#8211; <p>Full height of the coordinate system grid in um.</p>
-<p>Defaults to 800</p>
-</li>
-<li><strong>GridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate Sytem Grid Spacing in um.</p>
-<p>Defaults to 100</p>
-</li>
-<li><strong>SubGridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate System Sub-Grid Spacing in um.</p>
-<p>Defaults to 10</p>
-</li>
-</ul>
-</td>
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#module-TXLWizard.TXLWriter" title="TXLWizard.TXLWriter"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.TXLWriter</span></code></a></td>
+<td>Controller class for generating TXL / SVG / HTML output.</td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="TXLWizard.TXLWriter.TXLWriter.AddContentStructure">
-<code class="descname">AddContentStructure</code><span class="sig-paren">(</span><em>Index</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddContentStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddContentStructure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add content structure. A content structure can hold patterns that will render in the output.</p>
-<p>A structure corresponds to the &#8220;STRUCT&#8221; command in the TXL file format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Index</strong> (<em>str</em>) &#8211; Unique identification of the structure. Must be used when referencing to this structure.</li>
-<li><strong>kwargs</strong> (<em>dict</em>) &#8211; keyword arguments passed to the structure constructor</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code> structure instance</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure">
-<code class="descname">AddDefinitionStructure</code><span class="sig-paren">(</span><em>Index</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddDefinitionStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add definition structure. A definition structure can be referenced by a content structure.</p>
-<p>A structure corresponds to the &#8220;STRUCT&#8221; command in the TXL file format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Index</strong> (<em>str</em>) &#8211; Unique identification of the structure. Must be used when referencing to this structure.</li>
-<li><strong>kwargs</strong> (<em>dict</em>) &#8211; keyword arguments passed to the structure constructor</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code> structure instance</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="TXLWizard.TXLWriter.TXLWriter.AddHelperStructure">
-<code class="descname">AddHelperStructure</code><span class="sig-paren">(</span><em>Index</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddHelperStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddHelperStructure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add helper structure. Helper structures are only visible in the HTML / SVG Output.</p>
-<p>A structure corresponds to the &#8220;STRUCT&#8221; command in the TXL file format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Index</strong> (<em>str</em>) &#8211; Unique identification of the structure. Must be used when referencing to this structure.</li>
-<li><strong>kwargs</strong> (<em>dict</em>) &#8211; keyword arguments passed to the structure constructor</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code> structure instance</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="TXLWizard.TXLWriter.TXLWriter.GenerateFiles">
-<code class="descname">GenerateFiles</code><span class="sig-paren">(</span><em>Filename</em>, <em>TXL=True</em>, <em>SVG=True</em>, <em>HTML=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/TXLWizard/TXLWriter.html#TXLWriter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate the output files (.txl, .svg, .html).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename without extension.
-The corresponding path will be created if it does not exist</li>
-<li><strong>TXL</strong> (<em>Optional[bool]</em>) &#8211; Enable TXL Output</li>
-<li><strong>SVG</strong> (<em>Optional[bool]</em>) &#8211; Enable SVG Output</li>
-<li><strong>HTML</strong> (<em>Optional[bool]</em>) &#8211; Enable HTML Output</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="patterns">
 <h2>Patterns<a class="headerlink" href="#patterns" title="Permalink to this headline">¶</a></h2>
-<p>as</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern.html#module-TXLWizard.Patterns.AbstractPattern" title="TXLWizard.Patterns.AbstractPattern"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.AbstractPattern</span></code></a></td>
+<td>Provides an abstract class for <cite>Pattern</cite> objects.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Array.html#module-TXLWizard.Patterns.Array" title="TXLWizard.Patterns.Array"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Array</span></code></a></td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Array</cite> (<cite>AREF</cite>).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Circle.html#module-TXLWizard.Patterns.Circle" title="TXLWizard.Patterns.Circle"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Circle</span></code></a></td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Circle</cite> (<cite>C</cite>).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Ellipse.html#module-TXLWizard.Patterns.Ellipse" title="TXLWizard.Patterns.Ellipse"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Ellipse</span></code></a></td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Ellipse</cite> (<cite>ELP</cite>).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Polygon.html#module-TXLWizard.Patterns.Polygon" title="TXLWizard.Patterns.Polygon"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Polygon</span></code></a></td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Polygon</cite> (<cite>B</cite>).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Polyline.html#module-TXLWizard.Patterns.Polyline" title="TXLWizard.Patterns.Polyline"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Polyline</span></code></a></td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Polyline</cite> (<cite>B</cite>).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Reference.html#module-TXLWizard.Patterns.Reference" title="TXLWizard.Patterns.Reference"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Reference</span></code></a></td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Reference</cite> (<cite>SREF</cite>).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PythonModuleReference/Patterns/TXLWizard.Patterns.Structure.html#module-TXLWizard.Patterns.Structure" title="TXLWizard.Patterns.Structure"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.Patterns.Structure</span></code></a></td>
+<td>Implements a class for <cite>Structure</cite> objects (<cite>STRUCT</cite>).</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="shape-library">
 <h2>Shape Library<a class="headerlink" href="#shape-library" title="Permalink to this headline">¶</a></h2>
-<p>as</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label.html#module-TXLWizard.ShapeLibrary.Label" title="TXLWizard.ShapeLibrary.Label"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.ShapeLibrary.Label</span></code></a></td>
+<td>Module <cite>TXLWizard.ShapeLibrary.Label</cite> contains the function <cite>GetLabel</cite></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.EndpointDetectionWindows.html#module-TXLWizard.ShapeLibrary.EndpointDetectionWindows" title="TXLWizard.ShapeLibrary.EndpointDetectionWindows"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.ShapeLibrary.EndpointDetectionWindows</span></code></a></td>
+<td>Module <cite>TXLWizard.ShapeLibrary.EndpointDetectionWindows</cite> contains the function <cite>GetEndpointDetectionWindows</cite></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html#module-TXLWizard.ShapeLibrary.AlignmentMarkers" title="TXLWizard.ShapeLibrary.AlignmentMarkers"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.ShapeLibrary.AlignmentMarkers</span></code></a></td>
+<td>Module <cite>TXLWizard.ShapeLibrary.AlignmentMarkers</cite> contains the function <cite>GetAlignmentMarkers</cite></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="txlconverter">
+<h2>TXLConverter<a class="headerlink" href="#txlconverter" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#module-TXLWizard.TXLConverter" title="TXLWizard.TXLConverter"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.TXLConverter</span></code></a></td>
+<td>Class for parsing TXL files and converting them to html / svg using <a class="reference internal" href="PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#module-TXLWizard.TXLWriter" title="TXLWizard.TXLWriter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLWriter</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI.html#module-TXLWizard.TXLConverterCLI" title="TXLWizard.TXLConverterCLI"><code class="xref py py-obj docutils literal"><span class="pre">TXLWizard.TXLConverterCLI</span></code></a></td>
+<td>Provides a command line interface for the <a class="reference internal" href="PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter" title="TXLWizard.TXLConverter.TXLConverter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLConverter.TXLConverter</span></code></a> class.</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -194,9 +139,10 @@ The corresponding path will be created if it does not exist</li>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Python Module Reference</a><ul>
-<li><a class="reference internal" href="#module-TXLWizard.TXLWriter">Base Classes</a></li>
+<li><a class="reference internal" href="#txlwriter">TXLWriter</a></li>
 <li><a class="reference internal" href="#patterns">Patterns</a></li>
 <li><a class="reference internal" href="#shape-library">Shape Library</a></li>
+<li><a class="reference internal" href="#txlconverter">TXLConverter</a></li>
 </ul>
 </li>
 </ul>
@@ -205,7 +151,7 @@ The corresponding path will be created if it does not exist</li>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="30_TXLConverter.html" title="previous chapter">TXLConverter</a></li>
-      <li>Next: <a href="50_ExampleAdvanced.html" title="next chapter">TXLWizard Advanced Example</a></li>
+      <li>Next: <a href="PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html" title="next chapter">TXLWizard.TXLWriter</a></li>
   </ul></li>
 </ul>
 </div>

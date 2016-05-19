@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="TXLWriter 1.0.0 documentation" href="../index.html" />
-    <link rel="next" title="TXLWizard Example" href="20_Example.html" />
+    <link rel="next" title="TXLWizard Examples" href="20_Examples.html" />
     <link rel="prev" title="Welcome to TXLWriter’s documentation!" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -54,8 +54,9 @@ See the following links:</p>
 <li><a class="reference external" href="http://cad035.psi.ch/LB_index.html">http://cad035.psi.ch/LB_index.html</a></li>
 <li><a class="reference external" href="http://cad035.psi.ch/LBDoc/BEAMER_Manual.pdf">http://cad035.psi.ch/LBDoc/BEAMER_Manual.pdf</a></li>
 </ul>
+<p>The <cite>TXLWizard</cite> currently implements version <cite>4.8</cite> of the TextLIB (TXL) standard.</p>
 <p>The generated TXL files are also converted to HTML / SVG for presentation in any modern browser or
-vector graphics application.</p>
+vector graphics application and allow rapid mask development.</p>
 <p>Moreover, a command line interface <cite>TXLConverter</cite> provides conversion of existing TXL files to HTML / SVG
 (See Section <a class="reference internal" href="30_TXLConverter.html#sec-txlconverter"><span class="std std-ref">TXLConverter</span></a>).</p>
 </div>
@@ -82,7 +83,7 @@ vector graphics application.</p>
 <p>The following terms are used throughout this manual:</p>
 <div class="section" id="structure">
 <h3><cite>Structure</cite><a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
-<p>Refers to an object containing one or more <cite>Pattern</cite>.
+<p>Refers to an object containing one or more <cite>Pattern</cite> objects.
 A <cite>Structure</cite> corresponds to the <cite>STRUCT</cite> command in TXL files.</p>
 </div>
 <div class="section" id="pattern">
@@ -92,7 +93,8 @@ The following patterns with the corresponding TXL command in brackets are suppor
 <ul class="simple">
 <li><cite>Circle</cite> (<cite>C</cite>)</li>
 <li><cite>Ellipse</cite> (<cite>ELP</cite>)</li>
-<li><cite>Polygon</cite> (<cite>P</cite>)</li>
+<li><cite>Polygon</cite> (<cite>B</cite>)</li>
+<li><cite>Polyline</cite> (<cite>P</cite>)</li>
 <li><cite>Reference</cite> (<cite>SREF</cite>)</li>
 <li><cite>Array</cite> (<cite>AREF</cite>)</li>
 </ul>
@@ -156,7 +158,7 @@ Therefore the attributes of a pattern can only be specified in the structure whe
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../index.html" title="previous chapter">Welcome to TXLWriter&#8217;s documentation!</a></li>
-      <li>Next: <a href="20_Example.html" title="next chapter">TXLWizard Example</a></li>
+      <li>Next: <a href="20_Examples.html" title="next chapter">TXLWizard Examples</a></li>
   </ul></li>
 </ul>
 </div>

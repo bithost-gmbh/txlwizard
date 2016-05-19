@@ -1,5 +1,6 @@
 '''
-Module `TXLWizard.Patterns.Polyline` contains the :class:`TXLWizard.Patterns.Polyline.Polyline` class
+Implements a class for `Pattern` objects of type `Polyline` (`B`).\n
+Renders an path specified by points.
 '''
 
 from . import AbstractPattern
@@ -7,9 +8,9 @@ from . import AbstractPattern
 
 class Polyline(AbstractPattern.AbstractPattern):
     '''
-    Implements a class for `Pattern` objects of type `Polyline`.
-    Corresponds to the TXL command `P` (``PR` if `RoundCaps` is True).
-    Renders an path specified by points
+    Implements a class for `Pattern` objects of type `Polyline`.\n
+    Corresponds to the TXL command `P` (`PR` if `RoundCaps` is True).\n
+    Renders an path specified by points.\n
     The ends can be rounded by specifying `RoundCaps`
 
     Parameters
