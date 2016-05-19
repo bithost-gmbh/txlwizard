@@ -9,7 +9,7 @@ if __name__ == '__main__' and __package__ == None:
     import sys
     import os.path
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-    __package__ = 'TXLWizard.TXLConverterCLI'
+    __package__ = 'TXLWizard'
     import TXLWizard.TXLConverterCLI
 
 from Helpers import Tuttifrutti

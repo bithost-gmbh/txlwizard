@@ -85,7 +85,7 @@ class AbstractPattern(object):
         }
         if not self.Type in ['Structure','Array','Reference']:
             SVGAttributes['class'].append('Pattern')
-        
+
         Tuttifrutti.update(SVGAttributes,OverrideSVGAttributes,True)
 
         SVGAttributesString = ''
