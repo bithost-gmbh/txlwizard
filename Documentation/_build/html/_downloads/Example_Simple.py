@@ -58,7 +58,7 @@ TXLWriter = TXLWizard.TXLWriter.TXLWriter(
 # Give the sample a nice label
 SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
-    SampleParameters['Label'],
+    Text=SampleParameters['Label'],
     OriginPoint=[
         0.5e3, 1. * SampleParameters['Height'] / 2. - 500
     ],
@@ -79,7 +79,8 @@ TXLWizard.ShapeLibrary.EndpointDetectionWindows.GetEndpointDetectionWindows(
 
 # Create Definition Structure for Circle that will be reused
 CircleStructure = TXLWriter.AddDefinitionStructure('MyCircleID')
-CircleStructure.AddPattern('Circle',
+CircleStructure.AddPattern(
+    'Circle',
     Center=[0, 0],
     Radius=StructureParameters['Circle']['Radius'],
     Layer=StructureParameters['Circle']['Layer']
@@ -88,7 +89,8 @@ CircleStructure.AddPattern('Circle',
 
 # Create array of the definition structure above
 CircleArray = TXLWriter.AddContentStructure('MyCircleArray')
-CircleArray.AddPattern('Array',
+CircleArray.AddPattern(
+    'Array',
     ReferencedStructureID=CircleStructure.ID,
     OriginPoint=StructureParameters['CircleArray']['ArrayOrigin'],
     PositionDelta1=[

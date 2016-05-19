@@ -1,3 +1,5 @@
+.. _Examples:
+
 TXLWizard Examples
 ==================
 
@@ -5,54 +7,60 @@ TXLWizard Examples
 
 Introductory Example
 --------------------
+
+Introduction
+############
 The following code demonstrates an introductory example usage of the `TXLWizard` for
 generating TXL files with python code.
 
 The code can be found in the file :download:`Content/Example_Introduction.py </Content/Example_Introduction.py>`.
+The resulting SVG image is shown in Figure :ref:`ExampleIntroductionSVG`.
 
 Have a look at more advanced examples in Sections :ref:`TXLWizardExampleAdvanced` and :ref:`TXLWizardExampleAdvanced`
 and at the :ref:`PythonModuleReference`.
 
 Code
-^^^^
+####
 .. literalinclude:: /Content/Example_Introduction.py
    :linenos:
 
+.. _ExampleIntroductionSVG:
 
+Generated SVG Image
+###################
+.. figure:: /Content/Masks/Example_Introduction.png
+
+    Generated SVG Image for `Content/Example_Introduction.py`
 
 .. _TXLWizardExampleSimple:
 
 Simple Example
 --------------
+
+Introduction
+############
 The following code demonstrates a simple example usage of the `TXLWizard` for
 generating TXL files with python code.
 
 The code can be found in the file :download:`Content/Example_Simple.py </Content/Example_Simple.py>`.
-
-.. only:: html
-
-    The resulting image is shown in :download:`Content/Masks/Example_Simple.pdf </Content/Masks/Example_Simple.pdf>`
-
-.. only:: latex
-
-    The resulting image is shown in Figure :ref:`fig-TXLWizardSimpleExample`.
+The resulting SVG image is shown in Figure :ref:`ExampleSimpleSVG`.
 
 A more advanced example is shown in Section :ref:`TXLWizardExampleAdvanced`
 
 Code
-^^^^
+####
 .. literalinclude:: /Content/Example_Simple.py
    :linenos:
 
 
-.. only:: latex
 
-    .. _fig-TXLWizardSimpleExample:
+.. _ExampleSimpleSVG:
 
-    .. figure:: /Content/Masks/Example_Simple.pdf
+Generated SVG Image
+###################
+.. figure:: /Content/Masks/Example_Simple.png
 
-        Simple Example: Generated Mask
-
+    Generated SVG Image for `Content/Example_Simple.py`
 
 
 .. _TXLWizardExampleAdvanced:
@@ -60,28 +68,25 @@ Code
 Advanced Example
 ----------------
 
+Introduction
+############
 The following code demonstrates an advanced example usage of the `TXLWizard` for
 generating TXL files with python code.
 
 The code can be found in the file :download:`Content/Example_Advanced.py </Content/Example_Advanced.py>`.
-
-.. only:: html
-
-    The resulting image is shown in :download:`Content/Masks/Example_Advanced.pdf </Content/Masks/Example_Advanced.pdf>`
-
-.. only:: latex
-
-    The resulting image is shown in Figure :ref:`fig-TXLWizardAdvancedExample`.
+The resulting SVG image is shown in Figure :ref:`ExampleAdvancedSVG`.
 
 Code
-^^^^
+####
 .. literalinclude:: /Content/Example_Advanced.py
    :linenos:
 
 
-.. only:: latex
 
-    .. _fig-TXLWizardAdvancedExample:
-    .. figure:: /Content/Masks/Example_Advanced.pdf
+.. _ExampleAdvancedSVG:
 
-        Simple Example: Generated Mask
+Generated SVG Image
+###################
+.. figure:: /Content/Masks/Example_Advanced.png
+
+    Generated SVG Image for `Content/Example_Advanced.py`

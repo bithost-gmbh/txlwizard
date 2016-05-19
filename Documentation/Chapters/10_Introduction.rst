@@ -26,26 +26,24 @@ Installation
 ------------
 The "TXLWizard" is written in python and will run in Python version 2.7+ and 3.1+.
 
-| In order to use it, the `TXLWizard` package must be available as
-| a python package, i.e. either it must be copied to
-|    :file:`Path_to_my_python_installation/site-packages/`
-| or to the path where your script is located.
+In order to use it, the `TXLWizard` package must be available as
+a python package, i.e. either it must be copied to
+:file:`Path_to_my_python_installation/site-packages/`
+or to the path where your script is located.
+Alternatively, you can also prepend the following command to your python script:
+``sys.path.append('path to the folder containing TXLWizard')``
 
-| Alternatively, you can also prepend the following command to your python script:
-|   ``sys.path.append('path to the folder containing TXLWizard')``
-
-
-Glossary
---------
+Structure / Pattern / Attribute
+-------------------------------
 The following terms are used throughout this manual:
 
 `Structure`
-^^^^^^^^^^^
+###########
 Refers to an object containing one or more `Pattern` objects.
 A `Structure` corresponds to the `STRUCT` command in TXL files.
 
 `Pattern`
-^^^^^^^^^
+#########
 Refers to a pattern such as a circle, a polygon, an ellipse, a path, etc.
 The following patterns with the corresponding TXL command in brackets are supported:
 
@@ -59,7 +57,7 @@ The following patterns with the corresponding TXL command in brackets are suppor
 For more information, supported parameters, etc., see Section :ref:`PythonModuleReferencePatterns`.
 
 `Attribute`
-^^^^^^^^^^^
+###########
 Refers to an property of a `Pattern` determining the visual appearance of the `Pattern`.
 The following attributes with the corresponding TXL command in brackets are supported:
 
@@ -77,6 +75,7 @@ This implies some peculiarities, such as
   the attributes are valid for any subsequently added pattern, unless a different attribute value is specified.
 * `Attribute` commands are valid for all patterns, except for `Reference` (`SREF`) and `Array` (`AREF`).
   Therefore the attributes of a pattern can only be specified in the structure where the pattern is added / defined.
+* The `RotationAngle` attribute applies to each `Pattern` individually and rotates about each `Pattern`'s individual origin.
 
 
 Example SVG Output
@@ -87,3 +86,7 @@ An example output can be seen here:
 
     Example SVG output for a mask
 
+How to start?
+-------------
+Have a look at the examples in Section :ref:`Examples` and consult the :ref:`PythonModuleReference`.
+Happy scripting!

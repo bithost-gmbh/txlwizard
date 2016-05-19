@@ -1,5 +1,5 @@
 '''
-Module `TXLWizard.ShapeLibrary.Label` contains the function `GetLabel`
+Renders arbitrary text in `TXLWriter`.
 '''
 def GetLabel(TXLWriter, Text, OriginPoint=[0, 0], FontSize=100, StrokeWidth=10, RotationAngle=0, FillCharacters=True,
              RoundCaps=False, Layer=1, **kwargs):

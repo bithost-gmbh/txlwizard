@@ -3,6 +3,7 @@ TXLWizard.Patterns.Ellipse
 
 .. automodule:: TXLWizard.Patterns.Ellipse
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.Patterns.Ellipse
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    

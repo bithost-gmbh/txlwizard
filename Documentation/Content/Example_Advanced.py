@@ -71,7 +71,7 @@ TXLWriter = TXLWizard.TXLWriter.TXLWriter(
 # Give the sample a nice label...
 SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
-    SampleParameters['Label'],
+    Text=SampleParameters['Label'],
     OriginPoint=[
         0.5e3, 1. * SampleParameters['Height'] / 2. - 500
     ],
@@ -83,7 +83,7 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
 # ...and some other information
 Alphabet = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
-    'abcdefghijklmnopqrstuvwxyz0123456789 megamega ggg ah extraaaa rischaaaar',
+    Text='abcdefghijklmnopqrstuvwxyz0123456789 megamega ggg ah extraaaa rischaaaar',
     OriginPoint=[
         0.5e3, 1. * SampleParameters['Height'] / 2. - 600
     ],
@@ -97,13 +97,15 @@ Alphabet = TXLWizard.ShapeLibrary.Label.GetLabel(
 
 # Use Pre-Defined Endpoint Detection Windows
 TXLWizard.ShapeLibrary.EndpointDetectionWindows.GetEndpointDetectionWindows(
-    TXLWriter, Layer=1)
+    TXLWriter, Layer=1
+)
 
 ## Alignment Markers ##
 
 # Use Pre-Defined Alignment Markers
-TXLWizard.ShapeLibrary.Markers.GetMarkers(
-    TXLWriter, Layer=1)
+TXLWizard.ShapeLibrary.AlignmentMarkers.GetAlignmentMarkers(
+    TXLWriter, Layer=1
+)
 
 
 ## User Structure: Corner Cube ##
@@ -120,11 +122,13 @@ CornerCubeDefinition = TXLWizard.ShapeLibrary.CornerCube.GetCornerCube(
 
 # Create Definition Structure for combination of cornercube and additional circle
 FullCornerCubeNoRotation = TXLWriter.AddDefinitionStructure('FullCornerCubeNoRotation')
-FullCornerCubeNoRotation.AddPattern('Reference',
+FullCornerCubeNoRotation.AddPattern(
+    'Reference',
     ReferencedStructureID=CornerCubeDefinition.ID,
     OriginPoint=[1. * StructureParameters['CornerCube']['BridgeLength'] / 2., 0]
 )
-FullCornerCubeNoRotation.AddPattern('Circle',
+FullCornerCubeNoRotation.AddPattern(
+    'Circle',
     Center=[0, 0],
     Radius=StructureParameters['Circle']['Radius'],
     Layer=StructureParameters['Circle']['Layer']
@@ -133,14 +137,16 @@ FullCornerCubeNoRotation.AddPattern('Circle',
 # Create definition structure with rotation of entire referenced structure
 FullCornerCube = TXLWriter.AddDefinitionStructure('FullCornerCube',
                                                   RotationAngle=45)
-FullCornerCube.AddPattern('Reference',
+FullCornerCube.AddPattern(
+    'Reference',
     ReferencedStructureID=FullCornerCubeNoRotation.ID,
     OriginPoint=[0, 0]
 )
 
 # Create array of the definition structure above
 CornerCubeArrayFine = TXLWriter.AddContentStructure('CornerCubeArrayFine')
-CornerCubeArrayFine.AddPattern('Array',
+CornerCubeArrayFine.AddPattern(
+    'Array',
     ReferencedStructureID=FullCornerCube.ID,
     OriginPoint=StructureParameters['CornerCubeArray']['ArrayOrigin'],
     PositionDelta1=[
@@ -162,11 +168,11 @@ for Row in range(1, StructureParameters['CornerCubeArray']['Rows'] + 1):
             StructureParameters['CornerCube']['Label'].format(Row, Column),
             OriginPoint=[
                 StructureParameters['CornerCubeArray']['ArrayOrigin'][0]
-                + StructureParameters['CornerCubeArray']['ArrayXOffset']
-                * (Column - 1) + StructureParameters['CornerCube']['LabelXOffset'],
+                + StructureParameters['CornerCubeArray']['ArrayXOffset'] * (Column - 1)
+                + StructureParameters['CornerCube']['LabelXOffset'],
                 StructureParameters['CornerCubeArray']['ArrayOrigin'][1]
-                + StructureParameters['CornerCubeArray']['ArrayYOffset']
-                * (Row - 1) + StructureParameters['CornerCube']['LabelYOffset']],
+                + StructureParameters['CornerCubeArray']['ArrayYOffset'] * (Row - 1)
+                + StructureParameters['CornerCube']['LabelYOffset']],
             FontSize=16,
             StrokeWidth=3,
             RoundCaps=True,# Set to False to improve e-Beam performance

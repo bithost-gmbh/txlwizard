@@ -3,12 +3,13 @@
 
 .. automodule:: {{ fullname }}
    :members:
+   :show-inheritance:
 
    {% block functions %}
    {% if functions %}
 
    Functions
-   ^^^^^^^^^
+   #########
 
    .. autosummary::
    {% for item in functions %}
@@ -21,7 +22,7 @@
    {% if classes %}
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    {% for item in classes %}

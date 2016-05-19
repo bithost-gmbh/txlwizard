@@ -1,5 +1,5 @@
 '''
-Module `TXLWizard.ShapeLibrary.EndpointDetectionWindows` contains the function `GetEndpointDetectionWindows`
+Add five squares to `TXLWriter` that can be used as endpoint detection windows.
 '''
 
 

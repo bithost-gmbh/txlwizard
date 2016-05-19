@@ -3,6 +3,7 @@ TXLWizard.TXLConverter
 
 .. automodule:: TXLWizard.TXLConverter
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.TXLConverter
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    

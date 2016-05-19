@@ -3,6 +3,7 @@ TXLWizard.Patterns.Reference
 
 .. automodule:: TXLWizard.Patterns.Reference
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.Patterns.Reference
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    

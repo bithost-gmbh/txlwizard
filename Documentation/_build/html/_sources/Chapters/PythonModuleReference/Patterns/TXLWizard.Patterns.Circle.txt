@@ -3,6 +3,7 @@ TXLWizard.Patterns.Circle
 
 .. automodule:: TXLWizard.Patterns.Circle
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.Patterns.Circle
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    

@@ -12,6 +12,7 @@ TXLWriter
    TXLWizard.TXLWriter
 
 .. _PythonModuleReferencePatterns:
+
 Patterns
 --------
 .. autosummary::
@@ -28,6 +29,7 @@ Patterns
    TXLWizard.Patterns.Structure
 
 .. _PythonModuleReferenceShapeLibrary:
+
 Shape Library
 -------------
 .. autosummary::

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# TXLWriter documentation build configuration file, created by
+# TXLWizard documentation build configuration file, created by
 # sphinx-quickstart on Tue May 17 12:00:34 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -40,8 +40,6 @@ extensions = [
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# autosummary Boolean indicating whether to scan all found documents for autosummary directives, and to generate stub pages for each.
-autosummary_generate = True
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -55,7 +53,7 @@ source_suffix = ['.rst']
 master_doc = 'index'
 
 # General information about the project.
-project = u'TXLWriter'
+project = u'TXLWizard'
 copyright = u'2016, Esteban Marin'
 author = u'Esteban Marin'
 
@@ -118,7 +116,8 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+#html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -130,7 +129,7 @@ html_theme = 'alabaster'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = u'TXLWriter v1.0.0'
+#html_title = u'TXLWizard v1.0.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -212,7 +211,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'TXLWriterdoc'
+htmlhelp_basename = 'TXLWizarddoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -234,7 +233,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'TXLWriter.tex', u'TXLWriter Documentation',
+    (master_doc, 'TXLWizard.tex', u'TXLWizard Documentation',
      u'Esteban Marin', 'manual'),
 ]
 
@@ -264,7 +263,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'txlwriter', u'TXLWriter Documentation',
+    (master_doc, 'txlwizard', u'TXLWizard Documentation',
      [author], 1)
 ]
 
@@ -278,8 +277,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'TXLWriter', u'TXLWriter Documentation',
-     author, 'TXLWriter', 'One line description of project.',
+    (master_doc, 'TXLWriter', u'TXLWizard Documentation',
+     author, 'TXLWizard', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -294,3 +293,11 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+
+### Custom Configuration ###
+
+autodoc_default_flags = ['members','show-inheritance']
+
+# autosummary Boolean indicating whether to scan all found documents for autosummary directives, and to generate stub pages for each.
+autosummary_generate = True

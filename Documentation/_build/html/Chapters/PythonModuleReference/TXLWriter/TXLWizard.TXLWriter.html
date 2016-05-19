@@ -1,45 +1,149 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>TXLWizard.TXLWriter &mdash; TXLWriter 1.0.0 documentation</title>
-    
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '1.0.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="TXLWriter 1.0.0 documentation" href="../../../index.html" />
-    <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html" />
-    <link rel="next" title="TXLWizard.Patterns.AbstractPattern" href="../Patterns/TXLWizard.Patterns.AbstractPattern.html" />
-    <link rel="prev" title="Python Module Reference" href="../../40_PythonModuleReference.html" />
-   
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body role="document">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.TXLWriter &mdash; TXLWizard 1.0.0 documentation</title>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
+        <link rel="next" title="TXLWizard.Patterns.AbstractPattern" href="../Patterns/TXLWizard.Patterns.AbstractPattern.html"/>
+        <link rel="prev" title="Python Module Reference" href="../../40_PythonModuleReference.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../40_PythonModuleReference.html">Python Module Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../40_PythonModuleReference.html#txlwriter">TXLWriter</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TXLWizard.TXLWriter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#patterns">Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#shape-library">Shape Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#txlconverter">TXLConverter</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../40_PythonModuleReference.html">Python Module Reference</a> &raquo;</li>
+      
+    <li>TXLWizard.TXLWriter</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="module-TXLWizard.TXLWriter">
 <span id="txlwizard-txlwriter"></span><h1>TXLWizard.TXLWriter<a class="headerlink" href="#module-TXLWizard.TXLWriter" title="Permalink to this headline">¶</a></h1>
@@ -61,7 +165,8 @@
 <dl class="class">
 <dt id="TXLWizard.TXLWriter.TXLWriter">
 <em class="property">class </em><code class="descclassname">TXLWizard.TXLWriter.</code><code class="descname">TXLWriter</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Controller class for generating TXL / SVG / HTML output.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Controller class for generating TXL / SVG / HTML output.</p>
 <p>Here we can add structures (definitions and content) which will be rendered in the output.</p>
 <p>Optionally, a coordinate system grid is drawn.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -84,6 +189,8 @@
 <li><strong>SubGridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate System Sub-Grid Spacing in um.</p>
 <p>Defaults to 10</p>
 </li>
+<li><strong>TXLWriter = TXLWizard.TXLWriter.TXLWriter(ShowGrid=True, GridWidth=800, GridHeight=800)</strong> (<em>&gt;&gt;&gt;</em>) &#8211; </li>
+<li><strong>TXLWriter.AddDefinitionStructure('MyDefinition')</strong> (<em>&gt;&gt;&gt;</em>) &#8211; </li>
 </ul>
 </td>
 </tr>
@@ -140,31 +247,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="TXLWizard.TXLWriter.TXLWriter.AddHelperStructure">
-<code class="descname">AddHelperStructure</code><span class="sig-paren">(</span><em>ID</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddHelperStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddHelperStructure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add helper structure. Helper structures are only visible in the HTML / SVG Output.</p>
-<p>A structure corresponds to the &#8220;STRUCT&#8221; command in the TXL file format.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ID</strong> (<em>str</em>) &#8211; Unique identification of the structure. Must be used when referencing to this structure.</li>
-<li><strong>kwargs</strong> (<em>dict</em>) &#8211; keyword arguments passed to the structure constructor</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure" title="TXLWizard.Patterns.Structure.Structure"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code></a> structure instance</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="TXLWizard.TXLWriter.TXLWriter.GenerateFiles">
 <code class="descname">GenerateFiles</code><span class="sig-paren">(</span><em>Filename</em>, <em>TXL=True</em>, <em>SVG=True</em>, <em>HTML=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the output files (.txl, .svg, .html).</p>
@@ -191,64 +273,71 @@ The corresponding path will be created if it does not exist</li>
 </div>
 
 
+           </div>
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Patterns/TXLWizard.Patterns.AbstractPattern.html" class="btn btn-neutral float-right" title="TXLWizard.Patterns.AbstractPattern" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../40_PythonModuleReference.html" class="btn btn-neutral" title="Python Module Reference" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">TXLWizard.TXLWriter</a><ul>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../40_PythonModuleReference.html">Python Module Reference</a><ul>
-      <li>Previous: <a href="../../40_PythonModuleReference.html" title="previous chapter">Python Module Reference</a></li>
-      <li>Next: <a href="../Patterns/TXLWizard.Patterns.AbstractPattern.html" title="next chapter">TXLWizard.Patterns.AbstractPattern</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../_sources/Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Esteban Marin.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
-      
-      |
-      <a href="../../../_sources/Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

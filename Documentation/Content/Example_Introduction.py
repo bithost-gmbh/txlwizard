@@ -20,7 +20,7 @@ TXLWriter = TXLWizard.TXLWriter.TXLWriter()
 # Give the sample a nice label
 SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     TXLWriter,
-    'This is my text',
+    Text='This is my text',
     OriginPoint=[-310, 240],
     FontSize=50,
     StrokeWidth=5,
@@ -34,7 +34,8 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
 CircleStructure = TXLWriter.AddContentStructure('Circle')
 
 # Add a `Pattern` of type `Circle`
-CircleStructure.AddPattern('Circle',
+CircleStructure.AddPattern(
+    'Circle',
     Center=[0, 0],
     Radius=150,
     Layer=2

@@ -31,6 +31,33 @@ class TXLWriter(object):
     SubGridSpacing : int, optional
         Coordinate System Sub-Grid Spacing in um.\n
         Defaults to 10
+
+    Examples
+    --------
+
+    Initialize TXLWriter, add a definition structure,
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter(
+    >>>    ShowGrid=True, GridWidth=800, GridHeight=800
+    >>> )
+
+    Add a definition structure and add a pattern of type `Circle`
+
+    >>> MyDefinitionStructure = TXLWriter.AddDefinitionStructure('MyDefinition')
+    >>> MyDefinitionStructure.AddPattern('Circle', Center=[0,0], Radius=20)
+
+    Add a content structure with a pattern `Reference` to reuse the definition structure.
+
+    >>> MyContentStructure = TXLWriter.AddContentStructure('MySuperCircle')
+    >>> MyContentStructure.AddPattern(
+    >>>    'Reference',
+    >>>    ReferencedStructureID=MyDefinitionStructure.ID,
+    >>>    OriginPoint=[20,50]
+    >>> )
+
+    Generate the Output files with name `mask.(txl|html|svg)` to the folder `myPath`
+
+    >>> TXLWriter.GenerateFiles('myPath/mask')
     '''
 
     def __init__(self, **kwargs):

@@ -1,5 +1,5 @@
 '''
-Module `TXLWizard.ShapeLibrary.AlignmentMarkers` contains the function `GetAlignmentMarkers`
+Add squares to `TXLWriter` that can be used as alignment markers.
 '''
 
 

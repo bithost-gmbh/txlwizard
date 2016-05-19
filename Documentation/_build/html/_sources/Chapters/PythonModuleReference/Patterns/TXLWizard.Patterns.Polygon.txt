@@ -3,6 +3,7 @@ TXLWizard.Patterns.Polygon
 
 .. automodule:: TXLWizard.Patterns.Polygon
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.Patterns.Polygon
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    

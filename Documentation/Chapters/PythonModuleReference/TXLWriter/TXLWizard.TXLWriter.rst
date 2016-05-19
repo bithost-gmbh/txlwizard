@@ -3,6 +3,7 @@ TXLWizard.TXLWriter
 
 .. automodule:: TXLWizard.TXLWriter
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.TXLWriter
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    

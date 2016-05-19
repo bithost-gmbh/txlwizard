@@ -3,6 +3,7 @@ TXLWizard.Patterns.Polyline
 
 .. automodule:: TXLWizard.Patterns.Polyline
    :members:
+   :show-inheritance:
 
    
    
@@ -12,7 +13,7 @@ TXLWizard.Patterns.Polyline
    
 
    Classes
-   ^^^^^^^
+   #######
 
    .. autosummary::
    
