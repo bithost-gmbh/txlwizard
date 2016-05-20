@@ -156,7 +156,7 @@ class TXLWriter(object):
         ID: str
             Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
-            keyword arguments passed to the structure constructor
+            Keyword arguments passed to the structure constructor. See :class:`TXLWizard.Patterns.Structure.Structure`
 
         Returns
         -------
@@ -176,7 +176,7 @@ class TXLWriter(object):
         ID: str
             Unique identification of the structure. Must be used when referencing to this structure.
         kwargs: dict
-            keyword arguments passed to the structure constructor
+            Keyword arguments passed to the structure constructor. See :class:`TXLWizard.Patterns.Structure.Structure`
 
         Returns
         -------

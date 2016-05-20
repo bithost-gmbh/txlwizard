@@ -47,4 +47,3 @@ TXLConverter
    :template: ../_templates/module.rst
 
    TXLWizard.TXLConverter
-   TXLWizard.TXLConverterCLI

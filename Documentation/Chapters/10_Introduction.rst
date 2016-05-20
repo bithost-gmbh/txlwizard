@@ -30,8 +30,12 @@ In order to use it, the `TXLWizard` package must be available as
 a python package, i.e. either it must be copied to
 :file:`Path_to_my_python_installation/site-packages/`
 or to the path where your script is located.
+
 Alternatively, you can also prepend the following command to your python script:
-``sys.path.append('path to the folder containing TXLWizard')``
+
+.. code-block:: python
+
+    sys.path.append('path_to_the_folder_containing_TXLWizard')
 
 Structure / Pattern / Attribute
 -------------------------------

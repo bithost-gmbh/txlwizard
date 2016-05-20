@@ -11,18 +11,22 @@ The usage is very simple. Simply run the python script `TXLWizard/TXLConverterCL
 The command line interface will allow you to change the configuration as you wish. Furthermore, the configuration is saved
 and restored for a subsequent run.
 
+
+
 Code
 ####
 To use the `TXLConverter` from the command line type
+
 .. code-block:: bash
 
     python TXLWizard/Tools/TXLConverterCLI.py
 
 Or if you want to call it in your own script do
 
-.. code-block::python
+.. code-block:: python
 
-    import TXLWizard.Tools.TXLConverterCLI.py
+    import TXLWizard.TXLConverter
+    TXLConverterCLI = TXLWizard.TXLConverter.TXLConverterCLI()
 
 The resulting command line interface looks as follows:
 ::

@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{eqparbox}
 
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}
 
 \addto\captionsenglish{\renewcommand{\figurename}{Fig. }}
 \addto\captionsenglish{\renewcommand{\tablename}{Table }}
@@ -141,16 +142,13 @@
 
 
 
-\chapter{Table of Contents}
-\label{index:table-of-contents}\label{index:welcome-to-txlwriter-s-documentation}
-
-\section{Introduction}
-\label{Chapters/10_Introduction:introduction}\label{Chapters/10_Introduction::doc}
+\chapter{Introduction}
+\label{Chapters/10_Introduction:introduction}\label{Chapters/10_Introduction::doc}\label{Chapters/10_Introduction:welcome-to-txlwizard-s-documentation}
 This document describes the usage and technical reference of the python program \titleref{TXLWizard}
 written by Esteban Marin (\href{mailto:estebanmarin@gmx.ch}{estebanmarin@gmx.ch}).
 
 
-\subsection{What does it do?}
+\section{What does it do?}
 \label{Chapters/10_Introduction:what-does-it-do}
 The \titleref{TXLWizard} provides routines for generating TXL files (.txl) for
 the preparation of E-Beam lithography masks using python code. The TXL files can be processed with BEAMER.
@@ -176,7 +174,7 @@ Moreover, a command line interface \titleref{TXLConverter} provides conversion o
 (See Section {\hyperref[Chapters/30_TXLConverter:sec\string-txlconverter]{\crossref{\DUrole{std,std-ref}{TXLConverter}}}}).
 
 
-\subsection{Installation}
+\section{Installation}
 \label{Chapters/10_Introduction:installation}
 The ``TXLWizard'' is written in python and will run in Python version 2.7+ and 3.1+.
 
@@ -184,22 +182,26 @@ In order to use it, the \titleref{TXLWizard} package must be available as
 a python package, i.e. either it must be copied to
 \code{Path\_to\_my\_python\_installation/site-packages/}
 or to the path where your script is located.
+
 Alternatively, you can also prepend the following command to your python script:
-\code{sys.path.append('path to the folder containing TXLWizard')}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sys}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{path\PYGZus{}to\PYGZus{}the\PYGZus{}folder\PYGZus{}containing\PYGZus{}TXLWizard}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
 
 
-\subsection{Structure / Pattern / Attribute}
+\section{Structure / Pattern / Attribute}
 \label{Chapters/10_Introduction:structure-pattern-attribute}
 The following terms are used throughout this manual:
 
 
-\subsubsection{\titleref{Structure}}
+\subsection{\titleref{Structure}}
 \label{Chapters/10_Introduction:structure}
 Refers to an object containing one or more \titleref{Pattern} objects.
 A \titleref{Structure} corresponds to the \titleref{STRUCT} command in TXL files.
 
 
-\subsubsection{\titleref{Pattern}}
+\subsection{\titleref{Pattern}}
 \label{Chapters/10_Introduction:pattern}
 Refers to a pattern such as a circle, a polygon, an ellipse, a path, etc.
 The following patterns with the corresponding TXL command in brackets are supported:
@@ -227,7 +229,7 @@ The following patterns with the corresponding TXL command in brackets are suppor
 For more information, supported parameters, etc., see Section {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereferencepatterns]{\crossref{\DUrole{std,std-ref}{Patterns}}}}.
 
 
-\subsubsection{\titleref{Attribute}}
+\subsection{\titleref{Attribute}}
 \label{Chapters/10_Introduction:attribute}
 Refers to an property of a \titleref{Pattern} determining the visual appearance of the \titleref{Pattern}.
 The following attributes with the corresponding TXL command in brackets are supported:
@@ -267,7 +269,7 @@ The \titleref{RotationAngle} attribute applies to each \titleref{Pattern} indivi
 \end{itemize}
 
 
-\subsection{Example SVG Output}
+\section{Example SVG Output}
 \label{Chapters/10_Introduction:example-svg-output}
 An example output can be seen here:
 \begin{figure}[htbp]
@@ -278,19 +280,19 @@ An example output can be seen here:
 \caption{Example SVG output for a mask}\label{Chapters/10_Introduction:id1}\end{figure}
 
 
-\subsection{How to start?}
+\section{How to start?}
 \label{Chapters/10_Introduction:how-to-start}
 Have a look at the examples in Section {\hyperref[Chapters/20_Examples:examples]{\crossref{\DUrole{std,std-ref}{TXLWizard Examples}}}} and consult the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\crossref{\DUrole{std,std-ref}{Python Module Reference}}}}.
 Happy scripting!
 
 
-\section{TXLWizard Examples}
+\chapter{TXLWizard Examples}
 \label{Chapters/20_Examples:txlwizard-examples}\label{Chapters/20_Examples::doc}\label{Chapters/20_Examples:examples}
 
-\subsection{Introductory Example}
+\section{Introductory Example}
 \label{Chapters/20_Examples:introductory-example}
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 \label{Chapters/20_Examples:introduction}
 The following code demonstrates an introductory example usage of the \titleref{TXLWizard} for
 generating TXL files with python code.
@@ -302,7 +304,7 @@ Have a look at more advanced examples in Sections {\hyperref[Chapters/20_Example
 and at the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\crossref{\DUrole{std,std-ref}{Python Module Reference}}}}.
 
 
-\subsubsection{Code}
+\subsection{Code}
 \label{Chapters/20_Examples:code}
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
@@ -357,7 +359,7 @@ and at the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\
 \end{Verbatim}
 
 
-\subsubsection{Generated SVG Image}
+\subsection{Generated SVG Image}
 \label{Chapters/20_Examples:generated-svg-image}\label{Chapters/20_Examples:exampleintroductionsvg}\begin{figure}[htbp]
 \centering
 \capstart
@@ -366,10 +368,10 @@ and at the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\
 \caption{Generated SVG Image for \titleref{Content/Example\_Introduction.py}}\label{Chapters/20_Examples:id7}\end{figure}
 
 
-\subsection{Simple Example}
+\section{Simple Example}
 \label{Chapters/20_Examples:txlwizardexamplesimple}\label{Chapters/20_Examples:simple-example}
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 \label{Chapters/20_Examples:id1}
 The following code demonstrates a simple example usage of the \titleref{TXLWizard} for
 generating TXL files with python code.
@@ -380,7 +382,7 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlwizardexampleadvanced]{\crossref{\DUrole{std,std-ref}{Advanced Example}}}}
 
 
-\subsubsection{Code}
+\subsection{Code}
 \label{Chapters/20_Examples:id2}
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
@@ -500,7 +502,7 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
 \end{Verbatim}
 
 
-\subsubsection{Generated SVG Image}
+\subsection{Generated SVG Image}
 \label{Chapters/20_Examples:id3}\label{Chapters/20_Examples:examplesimplesvg}\begin{figure}[htbp]
 \centering
 \capstart
@@ -509,10 +511,10 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
 \caption{Generated SVG Image for \titleref{Content/Example\_Simple.py}}\label{Chapters/20_Examples:id8}\end{figure}
 
 
-\subsection{Advanced Example}
+\section{Advanced Example}
 \label{Chapters/20_Examples:advanced-example}\label{Chapters/20_Examples:txlwizardexampleadvanced}
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 \label{Chapters/20_Examples:id4}
 The following code demonstrates an advanced example usage of the \titleref{TXLWizard} for
 generating TXL files with python code.
@@ -521,7 +523,7 @@ The code can be found in the file \code{Content/Example\_Advanced.py}.
 The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:exampleadvancedsvg]{\crossref{\DUrole{std,std-ref}{Generated SVG Image}}}}.
 
 
-\subsubsection{Code}
+\subsection{Code}
 \label{Chapters/20_Examples:id5}
 \begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
@@ -717,7 +719,7 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 \end{Verbatim}
 
 
-\subsubsection{Generated SVG Image}
+\subsection{Generated SVG Image}
 \label{Chapters/20_Examples:id6}\label{Chapters/20_Examples:exampleadvancedsvg}\begin{figure}[htbp]
 \centering
 \capstart
@@ -726,28 +728,32 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 \caption{Generated SVG Image for \titleref{Content/Example\_Advanced.py}}\label{Chapters/20_Examples:id9}\end{figure}
 
 
-\section{TXLConverter}
+\chapter{TXLConverter}
 \label{Chapters/30_TXLConverter:txlconverter}\label{Chapters/30_TXLConverter:sec-txlconverter}\label{Chapters/30_TXLConverter::doc}
 For existing TXL files, there is a command line interface script that converts them to SVG / HTML files.
 
 
-\subsection{Usage}
+\section{Usage}
 \label{Chapters/30_TXLConverter:usage}
 The usage is very simple. Simply run the python script \titleref{TXLWizard/TXLConverterCLI.py}.
 The command line interface will allow you to change the configuration as you wish. Furthermore, the configuration is saved
 and restored for a subsequent run.
 
 
-\subsubsection{Code}
+\subsection{Code}
 \label{Chapters/30_TXLConverter:code}
 To use the \titleref{TXLConverter} from the command line type
-.. code-block:: bash
-\begin{quote}
 
+\begin{Verbatim}[commandchars=\\\{\}]
 python TXLWizard/Tools/TXLConverterCLI.py
-\end{quote}
+\end{Verbatim}
 
 Or if you want to call it in your own script do
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard.TXLConverter}
+\PYG{n}{TXLConverterCLI} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLConverter}\PYG{o}{.}\PYG{n}{TXLConverterCLI}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
 
 The resulting command line interface looks as follows:
 
@@ -783,10 +789,10 @@ Done
 \end{Verbatim}
 
 
-\section{Python Module Reference}
+\chapter{Python Module Reference}
 \label{Chapters/40_PythonModuleReference:python-module-reference}\label{Chapters/40_PythonModuleReference:pythonmodulereference}\label{Chapters/40_PythonModuleReference::doc}
 
-\subsection{TXLWriter}
+\section{TXLWriter}
 \label{Chapters/40_PythonModuleReference:txlwriter}
 \begin{longtable}{ll}
 \hline
@@ -811,14 +817,14 @@ Controller class for generating TXL / SVG / HTML output.
 
 
 
-\subsubsection{TXLWizard.TXLWriter}
+\subsection{TXLWizard.TXLWriter}
 \label{Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:txlwizard-txlwriter}\label{Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module-TXLWizard.TXLWriter}\label{Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter::doc}\index{TXLWizard.TXLWriter (module)}
 Controller class for generating TXL / SVG / HTML output.
 
 Here we can add structures (definitions and content) which will be rendered in the output.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:classes}
 \begin{longtable}{ll}
 \hline
@@ -938,7 +944,7 @@ A structure corresponds to the ``STRUCT'' command in the TXL file format.
 \textbf{\texttt{ID}} (\emph{\texttt{str}}) -- Unique identification of the structure. Must be used when referencing to this structure.
 
 \item {} 
-\textbf{\texttt{kwargs}} (\emph{\texttt{dict}}) -- keyword arguments passed to the structure constructor
+\textbf{\texttt{kwargs}} (\emph{\texttt{dict}}) -- Keyword arguments passed to the structure constructor. See {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure:TXLWizard.Patterns.Structure.Structure]{\crossref{\code{TXLWizard.Patterns.Structure.Structure}}}}
 
 \end{itemize}
 
@@ -965,7 +971,7 @@ A structure corresponds to the ``STRUCT'' command in the TXL file format.
 \textbf{\texttt{ID}} (\emph{\texttt{str}}) -- Unique identification of the structure. Must be used when referencing to this structure.
 
 \item {} 
-\textbf{\texttt{kwargs}} (\emph{\texttt{dict}}) -- keyword arguments passed to the structure constructor
+\textbf{\texttt{kwargs}} (\emph{\texttt{dict}}) -- Keyword arguments passed to the structure constructor. See {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure:TXLWizard.Patterns.Structure.Structure]{\crossref{\code{TXLWizard.Patterns.Structure.Structure}}}}
 
 \end{itemize}
 
@@ -1010,7 +1016,7 @@ The corresponding path will be created if it does not exist
 
 
 
-\subsection{Patterns}
+\section{Patterns}
 \label{Chapters/40_PythonModuleReference:patterns}\label{Chapters/40_PythonModuleReference:pythonmodulereferencepatterns}
 \begin{longtable}{ll}
 \hline
@@ -1070,12 +1076,12 @@ Implements a class for \titleref{Structure} objects (\titleref{STRUCT}).
 
 
 
-\subsubsection{TXLWizard.Patterns.AbstractPattern}
+\subsection{TXLWizard.Patterns.AbstractPattern}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern::doc}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:txlwizard-patterns-abstractpattern}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:module-TXLWizard.Patterns.AbstractPattern}\index{TXLWizard.Patterns.AbstractPattern (module)}
 Provides an abstract class for \titleref{Pattern} objects
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:classes}
 \begin{longtable}{ll}
 \hline
@@ -1201,14 +1207,14 @@ str
 
 
 
-\subsubsection{TXLWizard.Patterns.Array}
+\subsection{TXLWizard.Patterns.Array}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Array:txlwizard-patterns-array}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Array::doc}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Array:module-TXLWizard.Patterns.Array}\index{TXLWizard.Patterns.Array (module)}
 Implements a class for \titleref{Pattern} objects of type \titleref{Array} (\titleref{AREF}).
 
 Replicates the referenced structure in two directions.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Array:classes}
 \begin{longtable}{ll}
 \hline
@@ -1247,8 +1253,8 @@ starting at \titleref{OriginPoint}.
 
 The x- and y-coordinates of the replicated objects are calculated as follows:
 \titleref{OriginPoint+i*PositionDelta1+j*PositionDelta2}
-where \titleref{i} is an integer that ranges from 0 to \titleref{Repetitions1}
-and \titleref{j} is an integer that ranges from 0 to \titleref{Repetitions2}
+where \titleref{i} is an integer that ranges from 0 to \titleref{Repetitions1 - 1}
+and \titleref{j} is an integer that ranges from 0 to \titleref{Repetitions2 - 1}
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
@@ -1329,14 +1335,14 @@ Can specify attributes of the current pattern.
 
 
 
-\subsubsection{TXLWizard.Patterns.Circle}
+\subsection{TXLWizard.Patterns.Circle}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Circle:module-TXLWizard.Patterns.Circle}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Circle::doc}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Circle:txlwizard-patterns-circle}\index{TXLWizard.Patterns.Circle (module)}
 Implements a class for \titleref{Pattern} objects of type \titleref{Circle} (\titleref{C}).
 
 Renders a circle.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Circle:classes}
 \begin{longtable}{ll}
 \hline
@@ -1509,14 +1515,14 @@ Can specify attributes of the current pattern.
 
 
 
-\subsubsection{TXLWizard.Patterns.Ellipse}
+\subsection{TXLWizard.Patterns.Ellipse}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Ellipse:txlwizard-patterns-ellipse}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Ellipse:module-TXLWizard.Patterns.Ellipse}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Ellipse::doc}\index{TXLWizard.Patterns.Ellipse (module)}
 Implements a class for \titleref{Pattern} objects of type \titleref{Ellipse} (\titleref{ELP}).
 
 Renders an ellipse.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Ellipse:classes}
 \begin{longtable}{ll}
 \hline
@@ -1661,14 +1667,14 @@ Can specify attributes of the current pattern.
 
 
 
-\subsubsection{TXLWizard.Patterns.Polygon}
+\subsection{TXLWizard.Patterns.Polygon}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polygon:module-TXLWizard.Patterns.Polygon}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polygon:txlwizard-patterns-polygon}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polygon::doc}\index{TXLWizard.Patterns.Polygon (module)}
 Implements a class for \titleref{Pattern} objects of type \titleref{Polygon} (\titleref{B}).
 
 Renders an polygon.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polygon:classes}
 \begin{longtable}{ll}
 \hline
@@ -1737,14 +1743,14 @@ Can specify attributes of the current pattern.
 
 
 
-\subsubsection{TXLWizard.Patterns.Polyline}
+\subsection{TXLWizard.Patterns.Polyline}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polyline:module-TXLWizard.Patterns.Polyline}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polyline::doc}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polyline:txlwizard-patterns-polyline}\index{TXLWizard.Patterns.Polyline (module)}
 Implements a class for \titleref{Pattern} objects of type \titleref{Polyline} (\titleref{B}).
 
 Renders an path specified by points.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polyline:classes}
 \begin{longtable}{ll}
 \hline
@@ -1825,14 +1831,14 @@ Can specify attributes of the current pattern.
 
 
 
-\subsubsection{TXLWizard.Patterns.Reference}
+\subsection{TXLWizard.Patterns.Reference}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Reference:txlwizard-patterns-reference}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Reference:module-TXLWizard.Patterns.Reference}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Reference::doc}\index{TXLWizard.Patterns.Reference (module)}
 Implements a class for \titleref{Pattern} objects of type \titleref{Reference} (\titleref{SREF}).
 
 Renders a copy of the referenced structure.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Reference:classes}
 \begin{longtable}{ll}
 \hline
@@ -1902,14 +1908,14 @@ Can specify attributes of the current pattern.
 
 
 
-\subsubsection{TXLWizard.Patterns.Structure}
+\subsection{TXLWizard.Patterns.Structure}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure:module-TXLWizard.Patterns.Structure}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure::doc}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure:txlwizard-patterns-structure}\index{TXLWizard.Patterns.Structure (module)}
 Implements a class for \titleref{Structure} objects (\titleref{STRUCT}).
 
 A \titleref{Structure} is a container for \titleref{Pattern} objects.
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure:classes}
 \begin{longtable}{ll}
 \hline
@@ -2035,7 +2041,7 @@ list of {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Ab
 
 
 
-\subsection{Shape Library}
+\section{Shape Library}
 \label{Chapters/40_PythonModuleReference:shape-library}\label{Chapters/40_PythonModuleReference:pythonmodulereferenceshapelibrary}
 \begin{longtable}{ll}
 \hline
@@ -2070,12 +2076,12 @@ Add squares to \titleref{TXLWriter} that can be used as alignment markers.
 
 
 
-\subsubsection{TXLWizard.ShapeLibrary.Label}
+\subsection{TXLWizard.ShapeLibrary.Label}
 \label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label:txlwizard-shapelibrary-label}\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label::doc}\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label:module-TXLWizard.ShapeLibrary.Label}\index{TXLWizard.ShapeLibrary.Label (module)}
 Renders arbitrary text in \titleref{TXLWriter}.
 
 
-\paragraph{Functions}
+\subsubsection{Functions}
 \label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label:functions}
 \begin{longtable}{ll}
 \hline
@@ -2158,12 +2164,12 @@ Defaults to 1
 
 
 
-\subsubsection{TXLWizard.ShapeLibrary.EndpointDetectionWindows}
+\subsection{TXLWizard.ShapeLibrary.EndpointDetectionWindows}
 \label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.EndpointDetectionWindows:module-TXLWizard.ShapeLibrary.EndpointDetectionWindows}\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.EndpointDetectionWindows::doc}\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.EndpointDetectionWindows:txlwizard-shapelibrary-endpointdetectionwindows}\index{TXLWizard.ShapeLibrary.EndpointDetectionWindows (module)}
 Add five squares to \titleref{TXLWriter} that can be used as endpoint detection windows.
 
 
-\paragraph{Functions}
+\subsubsection{Functions}
 \label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.EndpointDetectionWindows:functions}
 \begin{longtable}{ll}
 \hline
@@ -2228,12 +2234,12 @@ Defaults to 1
 
 
 
-\subsubsection{TXLWizard.ShapeLibrary.AlignmentMarkers}
+\subsection{TXLWizard.ShapeLibrary.AlignmentMarkers}
 \label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers:txlwizard-shapelibrary-alignmentmarkers}\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers:module-TXLWizard.ShapeLibrary.AlignmentMarkers}\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers::doc}\index{TXLWizard.ShapeLibrary.AlignmentMarkers (module)}
 Add squares to \titleref{TXLWriter} that can be used as alignment markers.
 
 
-\paragraph{Functions}
+\subsubsection{Functions}
 \label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers:functions}
 \begin{longtable}{ll}
 \hline
@@ -2296,7 +2302,7 @@ Defaults to 1
 
 
 
-\subsection{TXLConverter}
+\section{TXLConverter}
 \label{Chapters/40_PythonModuleReference:txlconverter}
 \begin{longtable}{ll}
 \hline
@@ -2317,21 +2323,16 @@ Defaults to 1
  & 
 Class for parsing TXL files and converting them to html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module\string-TXLWizard.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter}}}}
 \\
-\hline
-\code{TXLWizard.TXLConverterCLI}
- & 
-
-\\
 \hline\end{longtable}
 
 
 
-\subsubsection{TXLWizard.TXLConverter}
+\subsection{TXLWizard.TXLConverter}
 \label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:txlwizard-txlconverter}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter::doc}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:module-TXLWizard.TXLConverter}\index{TXLWizard.TXLConverter (module)}
 Class for parsing TXL files and converting them to html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module\string-TXLWizard.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter}}}}
 
 
-\paragraph{Classes}
+\subsubsection{Classes}
 \label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:classes}
 \begin{longtable}{ll}
 \hline
@@ -2351,6 +2352,11 @@ Class for parsing TXL files and converting them to html / svg using {\hyperref[C
 {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLConverter}}}}(Filename, **kwargs)
  & 
 Class for parsing TXL files and converting them to
+\\
+\hline
+{\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverterCLI]{\crossref{\code{TXLConverterCLI}}}}({[}JSONConfigurationFile, ...{]})
+ & 
+Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
 \\
 \hline\end{longtable}
 
@@ -2412,23 +2418,6 @@ Start the command line interface
 
 \end{fulllineitems}
 
-
-
-\subsubsection{TXLWizard.TXLConverterCLI}
-\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI::doc}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:txlwizard-txlconvertercli}
-
-\chapter{Indices and tables}
-\label{index:indices-and-tables}\begin{itemize}
-\item {} 
-\DUrole{xref,std,std-ref}{genindex}
-
-\item {} 
-\DUrole{xref,std,std-ref}{modindex}
-
-\item {} 
-\DUrole{xref,std,std-ref}{search}
-
-\end{itemize}
 
 
 \renewcommand{\indexname}{Python Module Index}

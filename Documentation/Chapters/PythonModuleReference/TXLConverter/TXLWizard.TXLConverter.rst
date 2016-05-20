@@ -18,6 +18,7 @@ TXLWizard.TXLConverter
    .. autosummary::
    
       TXLConverter
+      TXLConverterCLI
    
    
 

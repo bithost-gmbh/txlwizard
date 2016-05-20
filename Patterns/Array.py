@@ -14,8 +14,8 @@ class Array(AbstractPattern.AbstractPattern):
     starting at `OriginPoint`.\n
     The x- and y-coordinates of the replicated objects are calculated as follows:
     `OriginPoint+i*PositionDelta1+j*PositionDelta2`
-    where `i` is an integer that ranges from 0 to `Repetitions1`
-    and `j` is an integer that ranges from 0 to `Repetitions2`
+    where `i` is an integer that ranges from 0 to `Repetitions1 - 1`
+    and `j` is an integer that ranges from 0 to `Repetitions2 - 1`
 
     Parameters
     ----------
