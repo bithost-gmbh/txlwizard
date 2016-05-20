@@ -95,7 +95,7 @@ class Array(AbstractPattern.AbstractPattern):
                 })
                 SVG += (
                            '<g ' + SVGAttributes + '>' +
-                           '<use ' + self.ParentStructure.GetPatternSVGAttributesString('Reference', self.Attributes, {
+                           '<use ' + self.ParentStructure._GetPatternSVGAttributesString('Reference', self.Attributes, {
                                'xlink:href': '#' + self.ReferencedStructureID.replace('+', ''),
                                # 'x':'{:1.4f}'.format(i*self.PositionDelta1[0]+j*self.PositionDelta2[0]),
                                # 'y':'{:1.4f}'.format(i*self.PositionDelta1[1]+j*self.PositionDelta2[1])

@@ -135,8 +135,8 @@
 <span class="sd">Here we can add structures (definitions and content) which will be rendered in the output.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<span class="kn">from</span> <span class="nn">.Patterns</span> <span class="kn">import</span> <span class="n">Definitions</span>
-<span class="kn">from</span> <span class="nn">.Patterns</span> <span class="kn">import</span> <span class="n">Structure</span>
+<span class="kn">from</span> <span class="nn">Patterns</span> <span class="kn">import</span> <span class="n">Definitions</span>
+<span class="kn">from</span> <span class="nn">Patterns</span> <span class="kn">import</span> <span class="n">Structure</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 
 
@@ -164,8 +164,32 @@
 <span class="sd">        Coordinate System Sub-Grid Spacing in um.\n</span>
 <span class="sd">        Defaults to 10</span>
 
-<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter(ShowGrid=True, GridWidth=800, GridHeight=800)</span>
-<span class="sd">    &gt;&gt;&gt; TXLWriter.AddDefinitionStructure(&#39;MyDefinition&#39;)</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Initialize TXLWriter, add a definition structure,</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter(</span>
+<span class="sd">    &gt;&gt;&gt;    ShowGrid=True, GridWidth=800, GridHeight=800</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+
+<span class="sd">    Add a definition structure and add a pattern of type `Circle`</span>
+
+<span class="sd">    &gt;&gt;&gt; MyDefinitionStructure = TXLWriter.AddDefinitionStructure(&#39;MyDefinition&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; MyDefinitionStructure.AddPattern(&#39;Circle&#39;, Center=[0,0], Radius=20, Layer=3)</span>
+
+<span class="sd">    Add a content structure with a pattern `Reference` to reuse the definition structure.</span>
+
+<span class="sd">    &gt;&gt;&gt; MyContentStructure = TXLWriter.AddContentStructure(&#39;MySuperCircle&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; MyContentStructure.AddPattern(</span>
+<span class="sd">    &gt;&gt;&gt;    &#39;Reference&#39;,</span>
+<span class="sd">    &gt;&gt;&gt;    ReferencedStructureID=MyDefinitionStructure.ID,</span>
+<span class="sd">    &gt;&gt;&gt;    OriginPoint=[20,50]</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+
+<span class="sd">    Generate the Output files with name `mask.(txl|html|svg)` to the folder `myPath`</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;myPath/mask&#39;)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

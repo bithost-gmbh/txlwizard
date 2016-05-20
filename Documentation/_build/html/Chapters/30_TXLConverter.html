@@ -84,7 +84,13 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="10_Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20_Examples.html">TXLWizard Examples</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">TXLConverter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TXLConverter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code">Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="40_PythonModuleReference.html">Python Module Reference</a></li>
 </ul>
 
@@ -132,7 +138,52 @@
             
   <div class="section" id="txlconverter">
 <span id="sec-txlconverter"></span><h1>TXLConverter<a class="headerlink" href="#txlconverter" title="Permalink to this headline">¶</a></h1>
-<p>blub</p>
+<p>For existing TXL files, there is a command line interface script that converts them to SVG / HTML files.</p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The usage is very simple. Simply run the python script <cite>TXLWizard/TXLConverterCLI.py</cite>.
+The command line interface will allow you to change the configuration as you wish. Furthermore, the configuration is saved
+and restored for a subsequent run.</p>
+<div class="section" id="code">
+<h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<p>To use the <cite>TXLConverter</cite> from the command line type
+.. code-block:: bash</p>
+<blockquote>
+<div>python TXLWizard/Tools/TXLConverterCLI.py</div></blockquote>
+<p>Or if you want to call it in your own script do</p>
+<p>The resulting command line interface looks as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>### TXL Converter v1.6 ###
+Converts TXL Files to SVG/HTML
+written by Esteban Marin (estebanmarin@gmx.ch)
+
+
+Full TXL File / Folder Path
+If the path is a folder, you can enter the filename separately.
+[/home/john.mega/masks]: /Users/esteban/Desktop/masks2/tmpd/EM160225_GOI_CornerCube_Microbridge.txl
+
+SampleWidth in um
+used to draw coordinate system
+[1500]:
+
+SampleHeight in um
+used to draw coordinate system
+[1500]:
+
+Layers to process
+comma-separated, e.g. 1,4,5. Type -1 for all layers.
+[-1]:
+
+Do Conversion (y/n)? [y]
+
+Files written:
+/Users/esteban/Desktop/masks2/tmpd/EM160225_GOI_CornerCube_Microbridge.html
+/Users/esteban/Desktop/masks2/tmpd/EM160225_GOI_CornerCube_Microbridge.svg
+
+Done
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

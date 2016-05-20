@@ -28,7 +28,7 @@
 
 
 \title{TXLWizard Documentation}
-\date{May 19, 2016}
+\date{May 20, 2016}
 \release{1.0.0}
 \author{Esteban Marin}
 \newcommand{\sphinxlogo}{}
@@ -298,7 +298,7 @@ generating TXL files with python code.
 The code can be found in the file \code{Content/Example\_Introduction.py}.
 The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:exampleintroductionsvg]{\crossref{\DUrole{std,std-ref}{Generated SVG Image}}}}.
 
-Have a look at more advanced examples in Sections {\hyperref[Chapters/20_Examples:txlwizardexampleadvanced]{\crossref{\DUrole{std,std-ref}{Advanced Example}}}} and {\hyperref[Chapters/20_Examples:txlwizardexampleadvanced]{\crossref{\DUrole{std,std-ref}{Advanced Example}}}}
+Have a look at more advanced examples in Sections {\hyperref[Chapters/20_Examples:txlwizardexamplesimple]{\crossref{\DUrole{std,std-ref}{Simple Example}}}} and {\hyperref[Chapters/20_Examples:txlwizardexampleadvanced]{\crossref{\DUrole{std,std-ref}{Advanced Example}}}}
 and at the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\crossref{\DUrole{std,std-ref}{Python Module Reference}}}}.
 
 
@@ -728,7 +728,59 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 
 \section{TXLConverter}
 \label{Chapters/30_TXLConverter:txlconverter}\label{Chapters/30_TXLConverter:sec-txlconverter}\label{Chapters/30_TXLConverter::doc}
-blub
+For existing TXL files, there is a command line interface script that converts them to SVG / HTML files.
+
+
+\subsection{Usage}
+\label{Chapters/30_TXLConverter:usage}
+The usage is very simple. Simply run the python script \titleref{TXLWizard/TXLConverterCLI.py}.
+The command line interface will allow you to change the configuration as you wish. Furthermore, the configuration is saved
+and restored for a subsequent run.
+
+
+\subsubsection{Code}
+\label{Chapters/30_TXLConverter:code}
+To use the \titleref{TXLConverter} from the command line type
+.. code-block:: bash
+\begin{quote}
+
+python TXLWizard/Tools/TXLConverterCLI.py
+\end{quote}
+
+Or if you want to call it in your own script do
+
+The resulting command line interface looks as follows:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYGZsh{}\PYGZsh{} TXL Converter v1.6 \PYGZsh{}\PYGZsh{}\PYGZsh{}
+Converts TXL Files to SVG/HTML
+written by Esteban Marin (estebanmarin@gmx.ch)
+
+
+Full TXL File / Folder Path
+If the path is a folder, you can enter the filename separately.
+[/home/john.mega/masks]: /Users/esteban/Desktop/masks2/tmpd/EM160225\PYGZus{}GOI\PYGZus{}CornerCube\PYGZus{}Microbridge.txl
+
+SampleWidth in um
+used to draw coordinate system
+[1500]:
+
+SampleHeight in um
+used to draw coordinate system
+[1500]:
+
+Layers to process
+comma\PYGZhy{}separated, e.g. 1,4,5. Type \PYGZhy{}1 for all layers.
+[\PYGZhy{}1]:
+
+Do Conversion (y/n)? [y]
+
+Files written:
+/Users/esteban/Desktop/masks2/tmpd/EM160225\PYGZus{}GOI\PYGZus{}CornerCube\PYGZus{}Microbridge.html
+/Users/esteban/Desktop/masks2/tmpd/EM160225\PYGZus{}GOI\PYGZus{}CornerCube\PYGZus{}Microbridge.svg
+
+Done
+\end{Verbatim}
 
 
 \section{Python Module Reference}
@@ -854,10 +906,10 @@ Add a definition structure and add a pattern of type \titleref{Circle}
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{MyDefinitionStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddDefinitionStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyDefinition}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{MyDefinitionStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{MyDefinitionStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}
 \end{Verbatim}
 
-add a content structure with a pattern \titleref{Reference} to reuse the definition structure.
+Add a content structure with a pattern \titleref{Reference} to reuse the definition structure.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{MyContentStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MySuperCircle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
@@ -977,7 +1029,7 @@ The corresponding path will be created if it does not exist
 
 {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:module\string-TXLWizard.Patterns.AbstractPattern]{\crossref{\code{TXLWizard.Patterns.AbstractPattern}}}}
  & 
-Provides an abstract class for \titleref{Pattern} objects.
+Provides an abstract class for \titleref{Pattern} objects
 \\
 \hline
 {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Array:module\string-TXLWizard.Patterns.Array]{\crossref{\code{TXLWizard.Patterns.Array}}}}
@@ -1020,7 +1072,7 @@ Implements a class for \titleref{Structure} objects (\titleref{STRUCT}).
 
 \subsubsection{TXLWizard.Patterns.AbstractPattern}
 \label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern::doc}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:txlwizard-patterns-abstractpattern}\label{Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:module-TXLWizard.Patterns.AbstractPattern}\index{TXLWizard.Patterns.AbstractPattern (module)}
-Provides an abstract class for \titleref{Pattern} objects.
+Provides an abstract class for \titleref{Pattern} objects
 
 
 \paragraph{Classes}
@@ -2266,9 +2318,9 @@ Defaults to 1
 Class for parsing TXL files and converting them to html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module\string-TXLWizard.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter}}}}
 \\
 \hline
-{\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:module\string-TXLWizard.TXLConverterCLI]{\crossref{\code{TXLWizard.TXLConverterCLI}}}}
+\code{TXLWizard.TXLConverterCLI}
  & 
-Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
+
 \\
 \hline\end{longtable}
 
@@ -2324,40 +2376,10 @@ html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.T
 
 \end{fulllineitems}
 
-
-
-\subsubsection{TXLWizard.TXLConverterCLI}
-\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI::doc}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:txlwizard-txlconvertercli}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:module-TXLWizard.TXLConverterCLI}\index{TXLWizard.TXLConverterCLI (module)}
-Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
-
-
-\paragraph{Classes}
-\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:classes}
-\begin{longtable}{ll}
-\hline
-\endfirsthead
-
-\multicolumn{2}{c}%
-{{\tablecontinued{\tablename\ \thetable{} -- continued from previous page}}} \\
-\hline
-\endhead
-
-\hline \multicolumn{2}{|r|}{{\tablecontinued{Continued on next page}}} \\ \hline
-\endfoot
-
-\endlastfoot
-
-
-{\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:TXLWizard.TXLConverterCLI.TXLConverterCLI]{\crossref{\code{TXLConverterCLI}}}}({[}JSONConfigurationFile, ...{]})
- & 
-Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
-\\
-\hline\end{longtable}
-
-\index{TXLConverterCLI (class in TXLWizard.TXLConverterCLI)}
+\index{TXLConverterCLI (class in TXLWizard.TXLConverter)}
 
 \begin{fulllineitems}
-\phantomsection\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:TXLWizard.TXLConverterCLI.TXLConverterCLI}\pysiglinewithargsret{\strong{class }\code{TXLWizard.TXLConverterCLI.}\bfcode{TXLConverterCLI}}{\emph{JSONConfigurationFile='TXLConverterConfiguration.json'}, \emph{UpdateConfigurationFile=True}, \emph{OverrideConfiguration=\{\}}}{}
+\phantomsection\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverterCLI}\pysiglinewithargsret{\strong{class }\code{TXLWizard.TXLConverter.}\bfcode{TXLConverterCLI}}{\emph{JSONConfigurationFile='TXLConverterConfiguration.json'}, \emph{UpdateConfigurationFile=True}, \emph{OverrideConfiguration=\{\}}}{}
 Bases: \code{object}
 
 Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
@@ -2380,10 +2402,20 @@ Defaults to \{\}
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Start the command line interface
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLConverterCLI}\PYG{o}{.}\PYG{n}{TXLConverterCLI}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
 
 \end{fulllineitems}
 
 
+
+\subsubsection{TXLWizard.TXLConverterCLI}
+\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI::doc}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:txlwizard-txlconvertercli}
 
 \chapter{Indices and tables}
 \label{index:indices-and-tables}\begin{itemize}
@@ -2415,7 +2447,6 @@ Defaults to \{\}
 \item {\texttt{TXLWizard.ShapeLibrary.EndpointDetectionWindows}}, \pageref{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.EndpointDetectionWindows:module-TXLWizard.ShapeLibrary.EndpointDetectionWindows}
 \item {\texttt{TXLWizard.ShapeLibrary.Label}}, \pageref{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.Label:module-TXLWizard.ShapeLibrary.Label}
 \item {\texttt{TXLWizard.TXLConverter}}, \pageref{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:module-TXLWizard.TXLConverter}
-\item {\texttt{TXLWizard.TXLConverterCLI}}, \pageref{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverterCLI:module-TXLWizard.TXLConverterCLI}
 \item {\texttt{TXLWizard.TXLWriter}}, \pageref{Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module-TXLWizard.TXLWriter}
 \end{theindex}
 

@@ -182,6 +182,35 @@ html / svg using <a class="reference internal" href="../TXLWriter/TXLWizard.TXLW
 </table>
 </dd></dl>
 
+<dl class="class">
+<dt id="TXLWizard.TXLConverter.TXLConverterCLI">
+<em class="property">class </em><code class="descclassname">TXLWizard.TXLConverter.</code><code class="descname">TXLConverterCLI</code><span class="sig-paren">(</span><em>JSONConfigurationFile='TXLConverterConfiguration.json'</em>, <em>UpdateConfigurationFile=True</em>, <em>OverrideConfiguration={}</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverterCLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverterCLI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Provides a command line interface for the <a class="reference internal" href="#TXLWizard.TXLConverter.TXLConverter" title="TXLWizard.TXLConverter.TXLConverter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLConverter.TXLConverter</span></code></a> class.</p>
+<p>The configuration is read and stored in the JSON format in the file specified  in <cite>JSONConfigurationFile</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>JSONConfigurationFile</strong> (<em>str, optional</em>) &#8211; Path / Filename of the file where the configuration is read and stored in the JSON format.
+Defaults to &#8216;TXLConverterConfiguration.json&#8217;</li>
+<li><strong>UpdateConfigurationFile</strong> (<em>bool, optional</em>) &#8211; Flag whether to update the configuration file.
+Defaults to True.</li>
+<li><strong>OverrideConfiguration</strong> (<em>dict, optional</em>) &#8211; Dictionary with configuration options overriding the default / stored configuration.
+Defaults to {}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Start the command line interface</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLConverterCLI</span><span class="o">.</span><span class="n">TXLConverterCLI</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 

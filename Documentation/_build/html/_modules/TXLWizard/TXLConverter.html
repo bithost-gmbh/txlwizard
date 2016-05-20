@@ -134,10 +134,15 @@
 <span class="sd">Class for parsing TXL files and converting them to html / svg using :class:`TXLWizard.TXLWriter`</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">TXLWriter</span>
+
+<span class="kn">import</span> <span class="nn">TXLWriter</span>
+
+<span class="kn">from</span> <span class="nn">Helpers</span> <span class="kn">import</span> <span class="n">Tuttifrutti</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">traceback</span>
-
 
 <div class="viewcode-block" id="TXLConverter"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter">[docs]</a><span class="k">class</span> <span class="nc">TXLConverter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -512,6 +517,188 @@
             <span class="n">ParameterValue</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">Values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">Values</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
 
         <span class="k">return</span> <span class="n">ParameterValue</span></div>
+
+
+
+
+<div class="viewcode-block" id="TXLConverterCLI"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverterCLI">[docs]</a><span class="k">class</span> <span class="nc">TXLConverterCLI</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Provides a command line interface for the :class:`TXLWizard.TXLConverter.TXLConverter` class.\n</span>
+<span class="sd">    The configuration is read and stored in the JSON format in the file specified  in `JSONConfigurationFile`.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    JSONConfigurationFile: str, optional</span>
+<span class="sd">        Path / Filename of the file where the configuration is read and stored in the JSON format.</span>
+<span class="sd">        Defaults to &#39;TXLConverterConfiguration.json&#39;</span>
+<span class="sd">    UpdateConfigurationFile: bool, optional</span>
+<span class="sd">        Flag whether to update the configuration file.</span>
+<span class="sd">        Defaults to True.</span>
+<span class="sd">    OverrideConfiguration: dict, optional</span>
+<span class="sd">        Dictionary with configuration options overriding the default / stored configuration.</span>
+<span class="sd">        Defaults to {}</span>
+
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Start the command line interface</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWizard.TXLConverterCLI.TXLConverterCLI()</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">JSONConfigurationFile</span><span class="o">=</span><span class="s1">&#39;TXLConverterConfiguration.json&#39;</span><span class="p">,</span> <span class="n">UpdateConfigurationFile</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                 <span class="n">OverrideConfiguration</span><span class="o">=</span><span class="p">{}):</span>
+
+        <span class="c1">#: dict: stores configuration options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">:</span> <span class="s1">&#39;/home/john.mega/masks&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;TXLFilename&#39;</span><span class="p">:</span> <span class="s1">&#39;structureA.txl&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SampleWidth&#39;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+            <span class="s1">&#39;SampleHeight&#39;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+            <span class="s1">&#39;LayersToProcess&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="p">}</span>
+
+        <span class="c1">#: float: current software version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Version</span> <span class="o">=</span> <span class="mf">1.6</span>
+
+        <span class="c1">#: str: Path / Filename of the file where the configuration is read and stored in the JSON format.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_JSONConfigurationFile</span> <span class="o">=</span> <span class="n">JSONConfigurationFile</span>
+
+        <span class="c1">#: bool: Flag whether to update the configuration file.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_UpdateConfigurationFile</span> <span class="o">=</span> <span class="n">UpdateConfigurationFile</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_LoadConfiguration</span><span class="p">()</span>
+        <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">,</span> <span class="n">OverrideConfiguration</span><span class="p">)</span>
+        <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">Penrose</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;### TXL Converter v{:1.1f} ###&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Version</span><span class="p">),</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Converts TXL Files to SVG/HTML&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;written by Esteban Marin (estebanmarin@gmx.ch)&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_UpdateConfiguration</span><span class="p">()</span>
+
+        <span class="n">DoConversion</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">&#39;Do Conversion (y/n)? [y]&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">DoConversion</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">DoConversion</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_DoConversion</span><span class="p">()</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Files written:&#39;</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+            <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">&#39;Done&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_LoadConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Load the configuration stored in the file specified in `self._JSONConfigurationFile` in the JSON format</span>
+<span class="sd">        and save it to `self._Configuration`</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_JSONConfigurationFile</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_JSONConfigurationFile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{}&#39;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_JSONConfigurationFile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">OverrideConfiguration</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">,</span> <span class="n">OverrideConfiguration</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_UpdateConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Update and store the configuration from `self._Configuration` in the file specified in `self._JSONConfigurationFile` in the JSON format</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">Configuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Full TXL File / Folder Path&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+        <span class="n">NewTXLFolderPath</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">&#39;If the path is a folder, you can enter the filename separately.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                                     <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewTXLFolderPath</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">NewTXLFolderPath</span> <span class="o">=</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;TXL Filename&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+            <span class="n">NewTXLFilename</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFilename&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewTXLFilename</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">NewTXLFilename</span> <span class="o">=</span> <span class="n">NewTXLFilename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                    <span class="n">NewTXLFilename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">NewTXLFilename</span><span class="p">)</span>
+                <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFilename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">NewTXLFilename</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SampleWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;SampleHeight&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s1">&#39; in um&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+            <span class="n">NewValue</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
+                <span class="s1">&#39;used to draw coordinate system</span><span class="se">\n</span><span class="s1">[&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewValue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">Configuration</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">NewValue</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Layers to process&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+        <span class="n">NewLayersToProcess</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
+            <span class="s1">&#39;comma-separated, e.g. 1,4,5. Type -1 for all layers.</span><span class="se">\n</span><span class="s1">[&#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewLayersToProcess</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">Layer</span> <span class="ow">in</span> <span class="n">NewLayersToProcess</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+                <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Layer</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_JSONConfigurationFile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;: &#39;</span><span class="p">))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_DoConversion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Instantiate a class::`TXLWizard.TXLConverter.TXLConverter` instance and start the conversion</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]):</span>
+            <span class="n">FullFilePath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">FullFilePath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFilename&#39;</span><span class="p">]</span>
+        <span class="n">TXLConverterInstance</span> <span class="o">=</span> <span class="n">TXLConverter</span><span class="p">(</span>
+            <span class="n">FullFilePath</span><span class="p">,</span>
+            <span class="n">GridWidth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;SampleWidth&#39;</span><span class="p">],</span>
+            <span class="n">GridHeight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;SampleHeight&#39;</span><span class="p">],</span>
+            <span class="n">LayersToProcess</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_PrintMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Message</span><span class="p">,</span> <span class="n">Style</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Print a message to the command line.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Message: str</span>
+<span class="sd">            Message to be printed</span>
+<span class="sd">        Style: {&#39;Green&#39;, &#39;Red&#39;, &#39;Bold&#39;}</span>
+<span class="sd">            Style option of the visual appearance</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">Prefix</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">Suffix</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">Style</span> <span class="o">==</span> <span class="s1">&#39;Green&#39;</span><span class="p">:</span>
+            <span class="n">Prefix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x1B</span><span class="s2">[32m&quot;</span>
+        <span class="k">if</span> <span class="n">Style</span> <span class="o">==</span> <span class="s1">&#39;Red&#39;</span><span class="p">:</span>
+            <span class="n">Prefix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x1B</span><span class="s2">[31m&quot;</span>
+        <span class="k">elif</span> <span class="n">Style</span> <span class="o">==</span> <span class="s1">&#39;Bold&#39;</span><span class="p">:</span>
+            <span class="n">Prefix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1m&quot;</span>
+        <span class="k">if</span> <span class="n">Style</span><span class="p">:</span>
+            <span class="n">Suffix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x1B</span><span class="s2">[0m&quot;</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="n">Prefix</span> <span class="o">+</span> <span class="n">Message</span> <span class="o">+</span> <span class="n">Suffix</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

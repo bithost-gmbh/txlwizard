@@ -16,7 +16,7 @@ generating TXL files with python code.
 The code can be found in the file :download:`Content/Example_Introduction.py </Content/Example_Introduction.py>`.
 The resulting SVG image is shown in Figure :ref:`ExampleIntroductionSVG`.
 
-Have a look at more advanced examples in Sections :ref:`TXLWizardExampleAdvanced` and :ref:`TXLWizardExampleAdvanced`
+Have a look at more advanced examples in Sections :ref:`TXLWizardExampleSimple` and :ref:`TXLWizardExampleAdvanced`
 and at the :ref:`PythonModuleReference`.
 
 Code

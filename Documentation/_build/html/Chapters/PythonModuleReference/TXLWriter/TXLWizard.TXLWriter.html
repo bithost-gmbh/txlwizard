@@ -189,13 +189,36 @@
 <li><strong>SubGridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate System Sub-Grid Spacing in um.</p>
 <p>Defaults to 10</p>
 </li>
-<li><strong>TXLWriter = TXLWizard.TXLWriter.TXLWriter(ShowGrid=True, GridWidth=800, GridHeight=800)</strong> (<em>&gt;&gt;&gt;</em>) &#8211; </li>
-<li><strong>TXLWriter.AddDefinitionStructure('MyDefinition')</strong> (<em>&gt;&gt;&gt;</em>) &#8211; </li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Initialize TXLWriter, add a definition structure,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">ShowGrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">GridWidth</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">GridHeight</span><span class="o">=</span><span class="mi">800</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add a definition structure and add a pattern of type <cite>Circle</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddDefinitionStructure</span><span class="p">(</span><span class="s1">&#39;MyDefinition&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Circle&#39;</span><span class="p">,</span> <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add a content structure with a pattern <cite>Reference</cite> to reuse the definition structure.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyContentStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MySuperCircle&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyContentStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;Reference&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">ReferencedStructureID</span><span class="o">=</span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Generate the Output files with name <cite>mask.(txl|html|svg)</cite> to the folder <cite>myPath</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;myPath/mask&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="TXLWizard.TXLWriter.TXLWriter.AddContentStructure">
 <code class="descname">AddContentStructure</code><span class="sig-paren">(</span><em>ID</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddContentStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddContentStructure" title="Permalink to this definition">¶</a></dt>
