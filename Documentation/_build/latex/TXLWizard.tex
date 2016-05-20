@@ -174,9 +174,44 @@ Moreover, a command line interface \titleref{TXLConverter} provides conversion o
 (See Section {\hyperref[Chapters/30_TXLConverter:sec\string-txlconverter]{\crossref{\DUrole{std,std-ref}{TXLConverter}}}}).
 
 
+\section{Why should I use it?}
+\label{Chapters/10_Introduction:why-should-i-use-it}
+TXL File Format:
+\begin{itemize}
+\item {} 
+Text-based file format
+
+\item {} 
+Can be generated with any scripting language (Python / Matlab / etc.)
+
+\item {} 
+Easy to use
+
+\item {} 
+Optimized E-Beam Performance due to \titleref{References} to objects and array of replicated objects (\titleref{SREF}, \titleref{AREF})
+
+\end{itemize}
+
+TXLWizard:
+\begin{itemize}
+\item {} 
+Create masks with well-structured scripts
+
+\item {} 
+Flexible Python Scripting
+
+\item {} 
+Mask-Code easy to read and reusable
+
+\item {} 
+Automated label generation
+
+\end{itemize}
+
+
 \section{Installation}
 \label{Chapters/10_Introduction:installation}
-The ``TXLWizard'' is written in python and will run in Python version 2.7+ and 3.1+.
+The \titleref{TXLWizard} is written in python and will run in Python version 2.7+ and 3.1+.
 
 In order to use it, the \titleref{TXLWizard} package must be available as
 a python package, i.e. either it must be copied to
@@ -186,8 +221,11 @@ or to the path where your script is located.
 Alternatively, you can also prepend the following command to your python script:
 
 \begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{sys}
 \PYG{n}{sys}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{path\PYGZus{}to\PYGZus{}the\PYGZus{}folder\PYGZus{}containing\PYGZus{}TXLWizard}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 \end{Verbatim}
+
+Please note that this must be the parent folder containing the TXLWizard.
 
 
 \section{Structure / Pattern / Attribute}
@@ -339,8 +377,8 @@ and at the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\
 
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{} User Structure: Circle \PYGZsh{}\PYGZsh{}}
 
-\PYG{c+c1}{\PYGZsh{} Create Content Structure for Circle}
-\PYG{n}{CircleStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Create Content Structure for Circle with ID {}`MyCircle{}`}
+\PYG{n}{CircleStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 
 \PYG{c+c1}{\PYGZsh{} Add a {}`Pattern{}` of type {}`Circle{}`}
 \PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
@@ -748,7 +786,7 @@ To use the \titleref{TXLConverter} from the command line type
 python TXLWizard/Tools/TXLConverterCLI.py
 \end{Verbatim}
 
-Or if you want to call it in your own script do
+Or if you want to call it in your own python script do
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{import} \PYG{n+nn}{TXLWizard.TXLConverter}

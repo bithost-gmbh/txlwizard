@@ -21,10 +21,27 @@ vector graphics application and allow rapid mask development.
 Moreover, a command line interface `TXLConverter` provides conversion of existing TXL files to HTML / SVG
 (See Section :ref:`sec-TXLConverter`).
 
+Why should I use it?
+--------------------
+TXL File Format:
+
+* Text-based file format
+* Can be generated with any scripting language (Python / Matlab / etc.)
+* Easy to use
+* Optimized E-Beam Performance due to `References` to objects and array of replicated objects (`SREF`, `AREF`)
+
+TXLWizard:
+
+* Create masks with well-structured scripts
+* Flexible Python Scripting
+* Mask-Code easy to read and reusable
+* Automated label generation
+
+
 
 Installation
 ------------
-The "TXLWizard" is written in python and will run in Python version 2.7+ and 3.1+.
+The `TXLWizard` is written in python and will run in Python version 2.7+ and 3.1+.
 
 In order to use it, the `TXLWizard` package must be available as
 a python package, i.e. either it must be copied to
@@ -35,7 +52,10 @@ Alternatively, you can also prepend the following command to your python script:
 
 .. code-block:: python
 
+    import sys
     sys.path.append('path_to_the_folder_containing_TXLWizard')
+
+Please note that this must be the parent folder containing the TXLWizard.
 
 Structure / Pattern / Attribute
 -------------------------------

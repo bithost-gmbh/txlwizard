@@ -1,7 +1,3 @@
-###########################################
-# Import Libraries / Initialize TXLWriter #
-###########################################
-
 # Import TXLWriter, the main class for generating TXL Output
 import TXLWizard.TXLWriter
 
@@ -10,12 +6,6 @@ import TXLWizard.ShapeLibrary.Label
 
 # Initialize TXLWriter
 TXLWriter = TXLWizard.TXLWriter.TXLWriter()
-
-#####################
-# Define Structures #
-#####################
-
-## Sample Label ##
 
 # Give the sample a nice label
 SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
@@ -28,8 +18,6 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     Layer=1
 )
 
-## User Structure: Circle ##
-
 # Create Content Structure for Circle with ID `MyCircle`
 CircleStructure = TXLWriter.AddContentStructure('MyCircle')
 
@@ -41,9 +29,7 @@ CircleStructure.AddPattern(
     Layer=2
 )
 
-#########################
-# Generate Output Files #
-#########################
-
+# Generate Output Files
 # Note: The suffix (.txl, .html, .svg) will be appended automatically
 TXLWriter.GenerateFiles('Masks/Example_Introduction')
+

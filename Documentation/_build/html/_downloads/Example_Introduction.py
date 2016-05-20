@@ -30,8 +30,8 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
 
 ## User Structure: Circle ##
 
-# Create Content Structure for Circle
-CircleStructure = TXLWriter.AddContentStructure('Circle')
+# Create Content Structure for Circle with ID `MyCircle`
+CircleStructure = TXLWriter.AddContentStructure('MyCircle')
 
 # Add a `Pattern` of type `Circle`
 CircleStructure.AddPattern(

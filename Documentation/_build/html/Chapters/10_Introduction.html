@@ -85,6 +85,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-does-it-do">What does it do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-should-i-use-it">Why should I use it?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#structure-pattern-attribute">Structure / Pattern / Attribute</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#structure"><cite>Structure</cite></a></li>
@@ -163,17 +164,36 @@ vector graphics application and allow rapid mask development.</p>
 <p>Moreover, a command line interface <cite>TXLConverter</cite> provides conversion of existing TXL files to HTML / SVG
 (See Section <a class="reference internal" href="30_TXLConverter.html#sec-txlconverter"><span class="std std-ref">TXLConverter</span></a>).</p>
 </div>
+<div class="section" id="why-should-i-use-it">
+<h2>Why should I use it?<a class="headerlink" href="#why-should-i-use-it" title="Permalink to this headline">¶</a></h2>
+<p>TXL File Format:</p>
+<ul class="simple">
+<li>Text-based file format</li>
+<li>Can be generated with any scripting language (Python / Matlab / etc.)</li>
+<li>Easy to use</li>
+<li>Optimized E-Beam Performance due to <cite>References</cite> to objects and array of replicated objects (<cite>SREF</cite>, <cite>AREF</cite>)</li>
+</ul>
+<p>TXLWizard:</p>
+<ul class="simple">
+<li>Create masks with well-structured scripts</li>
+<li>Flexible Python Scripting</li>
+<li>Mask-Code easy to read and reusable</li>
+<li>Automated label generation</li>
+</ul>
+</div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The &#8220;TXLWizard&#8221; is written in python and will run in Python version 2.7+ and 3.1+.</p>
+<p>The <cite>TXLWizard</cite> is written in python and will run in Python version 2.7+ and 3.1+.</p>
 <p>In order to use it, the <cite>TXLWizard</cite> package must be available as
 a python package, i.e. either it must be copied to
 <code class="file docutils literal"><span class="pre">Path_to_my_python_installation/site-packages/</span></code>
 or to the path where your script is located.</p>
 <p>Alternatively, you can also prepend the following command to your python script:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;path_to_the_folder_containing_TXLWizard&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;path_to_the_folder_containing_TXLWizard&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Please note that this must be the parent folder containing the TXLWizard.</p>
 </div>
 <div class="section" id="structure-pattern-attribute">
 <h2>Structure / Pattern / Attribute<a class="headerlink" href="#structure-pattern-attribute" title="Permalink to this headline">¶</a></h2>

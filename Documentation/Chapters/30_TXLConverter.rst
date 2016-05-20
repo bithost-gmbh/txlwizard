@@ -21,7 +21,7 @@ To use the `TXLConverter` from the command line type
 
     python TXLWizard/Tools/TXLConverterCLI.py
 
-Or if you want to call it in your own script do
+Or if you want to call it in your own python script do
 
 .. code-block:: python
 
