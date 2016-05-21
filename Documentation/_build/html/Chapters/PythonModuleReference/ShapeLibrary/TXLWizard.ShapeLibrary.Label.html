@@ -203,6 +203,22 @@ Defaults to 1</li>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SampleLabelObject</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">ShapeLibrary</span><span class="o">.</span><span class="n">Label</span><span class="o">.</span><span class="n">GetLabel</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">TXLWriter</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Text</span><span class="o">=</span><span class="s1">&#39;This is my text&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">FontSize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">RoundCaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># Set to False to improve e-Beam performance</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

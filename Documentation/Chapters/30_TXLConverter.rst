@@ -38,7 +38,8 @@ The resulting command line interface looks as follows:
 
     Full TXL File / Folder Path
     If the path is a folder, you can enter the filename separately.
-    [/home/john.mega/masks]: /Users/esteban/Desktop/masks2/tmpd/EM160225_GOI_CornerCube_Microbridge.txl
+    [/home/john.mega/masks]:
+    /Users/esteban/Desktop/masks2/tmpd/EM160225_GOI_CornerCube_Microbridge.txl
 
     SampleWidth in um
     used to draw coordinate system

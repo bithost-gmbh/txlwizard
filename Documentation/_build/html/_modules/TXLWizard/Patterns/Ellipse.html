@@ -165,6 +165,25 @@
 <span class="sd">    **kwargs</span>
 <span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
 <span class="sd">        Can specify attributes of the current pattern.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">    Create Content Structure for ellipse and add Pattern of type `Ellipse`</span>
+
+<span class="sd">    &gt;&gt;&gt; EllipseStructure = TXLWriter.AddContentStructure(&#39;MyEllipseID&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; EllipseStructure.AddPattern(</span>
+<span class="sd">    &gt;&gt;&gt;     &#39;Ellipse&#39;,</span>
+<span class="sd">    &gt;&gt;&gt;     Center=[0, 0],</span>
+<span class="sd">    &gt;&gt;&gt;     RadiusX=50,</span>
+<span class="sd">    &gt;&gt;&gt;     RadiusY=70,</span>
+<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Center</span><span class="p">,</span> <span class="n">RadiusX</span><span class="p">,</span> <span class="n">RadiusY</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Ellipse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

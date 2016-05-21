@@ -192,6 +192,23 @@ Can specify attributes of the current pattern.</li>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create Content Structure</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CircleStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MyCircleID&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">TXLOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CircleStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Circle&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="TXLWizard.Patterns.Structure.Structure.AddPattern">
 <code class="descname">AddPattern</code><span class="sig-paren">(</span><em>PatternType</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/Patterns/Structure.html#Structure.AddPattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.Patterns.Structure.Structure.AddPattern" title="Permalink to this definition">¶</a></dt>

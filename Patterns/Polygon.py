@@ -19,6 +19,42 @@ class Polygon(AbstractPattern.AbstractPattern):
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
         Can specify attributes of the current pattern.
+
+    Examples
+    --------
+
+    Initialize TXLWriter
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+    Create Content Structure for polygon and add Pattern of type `Polygon`
+
+    >>> PolygonStructure = TXLWriter.AddContentStructure('MyPolygonID')
+    >>> PolygonStructure.AddPattern(
+    >>>     'Polygon',
+    >>>     Points=[[0,0], [0,10], [20,50], [0,0]],
+    >>>     Layer=1
+    >>> )
+
+    Complex structures can easily be added by generating the polygon points
+
+    >>> import math
+    >>> PolygonPoints = []
+    >>> Radius = 5.
+    >>> for i in range(21):
+    >>>     # AngleRadians goes from 0 to pi in 20 steps
+    >>>     AngleRadians = 0.5*2.*math.pi*1./20.*i
+    >>>     PolygonPoints.append([
+    >>>         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)
+    >>>     ])
+    >>> PolygonPoints.append([-20,-30])
+    >>> PolygonPoints.append([20,-30])
+    >>>
+    >>> PolygonStructure.AddPattern(
+    >>>     'Polygon',
+    >>>     Points=PolygonPoints,
+    >>>     Layer=1
+    >>> )
     '''
 
     def __init__(self, Points, **kwargs):

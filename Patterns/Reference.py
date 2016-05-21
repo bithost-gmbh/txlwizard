@@ -20,6 +20,33 @@ class Reference(AbstractPattern.AbstractPattern):
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
         Can specify attributes of the current pattern.
+
+    Examples
+    --------
+
+    Initialize TXLWriter
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+    Create Content Structure for Circle that will be reused.
+    Could also be a definition structure.
+
+    >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID')
+    >>> CircleStructure.AddPattern(
+    >>>     'Circle',
+    >>>     Center=[0, 0],
+    >>>     Radius=50,
+    >>>     Layer=1
+    >>> )
+
+    Create copy of the content structure above.
+
+    >>> CircleCopy = TXLWriter.AddContentStructure('MyCircleCopy')
+    >>> CircleCopy.AddPattern(
+    >>>     'Reference',
+    >>>     ReferencedStructureID=CircleStructure.ID,
+    >>>     OriginPoint=[40,60]
+    >>> )
     '''
 
     def __init__(self, ReferencedStructureID, OriginPoint, **kwargs):

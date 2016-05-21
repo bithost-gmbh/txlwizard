@@ -156,6 +156,47 @@
 <span class="sd">    **kwargs</span>
 <span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
 <span class="sd">        Can specify attributes of the current pattern.</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">    Create Content Structure for polyline and add Pattern of type `Polyline`</span>
+
+<span class="sd">    &gt;&gt;&gt; PolylineStructure = TXLWriter.AddContentStructure(&#39;MyPolylineID&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; PolylineStructure.AddPattern(</span>
+<span class="sd">    &gt;&gt;&gt;     &#39;Polyline&#39;,</span>
+<span class="sd">    &gt;&gt;&gt;     Points=[[0,0], [0,10], [20,50], [0,0]],</span>
+<span class="sd">    &gt;&gt;&gt;     StrokeWidth=3,</span>
+<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+
+<span class="sd">    Complex structures can easily be added by generating the Polyline points</span>
+
+<span class="sd">    &gt;&gt;&gt; import math</span>
+<span class="sd">    &gt;&gt;&gt; PolylinePoints = []</span>
+<span class="sd">    &gt;&gt;&gt; Radius = 10.</span>
+<span class="sd">    &gt;&gt;&gt; for i in range(21):</span>
+<span class="sd">    &gt;&gt;&gt;     # AngleRadians goes from 0 to pi in 20 steps</span>
+<span class="sd">    &gt;&gt;&gt;     AngleRadians = 0.5*2.*math.pi*1./20.*i</span>
+<span class="sd">    &gt;&gt;&gt;     PolylinePoints.append([</span>
+<span class="sd">    &gt;&gt;&gt;         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)</span>
+<span class="sd">    &gt;&gt;&gt;     ])</span>
+<span class="sd">    &gt;&gt;&gt; PolylinePoints.append([-20,-30])</span>
+<span class="sd">    &gt;&gt;&gt; PolylinePoints.append([20,-30])</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; PolylineStructure.AddPattern(</span>
+<span class="sd">    &gt;&gt;&gt;     &#39;Polyline&#39;,</span>
+<span class="sd">    &gt;&gt;&gt;     Points=PolylinePoints,</span>
+<span class="sd">    &gt;&gt;&gt;     RoundCaps=True,</span>
+<span class="sd">    &gt;&gt;&gt;     StrokeWidth=3,</span>
+<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

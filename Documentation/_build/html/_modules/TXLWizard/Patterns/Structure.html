@@ -158,6 +158,26 @@
 <span class="sd">    **kwargs</span>
 <span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
 <span class="sd">        Can specify attributes of the current pattern.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">    Create Content Structure</span>
+
+<span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddContentStructure(&#39;MyCircleID&#39;</span>
+<span class="sd">    &gt;&gt;&gt;     TXLOutput = True</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    &gt;&gt;&gt; CircleStructure.AddPattern(</span>
+<span class="sd">    &gt;&gt;&gt;     &#39;Circle&#39;,</span>
+<span class="sd">    &gt;&gt;&gt;     Center=[0, 0],</span>
+<span class="sd">    &gt;&gt;&gt;     Radius=50,</span>
+<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

@@ -803,7 +803,8 @@ written by Esteban Marin (estebanmarin@gmx.ch)
 
 Full TXL File / Folder Path
 If the path is a folder, you can enter the filename separately.
-[/home/john.mega/masks]: /Users/esteban/Desktop/masks2/tmpd/EM160225\PYGZus{}GOI\PYGZus{}CornerCube\PYGZus{}Microbridge.txl
+[/home/john.mega/masks]:
+/Users/esteban/Desktop/masks2/tmpd/EM160225\PYGZus{}GOI\PYGZus{}CornerCube\PYGZus{}Microbridge.txl
 
 SampleWidth in um
 used to draw coordinate system
@@ -1320,6 +1321,47 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Definition Structure for Circle that will be reused.
+Could also be a content structure.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddDefinitionStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircleID}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
+
+Create array of the definition structure above with
+10 repetitions at distance 100 in x-direction
+20 repetitions at distance 200 in y-direction
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleArray} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleArray}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Array}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{ReferencedStructureID}\PYG{o}{=}\PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{ID}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{40}\PYG{p}{,}\PYG{l+m+mi}{60}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{PositionDelta1}\PYG{o}{=}\PYG{p}{[}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }        \PYG{l+m+mi}{100}\PYG{p}{,} \PYG{l+m+mi}{0}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{PositionDelta2}\PYG{o}{=}\PYG{p}{[}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }        \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{200}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Repetitions1}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Repetitions2}\PYG{o}{=}\PYG{l+m+mi}{20}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{PositionDelta1 (TXLWizard.Patterns.Array.Array attribute)}
 
 \begin{fulllineitems}
@@ -1460,6 +1502,25 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Content Structure for Circle and add Pattern of type \titleref{Circle}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircleID}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{Center (TXLWizard.Patterns.Circle.Circle attribute)}
 
 \begin{fulllineitems}
@@ -1628,6 +1689,26 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Content Structure for ellipse and add Pattern of type \titleref{Ellipse}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{EllipseStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyEllipseID}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{EllipseStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Ellipse}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{RadiusX}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{RadiusY}\PYG{o}{=}\PYG{l+m+mi}{70}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{Center (TXLWizard.Patterns.Ellipse.Ellipse attribute)}
 
 \begin{fulllineitems}
@@ -1760,6 +1841,46 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Content Structure for polygon and add Pattern of type \titleref{Polygon}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolygonStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyPolygonID}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolygonStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Polygon}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Points}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
+
+Complex structures can easily be added by generating the polygon points
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolygonPoints} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{Radius} \PYG{o}{=} \PYG{l+m+mf}{5.}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{)}\PYG{p}{:}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{c+c1}{\PYGZsh{} AngleRadians goes from 0 to pi in 20 steps}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{AngleRadians} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{l+m+mf}{2.}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{*}\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{l+m+mf}{20.}\PYG{o}{*}\PYG{n}{i}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{PolygonPoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{p}{[}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }        \PYG{n}{Radius}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{AngleRadians}\PYG{p}{)}\PYG{p}{,}\PYG{n}{Radius}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{AngleRadians}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolygonPoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{30}\PYG{p}{]}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolygonPoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{30}\PYG{p}{]}\PYG{p}{)}
+\PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolygonStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Polygon}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Points}\PYG{o}{=}\PYG{n}{PolygonPoints}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{Points (TXLWizard.Patterns.Polygon.Polygon attribute)}
 
 \begin{fulllineitems}
@@ -1840,6 +1961,49 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Content Structure for polyline and add Pattern of type \titleref{Polyline}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolylineStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyPolylineID}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolylineStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Polyline}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Points}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
+
+Complex structures can easily be added by generating the Polyline points
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolylinePoints} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{Radius} \PYG{o}{=} \PYG{l+m+mf}{10.}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{)}\PYG{p}{:}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{c+c1}{\PYGZsh{} AngleRadians goes from 0 to pi in 20 steps}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{AngleRadians} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{l+m+mf}{2.}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{*}\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{l+m+mf}{20.}\PYG{o}{*}\PYG{n}{i}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{PolylinePoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{p}{[}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }        \PYG{n}{Radius}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{AngleRadians}\PYG{p}{)}\PYG{p}{,}\PYG{n}{Radius}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{AngleRadians}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolylinePoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{30}\PYG{p}{]}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolylinePoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{30}\PYG{p}{]}\PYG{p}{)}
+\PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{PolylineStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Polyline}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Points}\PYG{o}{=}\PYG{n}{PolylinePoints}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{Points (TXLWizard.Patterns.Polyline.Polyline attribute)}
 
 \begin{fulllineitems}
@@ -1925,6 +2089,37 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Content Structure for Circle that will be reused.
+Could also be a definition structure.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircleID}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
+
+Create copy of the content structure above.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleCopy} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircleCopy}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleCopy}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Reference}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{ReferencedStructureID}\PYG{o}{=}\PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{ID}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{40}\PYG{p}{,}\PYG{l+m+mi}{60}\PYG{p}{]}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{ReferencedStructureID (TXLWizard.Patterns.Reference.Reference attribute)}
 
 \begin{fulllineitems}
@@ -2003,6 +2198,27 @@ Can specify attributes of the current pattern.
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Create Content Structure
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{AddContentStructure}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MyCircleID}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{TXLOutput} \PYG{o}{=} \PYG{k+kc}{True}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{CircleStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 \index{AddPattern() (TXLWizard.Patterns.Structure.Structure method)}
 
 \begin{fulllineitems}
@@ -2197,6 +2413,23 @@ Defaults to 1
 {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure:TXLWizard.Patterns.Structure.Structure]{\crossref{\code{TXLWizard.Patterns.Structure.Structure}}}}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\PYG{g+go}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{SampleLabelObject} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Label}\PYG{o}{.}\PYG{n}{GetLabel}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{TXLWriter}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Text}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{This is my text}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }        \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{200}\PYG{p}{,} \PYG{l+m+mi}{300}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
 
 \end{fulllineitems}
 
@@ -2359,7 +2592,7 @@ Defaults to 1
 
 {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:module\string-TXLWizard.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter}}}}
  & 
-Class for parsing TXL files and converting them to html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module\string-TXLWizard.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter}}}}
+Class for parsing TXL files and converting them to html / svg using \titleref{TXLWriter}
 \\
 \hline\end{longtable}
 
@@ -2367,7 +2600,7 @@ Class for parsing TXL files and converting them to html / svg using {\hyperref[C
 
 \subsection{TXLWizard.TXLConverter}
 \label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:txlwizard-txlconverter}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter::doc}\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:module-TXLWizard.TXLConverter}\index{TXLWizard.TXLConverter (module)}
-Class for parsing TXL files and converting them to html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:module\string-TXLWizard.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter}}}}
+Class for parsing TXL files and converting them to html / svg using \titleref{TXLWriter}
 
 
 \subsubsection{Classes}
@@ -2394,7 +2627,7 @@ Class for parsing TXL files and converting them to
 \hline
 {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverterCLI]{\crossref{\code{TXLConverterCLI}}}}({[}JSONConfigurationFile, ...{]})
  & 
-Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
+Provides a command line interface for the \titleref{TXLConverter} class.
 \\
 \hline\end{longtable}
 
@@ -2426,7 +2659,7 @@ html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.T
 \phantomsection\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverterCLI}\pysiglinewithargsret{\strong{class }\code{TXLWizard.TXLConverter.}\bfcode{TXLConverterCLI}}{\emph{JSONConfigurationFile='TXLConverterConfiguration.json'}, \emph{UpdateConfigurationFile=True}, \emph{OverrideConfiguration=\{\}}}{}
 Bases: \code{object}
 
-Provides a command line interface for the {\hyperref[Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter]{\crossref{\code{TXLWizard.TXLConverter.TXLConverter}}}} class.
+Provides a command line interface for the \titleref{TXLConverter} class.
 
 The configuration is read and stored in the JSON format in the file specified  in \titleref{JSONConfigurationFile}.
 \begin{quote}\begin{description}

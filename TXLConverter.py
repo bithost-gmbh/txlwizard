@@ -1,5 +1,5 @@
 '''
-Class for parsing TXL files and converting them to html / svg using :class:`TXLWizard.TXLWriter`
+Class for parsing TXL files and converting them to html / svg using `TXLWriter`
 '''
 
 
@@ -391,7 +391,7 @@ class TXLConverter(object):
 
 class TXLConverterCLI(object):
     '''
-    Provides a command line interface for the :class:`TXLWizard.TXLConverter.TXLConverter` class.\n
+    Provides a command line interface for the `TXLConverter` class.\n
     The configuration is read and stored in the JSON format in the file specified  in `JSONConfigurationFile`.
 
 

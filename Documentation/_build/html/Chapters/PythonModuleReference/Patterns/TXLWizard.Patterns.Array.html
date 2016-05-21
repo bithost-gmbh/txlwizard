@@ -201,6 +201,41 @@ Can specify attributes of the current pattern.</li>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create Definition Structure for Circle that will be reused.
+Could also be a content structure.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CircleStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddDefinitionStructure</span><span class="p">(</span><span class="s1">&#39;MyCircleID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CircleStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Circle&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create array of the definition structure above with
+10 repetitions at distance 100 in x-direction
+20 repetitions at distance 200 in y-direction</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CircleArray</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MyCircleArray&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CircleArray</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Array&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">ReferencedStructureID</span><span class="o">=</span><span class="n">CircleStructure</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">PositionDelta1</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">PositionDelta2</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Repetitions1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Repetitions2</span><span class="o">=</span><span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="attribute">
 <dt id="TXLWizard.Patterns.Array.Array.PositionDelta1">
 <code class="descname">PositionDelta1</code><em class="property"> = None</em><a class="headerlink" href="#TXLWizard.Patterns.Array.Array.PositionDelta1" title="Permalink to this definition">¶</a></dt>

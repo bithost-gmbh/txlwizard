@@ -35,6 +35,42 @@ class Array(AbstractPattern.AbstractPattern):
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
         Can specify attributes of the current pattern.
 
+    Examples
+    --------
+
+    Initialize TXLWriter
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+    Create Definition Structure for Circle that will be reused.
+    Could also be a content structure.
+
+    >>> CircleStructure = TXLWriter.AddDefinitionStructure('MyCircleID')
+    >>> CircleStructure.AddPattern(
+    >>>     'Circle',
+    >>>     Center=[0, 0],
+    >>>     Radius=50,
+    >>>     Layer=1
+    >>> )
+
+    Create array of the definition structure above with
+    10 repetitions at distance 100 in x-direction
+    20 repetitions at distance 200 in y-direction
+
+    >>> CircleArray = TXLWriter.AddContentStructure('MyCircleArray')
+    >>> CircleArray.AddPattern(
+    >>>     'Array',
+    >>>     ReferencedStructureID=CircleStructure.ID,
+    >>>     OriginPoint=[40,60],
+    >>>     PositionDelta1=[
+    >>>         100, 0
+    >>>     ],
+    >>>     PositionDelta2=[
+    >>>         0, 200
+    >>>     ],
+    >>>     Repetitions1=10,
+    >>>     Repetitions2=20
+    >>> )
 
     '''
 

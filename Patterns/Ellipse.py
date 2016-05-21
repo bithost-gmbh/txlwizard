@@ -32,6 +32,25 @@ class Ellipse(AbstractPattern.AbstractPattern):
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
         Can specify attributes of the current pattern.
+
+    Examples
+    --------
+
+    Initialize TXLWriter
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+    Create Content Structure for ellipse and add Pattern of type `Ellipse`
+
+    >>> EllipseStructure = TXLWriter.AddContentStructure('MyEllipseID')
+    >>> EllipseStructure.AddPattern(
+    >>>     'Ellipse',
+    >>>     Center=[0, 0],
+    >>>     RadiusX=50,
+    >>>     RadiusY=70,
+    >>>     Layer=1
+    >>> )
+
     '''
     def __init__(self, Center, RadiusX, RadiusY, **kwargs):
         super(Ellipse, self).__init__(**kwargs)

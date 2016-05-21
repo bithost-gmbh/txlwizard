@@ -43,6 +43,24 @@ class Circle(AbstractPattern.AbstractPattern):
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
         Can specify attributes of the current pattern.
+
+    Examples
+    --------
+
+    Initialize TXLWriter
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+    Create Content Structure for Circle and add Pattern of type `Circle`
+
+    >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID')
+    >>> CircleStructure.AddPattern(
+    >>>     'Circle',
+    >>>     Center=[0, 0],
+    >>>     Radius=50,
+    >>>     Layer=1
+    >>> )
+
     '''
 
     def __init__(self, Center, Radius, **kwargs):

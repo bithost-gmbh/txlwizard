@@ -23,6 +23,47 @@ class Polyline(AbstractPattern.AbstractPattern):
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
         Can specify attributes of the current pattern.
+        
+        
+    Examples
+    --------
+
+    Initialize TXLWriter
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+    Create Content Structure for polyline and add Pattern of type `Polyline`
+
+    >>> PolylineStructure = TXLWriter.AddContentStructure('MyPolylineID')
+    >>> PolylineStructure.AddPattern(
+    >>>     'Polyline',
+    >>>     Points=[[0,0], [0,10], [20,50], [0,0]],
+    >>>     StrokeWidth=3,
+    >>>     Layer=1
+    >>> )
+
+    Complex structures can easily be added by generating the Polyline points
+
+    >>> import math
+    >>> PolylinePoints = []
+    >>> Radius = 10.
+    >>> for i in range(21):
+    >>>     # AngleRadians goes from 0 to pi in 20 steps
+    >>>     AngleRadians = 0.5*2.*math.pi*1./20.*i
+    >>>     PolylinePoints.append([
+    >>>         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)
+    >>>     ])
+    >>> PolylinePoints.append([-20,-30])
+    >>> PolylinePoints.append([20,-30])
+    >>>
+    >>> PolylineStructure.AddPattern(
+    >>>     'Polyline',
+    >>>     Points=PolylinePoints,
+    >>>     RoundCaps=True,
+    >>>     StrokeWidth=3,
+    >>>     Layer=1
+    >>> )
+    
     '''
 
     def __init__(self, Points, **kwargs):

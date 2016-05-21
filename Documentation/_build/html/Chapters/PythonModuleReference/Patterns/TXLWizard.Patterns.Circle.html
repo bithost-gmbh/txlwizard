@@ -207,6 +207,21 @@ Can specify attributes of the current pattern.</li>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create Content Structure for Circle and add Pattern of type <cite>Circle</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CircleStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MyCircleID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CircleStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Circle&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="attribute">
 <dt id="TXLWizard.Patterns.Circle.Circle.Center">
 <code class="descname">Center</code><em class="property"> = None</em><a class="headerlink" href="#TXLWizard.Patterns.Circle.Circle.Center" title="Permalink to this definition">¶</a></dt>

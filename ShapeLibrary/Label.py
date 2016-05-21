@@ -42,6 +42,24 @@ def GetLabel(TXLWriter, Text, OriginPoint=[0, 0], FontSize=100, StrokeWidth=10, 
     -------
     :class:`TXLWizard.Patterns.Structure.Structure`
         `Structure` object containing the patterns representing the text
+
+    Examples
+    --------
+
+    >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+    >>>
+    >>> SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
+    >>>     TXLWriter,
+    >>>     Text='This is my text',
+    >>>     OriginPoint=[
+    >>>         -200, 300
+    >>>     ],
+    >>>     FontSize=150,
+    >>>     StrokeWidth=20,
+    >>>     RoundCaps=True, # Set to False to improve e-Beam performance
+    >>>     Layer=1
+    >>> )
+
     '''
 
     ID = TXLWriter._GetAutoStructureID()
