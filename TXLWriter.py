@@ -35,7 +35,7 @@ class TXLWriter(object):
     Examples
     --------
 
-    Initialize TXLWriter, add a definition structure,
+    Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter(
     >>>    ShowGrid=True, GridWidth=800, GridHeight=800
