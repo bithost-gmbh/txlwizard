@@ -4,6 +4,8 @@ Renders an ellipse.
 '''
 import AbstractPattern
 import math
+
+
 class Ellipse(AbstractPattern.AbstractPattern):
     '''
     Implements a class for `Pattern` objects of type `Ellipse`.\n
@@ -21,13 +23,13 @@ class Ellipse(AbstractPattern.AbstractPattern):
     RadiusY: float
         Semi-minor axis of the ellipse in y-direction
     StartAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to 0
     EndAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to 0
     NumberOfPoints: int, optional
-        Number of path segments used for drawing the ellipse.
+        Number of path segments used for drawing the ellipse.\n
         Defaults to None.
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
@@ -35,6 +37,18 @@ class Ellipse(AbstractPattern.AbstractPattern):
 
     Examples
     --------
+
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
 
     Initialize TXLWriter
 
@@ -44,14 +58,20 @@ class Ellipse(AbstractPattern.AbstractPattern):
 
     >>> EllipseStructure = TXLWriter.AddContentStructure('MyEllipseID')
     >>> EllipseStructure.AddPattern(
-    >>>     'Ellipse',
-    >>>     Center=[0, 0],
-    >>>     RadiusX=50,
-    >>>     RadiusY=70,
-    >>>     Layer=1
-    >>> )
+    ...     'Ellipse',
+    ...     Center=[0, 0],
+    ...     RadiusX=50,
+    ...     RadiusY=70,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Ellipse.Ellipse object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Ellipse')
 
     '''
+
     def __init__(self, Center, RadiusX, RadiusY, **kwargs):
         super(Ellipse, self).__init__(**kwargs)
 
@@ -85,53 +105,61 @@ class Ellipse(AbstractPattern.AbstractPattern):
         #: list of float: If `self.StartAngle` and `self.EndAngle` are set, the ending point of the segment arc is calculated
         self.EndPoint = None
 
-        for i in ['StartAngle','EndAngle','NumberOfPoints']:
+        for i in ['StartAngle', 'EndAngle', 'NumberOfPoints']:
             if i in kwargs:
-                setattr(self,i,kwargs[i])
+                setattr(self, i, kwargs[i])
 
         if self.StartAngle != None and self.EndAngle != None:
-            self.StartPoint = [math.cos(self.StartAngle/360.*2.*math.pi)*self.RadiusX,math.sin(self.StartAngle/360.*2.*math.pi)*self.RadiusY]
-            self.EndPoint = [math.cos(self.EndAngle/360.*2.*math.pi)*self.RadiusX,math.sin(self.EndAngle/360.*2.*math.pi)*self.RadiusY]
-
-
+            self.StartPoint = [math.cos(self.StartAngle / 360. * 2. * math.pi) * self.RadiusX,
+                               math.sin(self.StartAngle / 360. * 2. * math.pi) * self.RadiusY]
+            self.EndPoint = [math.cos(self.EndAngle / 360. * 2. * math.pi) * self.RadiusX,
+                             math.sin(self.EndAngle / 360. * 2. * math.pi) * self.RadiusY]
 
     def GetTXLOutput(self):
 
         TXL = ''
         TXL += 'ELP '
-        TXL += '{:1.4f} {:1.4f} {:1.4f},{:1.4f} '.format(self.RadiusX, self.RadiusY,self.StartPoint[0],self.StartPoint[1])
+        TXL += ('' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ' +
+                self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+            self.RadiusX, self.RadiusY,
+            self.StartPoint[0], self.StartPoint[1])
+
         if self.StartAngle != None and self.EndAngle != None:
-            TXL += '{:1.4f} {:1.4f} '.format(self.StartAngle,self.EndAngle)
+            TXL += ('' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                self.StartAngle, self.EndAngle)
 
             if self.NumberOfPoints != None:
                 TXL += '{:d}'.format(self.NumberOfPoints)
 
-        TXL += 'ENDELP'+'\n'
+        TXL += 'ENDELP' + '\n'
         return TXL
-
 
     def GetSVGOutput(self):
 
         SVG = ''
-        if self.StartAngle == None or abs(self.EndAngle-self.StartAngle)==360:
-            SVG += ('<ellipse '+self._GetSVGAttributesString({
-                            #'cx':'{:1.4f}'.format(self.Center[0]),
-                            #'cy':'{:1.4f}'.format(self.Center[1]),
-                            'cx':'0',
-                            'cy':'0',
-                            'rx':'{:1.4f}'.format(self.RadiusX),
-                            'ry':'{:1.4f}'.format(self.RadiusY),
-                        })+
-                   ' />'+'\n')
+        if self.StartAngle == None or abs(self.EndAngle - self.StartAngle) == 360:
+            SVG += ('<ellipse ' + self._GetSVGAttributesString({
+                # 'cx':'{:1.4f}'.format(self.Center[0]),
+                # 'cy':'{:1.4f}'.format(self.Center[1]),
+                'cx': '0',
+                'cy': '0',
+                'rx': ('' + self._GetFloatFormatString() + '').format(self.RadiusX),
+                'ry': ('' + self._GetFloatFormatString() + '').format(self.RadiusY),
+            }) +
+                    ' />' + '\n')
         else:
             # See http://www.w3.org/TR/2003/REC-SVG11-20030114/paths.html#PathDataEllipticalArcCommands
             LargeAngle = 0
-            if abs(self.EndAngle-self.StartAngle)>=180:
+            if abs(self.EndAngle - self.StartAngle) >= 180:
                 LargeAngle = 1
-            SVG += ('<path '+self._GetSVGAttributesString({
-                'd':'m {:1.4f} {:1.4f} '.format(self.StartPoint[0], self.StartPoint[1])+
-                    #'l {:1.4f} {:1.4f} '.format(self.StartPoint[0], self.StartPoint[1])+
-                    'a {:1.4f} {:1.4f} 0 0 {:d} {:1.4f} {:1.4f} '.format(self.RadiusX,self.RadiusY,LargeAngle,self.EndPoint[0]-self.StartPoint[0],self.EndPoint[1]-self.StartPoint[1])
-                    #'l {:1.4f} {:1.4f}'.format(self.Center[0],self.Center[1])
-            })+' />')
+            SVG += ('<path ' + self._GetSVGAttributesString({
+                'd': ('m ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                    self.StartPoint[0], self.StartPoint[1]) +
+                     # 'l {:1.4f} {:1.4f} '.format(self.StartPoint[0], self.StartPoint[1])+
+                     ('a ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' 0 0 ' +
+                      '{:d} ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                         self.RadiusX, self.RadiusY,
+                         LargeAngle, self.EndPoint[0] - self.StartPoint[0], self.EndPoint[1] - self.StartPoint[1])
+                # 'l {:1.4f} {:1.4f}'.format(self.Center[0],self.Center[1])
+            }) + ' />')
         return SVG

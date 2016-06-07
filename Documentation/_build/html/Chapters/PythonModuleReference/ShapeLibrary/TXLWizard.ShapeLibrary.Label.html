@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.ShapeLibrary.Label &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.ShapeLibrary.Label &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
-        <link rel="next" title="TXLWizard.ShapeLibrary.EndpointDetectionWindows" href="TXLWizard.ShapeLibrary.EndpointDetectionWindows.html"/>
+        <link rel="next" title="TXLWizard.ShapeLibrary.LabelArray" href="TXLWizard.ShapeLibrary.LabelArray.html"/>
         <link rel="prev" title="TXLWizard.Patterns.Structure" href="../Patterns/TXLWizard.Patterns.Structure.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -95,6 +95,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.ShapeLibrary.LabelArray.html">TXLWizard.ShapeLibrary.LabelArray</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TXLWizard.ShapeLibrary.EndpointDetectionWindows.html">TXLWizard.ShapeLibrary.EndpointDetectionWindows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TXLWizard.ShapeLibrary.AlignmentMarkers.html">TXLWizard.ShapeLibrary.AlignmentMarkers</a></li>
 </ul>
@@ -204,19 +205,29 @@ Defaults to 1</li>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">SampleLabelObject</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">ShapeLibrary</span><span class="o">.</span><span class="n">Label</span><span class="o">.</span><span class="n">GetLabel</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">TXLWriter</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Text</span><span class="o">=</span><span class="s1">&#39;This is my text&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="p">],</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">FontSize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">RoundCaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># Set to False to improve e-Beam performance</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.ShapeLibrary.Label</span>
+</pre></div>
+</div>
+<p>Initialize TXLWriter
+&gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</p>
+<p>Add a Label</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SampleLabelObject</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">ShapeLibrary</span><span class="o">.</span><span class="n">Label</span><span class="o">.</span><span class="n">GetLabel</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">TXLWriter</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Text</span><span class="o">=</span><span class="s1">&#39;This is my text&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">FontSize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">RoundCaps</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Set to False to improve e-Beam performance</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Generate files</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/ShapeLibrary/Label&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -231,7 +242,7 @@ Defaults to 1</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="TXLWizard.ShapeLibrary.EndpointDetectionWindows.html" class="btn btn-neutral float-right" title="TXLWizard.ShapeLibrary.EndpointDetectionWindows" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="TXLWizard.ShapeLibrary.LabelArray.html" class="btn btn-neutral float-right" title="TXLWizard.ShapeLibrary.LabelArray" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../Patterns/TXLWizard.Patterns.Structure.html" class="btn btn-neutral" title="TXLWizard.Patterns.Structure" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -265,7 +276,7 @@ Defaults to 1</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

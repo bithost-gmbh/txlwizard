@@ -23,22 +23,22 @@ class Circle(AbstractPattern.AbstractPattern):
     Radius: float
         Radius of the circle
     StartAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to None.
     EndAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to None.
     NumberOfPoints: int, optional
-        Number of path segments used for drawing the circle.
+        Number of path segments used for drawing the circle.\n
         Defaults to None.
     PathOnly: bool, optional
-        If set to True, only the arc of the circle is drawn.
+        If set to True, only the arc of the circle is drawn.\n
         Defaults to False.
     RoundCaps: bool, optional
-        If set to True along with `PathOnly`, the end of the path is rounded.
+        If set to True along with `PathOnly`, the end of the path is rounded.\n
         Defaults to False.
     Extended: bool, optional
-        If set to True along with `PathOnly`, the end of the path is extended.
+        If set to True along with `PathOnly`, the end of the path is extended.\n
         Defaults to False.
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
@@ -46,6 +46,18 @@ class Circle(AbstractPattern.AbstractPattern):
 
     Examples
     --------
+
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
 
     Initialize TXLWriter
 
@@ -55,11 +67,16 @@ class Circle(AbstractPattern.AbstractPattern):
 
     >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID')
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Circle')
 
     '''
 
@@ -124,11 +141,15 @@ class Circle(AbstractPattern.AbstractPattern):
                 BoundaryString += 'E'
         TXL = ''
         TXL += 'C' + BoundaryString + ' '
-        TXL += '{:1.4f} {:1.4f},{:1.4f} '.format(self.Radius, self.Center[0], self.Center[1])
+        TXL += (
+            '' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+            self.Radius, self.Center[0], self.Center[1])
+
         if self.StartAngle != None and self.EndAngle != None:
             if not self.PathOnly:
                 TXL += '('
-            TXL += '{:1.4f} {:1.4f} '.format(self.StartAngle, self.EndAngle)
+            TXL += ('' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                self.StartAngle, self.EndAngle)
 
             if self.NumberOfPoints != None:
                 TXL += '{:d}'.format(self.NumberOfPoints)
@@ -147,10 +168,15 @@ class Circle(AbstractPattern.AbstractPattern):
                 # 'cy':'{:1.4f}'.format(self.Center[1]),
                 'cx': '0',
                 'cy': '0',
-                'r': '{:1.4f}'.format(self.Radius),
+                'r': ('' + self._GetFloatFormatString() + '').format(
+                    self.Radius),
             }
             if self.PathOnly:
-                SVGAttributes['style'] = ['fill:none', 'stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth'])]
+                SVGAttributes['style'] = [
+                    'fill:none',
+                    ('stroke-width:' + self._GetFloatFormatString() + '').format(
+                        self.Attributes['StrokeWidth'])
+                ]
             SVG += ('<circle ' + self._GetSVGAttributesString(SVGAttributes) +
                     ' />' + '\n')
         else:
@@ -160,16 +186,22 @@ class Circle(AbstractPattern.AbstractPattern):
             # See http://www.w3.org/TR/2003/REC-SVG11-20030114/paths.html#PathDataEllipticalArcCommands
             SweepFlag = 1
             SVGAttributes = {
-                'd': 'm {:1.4f} {:1.4f} '.format(self.StartPoint[0], self.StartPoint[1]) +
+                'd': ('m ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                    self.StartPoint[0], self.StartPoint[1]) +
                      # 'l {:1.4f} {:1.4f} '.format(StartPoint[0], StartPoint[1])+
-                     'a {:1.4f} {:1.4f} 0 {:d} {:d} {:1.4f} {:1.4f} '.format(self.Radius, self.Radius, LargeAngle,
-                                                                             SweepFlag,
-                                                                             self.EndPoint[0] - self.StartPoint[0],
-                                                                             self.EndPoint[1] - self.StartPoint[1])
+                     ('a ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' 0 {:d} {:d} ' +
+                      self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                         self.Radius, self.Radius, LargeAngle, SweepFlag,
+                         self.EndPoint[0] - self.StartPoint[0],
+                         self.EndPoint[1] - self.StartPoint[1])
                 # 'l {:1.4f} {:1.4f}'.format(self.Center[0],self.Center[1])
             }
             if self.PathOnly:
-                SVGAttributes['style'] = ['fill:none', 'stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth'])]
+                SVGAttributes['style'] = [
+                    'fill:none',
+                    ('stroke-width:' + self._GetFloatFormatString() + '').format(
+                        self.Attributes['StrokeWidth'])
+                ]
                 if self.RoundCaps:
                     SVGAttributes['stroke-linecap'] = 'round'
                 elif self.Extended:

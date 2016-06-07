@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.Patterns.Structure &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.Patterns.Structure &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -136,8 +136,12 @@
 <span class="sd">A `Structure` is a container for `Pattern` objects.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/../&#39;</span><span class="p">))</span>
+
 <span class="kn">import</span> <span class="nn">AbstractPattern</span>
-<span class="kn">from</span> <span class="nn">..Helpers</span> <span class="kn">import</span> <span class="n">Tuttifrutti</span>
+<span class="kn">from</span> <span class="nn">Helpers</span> <span class="kn">import</span> <span class="n">Tuttifrutti</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
 
@@ -153,7 +157,7 @@
 <span class="sd">    ID: str</span>
 <span class="sd">        Unique identification of the structure. Also used when referencing to this structure.</span>
 <span class="sd">    TXLOutput: bool, optional</span>
-<span class="sd">        If set to False, the TXL Output is suppressed.</span>
+<span class="sd">        If set to False, the TXL Output is suppressed.\n</span>
 <span class="sd">        Defaults to True</span>
 <span class="sd">    **kwargs</span>
 <span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
@@ -162,21 +166,38 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
 <span class="sd">    Initialize TXLWriter</span>
 
 <span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
 
 <span class="sd">    Create Content Structure</span>
 
-<span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddContentStructure(&#39;MyCircleID&#39;</span>
-<span class="sd">    &gt;&gt;&gt;     TXLOutput = True</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddContentStructure(&#39;MyCircleID&#39;,</span>
+<span class="sd">    ...     TXLOutput = True</span>
+<span class="sd">    ... )</span>
 <span class="sd">    &gt;&gt;&gt; CircleStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Circle&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Center=[0, 0],</span>
-<span class="sd">    &gt;&gt;&gt;     Radius=50,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Circle&#39;,</span>
+<span class="sd">    ...     Center=[0, 0],</span>
+<span class="sd">    ...     Radius=50,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Structure&#39;)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -231,6 +252,8 @@
         <span class="n">f</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">PatternType</span><span class="p">,</span> <span class="n">__package__</span><span class="p">)</span>
         <span class="n">class_</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PatternType</span><span class="p">)</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ParentStructure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span>
+
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -280,9 +303,9 @@
         <span class="n">AttributeMapping</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;Layer&#39;</span><span class="p">:</span> <span class="s1">&#39;LAYER {:d}&#39;</span><span class="p">,</span>
             <span class="s1">&#39;DataType&#39;</span><span class="p">:</span> <span class="s1">&#39;DATATYPE {:d}&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;RotationAngle&#39;</span><span class="p">:</span> <span class="s1">&#39;ANGLE {:1.2f}&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;StrokeWidth&#39;</span><span class="p">:</span> <span class="s1">&#39;WIDTH {:1.4f}&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;ScaleFactor&#39;</span><span class="p">:</span> <span class="s1">&#39;MAG {:1.4f}&#39;</span>
+            <span class="s1">&#39;RotationAngle&#39;</span><span class="p">:</span> <span class="s1">&#39;ANGLE &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;StrokeWidth&#39;</span><span class="p">:</span> <span class="s1">&#39;WIDTH &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ScaleFactor&#39;</span><span class="p">:</span> <span class="s1">&#39;MAG &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span>
         <span class="p">}</span>
         <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Attributes</span><span class="p">:</span>
@@ -304,7 +327,10 @@
                     <span class="n">NewCurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">CurrentAttributes</span> <span class="o">=</span> <span class="n">NewCurrentAttributes</span>
             <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">Transforms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;translate({:1.4f},{:1.4f})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+                <span class="n">Transforms</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">(</span><span class="s1">&#39;translate(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">Transforms</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -350,9 +376,11 @@
                 <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Layer&#39;</span><span class="p">:</span>
                     <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Layer{:d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
                 <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;RotationAngle&#39;</span> <span class="ow">and</span> <span class="n">PatternType</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Reference&#39;</span><span class="p">]:</span>
-                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;rotate({:1.4f})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">(</span><span class="s1">&#39;rotate(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
                 <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;ScaleFactor&#39;</span> <span class="ow">and</span> <span class="n">PatternType</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Reference&#39;</span><span class="p">]:</span>
-                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;scale({:1.4f})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">(</span><span class="s1">&#39;scale(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
                     <span class="c1"># if i == &#39;StrokeWidth&#39; and False:</span>
                     <span class="c1">#    SVGAttributes[&#39;style&#39;].append(&#39;stroke-width: {:1.4f}&#39;.format(Attributes[i]))</span>
 
@@ -390,7 +418,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

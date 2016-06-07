@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.Patterns.Polyline &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.Patterns.Polyline &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -151,7 +151,7 @@
 <span class="sd">    Points: list of list of float</span>
 <span class="sd">        List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the path</span>
 <span class="sd">    RoundCaps: bool, optional</span>
-<span class="sd">        If set to True, the end of the path is rounded.</span>
+<span class="sd">        If set to True, the end of the path is rounded.\n</span>
 <span class="sd">        Defaults to False.</span>
 <span class="sd">    **kwargs</span>
 <span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
@@ -161,6 +161,18 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
 <span class="sd">    Initialize TXLWriter</span>
 
 <span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
@@ -169,11 +181,12 @@
 
 <span class="sd">    &gt;&gt;&gt; PolylineStructure = TXLWriter.AddContentStructure(&#39;MyPolylineID&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; PolylineStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Polyline&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Points=[[0,0], [0,10], [20,50], [0,0]],</span>
-<span class="sd">    &gt;&gt;&gt;     StrokeWidth=3,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Polyline&#39;,</span>
+<span class="sd">    ...     Points=[[0,0], [0,10], [20,50], [0,0]],</span>
+<span class="sd">    ...     StrokeWidth=3,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Polyline.Polyline object at 0x...&gt;</span>
 
 <span class="sd">    Complex structures can easily be added by generating the Polyline points</span>
 
@@ -181,21 +194,26 @@
 <span class="sd">    &gt;&gt;&gt; PolylinePoints = []</span>
 <span class="sd">    &gt;&gt;&gt; Radius = 10.</span>
 <span class="sd">    &gt;&gt;&gt; for i in range(21):</span>
-<span class="sd">    &gt;&gt;&gt;     # AngleRadians goes from 0 to pi in 20 steps</span>
-<span class="sd">    &gt;&gt;&gt;     AngleRadians = 0.5*2.*math.pi*1./20.*i</span>
-<span class="sd">    &gt;&gt;&gt;     PolylinePoints.append([</span>
-<span class="sd">    &gt;&gt;&gt;         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)</span>
-<span class="sd">    &gt;&gt;&gt;     ])</span>
+<span class="sd">    ...     # AngleRadians goes from 0 to pi in 20 steps</span>
+<span class="sd">    ...     AngleRadians = 0.5*2.*math.pi*1./20.*i</span>
+<span class="sd">    ...     PolylinePoints.append([</span>
+<span class="sd">    ...         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)</span>
+<span class="sd">    ...     ])</span>
 <span class="sd">    &gt;&gt;&gt; PolylinePoints.append([-20,-30])</span>
 <span class="sd">    &gt;&gt;&gt; PolylinePoints.append([20,-30])</span>
 <span class="sd">    &gt;&gt;&gt;</span>
 <span class="sd">    &gt;&gt;&gt; PolylineStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Polyline&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Points=PolylinePoints,</span>
-<span class="sd">    &gt;&gt;&gt;     RoundCaps=True,</span>
-<span class="sd">    &gt;&gt;&gt;     StrokeWidth=3,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Polyline&#39;,</span>
+<span class="sd">    ...     Points=PolylinePoints,</span>
+<span class="sd">    ...     RoundCaps=True,</span>
+<span class="sd">    ...     StrokeWidth=3,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Polyline.Polyline object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Polyline&#39;)</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -226,7 +244,8 @@
         <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">TXL</span> <span class="o">+=</span> <span class="n">CommandString</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
         <span class="k">for</span> <span class="n">Point</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Points</span><span class="p">:</span>
-            <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;{:1.4f},{:1.4f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Point</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                                                                         <span class="n">Point</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;END&#39;</span> <span class="o">+</span> <span class="n">EndCommandString</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
         <span class="k">return</span> <span class="n">TXL</span>
 
@@ -235,11 +254,14 @@
 
         <span class="n">PointsString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">for</span> <span class="n">Point</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Points</span><span class="p">:</span>
-            <span class="n">PointsString</span> <span class="o">+=</span> <span class="s1">&#39;{:1.4f},{:1.4f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Point</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">PointsString</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">Point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Point</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="n">PointsString</span><span class="p">}</span>
         <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fill:none&#39;</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;stroke-width:{:1.4f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">]))</span>
+            <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">(</span><span class="s1">&#39;stroke-width:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">]))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">RoundCaps</span><span class="p">:</span>
             <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;stroke-linecap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;round&#39;</span>
         <span class="n">SVG</span> <span class="o">+=</span> <span class="s1">&#39;&lt;polyline &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; /&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
@@ -278,7 +300,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

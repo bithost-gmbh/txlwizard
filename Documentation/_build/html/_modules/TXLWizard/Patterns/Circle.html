@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.Patterns.Circle &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.Patterns.Circle &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -156,22 +156,22 @@
 <span class="sd">    Radius: float</span>
 <span class="sd">        Radius of the circle</span>
 <span class="sd">    StartAngle: float, optional</span>
-<span class="sd">        If given, only a sector is drawn from `StartAngle` to `EndAngle`.</span>
+<span class="sd">        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n</span>
 <span class="sd">        Defaults to None.</span>
 <span class="sd">    EndAngle: float, optional</span>
-<span class="sd">        If given, only a sector is drawn from `StartAngle` to `EndAngle`.</span>
+<span class="sd">        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n</span>
 <span class="sd">        Defaults to None.</span>
 <span class="sd">    NumberOfPoints: int, optional</span>
-<span class="sd">        Number of path segments used for drawing the circle.</span>
+<span class="sd">        Number of path segments used for drawing the circle.\n</span>
 <span class="sd">        Defaults to None.</span>
 <span class="sd">    PathOnly: bool, optional</span>
-<span class="sd">        If set to True, only the arc of the circle is drawn.</span>
+<span class="sd">        If set to True, only the arc of the circle is drawn.\n</span>
 <span class="sd">        Defaults to False.</span>
 <span class="sd">    RoundCaps: bool, optional</span>
-<span class="sd">        If set to True along with `PathOnly`, the end of the path is rounded.</span>
+<span class="sd">        If set to True along with `PathOnly`, the end of the path is rounded.\n</span>
 <span class="sd">        Defaults to False.</span>
 <span class="sd">    Extended: bool, optional</span>
-<span class="sd">        If set to True along with `PathOnly`, the end of the path is extended.</span>
+<span class="sd">        If set to True along with `PathOnly`, the end of the path is extended.\n</span>
 <span class="sd">        Defaults to False.</span>
 <span class="sd">    **kwargs</span>
 <span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
@@ -179,6 +179,18 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
+
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
 
 <span class="sd">    Initialize TXLWriter</span>
 
@@ -188,11 +200,16 @@
 
 <span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddContentStructure(&#39;MyCircleID&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; CircleStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Circle&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Center=[0, 0],</span>
-<span class="sd">    &gt;&gt;&gt;     Radius=50,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Circle&#39;,</span>
+<span class="sd">    ...     Center=[0, 0],</span>
+<span class="sd">    ...     Radius=50,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Circle&#39;)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -257,11 +274,15 @@
                 <span class="n">BoundaryString</span> <span class="o">+=</span> <span class="s1">&#39;E&#39;</span>
         <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;C&#39;</span> <span class="o">+</span> <span class="n">BoundaryString</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
-        <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;{:1.4f} {:1.4f},{:1.4f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Center</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span>
+            <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Center</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
                 <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;(&#39;</span>
-            <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;{:1.4f} {:1.4f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span><span class="p">)</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">NumberOfPoints</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;{:d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NumberOfPoints</span><span class="p">)</span>
@@ -280,10 +301,15 @@
                 <span class="c1"># &#39;cy&#39;:&#39;{:1.4f}&#39;.format(self.Center[1]),</span>
                 <span class="s1">&#39;cx&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;cy&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="s1">&#39;{:1.4f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">),</span>
+                <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">),</span>
             <span class="p">}</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
-                <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fill:none&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke-width:{:1.4f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">])]</span>
+                <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s1">&#39;fill:none&#39;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="s1">&#39;stroke-width:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">])</span>
+                <span class="p">]</span>
             <span class="n">SVG</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&lt;circle &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">)</span> <span class="o">+</span>
                     <span class="s1">&#39; /&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -293,16 +319,22 @@
             <span class="c1"># See http://www.w3.org/TR/2003/REC-SVG11-20030114/paths.html#PathDataEllipticalArcCommands</span>
             <span class="n">SweepFlag</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="s1">&#39;m {:1.4f} {:1.4f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span>
+                <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;m &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span>
                      <span class="c1"># &#39;l {:1.4f} {:1.4f} &#39;.format(StartPoint[0], StartPoint[1])+</span>
-                     <span class="s1">&#39;a {:1.4f} {:1.4f} 0 {:d} {:d} {:1.4f} {:1.4f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="n">LargeAngle</span><span class="p">,</span>
-                                                                             <span class="n">SweepFlag</span><span class="p">,</span>
-                                                                             <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                                                             <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                     <span class="p">(</span><span class="s1">&#39;a &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; 0 {:d} {:d} &#39;</span> <span class="o">+</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="n">LargeAngle</span><span class="p">,</span> <span class="n">SweepFlag</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
                 <span class="c1"># &#39;l {:1.4f} {:1.4f}&#39;.format(self.Center[0],self.Center[1])</span>
             <span class="p">}</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
-                <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fill:none&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke-width:{:1.4f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">])]</span>
+                <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s1">&#39;fill:none&#39;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="s1">&#39;stroke-width:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">])</span>
+                <span class="p">]</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">RoundCaps</span><span class="p">:</span>
                     <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;stroke-linecap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;round&#39;</span>
                 <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">Extended</span><span class="p">:</span>
@@ -343,7 +375,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.TXLWriter &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.TXLWriter &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
         <link rel="next" title="TXLWizard.Patterns.AbstractPattern" href="../Patterns/TXLWizard.Patterns.AbstractPattern.html"/>
         <link rel="prev" title="Python Module Reference" href="../../40_PythonModuleReference.html"/> 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -190,34 +190,43 @@
 <li><strong>SubGridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate System Sub-Grid Spacing in um.</p>
 <p>Defaults to 10</p>
 </li>
+<li><strong>Precision</strong> (<em>int, optional</em>) &#8211; <p>Number of digits for float to str conversion / Resolution of TXL file.</p>
+<p>Defaults to 4</p>
+</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<p>Initialize TXLWriter, add a definition structure,</p>
+<p>Import required Modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+</pre></div>
+</div>
+<p>Initialize TXLWriter</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">ShowGrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">GridWidth</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">GridHeight</span><span class="o">=</span><span class="mi">800</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">... </span>   <span class="n">ShowGrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">GridWidth</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">GridHeight</span><span class="o">=</span><span class="mi">800</span>
+<span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Add a definition structure and add a pattern of type <cite>Circle</cite></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddDefinitionStructure</span><span class="p">(</span><span class="s1">&#39;MyDefinition&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Circle&#39;</span><span class="p">,</span> <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Circle&#39;</span><span class="p">,</span> <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
 </pre></div>
 </div>
 <p>Add a content structure with a pattern <cite>Reference</cite> to reuse the definition structure.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyContentStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MySuperCircle&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">MyContentStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;Reference&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">ReferencedStructureID</span><span class="o">=</span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">... </span>   <span class="s1">&#39;Reference&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">ReferencedStructureID</span><span class="o">=</span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Reference.Reference object at 0x...&gt;</span>
 </pre></div>
 </div>
-<p>Generate the Output files with name <cite>mask.(txl|html|svg)</cite> to the folder <cite>myPath</cite></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;myPath/mask&#39;</span><span class="p">)</span>
+<p>Generate the Output files with name <cite>Example_TXLWriter.(txl|html|svg)</cite> to the folder <cite>Tests/Results</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/TXLWriter/Example_TXLWriter&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="method">
@@ -272,7 +281,7 @@
 
 <dl class="method">
 <dt id="TXLWizard.TXLWriter.TXLWriter.GenerateFiles">
-<code class="descname">GenerateFiles</code><span class="sig-paren">(</span><em>Filename</em>, <em>TXL=True</em>, <em>SVG=True</em>, <em>HTML=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
+<code class="descname">GenerateFiles</code><span class="sig-paren">(</span><em>Filename</em>, <em>TXL=True</em>, <em>SVG=True</em>, <em>HTML=True</em>, <em>TargetFolder=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the output files (.txl, .svg, .html).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -281,14 +290,89 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename without extension.
 The corresponding path will be created if it does not exist</li>
-<li><strong>TXL</strong> (<em>Optional[bool]</em>) &#8211; Enable TXL Output</li>
-<li><strong>SVG</strong> (<em>Optional[bool]</em>) &#8211; Enable SVG Output</li>
-<li><strong>HTML</strong> (<em>Optional[bool]</em>) &#8211; Enable HTML Output</li>
+<li><strong>TXL</strong> (<em>bool, optional</em>) &#8211; <p>Enable TXL Output.</p>
+<p>Defaults to True</p>
+</li>
+<li><strong>SVG</strong> (<em>bool, optional</em>) &#8211; <p>Enable SVG Output.</p>
+<p>Defaults to True</p>
+</li>
+<li><strong>HTML</strong> (<em>bool, optional</em>) &#8211; <p>Enable HTML Output. If set to <cite>True</cite>,
+also <cite>SVG</cite> needs to be set to <cite>True</cite></p>
+<p>Defaults to True</p>
+</li>
+<li><strong>TargetFolder</strong> (<em>str, optional</em>) &#8211; <p>If given, the generated files are stored in the folder specified.</p>
+<p>If not given, the generated files are stored in the path specified in <cite>Filename</cite></p>
+<p>Defaults to None.</p>
+</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TXLWizard.TXLWriter.TXLWriter.ImportTXLFile">
+<code class="descname">ImportTXLFile</code><span class="sig-paren">(</span><em>Filename</em>, <em>LayersToProcess=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.ImportTXLFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.ImportTXLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import an existing TXL file for further processing.</p>
+<p>The content structures can be accessed with <cite>self._ContentStructures</cite> (read-only!).</p>
+<p>The order of the content structures is stored in <cite>self._ContentStructuresIndexList</cite> (read-only!).</p>
+<p>The definition structures are stored in <cite>self._Definitions.Structures</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename of the .txl file to be imported</li>
+<li><strong>LayersToProcess</strong> (<em>list of int, optional</em>) &#8211; <p>if given, only layers in this list are processed / shown.</p>
+<p>Defaults to []</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.ShapeLibrary.Label</span>
+</pre></div>
+</div>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>import TXL file <cite>myPath/mask_orig.txl</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">ImportTXLFile</span><span class="p">(</span><span class="s1">&#39;Tests/SampleFiles/Example_Simple_Original.txl&#39;</span><span class="p">,</span> <span class="n">LayersToProcess</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Get an existing structure and add a pattern to it</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="s1">&#39;MyCircleArray&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;Circle&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">Radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Add a label</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SampleLabelObject</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">ShapeLibrary</span><span class="o">.</span><span class="n">Label</span><span class="o">.</span><span class="n">GetLabel</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">TXLWriter</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Text</span><span class="o">=</span><span class="s1">&#39;This is my text&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">FontSize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">20</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Generate the Output files with name <cite>ExampleSimple_Modified.(txl|html|svg)</cite> to the folder <cite>Tests/Results</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/TXLWriter/Example_Simple_Modified&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -337,7 +421,7 @@ The corresponding path will be created if it does not exist</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -18,7 +18,7 @@ class Polyline(AbstractPattern.AbstractPattern):
     Points: list of list of float
         List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the path
     RoundCaps: bool, optional
-        If set to True, the end of the path is rounded.
+        If set to True, the end of the path is rounded.\n
         Defaults to False.
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
@@ -28,6 +28,18 @@ class Polyline(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -36,11 +48,12 @@ class Polyline(AbstractPattern.AbstractPattern):
 
     >>> PolylineStructure = TXLWriter.AddContentStructure('MyPolylineID')
     >>> PolylineStructure.AddPattern(
-    >>>     'Polyline',
-    >>>     Points=[[0,0], [0,10], [20,50], [0,0]],
-    >>>     StrokeWidth=3,
-    >>>     Layer=1
-    >>> )
+    ...     'Polyline',
+    ...     Points=[[0,0], [0,10], [20,50], [0,0]],
+    ...     StrokeWidth=3,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Polyline.Polyline object at 0x...>
 
     Complex structures can easily be added by generating the Polyline points
 
@@ -48,21 +61,26 @@ class Polyline(AbstractPattern.AbstractPattern):
     >>> PolylinePoints = []
     >>> Radius = 10.
     >>> for i in range(21):
-    >>>     # AngleRadians goes from 0 to pi in 20 steps
-    >>>     AngleRadians = 0.5*2.*math.pi*1./20.*i
-    >>>     PolylinePoints.append([
-    >>>         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)
-    >>>     ])
+    ...     # AngleRadians goes from 0 to pi in 20 steps
+    ...     AngleRadians = 0.5*2.*math.pi*1./20.*i
+    ...     PolylinePoints.append([
+    ...         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)
+    ...     ])
     >>> PolylinePoints.append([-20,-30])
     >>> PolylinePoints.append([20,-30])
     >>>
     >>> PolylineStructure.AddPattern(
-    >>>     'Polyline',
-    >>>     Points=PolylinePoints,
-    >>>     RoundCaps=True,
-    >>>     StrokeWidth=3,
-    >>>     Layer=1
-    >>> )
+    ...     'Polyline',
+    ...     Points=PolylinePoints,
+    ...     RoundCaps=True,
+    ...     StrokeWidth=3,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Polyline.Polyline object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Polyline')
     
     '''
 
@@ -93,7 +111,8 @@ class Polyline(AbstractPattern.AbstractPattern):
         TXL = ''
         TXL += CommandString + ' '
         for Point in self.Points:
-            TXL += '{:1.4f},{:1.4f} '.format(Point[0], Point[1])
+            TXL += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(Point[0],
+                                                                                                         Point[1])
         TXL += 'END' + EndCommandString + '\n'
         return TXL
 
@@ -102,11 +121,14 @@ class Polyline(AbstractPattern.AbstractPattern):
 
         PointsString = ''
         for Point in self.Points:
-            PointsString += '{:1.4f},{:1.4f} '.format(Point[0], Point[1])
+            PointsString += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+                Point[0], Point[1])
         SVGAttributes = {'points': PointsString}
         SVGAttributes['style'] = ['fill:none']
+
         if self.Attributes['StrokeWidth'] != None:
-            SVGAttributes['style'].append('stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth']))
+            SVGAttributes['style'].append(
+                ('stroke-width:' + self._GetFloatFormatString() + '').format(self.Attributes['StrokeWidth']))
         if self.RoundCaps:
             SVGAttributes['stroke-linecap'] = 'round'
         SVG += '<polyline ' + self._GetSVGAttributesString(SVGAttributes) + ' />' + '\n'

@@ -3,6 +3,8 @@ Implements a class for `Pattern` objects of type `Definitions`.
 Intended for storing definition structures.
 '''
 import AbstractPattern
+
+
 class Definitions(AbstractPattern.AbstractPattern):
     '''
     Implements a class for `Pattern` objects of type `Definitions`.\n
@@ -14,7 +16,8 @@ class Definitions(AbstractPattern.AbstractPattern):
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
     '''
-    def __init__(self,**kwargs):
+
+    def __init__(self, **kwargs):
         super(Definitions, self).__init__(**kwargs)
 
         #: str: specifies the type of the pattern. Set to 'Definitions'
@@ -26,7 +29,7 @@ class Definitions(AbstractPattern.AbstractPattern):
         #: list of str: Index of the keys in `self.Structures`
         self.StructuresIndex = []
 
-    def AddStructure(self,ID,Structure):
+    def AddStructure(self, ID, Structure):
         '''
         Add a definition structure.
 
@@ -47,11 +50,10 @@ class Definitions(AbstractPattern.AbstractPattern):
                 TXL += self.Structures[i].GetTXLOutput()
         return TXL
 
-
     def GetSVGOutput(self):
         SVG = ''
         SVG += '<defs>'
         for i in self.StructuresIndex:
             SVG += self.Structures[i].GetSVGOutput()
-        SVG += '</defs>'+'\n'
+        SVG += '</defs>' + '\n'
         return SVG

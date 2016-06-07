@@ -24,6 +24,18 @@ class Reference(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -33,20 +45,27 @@ class Reference(AbstractPattern.AbstractPattern):
 
     >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID')
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
 
     Create copy of the content structure above.
 
     >>> CircleCopy = TXLWriter.AddContentStructure('MyCircleCopy')
     >>> CircleCopy.AddPattern(
-    >>>     'Reference',
-    >>>     ReferencedStructureID=CircleStructure.ID,
-    >>>     OriginPoint=[40,60]
-    >>> )
+    ...     'Reference',
+    ...     ReferencedStructureID=CircleStructure.ID,
+    ...     OriginPoint=[40,60]
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Reference.Reference object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Reference')
+
     '''
 
     def __init__(self, ReferencedStructureID, OriginPoint, **kwargs):
@@ -61,11 +80,10 @@ class Reference(AbstractPattern.AbstractPattern):
         #: list of float: x- and y- coordinates of the origin point of the pattern
         self._OriginPoint = OriginPoint
 
-
     def GetTXLOutput(self):
         TXL = ''
         TXL += 'SREF ' + self.ReferencedStructureID + ' '
-        TXL += '{:1.4f},{:1.4f} '.format(
+        TXL += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
             self._OriginPoint[0], self._OriginPoint[1]
         )
         TXL += '' + '\n'

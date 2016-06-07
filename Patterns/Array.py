@@ -38,6 +38,18 @@ class Array(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -47,11 +59,12 @@ class Array(AbstractPattern.AbstractPattern):
 
     >>> CircleStructure = TXLWriter.AddDefinitionStructure('MyCircleID')
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
 
     Create array of the definition structure above with
     10 repetitions at distance 100 in x-direction
@@ -59,18 +72,23 @@ class Array(AbstractPattern.AbstractPattern):
 
     >>> CircleArray = TXLWriter.AddContentStructure('MyCircleArray')
     >>> CircleArray.AddPattern(
-    >>>     'Array',
-    >>>     ReferencedStructureID=CircleStructure.ID,
-    >>>     OriginPoint=[40,60],
-    >>>     PositionDelta1=[
-    >>>         100, 0
-    >>>     ],
-    >>>     PositionDelta2=[
-    >>>         0, 200
-    >>>     ],
-    >>>     Repetitions1=10,
-    >>>     Repetitions2=20
-    >>> )
+    ...     'Array',
+    ...     ReferencedStructureID=CircleStructure.ID,
+    ...     OriginPoint=[40,60],
+    ...     PositionDelta1=[
+    ...         100, 0
+    ...     ],
+    ...     PositionDelta2=[
+    ...         0, 200
+    ...     ],
+    ...     Repetitions1=10,
+    ...     Repetitions2=20
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Array.Array object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Array')
 
     '''
 
@@ -104,7 +122,9 @@ class Array(AbstractPattern.AbstractPattern):
         TXL = ''
         if self.Repetitions1 > 1 or self.Repetitions2 > 1:
             TXL += 'AREF ' + self.ReferencedStructureID + ' '
-            TXL += '({:1.4f},{:1.4f}) {:d} ({:1.4f},{:1.4f}) {:d} ({:1.4f},{:1.4f})'.format(
+            TXL += ('(' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ') ' +
+                    '{:d} (' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ') ' +
+                    '{:d} (' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ')').format(
                 self._OriginPoint[0], self._OriginPoint[1],
                 self.Repetitions1, self.PositionDelta1[0], self.PositionDelta1[1],
                 self.Repetitions2, self.PositionDelta2[0], self.PositionDelta2[1]
@@ -112,7 +132,7 @@ class Array(AbstractPattern.AbstractPattern):
             TXL += '' + '\n'
         else:
             TXL += 'SREF ' + self.ReferencedStructureID + ' '
-            TXL += '{:1.4f} {:1.4f}'.format(
+            TXL += ('' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + '').format(
                 self._OriginPoint[0], self._OriginPoint[1]
             )
             TXL += '' + '\n'
@@ -127,7 +147,10 @@ class Array(AbstractPattern.AbstractPattern):
                     i * self.PositionDelta1[1] + j * self.PositionDelta2[1]
                 ]
                 SVGAttributes = self._GetSVGAttributesString({
-                    'transform': ['translate({:1.4f},{:1.4f})'.format(OriginPoint[0], OriginPoint[1])]
+                    'transform': [
+                        ('translate(' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ')').format(
+                            OriginPoint[0], OriginPoint[1])
+                    ]
                 })
                 SVG += (
                            '<g ' + SVGAttributes + '>' +

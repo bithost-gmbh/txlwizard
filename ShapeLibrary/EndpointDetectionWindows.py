@@ -14,16 +14,16 @@ def GetEndpointDetectionWindows(TXLWriter, SizeLarge=1000, SizeSmall=750, Offset
     TXLWriter: :class:`TXLWizard.TXLWriter.TXLWriter`
         Current Instance of :class:`TXLWizard.TXLWriter.TXLWriter`
     SizeLarge: float, optional
-        Size of the center square.
+        Size of the center square.\n
         Defaults to 1000
     SizeSmall: float, optional
-        Size of the four peripheral square.
+        Size of the four peripheral square.\n
         Defaults to 750
     Offset: float, optional
-        Offset of the peripheral squares to the center.
+        Offset of the peripheral squares to the center.\n
         Defaults to 1500
     Layer: int, optional
-        Layer the pattern should be rendered in.
+        Layer the pattern should be rendered in.\n
         Defaults to 1
 
     Returns

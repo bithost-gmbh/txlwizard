@@ -3,8 +3,12 @@ Implements a class for `Structure` objects (`STRUCT`).\n
 A `Structure` is a container for `Pattern` objects.
 '''
 
+import os.path
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../'))
+
 import AbstractPattern
-from ..Helpers import Tuttifrutti
+from Helpers import Tuttifrutti
 import copy
 import importlib
 
@@ -20,7 +24,7 @@ class Structure(AbstractPattern.AbstractPattern):
     ID: str
         Unique identification of the structure. Also used when referencing to this structure.
     TXLOutput: bool, optional
-        If set to False, the TXL Output is suppressed.
+        If set to False, the TXL Output is suppressed.\n
         Defaults to True
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.
@@ -29,21 +33,38 @@ class Structure(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
 
     Create Content Structure
 
-    >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID'
-    >>>     TXLOutput = True
-    >>> )
+    >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID',
+    ...     TXLOutput = True
+    ... )
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Structure')
 
     '''
 
@@ -98,6 +119,8 @@ class Structure(AbstractPattern.AbstractPattern):
         f = importlib.import_module('.' + PatternType, __package__)
         class_ = getattr(f, PatternType)
         kwargs['ParentStructure'] = self
+        kwargs['TXLWriter'] = self._TXLWriter
+
         for i in self.CurrentAttributes:
             if i in kwargs:
                 self.CurrentAttributes[i] = kwargs[i]
@@ -147,9 +170,9 @@ class Structure(AbstractPattern.AbstractPattern):
         AttributeMapping = {
             'Layer': 'LAYER {:d}',
             'DataType': 'DATATYPE {:d}',
-            'RotationAngle': 'ANGLE {:1.2f}',
-            'StrokeWidth': 'WIDTH {:1.4f}',
-            'ScaleFactor': 'MAG {:1.4f}'
+            'RotationAngle': 'ANGLE ' + self._GetFloatFormatString() + '',
+            'StrokeWidth': 'WIDTH ' + self._GetFloatFormatString() + '',
+            'ScaleFactor': 'MAG ' + self._GetFloatFormatString() + ''
         }
         TXL = ''
         for i in Attributes:
@@ -171,7 +194,10 @@ class Structure(AbstractPattern.AbstractPattern):
                     NewCurrentAttributes[j] = CurrentAttributes[j]
             CurrentAttributes = NewCurrentAttributes
             if abs(i._OriginPoint[0]) > 0 or abs(i._OriginPoint[1]) > 0:
-                Transforms = ['translate({:1.4f},{:1.4f})'.format(i._OriginPoint[0], i._OriginPoint[1])]
+                Transforms = [
+                    ('translate(' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ')').format(
+                        i._OriginPoint[0], i._OriginPoint[1])
+                ]
             else:
                 Transforms = []
 
@@ -217,9 +243,11 @@ class Structure(AbstractPattern.AbstractPattern):
                 if i == 'Layer':
                     SVGAttributes['class'].append('Layer{:d}'.format(Attributes[i]))
                 elif i == 'RotationAngle' and PatternType in ['Reference']:
-                    SVGAttributes['transform'].append('rotate({:1.4f})'.format(Attributes[i]))
+                    SVGAttributes['transform'].append(
+                        ('rotate(' + self._GetFloatFormatString() + ')').format(Attributes[i]))
                 elif i == 'ScaleFactor' and PatternType in ['Reference']:
-                    SVGAttributes['transform'].append('scale({:1.4f})'.format(Attributes[i]))
+                    SVGAttributes['transform'].append(
+                        ('scale(' + self._GetFloatFormatString() + ')').format(Attributes[i]))
                     # if i == 'StrokeWidth' and False:
                     #    SVGAttributes['style'].append('stroke-width: {:1.4f}'.format(Attributes[i]))
 
