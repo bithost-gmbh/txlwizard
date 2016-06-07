@@ -7,8 +7,8 @@ import TXLWizard.TXLWriter
 
 # Import Pre-Defined Shapes / Structures wrapped in functions
 import TXLWizard.ShapeLibrary.EndpointDetectionWindows
-import TXLWizard.ShapeLibrary.Markers
 import TXLWizard.ShapeLibrary.Label
+import TXLWizard.ShapeLibrary.LabelArray
 import TXLWizard.ShapeLibrary.CornerCube
 
 # Import math module for calculations

@@ -65,7 +65,7 @@ class Reference(AbstractPattern.AbstractPattern):
     def GetTXLOutput(self):
         TXL = ''
         TXL += 'SREF ' + self.ReferencedStructureID + ' '
-        TXL += '{:1.4f},{:1.4f} '.format(
+        TXL += (''+self._GetFloatFormatString()+','+self._GetFloatFormatString()+' ').format(
             self._OriginPoint[0], self._OriginPoint[1]
         )
         TXL += '' + '\n'

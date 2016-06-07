@@ -36,6 +36,9 @@ class AbstractPattern(object):
         #: list of float, x- and y- coordinates of the origin point of the pattern
         self._OriginPoint = [0,0]
 
+        #: :class:`TXLWizard.TXLWriter.TXLWriter`: reference to the current `TXLWriter` instance
+        self._TXLWriter = None
+
         #: :class:`TXLWizard.Patterns.Structure.Structure`, reference to the `Structure` instance containing the current pattern
         self.ParentStructure = None
 
@@ -55,10 +58,11 @@ class AbstractPattern(object):
             if i in kwargs:
                 self.Attributes[i] = kwargs[i]
 
+        if 'TXLWriter' in kwargs:
+            self._TXLWriter = kwargs['TXLWriter']
+
         if 'ParentStructure' in kwargs:
             self.ParentStructure = kwargs['ParentStructure']
-
-
 
 
     def _GetSVGAttributesString(self,OverrideSVGAttributes = {}):
@@ -102,6 +106,26 @@ class AbstractPattern(object):
                 SVGAttributesString += '" '
 
         return SVGAttributesString
+
+    def _GetFloatFormatString(self,ID=''):
+        '''
+        Alias of :func:`TXLWizard.TXLWriter.TXLWriter._GetFloatFormatString`.
+        Returns a string for formatting a `float`, e.g. `{ID:1.3f}`.
+        The number of digits is specified by `self._Precision`
+
+        Parameters
+        ----------
+        ID: str, optional
+            Optional ID for the formatting option.
+            Defaults to ''
+
+        Returns
+        -------
+        str:
+            string for use with the `str.format()` function
+
+        '''
+        return self._TXLWriter._GetFloatFormatString(ID='')
 
     def GetTXLOutput(self):
         '''

@@ -5,6 +5,7 @@ Here we can add structures (definitions and content) which will be rendered in t
 
 from Patterns import Definitions
 from Patterns import Structure
+import TXLConverter
 import os.path
 
 
@@ -31,6 +32,9 @@ class TXLWriter(object):
     SubGridSpacing : int, optional
         Coordinate System Sub-Grid Spacing in um.\n
         Defaults to 10
+    Precision : int, optional
+        number of digits for float to str conversion / Resolution of TXL file
+        Defaults to 4
 
     Examples
     --------
@@ -62,6 +66,9 @@ class TXLWriter(object):
 
     def __init__(self, **kwargs):
 
+        #: float: current software version
+        self._Version = 1.7
+
         #: :class:`TXLWizard.Patterns.Definitions.Definitions`: container for definition structures
         self._Definitions = Definitions.Definitions()
 
@@ -85,6 +92,9 @@ class TXLWriter(object):
         #: int: Height of the SVG Image in pixels
         self._SVGHeight = 800
 
+        #: int: number of digits for float to str conversion / Resolution of TXL file
+        self._Precision = 4
+
         #: int: incrementing number for automatically created indices
         self._AutoIndexIncrement = 0
 
@@ -100,7 +110,7 @@ class TXLWriter(object):
         #: list of str: list of indices of helper structures, needed for correct order
         self._HelperStructuresIndexList = []
 
-        for i in ['Width', 'Height', 'GridSpacing', 'SubGridSpacing', 'ShowGrid']:
+        for i in ['Width', 'Height', 'GridSpacing', 'SubGridSpacing', 'ShowGrid', 'Precision']:
             if i in kwargs:
                 setattr(self, i, kwargs[i])
 
@@ -162,6 +172,7 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
+        kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
         self._Definitions.AddStructure(ID, StructureObject)
         return StructureObject
@@ -182,6 +193,7 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
+        kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
         self._ContentStructures[ID] = StructureObject
         self._ContentStructuresIndexList.append(ID)
@@ -203,10 +215,69 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
+        kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
         self._HelperStructures[ID] = StructureObject
         self._HelperStructuresIndexList.append(ID)
         return self._HelperStructures[ID]
+
+    def ImportTXLFile(self, Filename, LayersToProcess=[]):
+        '''
+        Import an existing TXL file for further processing.
+        The content structures can be accessed with `self._ContentStructures` (read-only!).
+        The order of the content structures is stored in `self._ContentStructuresIndexList` (read-only!).
+        The definition structures are stored in `self._Definitions.Structures`
+
+        Parameters
+        ----------
+        Filename : str
+            Path / Filename of the .txl file to be imported
+        LayersToProcess : list of int, optional
+            if given, only layers in this list are processed / shown.
+            Defaults to []
+
+        Examples
+        --------
+
+        Initialize TXLWriter
+
+        >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
+
+        import TXL file `myPath/mask_orig.txl`
+
+        >>> TXLWriter.ImportTXLFile('myPath/mask_orig.txl', LayersToProcess=[2,4])
+
+        Add a pattern to an existing structure
+
+        >>> MyStructure = TXLWriter._ContentStructures['MySuperStructure']
+        >>> MyStructure.AddPattern(
+        >>>     'Circle',
+        >>>     Center=[0, 0],
+        >>>     Radius=50,
+        >>>     Layer=1
+        >>> )
+
+        Add a label
+
+        >>> SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
+        >>>     TXLWriter,
+        >>>     Text='This is my text',
+        >>>     OriginPoint=[
+        >>>         -200, 300
+        >>>     ],
+        >>>     FontSize=150,
+        >>>     StrokeWidth=20
+        >>> )
+
+        Generate the Output files with name `mask_final.(txl|html|svg)` to the folder `myPath`
+
+        >>> TXLWriter.GenerateFiles('myPath/mask_final')
+
+        '''
+        TXLConverterObject = TXLConverter.TXLConverter(Filename, LayersToProcess=LayersToProcess, TXLWriter=self)
+        TXLConverterObject.ParseTXLFile()
+
+
 
     def _GetAutoStructureID(self, Prefix='ID'):
         '''
@@ -228,6 +299,31 @@ class TXLWriter(object):
         self._AutoIndexIncrement += 1
         return ID
 
+    def _GetFloatFormatString(self, ID=''):
+        '''
+        Returns a string for formatting a `float`, e.g. `{ID:1.3f}`.
+        The number of digits is specified by `self._Precision`
+
+        Parameters
+        ----------
+        ID: str, optional
+            Optional ID for the formatting option.
+            Defaults to ''
+
+        Returns
+        -------
+        str:
+            string for use with the `str.format()` function
+
+        '''
+
+        if self._Precision > 0:
+            FloatFormatString = '{' + str(ID) + ':1.' + str(self._Precision) + 'f}'
+        else:
+            FloatFormatString = '{' + str(ID) + ':1.0f}'
+
+        return FloatFormatString
+
     def GenerateFiles(self, Filename, TXL=True, SVG=True, HTML=True):
         '''
         Generate the output files (.txl, .svg, .html).
@@ -237,12 +333,16 @@ class TXLWriter(object):
         Filename: str
             Path / Filename without extension.
             The corresponding path will be created if it does not exist
-        TXL: Optional[bool]
-            Enable TXL Output
-        SVG: Optional[bool]
-            Enable SVG Output
-        HTML: Optional[bool]
-            Enable HTML Output
+        TXL: bool, optional
+            Enable TXL Output.
+            Defaults to True
+        SVG: bool, optional
+            Enable SVG Output.
+            Defaults to True
+        HTML: bool, optional
+            Enable HTML Output. If set to `True`,
+            also `SVG` needs to be set to `True`
+            Defaults to True
         '''
         Path = os.path.dirname(Filename)
         if len(Path) and not os.path.exists(Path):
@@ -269,7 +369,7 @@ class TXLWriter(object):
         f = open(Filename + '.txl', 'w')
         f.write('LETXTLIB 1.0.0' + '\n')
         f.write('UNIT MICRON' + '\n')
-        f.write('RESOLVE 0.0001' + '\n')
+        f.write(('RESOLVE ' + self._GetFloatFormatString()).format(10 ** (-1 * self._Precision)) + '\n')
         f.write('BEGLIB' + '\n')
         f.write('\n\n' + '! ### Definitions Start ###' + '\n')
         f.write(self._Definitions.GetTXLOutput())
@@ -280,7 +380,7 @@ class TXLWriter(object):
                 f.write(self._ContentStructures[i].GetTXLOutput())
         f.write('\n\n' + '! ### Content Structures End ###' + '\n')
 
-        f.write('ENDLIB')
+        f.write('ENDLIB' + '\n')
         f.close()
 
     def _GenerateSVGFile(self, Filename):

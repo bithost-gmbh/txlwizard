@@ -124,11 +124,15 @@ class Circle(AbstractPattern.AbstractPattern):
                 BoundaryString += 'E'
         TXL = ''
         TXL += 'C' + BoundaryString + ' '
-        TXL += '{:1.4f} {:1.4f},{:1.4f} '.format(self.Radius, self.Center[0], self.Center[1])
+        TXL += (
+        '' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+            self.Radius, self.Center[0], self.Center[1])
+
         if self.StartAngle != None and self.EndAngle != None:
             if not self.PathOnly:
                 TXL += '('
-            TXL += '{:1.4f} {:1.4f} '.format(self.StartAngle, self.EndAngle)
+            TXL += ('' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                self.StartAngle, self.EndAngle)
 
             if self.NumberOfPoints != None:
                 TXL += '{:d}'.format(self.NumberOfPoints)
@@ -147,10 +151,15 @@ class Circle(AbstractPattern.AbstractPattern):
                 # 'cy':'{:1.4f}'.format(self.Center[1]),
                 'cx': '0',
                 'cy': '0',
-                'r': '{:1.4f}'.format(self.Radius),
+                'r': ('' + self._GetFloatFormatString() + '').format(
+                    self.Radius),
             }
             if self.PathOnly:
-                SVGAttributes['style'] = ['fill:none', 'stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth'])]
+                SVGAttributes['style'] = [
+                    'fill:none',
+                    ('stroke-width:' + self._GetFloatFormatString() + '').format(
+                        self.Attributes['StrokeWidth'])
+                ]
             SVG += ('<circle ' + self._GetSVGAttributesString(SVGAttributes) +
                     ' />' + '\n')
         else:
@@ -160,16 +169,22 @@ class Circle(AbstractPattern.AbstractPattern):
             # See http://www.w3.org/TR/2003/REC-SVG11-20030114/paths.html#PathDataEllipticalArcCommands
             SweepFlag = 1
             SVGAttributes = {
-                'd': 'm {:1.4f} {:1.4f} '.format(self.StartPoint[0], self.StartPoint[1]) +
+                'd': ('m ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                    self.StartPoint[0], self.StartPoint[1]) +
                      # 'l {:1.4f} {:1.4f} '.format(StartPoint[0], StartPoint[1])+
-                     'a {:1.4f} {:1.4f} 0 {:d} {:d} {:1.4f} {:1.4f} '.format(self.Radius, self.Radius, LargeAngle,
-                                                                             SweepFlag,
-                                                                             self.EndPoint[0] - self.StartPoint[0],
-                                                                             self.EndPoint[1] - self.StartPoint[1])
+                     ('a ' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' 0 {:d} {:d} ' +
+                      self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ' ').format(
+                         self.Radius, self.Radius, LargeAngle, SweepFlag,
+                         self.EndPoint[0] - self.StartPoint[0],
+                         self.EndPoint[1] - self.StartPoint[1])
                 # 'l {:1.4f} {:1.4f}'.format(self.Center[0],self.Center[1])
             }
             if self.PathOnly:
-                SVGAttributes['style'] = ['fill:none', 'stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth'])]
+                SVGAttributes['style'] = [
+                    'fill:none',
+                    ('stroke-width:' + self._GetFloatFormatString() + '').format(
+                        self.Attributes['StrokeWidth'])
+                ]
                 if self.RoundCaps:
                     SVGAttributes['stroke-linecap'] = 'round'
                 elif self.Extended:

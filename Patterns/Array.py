@@ -104,7 +104,9 @@ class Array(AbstractPattern.AbstractPattern):
         TXL = ''
         if self.Repetitions1 > 1 or self.Repetitions2 > 1:
             TXL += 'AREF ' + self.ReferencedStructureID + ' '
-            TXL += '({:1.4f},{:1.4f}) {:d} ({:1.4f},{:1.4f}) {:d} ({:1.4f},{:1.4f})'.format(
+            TXL += ('(' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ') ' +
+                    '{:d} (' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ') ' +
+                    '{:d} (' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ')').format(
                 self._OriginPoint[0], self._OriginPoint[1],
                 self.Repetitions1, self.PositionDelta1[0], self.PositionDelta1[1],
                 self.Repetitions2, self.PositionDelta2[0], self.PositionDelta2[1]
@@ -112,7 +114,7 @@ class Array(AbstractPattern.AbstractPattern):
             TXL += '' + '\n'
         else:
             TXL += 'SREF ' + self.ReferencedStructureID + ' '
-            TXL += '{:1.4f} {:1.4f}'.format(
+            TXL += ('' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + '').format(
                 self._OriginPoint[0], self._OriginPoint[1]
             )
             TXL += '' + '\n'
@@ -127,7 +129,10 @@ class Array(AbstractPattern.AbstractPattern):
                     i * self.PositionDelta1[1] + j * self.PositionDelta2[1]
                 ]
                 SVGAttributes = self._GetSVGAttributesString({
-                    'transform': ['translate({:1.4f},{:1.4f})'.format(OriginPoint[0], OriginPoint[1])]
+                    'transform': [
+                        ('translate(' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ')').format(
+                            OriginPoint[0], OriginPoint[1])
+                    ]
                 })
                 SVG += (
                            '<g ' + SVGAttributes + '>' +

@@ -2,7 +2,6 @@
 Class for parsing TXL files and converting them to html / svg using `TXLWriter`
 '''
 
-
 import TXLWriter
 
 from Helpers import Tuttifrutti
@@ -11,6 +10,7 @@ import json
 import os
 import os.path
 import traceback
+
 
 class TXLConverter(object):
     '''
@@ -23,6 +23,23 @@ class TXLConverter(object):
         Path / Filename of the .txl file
     LayersToProcess : list of int, optional
         if given, only layers in this list are processed / shown
+    **kwargs:
+        keyword-arguments passed to the :class:`TXLWizard.TXLWriter.TXLWriter` constructor.
+
+    Examples
+    --------
+
+    Instatiate a `TXLConverter` instance, parse the TXL file and generate the HTML / SVG files
+
+    >>> TXLConverterInstance = TXLWizard.TXLConverter.TXLConverter(
+    >>>     FullFilePath,
+    >>>     GridWidth=500,
+    >>>     GridHeight=800,
+    >>>     LayersToProcess=[1,5]
+    >>> )
+    >>> TXLConverterInstance.ParseTXLFile()
+    >>> TXLConverterInstance.GenerateFiles()
+
     '''
 
     def __init__(self, Filename, **kwargs):
@@ -156,14 +173,18 @@ class TXLConverter(object):
         # key: structure index, value: int, number of references
         self._StructReferences = {}
 
+        #: :class:`TXLWizard.TXLWriter.TXLWriter`: instance of `TXLWriter`
+        self._TXLWriter = None
+
         if 'LayersToProcess' in kwargs:
             self._LayersToProcess = kwargs['LayersToProcess']
 
-        self._TXLWriter = TXLWriter.TXLWriter(**kwargs)
-        self._ParseTXLFile()
-        self._TXLWriter.GenerateFiles(os.path.splitext(self._Filename)[0], TXL=False)
+        if 'TXLWriter' in kwargs:
+            self._TXLWriter = kwargs['TXLWriter']
+        else:
+            self._TXLWriter = TXLWriter.TXLWriter(**kwargs)
 
-    def _ParseTXLFile(self):
+    def ParseTXLFile(self):
         '''
         Parses the TXL file by processing line by line.
         The number of references to structures is counted.
@@ -291,7 +312,7 @@ class TXLConverter(object):
 
             # Handle Points not separated by ,
             if ParameterInfo['Type'] == 'Point' and ParameterValueString.find(',') == -1 and not (
-                    'List' in ParameterInfo and ParameterInfo['List']):
+                            'List' in ParameterInfo and ParameterInfo['List']):
                 ParameterValueString += ',' + Tokens[i + 1 + SkipTokenIndex + 1]
                 SkipTokenIndex += 1
             ParameterFound = self._ParsePatternParameter(CurrentCommandToken, ParameterInfo, ParameterValueString,
@@ -386,7 +407,11 @@ class TXLConverter(object):
 
         return ParameterValue
 
-
+    def GenerateFiles(self):
+        '''
+        Generate the HTML / SVG files
+        '''
+        self._TXLWriter.GenerateFiles(os.path.splitext(self._Filename)[0], TXL=False)
 
 
 class TXLConverterCLI(object):
@@ -429,7 +454,7 @@ class TXLConverterCLI(object):
         }
 
         #: float: current software version
-        self._Version = 1.6
+        self._Version = 1.7
 
         #: str: Path / Filename of the file where the configuration is read and stored in the JSON format.
         self._JSONConfigurationFile = JSONConfigurationFile
@@ -437,12 +462,11 @@ class TXLConverterCLI(object):
         #: bool: Flag whether to update the configuration file.
         self._UpdateConfigurationFile = UpdateConfigurationFile
 
-
         self._LoadConfiguration()
         Tuttifrutti.update(self._Configuration, OverrideConfiguration)
         Tuttifrutti.Penrose()
 
-        self._PrintMessage('### TXL Converter v{:1.1f} ###'.format(self._Version),'Bold')
+        self._PrintMessage('### TXL Converter v{:1.1f} ###'.format(self._Version), 'Bold')
         self._PrintMessage('Converts TXL Files to SVG/HTML')
         self._PrintMessage('written by Esteban Marin (estebanmarin@gmx.ch)')
         print(' ')
@@ -485,9 +509,9 @@ class TXLConverterCLI(object):
 
         Configuration = self._Configuration
         print(' ')
-        self._PrintMessage('Full TXL File / Folder Path','Bold')
+        self._PrintMessage('Full TXL File / Folder Path', 'Bold')
         NewTXLFolderPath = Tuttifrutti.input('If the path is a folder, you can enter the filename separately.\n' +
-                                                     '[' + Configuration['TXLFolderPath'] + ']: ')
+                                             '[' + Configuration['TXLFolderPath'] + ']: ')
         if len(NewTXLFolderPath) > 0:
             if NewTXLFolderPath.find('/') > -1:
                 NewTXLFolderPath = NewTXLFolderPath.replace('\\', '')
@@ -495,7 +519,7 @@ class TXLConverterCLI(object):
         print(' ')
 
         if not os.path.isfile(Configuration['TXLFolderPath']):
-            self._PrintMessage('TXL Filename','Bold')
+            self._PrintMessage('TXL Filename', 'Bold')
             NewTXLFilename = Tuttifrutti.input('[' + Configuration['TXLFilename'] + ']: ')
             if len(NewTXLFilename) > 0:
                 if NewTXLFolderPath.find('/') > -1:
@@ -505,20 +529,20 @@ class TXLConverterCLI(object):
             print(' ')
 
         for i in ['SampleWidth', 'SampleHeight']:
-            self._PrintMessage(i+' in um','Bold')
+            self._PrintMessage(i + ' in um', 'Bold')
             NewValue = Tuttifrutti.input(
                 'used to draw coordinate system\n[' + str(Configuration[i]) + ']: ')
             if len(NewValue) > 0:
                 Configuration[i] = int(NewValue)
             print(' ')
 
-        self._PrintMessage('Layers to process','Bold')
+        self._PrintMessage('Layers to process', 'Bold')
         NewLayersToProcess = Tuttifrutti.input(
             'comma-separated, e.g. 1,4,5. Type -1 for all layers.\n[' + ','.join(
                 map(str, Configuration['LayersToProcess'])) + ']: ')
         if len(NewLayersToProcess) > 0:
             Configuration['LayersToProcess'] = []
-            for Layer in NewLayersToProcess.split(','):
+            for Layer in NewLayersToProcess.strip().strip('[').strip(']').split(','):
                 Configuration['LayersToProcess'].append(int(Layer.strip()))
 
         print(' ')
@@ -542,6 +566,8 @@ class TXLConverterCLI(object):
             GridHeight=self._Configuration['SampleHeight'],
             LayersToProcess=self._Configuration['LayersToProcess']
         )
+        TXLConverterInstance.ParseTXLFile()
+        TXLConverterInstance.GenerateFiles()
 
     def _PrintMessage(self, Message, Style=''):
         '''

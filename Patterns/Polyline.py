@@ -93,7 +93,8 @@ class Polyline(AbstractPattern.AbstractPattern):
         TXL = ''
         TXL += CommandString + ' '
         for Point in self.Points:
-            TXL += '{:1.4f},{:1.4f} '.format(Point[0], Point[1])
+            TXL += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(Point[0],
+                                                                                                         Point[1])
         TXL += 'END' + EndCommandString + '\n'
         return TXL
 
@@ -102,11 +103,14 @@ class Polyline(AbstractPattern.AbstractPattern):
 
         PointsString = ''
         for Point in self.Points:
-            PointsString += '{:1.4f},{:1.4f} '.format(Point[0], Point[1])
+            PointsString += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+                Point[0], Point[1])
         SVGAttributes = {'points': PointsString}
         SVGAttributes['style'] = ['fill:none']
+
         if self.Attributes['StrokeWidth'] != None:
-            SVGAttributes['style'].append('stroke-width:{:1.4f}'.format(self.Attributes['StrokeWidth']))
+            SVGAttributes['style'].append(
+                ('stroke-width:' + self._GetFloatFormatString() + '').format(self.Attributes['StrokeWidth']))
         if self.RoundCaps:
             SVGAttributes['stroke-linecap'] = 'round'
         SVG += '<polyline ' + self._GetSVGAttributesString(SVGAttributes) + ' />' + '\n'

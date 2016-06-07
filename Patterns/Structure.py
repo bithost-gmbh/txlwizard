@@ -98,6 +98,8 @@ class Structure(AbstractPattern.AbstractPattern):
         f = importlib.import_module('.' + PatternType, __package__)
         class_ = getattr(f, PatternType)
         kwargs['ParentStructure'] = self
+        kwargs['TXLWriter'] = self._TXLWriter
+
         for i in self.CurrentAttributes:
             if i in kwargs:
                 self.CurrentAttributes[i] = kwargs[i]
