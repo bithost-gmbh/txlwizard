@@ -48,19 +48,39 @@ def GetLabel(TXLWriter, Text, OriginPoint=[0, 0], FontSize=100, StrokeWidth=10, 
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+    >>> import TXLWizard.ShapeLibrary.Label
+
+    Initialize TXLWriter
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
-    >>>
+
+    Add a Label
+
     >>> SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
-    >>>     TXLWriter,
-    >>>     Text='This is my text',
-    >>>     OriginPoint=[
-    >>>         -200, 300
-    >>>     ],
-    >>>     FontSize=150,
-    >>>     StrokeWidth=20,
-    >>>     RoundCaps=False, # Set to False to improve e-Beam performance
-    >>>     Layer=1
-    >>> )
+    ...     TXLWriter,
+    ...     Text='This is my text',
+    ...     OriginPoint=[
+    ...         -200, 300
+    ...     ],
+    ...     FontSize=150,
+    ...     StrokeWidth=20,
+    ...     RoundCaps=False, # Set to False to improve e-Beam performance
+    ...     Layer=1
+    ... )
+
+    Generate files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/ShapeLibrary/Label')
 
     '''
 

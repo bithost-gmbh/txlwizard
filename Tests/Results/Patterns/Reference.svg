@@ -1,0 +1,577 @@
+<svg version="1.1" baseProfile="full" width="800" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="SVGImage" viewBox="-400 -400 800 800">
+
+            <style type="text/css">
+              <![CDATA[
+                #HelperStructures{}
+                #HelperStructures .Pattern{opacity:0.8}
+                #CoordinateXAxis .Pattern{stroke:#000}
+                #CoordinateYAxis .Pattern{stroke:#000}
+                #HelperStructures #Grid .Pattern{opacity:0.1;stroke:#000}
+                #HelperStructures #SubGrid .Pattern{opacity:0.1;stroke:#188487}
+                .Pattern{stroke-width:0px;}
+                .Layer0 .Pattern{fill:#467821;stroke:#467821;}
+                .Layer1 .Pattern{fill:#348ABD;stroke:#348ABD;}
+                .Layer2 .Pattern{fill:#E24A33;stroke:#E24A33;}
+                .Layer3 .Pattern{fill:#A60628;stroke:#A60628;}
+                .Layer4 .Pattern{fill:#CF4457;stroke:#CF4457;}
+                .Pattern{opacity:0.6}
+                /*.Pattern:hover, .Object:hover .Pattern{opacity:0.8}*/
+              ]]>
+            </style>
+        <defs></defs>
+<g transform="translate(400.00,400.00),matrix(1,0,0,-1,0,0)">
+<g id="HelperStructures">
+<g id="CoordinateXAxis" >
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,0.0000 400.0000,0.0000 " class="Pattern"  />
+</g>
+</g>
+<g id="CoordinateYAxis" >
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="0.0000,-400.0000 0.0000,400.0000 " class="Pattern"  />
+</g>
+</g>
+<g id="Grid" >
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="0.0000,-400.0000 0.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="0.0000,-400.0000 0.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-100.0000,-400.0000 -100.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="100.0000,-400.0000 100.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-200.0000,-400.0000 -200.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="200.0000,-400.0000 200.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-300.0000,-400.0000 -300.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="300.0000,-400.0000 300.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,0.0000 400.0000,0.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,0.0000 400.0000,0.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,-100.0000 400.0000,-100.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,100.0000 400.0000,100.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,-200.0000 400.0000,-200.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,200.0000 400.0000,200.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,-300.0000 400.0000,-300.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:5.0000" points="-400.0000,300.0000 400.0000,300.0000 " class="Pattern"  />
+</g>
+</g>
+<g id="SubGrid" >
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="0.0000,-400.0000 0.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="0.0000,-400.0000 0.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-10.0000,-400.0000 -10.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="10.0000,-400.0000 10.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-20.0000,-400.0000 -20.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="20.0000,-400.0000 20.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-30.0000,-400.0000 -30.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="30.0000,-400.0000 30.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-40.0000,-400.0000 -40.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="40.0000,-400.0000 40.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-50.0000,-400.0000 -50.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="50.0000,-400.0000 50.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-60.0000,-400.0000 -60.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="60.0000,-400.0000 60.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-70.0000,-400.0000 -70.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="70.0000,-400.0000 70.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-80.0000,-400.0000 -80.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="80.0000,-400.0000 80.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-90.0000,-400.0000 -90.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="90.0000,-400.0000 90.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-100.0000,-400.0000 -100.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="100.0000,-400.0000 100.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-110.0000,-400.0000 -110.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="110.0000,-400.0000 110.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-120.0000,-400.0000 -120.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="120.0000,-400.0000 120.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-130.0000,-400.0000 -130.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="130.0000,-400.0000 130.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-140.0000,-400.0000 -140.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="140.0000,-400.0000 140.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-150.0000,-400.0000 -150.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="150.0000,-400.0000 150.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-160.0000,-400.0000 -160.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="160.0000,-400.0000 160.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-170.0000,-400.0000 -170.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="170.0000,-400.0000 170.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-180.0000,-400.0000 -180.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="180.0000,-400.0000 180.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-190.0000,-400.0000 -190.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="190.0000,-400.0000 190.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-200.0000,-400.0000 -200.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="200.0000,-400.0000 200.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-210.0000,-400.0000 -210.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="210.0000,-400.0000 210.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-220.0000,-400.0000 -220.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="220.0000,-400.0000 220.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-230.0000,-400.0000 -230.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="230.0000,-400.0000 230.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-240.0000,-400.0000 -240.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="240.0000,-400.0000 240.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-250.0000,-400.0000 -250.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="250.0000,-400.0000 250.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-260.0000,-400.0000 -260.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="260.0000,-400.0000 260.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-270.0000,-400.0000 -270.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="270.0000,-400.0000 270.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-280.0000,-400.0000 -280.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="280.0000,-400.0000 280.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-290.0000,-400.0000 -290.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="290.0000,-400.0000 290.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-300.0000,-400.0000 -300.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="300.0000,-400.0000 300.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-310.0000,-400.0000 -310.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="310.0000,-400.0000 310.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-320.0000,-400.0000 -320.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="320.0000,-400.0000 320.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-330.0000,-400.0000 -330.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="330.0000,-400.0000 330.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-340.0000,-400.0000 -340.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="340.0000,-400.0000 340.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-350.0000,-400.0000 -350.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="350.0000,-400.0000 350.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-360.0000,-400.0000 -360.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="360.0000,-400.0000 360.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-370.0000,-400.0000 -370.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="370.0000,-400.0000 370.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-380.0000,-400.0000 -380.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="380.0000,-400.0000 380.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-390.0000,-400.0000 -390.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="390.0000,-400.0000 390.0000,400.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,0.0000 400.0000,0.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,0.0000 400.0000,0.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-10.0000 400.0000,-10.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,10.0000 400.0000,10.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-20.0000 400.0000,-20.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,20.0000 400.0000,20.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-30.0000 400.0000,-30.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,30.0000 400.0000,30.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-40.0000 400.0000,-40.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,40.0000 400.0000,40.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-50.0000 400.0000,-50.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,50.0000 400.0000,50.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-60.0000 400.0000,-60.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,60.0000 400.0000,60.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-70.0000 400.0000,-70.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,70.0000 400.0000,70.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-80.0000 400.0000,-80.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,80.0000 400.0000,80.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-90.0000 400.0000,-90.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,90.0000 400.0000,90.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-100.0000 400.0000,-100.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,100.0000 400.0000,100.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-110.0000 400.0000,-110.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,110.0000 400.0000,110.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-120.0000 400.0000,-120.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,120.0000 400.0000,120.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-130.0000 400.0000,-130.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,130.0000 400.0000,130.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-140.0000 400.0000,-140.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,140.0000 400.0000,140.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-150.0000 400.0000,-150.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,150.0000 400.0000,150.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-160.0000 400.0000,-160.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,160.0000 400.0000,160.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-170.0000 400.0000,-170.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,170.0000 400.0000,170.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-180.0000 400.0000,-180.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,180.0000 400.0000,180.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-190.0000 400.0000,-190.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,190.0000 400.0000,190.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-200.0000 400.0000,-200.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,200.0000 400.0000,200.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-210.0000 400.0000,-210.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,210.0000 400.0000,210.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-220.0000 400.0000,-220.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,220.0000 400.0000,220.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-230.0000 400.0000,-230.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,230.0000 400.0000,230.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-240.0000 400.0000,-240.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,240.0000 400.0000,240.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-250.0000 400.0000,-250.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,250.0000 400.0000,250.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-260.0000 400.0000,-260.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,260.0000 400.0000,260.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-270.0000 400.0000,-270.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,270.0000 400.0000,270.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-280.0000 400.0000,-280.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,280.0000 400.0000,280.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-290.0000 400.0000,-290.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,290.0000 400.0000,290.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-300.0000 400.0000,-300.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,300.0000 400.0000,300.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-310.0000 400.0000,-310.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,310.0000 400.0000,310.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-320.0000 400.0000,-320.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,320.0000 400.0000,320.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-330.0000 400.0000,-330.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,330.0000 400.0000,330.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-340.0000 400.0000,-340.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,340.0000 400.0000,340.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-350.0000 400.0000,-350.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,350.0000 400.0000,350.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-360.0000 400.0000,-360.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,360.0000 400.0000,360.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-370.0000 400.0000,-370.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,370.0000 400.0000,370.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-380.0000 400.0000,-380.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,380.0000 400.0000,380.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,-390.0000 400.0000,-390.0000 " class="Pattern"  />
+</g>
+<g >
+    <polyline style="fill:none;stroke-width:0.5000" points="-400.0000,390.0000 400.0000,390.0000 " class="Pattern"  />
+</g>
+</g>
+</g><g id="ContentStructures">
+<g id="MyCircleID" >
+<g class="Layer1" >
+    <circle cx="0" cy="0" r="50.0000" class="Pattern"  />
+</g>
+</g>
+<g id="MyCircleCopy" >
+<g transform="translate(40.0000,60.0000)" >
+    <use xlink:href="#MyCircleID" />
+</g>
+</g>
+</g></g></svg>

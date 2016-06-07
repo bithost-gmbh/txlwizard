@@ -38,6 +38,18 @@ class Ellipse(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -46,12 +58,17 @@ class Ellipse(AbstractPattern.AbstractPattern):
 
     >>> EllipseStructure = TXLWriter.AddContentStructure('MyEllipseID')
     >>> EllipseStructure.AddPattern(
-    >>>     'Ellipse',
-    >>>     Center=[0, 0],
-    >>>     RadiusX=50,
-    >>>     RadiusY=70,
-    >>>     Layer=1
-    >>> )
+    ...     'Ellipse',
+    ...     Center=[0, 0],
+    ...     RadiusX=50,
+    ...     RadiusY=70,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Ellipse.Ellipse object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Ellipse')
 
     '''
 

@@ -3,8 +3,12 @@ Implements a class for `Structure` objects (`STRUCT`).\n
 A `Structure` is a container for `Pattern` objects.
 '''
 
+import os.path
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../'))
+
 import AbstractPattern
-from ..Helpers import Tuttifrutti
+from Helpers import Tuttifrutti
 import copy
 import importlib
 
@@ -29,21 +33,38 @@ class Structure(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
 
     Create Content Structure
 
-    >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID'
-    >>>     TXLOutput = True
-    >>> )
+    >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID',
+    ...     TXLOutput = True
+    ... )
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Structure')
 
     '''
 

@@ -166,35 +166,49 @@
 <span class="sd">        Coordinate System Sub-Grid Spacing in um.\n</span>
 <span class="sd">        Defaults to 10</span>
 <span class="sd">    Precision : int, optional</span>
-<span class="sd">        number of digits for float to str conversion / Resolution of TXL file.\n</span>
+<span class="sd">        Number of digits for float to str conversion / Resolution of TXL file.\n</span>
 <span class="sd">        Defaults to 4</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required Modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
 <span class="sd">    Initialize TXLWriter</span>
 
 <span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter(</span>
-<span class="sd">    &gt;&gt;&gt;    ShowGrid=True, GridWidth=800, GridHeight=800</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...    ShowGrid=True, GridWidth=800, GridHeight=800</span>
+<span class="sd">    ... )</span>
 
 <span class="sd">    Add a definition structure and add a pattern of type `Circle`</span>
 
 <span class="sd">    &gt;&gt;&gt; MyDefinitionStructure = TXLWriter.AddDefinitionStructure(&#39;MyDefinition&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; MyDefinitionStructure.AddPattern(&#39;Circle&#39;, Center=[0,0], Radius=20, Layer=3)</span>
+<span class="sd">    &gt;&gt;&gt; MyDefinitionStructure.AddPattern(&#39;Circle&#39;, Center=[0,0], Radius=20, Layer=3) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
 
 <span class="sd">    Add a content structure with a pattern `Reference` to reuse the definition structure.</span>
 
 <span class="sd">    &gt;&gt;&gt; MyContentStructure = TXLWriter.AddContentStructure(&#39;MySuperCircle&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; MyContentStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;    &#39;Reference&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;    ReferencedStructureID=MyDefinitionStructure.ID,</span>
-<span class="sd">    &gt;&gt;&gt;    OriginPoint=[20,50]</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...    &#39;Reference&#39;,</span>
+<span class="sd">    ...    ReferencedStructureID=MyDefinitionStructure.ID,</span>
+<span class="sd">    ...    OriginPoint=[20,50]</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Reference.Reference object at 0x...&gt;</span>
 
-<span class="sd">    Generate the Output files with name `mask.(txl|html|svg)` to the folder `myPath`</span>
+<span class="sd">    Generate the Output files with name `Example_TXLWriter.(txl|html|svg)` to the folder `Tests/Results`</span>
 
-<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;myPath/mask&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/TXLWriter/Example_TXLWriter&#39;)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -243,9 +257,9 @@
         <span class="c1">#: list of str: list of indices of helper structures, needed for correct order</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructuresIndexList</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;GridWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;GridHeight&#39;</span><span class="p">,</span> <span class="s1">&#39;GridSpacing&#39;</span><span class="p">,</span> <span class="s1">&#39;SubGridSpacing&#39;</span><span class="p">,</span> <span class="s1">&#39;ShowGrid&#39;</span><span class="p">,</span><span class="s1">&#39;Precision&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;GridWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;GridHeight&#39;</span><span class="p">,</span> <span class="s1">&#39;GridSpacing&#39;</span><span class="p">,</span> <span class="s1">&#39;SubGridSpacing&#39;</span><span class="p">,</span> <span class="s1">&#39;ShowGrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Precision&#39;</span><span class="p">]:</span>
             <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ShowGrid</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_DrawGrid</span><span class="p">()</span>
@@ -306,7 +320,7 @@
 <span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="n">ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">Structures</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span><span class="o">+</span><span class="n">ID</span><span class="o">+</span><span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
 
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
 
@@ -331,7 +345,7 @@
 <span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="n">ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span><span class="o">+</span><span class="n">ID</span><span class="o">+</span><span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
 
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -356,7 +370,7 @@
 <span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="n">ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span><span class="o">+</span><span class="n">ID</span><span class="o">+</span><span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
 
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -366,9 +380,9 @@
 
 <div class="viewcode-block" id="TXLWriter.ImportTXLFile"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.ImportTXLFile">[docs]</a>    <span class="k">def</span> <span class="nf">ImportTXLFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">,</span> <span class="n">LayersToProcess</span><span class="o">=</span><span class="p">[]):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Import an existing TXL file for further processing.</span>
-<span class="sd">        The content structures can be accessed with `self._ContentStructures` (read-only!).</span>
-<span class="sd">        The order of the content structures is stored in `self._ContentStructuresIndexList` (read-only!).</span>
+<span class="sd">        Import an existing TXL file for further processing.\n</span>
+<span class="sd">        The content structures can be accessed with `self._ContentStructures` (read-only!).\n</span>
+<span class="sd">        The order of the content structures is stored in `self._ContentStructuresIndexList` (read-only!).\n</span>
 <span class="sd">        The definition structures are stored in `self._Definitions.Structures`</span>
 
 <span class="sd">        Parameters</span>
@@ -376,11 +390,16 @@
 <span class="sd">        Filename : str</span>
 <span class="sd">            Path / Filename of the .txl file to be imported</span>
 <span class="sd">        LayersToProcess : list of int, optional</span>
-<span class="sd">            if given, only layers in this list are processed / shown.</span>
+<span class="sd">            if given, only layers in this list are processed / shown.\n</span>
 <span class="sd">            Defaults to []</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
+
+<span class="sd">        Import required modules</span>
+
+<span class="sd">        &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+<span class="sd">        &gt;&gt;&gt; import TXLWizard.ShapeLibrary.Label</span>
 
 <span class="sd">        Initialize TXLWriter</span>
 
@@ -388,39 +407,38 @@
 
 <span class="sd">        import TXL file `myPath/mask_orig.txl`</span>
 
-<span class="sd">        &gt;&gt;&gt; TXLWriter.ImportTXLFile(&#39;myPath/mask_orig.txl&#39;, LayersToProcess=[2,4])</span>
+<span class="sd">        &gt;&gt;&gt; TXLWriter.ImportTXLFile(&#39;Tests/SampleFiles/Example_Simple_Original.txl&#39;, LayersToProcess=[1,3,4])</span>
 
-<span class="sd">        Add a pattern to an existing structure</span>
+<span class="sd">        Get an existing structure and add a pattern to it</span>
 
-<span class="sd">        &gt;&gt;&gt; MyStructure = TXLWriter._ContentStructures[&#39;MySuperStructure&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; MyStructure = TXLWriter._ContentStructures[&#39;MyCircleArray&#39;]</span>
 <span class="sd">        &gt;&gt;&gt; MyStructure.AddPattern(</span>
-<span class="sd">        &gt;&gt;&gt;     &#39;Circle&#39;,</span>
-<span class="sd">        &gt;&gt;&gt;     Center=[0, 0],</span>
-<span class="sd">        &gt;&gt;&gt;     Radius=50,</span>
-<span class="sd">        &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">        &gt;&gt;&gt; )</span>
+<span class="sd">        ...     &#39;Circle&#39;,</span>
+<span class="sd">        ...     Center=[-100, 0],</span>
+<span class="sd">        ...     Radius=50,</span>
+<span class="sd">        ...     Layer=1</span>
+<span class="sd">        ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">        &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
 
 <span class="sd">        Add a label</span>
 
 <span class="sd">        &gt;&gt;&gt; SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(</span>
-<span class="sd">        &gt;&gt;&gt;     TXLWriter,</span>
-<span class="sd">        &gt;&gt;&gt;     Text=&#39;This is my text&#39;,</span>
-<span class="sd">        &gt;&gt;&gt;     OriginPoint=[</span>
-<span class="sd">        &gt;&gt;&gt;         -200, 300</span>
-<span class="sd">        &gt;&gt;&gt;     ],</span>
-<span class="sd">        &gt;&gt;&gt;     FontSize=150,</span>
-<span class="sd">        &gt;&gt;&gt;     StrokeWidth=20</span>
-<span class="sd">        &gt;&gt;&gt; )</span>
+<span class="sd">        ...     TXLWriter,</span>
+<span class="sd">        ...     Text=&#39;This is my text&#39;,</span>
+<span class="sd">        ...     OriginPoint=[</span>
+<span class="sd">        ...         -200, 300</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     FontSize=150,</span>
+<span class="sd">        ...     StrokeWidth=20</span>
+<span class="sd">        ... )</span>
 
-<span class="sd">        Generate the Output files with name `mask_final.(txl|html|svg)` to the folder `myPath`</span>
+<span class="sd">        Generate the Output files with name `ExampleSimple_Modified.(txl|html|svg)` to the folder `Tests/Results`</span>
 
-<span class="sd">        &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;myPath/mask_final&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/TXLWriter/Example_Simple_Modified&#39;)</span>
 
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">TXLConverterObject</span> <span class="o">=</span> <span class="n">TXLConverter</span><span class="o">.</span><span class="n">TXLConverter</span><span class="p">(</span><span class="n">Filename</span><span class="p">,</span> <span class="n">LayersToProcess</span><span class="o">=</span><span class="n">LayersToProcess</span><span class="p">,</span> <span class="n">TXLWriter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">TXLConverterObject</span><span class="o">.</span><span class="n">ParseTXLFile</span><span class="p">()</span></div>
-
-
 
     <span class="k">def</span> <span class="nf">_GetAutoStructureID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Prefix</span><span class="o">=</span><span class="s1">&#39;AutoID&#39;</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -468,7 +486,7 @@
 
         <span class="k">return</span> <span class="n">FloatFormatString</span>
 
-<div class="viewcode-block" id="TXLWriter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">,</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">SVG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">HTML</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLWriter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">,</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">SVG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">HTML</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">TargetFolder</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Generate the output files (.txl, .svg, .html).</span>
 
@@ -487,8 +505,16 @@
 <span class="sd">            Enable HTML Output. If set to `True`,</span>
 <span class="sd">            also `SVG` needs to be set to `True`\n</span>
 <span class="sd">            Defaults to True</span>
+<span class="sd">        TargetFolder: str, optional</span>
+<span class="sd">            If given, the generated files are stored in the folder specified.\n</span>
+<span class="sd">            If not given, the generated files are stored in the path specified in `Filename`\n</span>
+<span class="sd">            Defaults to None.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">Path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">TargetFolder</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">Path</span> <span class="o">=</span> <span class="n">TargetFolder</span>
+            <span class="n">Filename</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">Path</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">Path</span><span class="p">)</span>
 

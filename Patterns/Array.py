@@ -38,6 +38,18 @@ class Array(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -47,11 +59,12 @@ class Array(AbstractPattern.AbstractPattern):
 
     >>> CircleStructure = TXLWriter.AddDefinitionStructure('MyCircleID')
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
 
     Create array of the definition structure above with
     10 repetitions at distance 100 in x-direction
@@ -59,18 +72,23 @@ class Array(AbstractPattern.AbstractPattern):
 
     >>> CircleArray = TXLWriter.AddContentStructure('MyCircleArray')
     >>> CircleArray.AddPattern(
-    >>>     'Array',
-    >>>     ReferencedStructureID=CircleStructure.ID,
-    >>>     OriginPoint=[40,60],
-    >>>     PositionDelta1=[
-    >>>         100, 0
-    >>>     ],
-    >>>     PositionDelta2=[
-    >>>         0, 200
-    >>>     ],
-    >>>     Repetitions1=10,
-    >>>     Repetitions2=20
-    >>> )
+    ...     'Array',
+    ...     ReferencedStructureID=CircleStructure.ID,
+    ...     OriginPoint=[40,60],
+    ...     PositionDelta1=[
+    ...         100, 0
+    ...     ],
+    ...     PositionDelta2=[
+    ...         0, 200
+    ...     ],
+    ...     Repetitions1=10,
+    ...     Repetitions2=20
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Array.Array object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Array')
 
     '''
 

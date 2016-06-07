@@ -47,6 +47,18 @@ class Circle(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -55,11 +67,16 @@ class Circle(AbstractPattern.AbstractPattern):
 
     >>> CircleStructure = TXLWriter.AddContentStructure('MyCircleID')
     >>> CircleStructure.AddPattern(
-    >>>     'Circle',
-    >>>     Center=[0, 0],
-    >>>     Radius=50,
-    >>>     Layer=1
-    >>> )
+    ...     'Circle',
+    ...     Center=[0, 0],
+    ...     Radius=50,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Circle')
 
     '''
 
@@ -125,7 +142,7 @@ class Circle(AbstractPattern.AbstractPattern):
         TXL = ''
         TXL += 'C' + BoundaryString + ' '
         TXL += (
-        '' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+            '' + self._GetFloatFormatString() + ' ' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
             self.Radius, self.Center[0], self.Center[1])
 
         if self.StartAngle != None and self.EndAngle != None:

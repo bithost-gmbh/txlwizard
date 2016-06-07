@@ -23,6 +23,18 @@ class Polygon(AbstractPattern.AbstractPattern):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter()
@@ -31,10 +43,11 @@ class Polygon(AbstractPattern.AbstractPattern):
 
     >>> PolygonStructure = TXLWriter.AddContentStructure('MyPolygonID')
     >>> PolygonStructure.AddPattern(
-    >>>     'Polygon',
-    >>>     Points=[[0,0], [0,10], [20,50], [0,0]],
-    >>>     Layer=1
-    >>> )
+    ...     'Polygon',
+    ...     Points=[[0,0], [0,10], [20,50], [0,0]],
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Polygon.Polygon object at 0x...>
 
     Complex structures can easily be added by generating the polygon points
 
@@ -42,19 +55,25 @@ class Polygon(AbstractPattern.AbstractPattern):
     >>> PolygonPoints = []
     >>> Radius = 5.
     >>> for i in range(21):
-    >>>     # AngleRadians goes from 0 to pi in 20 steps
-    >>>     AngleRadians = 0.5*2.*math.pi*1./20.*i
-    >>>     PolygonPoints.append([
-    >>>         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)
-    >>>     ])
+    ...     # AngleRadians goes from 0 to pi in 20 steps
+    ...     AngleRadians = 0.5*2.*math.pi*1./20.*i
+    ...     PolygonPoints.append([
+    ...         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)
+    ...     ])
     >>> PolygonPoints.append([-20,-30])
     >>> PolygonPoints.append([20,-30])
     >>>
     >>> PolygonStructure.AddPattern(
-    >>>     'Polygon',
-    >>>     Points=PolygonPoints,
-    >>>     Layer=1
-    >>> )
+    ...     'Polygon',
+    ...     Points=PolygonPoints,
+    ...     Layer=1
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Polygon.Polygon object at 0x...>
+
+    Generate Files
+
+    >>> TXLWriter.GenerateFiles('Tests/Results/Patterns/Polygon')
+
     '''
 
     def __init__(self, Points, **kwargs):
@@ -75,7 +94,8 @@ class Polygon(AbstractPattern.AbstractPattern):
         TXL = ''
         TXL += CommandString + ' '
         for Point in self.Points:
-            TXL += (''+self._GetFloatFormatString()+','+self._GetFloatFormatString()+' ').format(Point[0], Point[1])
+            TXL += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(Point[0],
+                                                                                                         Point[1])
         TXL += 'END' + EndCommandString + '\n'
         return TXL
 
@@ -84,7 +104,8 @@ class Polygon(AbstractPattern.AbstractPattern):
 
         PointsString = ''
         for Point in self.Points:
-            PointsString += (''+self._GetFloatFormatString()+','+self._GetFloatFormatString()+' ').format(Point[0], Point[1])
+            PointsString += ('' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ' ').format(
+                Point[0], Point[1])
         SVGAttributes = {'points': PointsString}
         SVG += '<polygon ' + self._GetSVGAttributesString(SVGAttributes) + ' />' + '\n'
 

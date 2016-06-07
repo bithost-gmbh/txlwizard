@@ -12,16 +12,16 @@ def GetAlignmentMarkers(TXLWriter, Size=10, OffsetSmall=750, OffsetLarge=3000, L
     TXLWriter: :class:`TXLWizard.TXLWriter.TXLWriter`
         Current Instance of :class:`TXLWizard.TXLWriter.TXLWriter`
     Size: float, optional
-        Size of the markers.
+        Size of the markers.\n
         Defaults to 10
     OffsetSmall: float, optional
-        first offset from center.
+        first offset from center.\n
         Defaults to 750
     OffsetLarge: float, optional
-        second offset from center.
+        second offset from center.\n
         Defaults to 3000
     Layer: int, optional
-        Layer the pattern should be rendered in.
+        Layer the pattern should be rendered in.\n
         Defaults to 1
 
     Returns

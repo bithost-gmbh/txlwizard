@@ -33,35 +33,49 @@ class TXLWriter(object):
         Coordinate System Sub-Grid Spacing in um.\n
         Defaults to 10
     Precision : int, optional
-        number of digits for float to str conversion / Resolution of TXL file.\n
+        Number of digits for float to str conversion / Resolution of TXL file.\n
         Defaults to 4
 
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../'))
+
+    IGNORE
+
+    Import required Modules
+
+    >>> import TXLWizard.TXLWriter
+
     Initialize TXLWriter
 
     >>> TXLWriter = TXLWizard.TXLWriter.TXLWriter(
-    >>>    ShowGrid=True, GridWidth=800, GridHeight=800
-    >>> )
+    ...    ShowGrid=True, GridWidth=800, GridHeight=800
+    ... )
 
     Add a definition structure and add a pattern of type `Circle`
 
     >>> MyDefinitionStructure = TXLWriter.AddDefinitionStructure('MyDefinition')
-    >>> MyDefinitionStructure.AddPattern('Circle', Center=[0,0], Radius=20, Layer=3)
+    >>> MyDefinitionStructure.AddPattern('Circle', Center=[0,0], Radius=20, Layer=3) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Circle.Circle object at 0x...>
 
     Add a content structure with a pattern `Reference` to reuse the definition structure.
 
     >>> MyContentStructure = TXLWriter.AddContentStructure('MySuperCircle')
     >>> MyContentStructure.AddPattern(
-    >>>    'Reference',
-    >>>    ReferencedStructureID=MyDefinitionStructure.ID,
-    >>>    OriginPoint=[20,50]
-    >>> )
+    ...    'Reference',
+    ...    ReferencedStructureID=MyDefinitionStructure.ID,
+    ...    OriginPoint=[20,50]
+    ... ) #doctest: +ELLIPSIS
+    <TXLWizard.Patterns.Reference.Reference object at 0x...>
 
-    Generate the Output files with name `mask.(txl|html|svg)` to the folder `myPath`
+    Generate the Output files with name `Example_TXLWriter.(txl|html|svg)` to the folder `Tests/Results`
 
-    >>> TXLWriter.GenerateFiles('myPath/mask')
+    >>> TXLWriter.GenerateFiles('Tests/Results/TXLWriter/Example_TXLWriter')
     '''
 
     def __init__(self, **kwargs):
@@ -110,9 +124,9 @@ class TXLWriter(object):
         #: list of str: list of indices of helper structures, needed for correct order
         self._HelperStructuresIndexList = []
 
-        for i in ['GridWidth', 'GridHeight', 'GridSpacing', 'SubGridSpacing', 'ShowGrid','Precision']:
+        for i in ['GridWidth', 'GridHeight', 'GridSpacing', 'SubGridSpacing', 'ShowGrid', 'Precision']:
             if i in kwargs:
-                setattr(self, '_'+i, kwargs[i])
+                setattr(self, '_' + i, kwargs[i])
 
         if self._ShowGrid:
             self._DrawGrid()
@@ -173,7 +187,7 @@ class TXLWriter(object):
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
         if ID in self._Definitions.Structures:
-            print('Warning! The structure "'+ID+'" already exists and will be overwritten!')
+            print('Warning! The structure "' + ID + '" already exists and will be overwritten!')
 
         kwargs['TXLWriter'] = self
 
@@ -198,7 +212,7 @@ class TXLWriter(object):
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
         if ID in self._ContentStructures:
-            print('Warning! The structure "'+ID+'" already exists and will be overwritten!')
+            print('Warning! The structure "' + ID + '" already exists and will be overwritten!')
 
         kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
@@ -223,7 +237,7 @@ class TXLWriter(object):
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
         if ID in self._HelperStructures:
-            print('Warning! The structure "'+ID+'" already exists and will be overwritten!')
+            print('Warning! The structure "' + ID + '" already exists and will be overwritten!')
 
         kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
@@ -233,9 +247,9 @@ class TXLWriter(object):
 
     def ImportTXLFile(self, Filename, LayersToProcess=[]):
         '''
-        Import an existing TXL file for further processing.
-        The content structures can be accessed with `self._ContentStructures` (read-only!).
-        The order of the content structures is stored in `self._ContentStructuresIndexList` (read-only!).
+        Import an existing TXL file for further processing.\n
+        The content structures can be accessed with `self._ContentStructures` (read-only!).\n
+        The order of the content structures is stored in `self._ContentStructuresIndexList` (read-only!).\n
         The definition structures are stored in `self._Definitions.Structures`
 
         Parameters
@@ -243,11 +257,16 @@ class TXLWriter(object):
         Filename : str
             Path / Filename of the .txl file to be imported
         LayersToProcess : list of int, optional
-            if given, only layers in this list are processed / shown.
+            if given, only layers in this list are processed / shown.\n
             Defaults to []
 
         Examples
         --------
+
+        Import required modules
+
+        >>> import TXLWizard.TXLWriter
+        >>> import TXLWizard.ShapeLibrary.Label
 
         Initialize TXLWriter
 
@@ -255,39 +274,38 @@ class TXLWriter(object):
 
         import TXL file `myPath/mask_orig.txl`
 
-        >>> TXLWriter.ImportTXLFile('myPath/mask_orig.txl', LayersToProcess=[2,4])
+        >>> TXLWriter.ImportTXLFile('Tests/SampleFiles/Example_Simple_Original.txl', LayersToProcess=[1,3,4])
 
-        Add a pattern to an existing structure
+        Get an existing structure and add a pattern to it
 
-        >>> MyStructure = TXLWriter._ContentStructures['MySuperStructure']
+        >>> MyStructure = TXLWriter._ContentStructures['MyCircleArray']
         >>> MyStructure.AddPattern(
-        >>>     'Circle',
-        >>>     Center=[0, 0],
-        >>>     Radius=50,
-        >>>     Layer=1
-        >>> )
+        ...     'Circle',
+        ...     Center=[-100, 0],
+        ...     Radius=50,
+        ...     Layer=1
+        ... ) #doctest: +ELLIPSIS
+        <TXLWizard.Patterns.Circle.Circle object at 0x...>
 
         Add a label
 
         >>> SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
-        >>>     TXLWriter,
-        >>>     Text='This is my text',
-        >>>     OriginPoint=[
-        >>>         -200, 300
-        >>>     ],
-        >>>     FontSize=150,
-        >>>     StrokeWidth=20
-        >>> )
+        ...     TXLWriter,
+        ...     Text='This is my text',
+        ...     OriginPoint=[
+        ...         -200, 300
+        ...     ],
+        ...     FontSize=150,
+        ...     StrokeWidth=20
+        ... )
 
-        Generate the Output files with name `mask_final.(txl|html|svg)` to the folder `myPath`
+        Generate the Output files with name `ExampleSimple_Modified.(txl|html|svg)` to the folder `Tests/Results`
 
-        >>> TXLWriter.GenerateFiles('myPath/mask_final')
+        >>> TXLWriter.GenerateFiles('Tests/Results/TXLWriter/Example_Simple_Modified')
 
         '''
         TXLConverterObject = TXLConverter.TXLConverter(Filename, LayersToProcess=LayersToProcess, TXLWriter=self)
         TXLConverterObject.ParseTXLFile()
-
-
 
     def _GetAutoStructureID(self, Prefix='AutoID'):
         '''
@@ -335,7 +353,7 @@ class TXLWriter(object):
 
         return FloatFormatString
 
-    def GenerateFiles(self, Filename, TXL=True, SVG=True, HTML=True):
+    def GenerateFiles(self, Filename, TXL=True, SVG=True, HTML=True, TargetFolder=None):
         '''
         Generate the output files (.txl, .svg, .html).
 
@@ -354,8 +372,16 @@ class TXLWriter(object):
             Enable HTML Output. If set to `True`,
             also `SVG` needs to be set to `True`\n
             Defaults to True
+        TargetFolder: str, optional
+            If given, the generated files are stored in the folder specified.\n
+            If not given, the generated files are stored in the path specified in `Filename`\n
+            Defaults to None.
         '''
         Path = os.path.dirname(Filename)
+        if TargetFolder != None:
+            Path = TargetFolder
+            Filename = Path.rstrip('/')+'/'+os.path.basename(Filename)
+
         if len(Path) and not os.path.exists(Path):
             os.makedirs(Path)
 

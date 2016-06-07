@@ -162,16 +162,29 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
-<span class="sd">    Instatiate a `TXLConverter` instance, parse the TXL file and generate the HTML / SVG files</span>
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLConverter</span>
+
+<span class="sd">    Instatiate a `TXLConverter` instance, parse the TXL file and generate the HTML / SVG files.</span>
+<span class="sd">    Saves the converted files to `Tests/Results/TXLConverter/`</span>
 
 <span class="sd">    &gt;&gt;&gt; TXLConverterInstance = TXLWizard.TXLConverter.TXLConverter(</span>
-<span class="sd">    &gt;&gt;&gt;     FullFilePath,</span>
-<span class="sd">    &gt;&gt;&gt;     GridWidth=500,</span>
-<span class="sd">    &gt;&gt;&gt;     GridHeight=800,</span>
-<span class="sd">    &gt;&gt;&gt;     LayersToProcess=[1,5]</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Tests/SampleFiles/Example_Advanced_Original.txl&#39;,</span>
+<span class="sd">    ...     GridWidth=500,</span>
+<span class="sd">    ...     GridHeight=800,</span>
+<span class="sd">    ...     LayersToProcess=[1,2,3,5]</span>
+<span class="sd">    ... )</span>
 <span class="sd">    &gt;&gt;&gt; TXLConverterInstance.ParseTXLFile()</span>
-<span class="sd">    &gt;&gt;&gt; TXLConverterInstance.GenerateFiles()</span>
+<span class="sd">    &gt;&gt;&gt; TXLConverterInstance.GenerateFiles(&#39;Tests/Results/TXLConverter&#39;)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -540,11 +553,21 @@
 
         <span class="k">return</span> <span class="n">ParameterValue</span>
 
-<div class="viewcode-block" id="TXLConverter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLConverter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">TargetFolder</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Generate the HTML / SVG files</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        TargetFolder: str, optional</span>
+<span class="sd">            If given, the converted files are stored in the folder specified.\n</span>
+<span class="sd">            If not given, the converted files are stored in the same folder as the original file.\n</span>
+<span class="sd">            Defaults to None.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span></div></div>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">TargetFolder</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TargetFolder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TargetFolder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="TXLConverterCLI"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverterCLI">[docs]</a><span class="k">class</span> <span class="nc">TXLConverterCLI</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -569,9 +592,22 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLConverter</span>
+
 <span class="sd">    Start the command line interface</span>
 
-<span class="sd">    &gt;&gt;&gt; TXLWizard.TXLConverterCLI.TXLConverterCLI()</span>
+<span class="sd">    &gt;&gt;&gt; TXLWizard.TXLConverter.TXLConverterCLI() # doctest: +SKIP</span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">JSONConfigurationFile</span><span class="o">=</span><span class="s1">&#39;TXLConverterConfiguration.json&#39;</span><span class="p">,</span> <span class="n">UpdateConfigurationFile</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>

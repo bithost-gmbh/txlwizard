@@ -161,6 +161,18 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
 <span class="sd">    Initialize TXLWriter</span>
 
 <span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
@@ -169,11 +181,12 @@
 
 <span class="sd">    &gt;&gt;&gt; PolylineStructure = TXLWriter.AddContentStructure(&#39;MyPolylineID&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; PolylineStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Polyline&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Points=[[0,0], [0,10], [20,50], [0,0]],</span>
-<span class="sd">    &gt;&gt;&gt;     StrokeWidth=3,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Polyline&#39;,</span>
+<span class="sd">    ...     Points=[[0,0], [0,10], [20,50], [0,0]],</span>
+<span class="sd">    ...     StrokeWidth=3,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Polyline.Polyline object at 0x...&gt;</span>
 
 <span class="sd">    Complex structures can easily be added by generating the Polyline points</span>
 
@@ -181,21 +194,26 @@
 <span class="sd">    &gt;&gt;&gt; PolylinePoints = []</span>
 <span class="sd">    &gt;&gt;&gt; Radius = 10.</span>
 <span class="sd">    &gt;&gt;&gt; for i in range(21):</span>
-<span class="sd">    &gt;&gt;&gt;     # AngleRadians goes from 0 to pi in 20 steps</span>
-<span class="sd">    &gt;&gt;&gt;     AngleRadians = 0.5*2.*math.pi*1./20.*i</span>
-<span class="sd">    &gt;&gt;&gt;     PolylinePoints.append([</span>
-<span class="sd">    &gt;&gt;&gt;         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)</span>
-<span class="sd">    &gt;&gt;&gt;     ])</span>
+<span class="sd">    ...     # AngleRadians goes from 0 to pi in 20 steps</span>
+<span class="sd">    ...     AngleRadians = 0.5*2.*math.pi*1./20.*i</span>
+<span class="sd">    ...     PolylinePoints.append([</span>
+<span class="sd">    ...         Radius*math.cos(AngleRadians),Radius*math.sin(AngleRadians)</span>
+<span class="sd">    ...     ])</span>
 <span class="sd">    &gt;&gt;&gt; PolylinePoints.append([-20,-30])</span>
 <span class="sd">    &gt;&gt;&gt; PolylinePoints.append([20,-30])</span>
 <span class="sd">    &gt;&gt;&gt;</span>
 <span class="sd">    &gt;&gt;&gt; PolylineStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Polyline&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Points=PolylinePoints,</span>
-<span class="sd">    &gt;&gt;&gt;     RoundCaps=True,</span>
-<span class="sd">    &gt;&gt;&gt;     StrokeWidth=3,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Polyline&#39;,</span>
+<span class="sd">    ...     Points=PolylinePoints,</span>
+<span class="sd">    ...     RoundCaps=True,</span>
+<span class="sd">    ...     StrokeWidth=3,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Polyline.Polyline object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Polyline&#39;)</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
 

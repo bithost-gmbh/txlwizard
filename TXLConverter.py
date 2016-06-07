@@ -29,16 +29,29 @@ class TXLConverter(object):
     Examples
     --------
 
-    Instatiate a `TXLConverter` instance, parse the TXL file and generate the HTML / SVG files
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLConverter
+
+    Instatiate a `TXLConverter` instance, parse the TXL file and generate the HTML / SVG files.
+    Saves the converted files to `Tests/Results/TXLConverter/`
 
     >>> TXLConverterInstance = TXLWizard.TXLConverter.TXLConverter(
-    >>>     FullFilePath,
-    >>>     GridWidth=500,
-    >>>     GridHeight=800,
-    >>>     LayersToProcess=[1,5]
-    >>> )
+    ...     'Tests/SampleFiles/Example_Advanced_Original.txl',
+    ...     GridWidth=500,
+    ...     GridHeight=800,
+    ...     LayersToProcess=[1,2,3,5]
+    ... )
     >>> TXLConverterInstance.ParseTXLFile()
-    >>> TXLConverterInstance.GenerateFiles()
+    >>> TXLConverterInstance.GenerateFiles('Tests/Results/TXLConverter')
 
     '''
 
@@ -407,11 +420,21 @@ class TXLConverter(object):
 
         return ParameterValue
 
-    def GenerateFiles(self):
+    def GenerateFiles(self,TargetFolder=None):
         '''
         Generate the HTML / SVG files
+
+        Parameters
+        ----------
+        TargetFolder: str, optional
+            If given, the converted files are stored in the folder specified.\n
+            If not given, the converted files are stored in the same folder as the original file.\n
+            Defaults to None.
         '''
-        self._TXLWriter.GenerateFiles(os.path.splitext(self._Filename)[0], TXL=False)
+        kwargs = {}
+        if TargetFolder != None:
+            kwargs['TargetFolder'] = TargetFolder
+        self._TXLWriter.GenerateFiles(os.path.splitext(self._Filename)[0], TXL=False, **kwargs)
 
 
 class TXLConverterCLI(object):
@@ -436,9 +459,22 @@ class TXLConverterCLI(object):
     Examples
     --------
 
+    IGNORE:
+
+        >>> import sys
+        >>> import os.path
+        >>> sys.path.append(os.path.abspath(os.path.dirname(__file__)+'/../'))
+
+    IGNORE
+
+    Import required modules
+
+    >>> import TXLWizard.TXLConverter
+
     Start the command line interface
 
-    >>> TXLWizard.TXLConverterCLI.TXLConverterCLI()
+    >>> TXLWizard.TXLConverter.TXLConverterCLI() # doctest: +SKIP
+
     '''
 
     def __init__(self, JSONConfigurationFile='TXLConverterConfiguration.json', UpdateConfigurationFile=True,

@@ -181,19 +181,39 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.ShapeLibrary.Label</span>
+
+<span class="sd">    Initialize TXLWriter</span>
 <span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
-<span class="sd">    &gt;&gt;&gt;</span>
+
+<span class="sd">    Add a Label</span>
+
 <span class="sd">    &gt;&gt;&gt; SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(</span>
-<span class="sd">    &gt;&gt;&gt;     TXLWriter,</span>
-<span class="sd">    &gt;&gt;&gt;     Text=&#39;This is my text&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     OriginPoint=[</span>
-<span class="sd">    &gt;&gt;&gt;         -200, 300</span>
-<span class="sd">    &gt;&gt;&gt;     ],</span>
-<span class="sd">    &gt;&gt;&gt;     FontSize=150,</span>
-<span class="sd">    &gt;&gt;&gt;     StrokeWidth=20,</span>
-<span class="sd">    &gt;&gt;&gt;     RoundCaps=False, # Set to False to improve e-Beam performance</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     TXLWriter,</span>
+<span class="sd">    ...     Text=&#39;This is my text&#39;,</span>
+<span class="sd">    ...     OriginPoint=[</span>
+<span class="sd">    ...         -200, 300</span>
+<span class="sd">    ...     ],</span>
+<span class="sd">    ...     FontSize=150,</span>
+<span class="sd">    ...     StrokeWidth=20,</span>
+<span class="sd">    ...     RoundCaps=False, # Set to False to improve e-Beam performance</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... )</span>
+
+<span class="sd">    Generate files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/ShapeLibrary/Label&#39;)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
 

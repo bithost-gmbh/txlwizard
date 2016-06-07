@@ -2,8 +2,14 @@
 Provides an abstract class for `Pattern` objects
 '''
 
-from ..Helpers import Tuttifrutti
+import os.path
+import sys
+
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../'))
+
+from Helpers import Tuttifrutti
 import copy
+
 
 class AbstractPattern(object):
     '''
@@ -28,13 +34,14 @@ class AbstractPattern(object):
         Specifies the `ScaleFactor` attribute of the pattern.\n
         Defaults to None.
     '''
-    def __init__(self,**kwargs):
+
+    def __init__(self, **kwargs):
 
         #: str: specifies the type of the pattern.
         self.Type = 'AbstractPattern'
 
         #: list of float, x- and y- coordinates of the origin point of the pattern
-        self._OriginPoint = [0,0]
+        self._OriginPoint = [0, 0]
 
         #: :class:`TXLWizard.TXLWriter.TXLWriter`: reference to the current `TXLWriter` instance
         self._TXLWriter = None
@@ -44,11 +51,11 @@ class AbstractPattern(object):
 
         #: dict: default attributes that are copied to `self.Attributes` upon instantiation. Specifies the allowed attributes
         self.DefaultAttributes = {
-            'Layer':None,
-            'DataType':None,
-            'RotationAngle':None,
-            'StrokeWidth':None,
-            'ScaleFactor':None,
+            'Layer': None,
+            'DataType': None,
+            'RotationAngle': None,
+            'StrokeWidth': None,
+            'ScaleFactor': None,
         }
 
         #: dict: attribute values of the current pattern. Default values are copied from `self.DefaultAttributes`
@@ -64,8 +71,7 @@ class AbstractPattern(object):
         if 'ParentStructure' in kwargs:
             self.ParentStructure = kwargs['ParentStructure']
 
-
-    def _GetSVGAttributesString(self,OverrideSVGAttributes = {}):
+    def _GetSVGAttributesString(self, OverrideSVGAttributes={}):
         '''
         Generate a string of attributes for an SVG xml element node.
         By default, the `class` attribute is set to ["Pattern"] if the current pattern `self.Type` is not in ['Structure','Array','Reference']
@@ -84,19 +90,19 @@ class AbstractPattern(object):
 
         '''
         SVGAttributes = {
-            'style':[],
-            'class':[],
-            'transform':[]
+            'style': [],
+            'class': [],
+            'transform': []
         }
-        if not self.Type in ['Structure','Array','Reference']:
+        if not self.Type in ['Structure', 'Array', 'Reference']:
             SVGAttributes['class'].append('Pattern')
 
-        Tuttifrutti.update(SVGAttributes,OverrideSVGAttributes,True)
+        Tuttifrutti.update(SVGAttributes, OverrideSVGAttributes, True)
 
         SVGAttributesString = ''
         for i in SVGAttributes:
             if len(SVGAttributes[i]):
-                SVGAttributesString += i+'="'
+                SVGAttributesString += i + '="'
                 if isinstance(SVGAttributes[i], list):
                     if i == 'style':
                         SVGAttributesString += ';'.join(SVGAttributes[i])
@@ -108,7 +114,7 @@ class AbstractPattern(object):
 
         return SVGAttributesString
 
-    def _GetFloatFormatString(self,ID=''):
+    def _GetFloatFormatString(self, ID=''):
         '''
         Alias of :func:`TXLWizard.TXLWriter.TXLWriter._GetFloatFormatString`.
         Returns a string for formatting a `float`, e.g. `{ID:1.3f}`.
@@ -151,6 +157,3 @@ class AbstractPattern(object):
             SVG output xml
         '''
         pass
-
-
-

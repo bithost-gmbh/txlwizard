@@ -301,3 +301,12 @@ autodoc_default_flags = ['members','show-inheritance']
 
 # autosummary Boolean indicating whether to scan all found documents for autosummary directives, and to generate stub pages for each.
 autosummary_generate = True
+
+
+from sphinx.ext.autodoc import between
+
+def setup(app):
+    # Register a sphinx.ext.autodoc.between listener to ignore everything
+    # between lines that contain the word IGNORE
+    app.connect('autodoc-process-docstring', between('^.*IGNORE.*$', exclude=True))
+    return app

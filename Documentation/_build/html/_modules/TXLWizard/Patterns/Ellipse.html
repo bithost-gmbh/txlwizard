@@ -171,6 +171,18 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
 <span class="sd">    Initialize TXLWriter</span>
 
 <span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
@@ -179,12 +191,17 @@
 
 <span class="sd">    &gt;&gt;&gt; EllipseStructure = TXLWriter.AddContentStructure(&#39;MyEllipseID&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; EllipseStructure.AddPattern(</span>
-<span class="sd">    &gt;&gt;&gt;     &#39;Ellipse&#39;,</span>
-<span class="sd">    &gt;&gt;&gt;     Center=[0, 0],</span>
-<span class="sd">    &gt;&gt;&gt;     RadiusX=50,</span>
-<span class="sd">    &gt;&gt;&gt;     RadiusY=70,</span>
-<span class="sd">    &gt;&gt;&gt;     Layer=1</span>
-<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    ...     &#39;Ellipse&#39;,</span>
+<span class="sd">    ...     Center=[0, 0],</span>
+<span class="sd">    ...     RadiusX=50,</span>
+<span class="sd">    ...     RadiusY=70,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Ellipse.Ellipse object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Ellipse&#39;)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
 

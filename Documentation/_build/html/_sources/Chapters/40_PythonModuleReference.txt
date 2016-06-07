@@ -37,6 +37,7 @@ Shape Library
    :template: ../_templates/module.rst
 
    TXLWizard.ShapeLibrary.Label
+   TXLWizard.ShapeLibrary.LabelArray
    TXLWizard.ShapeLibrary.EndpointDetectionWindows
    TXLWizard.ShapeLibrary.AlignmentMarkers
 

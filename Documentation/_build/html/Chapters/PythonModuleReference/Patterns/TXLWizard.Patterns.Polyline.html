@@ -195,6 +195,10 @@ Can specify attributes of the current pattern.</li>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+</pre></div>
+</div>
 <p>Initialize TXLWriter</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
 </pre></div>
@@ -202,11 +206,12 @@ Can specify attributes of the current pattern.</li>
 <p>Create Content Structure for polyline and add Pattern of type <cite>Polyline</cite></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PolylineStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MyPolylineID&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PolylineStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Polyline&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Points</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">... </span>    <span class="s1">&#39;Polyline&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Points</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Polyline.Polyline object at 0x...&gt;</span>
 </pre></div>
 </div>
 <p>Complex structures can easily be added by generating the Polyline points</p>
@@ -214,21 +219,26 @@ Can specify attributes of the current pattern.</li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PolylinePoints</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Radius</span> <span class="o">=</span> <span class="mf">10.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># AngleRadians goes from 0 to pi in 20 steps</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">AngleRadians</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="mf">2.</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">1.</span><span class="o">/</span><span class="mf">20.</span><span class="o">*</span><span class="n">i</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">PolylinePoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">Radius</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">AngleRadians</span><span class="p">),</span><span class="n">Radius</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">AngleRadians</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="p">])</span>
+<span class="gp">... </span>    <span class="c1"># AngleRadians goes from 0 to pi in 20 steps</span>
+<span class="gp">... </span>    <span class="n">AngleRadians</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="mf">2.</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">1.</span><span class="o">/</span><span class="mf">20.</span><span class="o">*</span><span class="n">i</span>
+<span class="gp">... </span>    <span class="n">PolylinePoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+<span class="gp">... </span>        <span class="n">Radius</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">AngleRadians</span><span class="p">),</span><span class="n">Radius</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">AngleRadians</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PolylinePoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PolylinePoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">])</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">PolylineStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;Polyline&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Points</span><span class="o">=</span><span class="n">PolylinePoints</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">RoundCaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">... </span>    <span class="s1">&#39;Polyline&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Points</span><span class="o">=</span><span class="n">PolylinePoints</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">RoundCaps</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Polyline.Polyline object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Generate Files</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/Patterns/Polyline&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="attribute">
