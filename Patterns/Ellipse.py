@@ -23,13 +23,13 @@ class Ellipse(AbstractPattern.AbstractPattern):
     RadiusY: float
         Semi-minor axis of the ellipse in y-direction
     StartAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to 0
     EndAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to 0
     NumberOfPoints: int, optional
-        Number of path segments used for drawing the ellipse.
+        Number of path segments used for drawing the ellipse.\n
         Defaults to None.
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.

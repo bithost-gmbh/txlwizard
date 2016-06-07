@@ -33,7 +33,7 @@ class TXLWriter(object):
         Coordinate System Sub-Grid Spacing in um.\n
         Defaults to 10
     Precision : int, optional
-        number of digits for float to str conversion / Resolution of TXL file
+        number of digits for float to str conversion / Resolution of TXL file.\n
         Defaults to 4
 
     Examples
@@ -110,9 +110,9 @@ class TXLWriter(object):
         #: list of str: list of indices of helper structures, needed for correct order
         self._HelperStructuresIndexList = []
 
-        for i in ['Width', 'Height', 'GridSpacing', 'SubGridSpacing', 'ShowGrid', 'Precision']:
+        for i in ['GridWidth', 'GridHeight', 'GridSpacing', 'SubGridSpacing', 'ShowGrid','Precision']:
             if i in kwargs:
-                setattr(self, i, kwargs[i])
+                setattr(self, '_'+i, kwargs[i])
 
         if self._ShowGrid:
             self._DrawGrid()
@@ -172,7 +172,11 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
+        if ID in self._Definitions.Structures:
+            print('Warning! The structure "'+ID+'" already exists and will be overwritten!')
+
         kwargs['TXLWriter'] = self
+
         StructureObject = Structure.Structure(ID, **kwargs)
         self._Definitions.AddStructure(ID, StructureObject)
         return StructureObject
@@ -193,6 +197,9 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
+        if ID in self._ContentStructures:
+            print('Warning! The structure "'+ID+'" already exists and will be overwritten!')
+
         kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
         self._ContentStructures[ID] = StructureObject
@@ -215,6 +222,9 @@ class TXLWriter(object):
         -------
         :class:`TXLWizard.Patterns.Structure.Structure` structure instance
         '''
+        if ID in self._HelperStructures:
+            print('Warning! The structure "'+ID+'" already exists and will be overwritten!')
+
         kwargs['TXLWriter'] = self
         StructureObject = Structure.Structure(ID, **kwargs)
         self._HelperStructures[ID] = StructureObject
@@ -279,14 +289,15 @@ class TXLWriter(object):
 
 
 
-    def _GetAutoStructureID(self, Prefix='ID'):
+    def _GetAutoStructureID(self, Prefix='AutoID'):
         '''
         Generates a unique structure ID.
 
         Parameters
         ----------
         Prefix: str, optional
-            Prefix of the ID
+            Prefix of the ID.\n
+            Defaults to 'AutoID'.
 
         Returns
         -------
@@ -307,7 +318,7 @@ class TXLWriter(object):
         Parameters
         ----------
         ID: str, optional
-            Optional ID for the formatting option.
+            Optional ID for the formatting option.\n
             Defaults to ''
 
         Returns
@@ -334,14 +345,14 @@ class TXLWriter(object):
             Path / Filename without extension.
             The corresponding path will be created if it does not exist
         TXL: bool, optional
-            Enable TXL Output.
+            Enable TXL Output.\n
             Defaults to True
         SVG: bool, optional
-            Enable SVG Output.
+            Enable SVG Output.\n
             Defaults to True
         HTML: bool, optional
             Enable HTML Output. If set to `True`,
-            also `SVG` needs to be set to `True`
+            also `SVG` needs to be set to `True`\n
             Defaults to True
         '''
         Path = os.path.dirname(Filename)

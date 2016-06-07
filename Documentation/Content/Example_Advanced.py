@@ -9,6 +9,7 @@ import TXLWizard.TXLWriter
 import TXLWizard.ShapeLibrary.EndpointDetectionWindows
 import TXLWizard.ShapeLibrary.Label
 import TXLWizard.ShapeLibrary.LabelArray
+import TXLWizard.ShapeLibrary.AlignmentMarkers
 import TXLWizard.ShapeLibrary.CornerCube
 
 # Import math module for calculations
@@ -29,24 +30,24 @@ SampleParameters = {
 # Define all structure parameters
 StructureParameters = {
     'CornerCube': {
-        'BridgeLength':8,
-        'ParabolaFocus': 9,
-        'XCutoff': 9,
-        'AirGapX': 3,
-        'AirGapY': 1,
+        'BridgeLength':40,
+        'ParabolaFocus': 45,
+        'XCutoff': 45,
+        'AirGapX': 15,
+        'AirGapY': 5,
         'LabelXOffset': 0,
-        'LabelYOffset': 50,
+        'LabelYOffset': 150,
         'Label': 'R{i}C{j}', # {i} and {j} will be replaced
                                # by str.format() with the corresponding row / column index
         'Layer': 2
     },
     'Circle': {
-        'Radius': 5,
+        'Radius': 25,
         'Layer': 3
     },
     'CornerCubeArray': {
         'Columns': 6,
-        'Rows': 5,
+        'Rows': 3,
         'ArrayXOffset': 500,
         'ArrayYOffset': -500,
         'ArrayOrigin': [0.75e3, 3e3]
@@ -59,7 +60,8 @@ StructureParameters = {
 ########################
 TXLWriter = TXLWizard.TXLWriter.TXLWriter(
     GridWidth=SampleParameters['Width'],
-    GridHeight=SampleParameters['Height']
+    GridHeight=SampleParameters['Height'],
+    Precision=6 #increase the precision / resolution to 0.000001 (10^-6)
 )
 
 #####################
@@ -77,7 +79,7 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     ],
     FontSize=150,
     StrokeWidth=20,
-    RoundCaps=True,# Set to False to improve e-Beam performance
+    RoundCaps=False,# Set to False to improve e-Beam performance
     Layer=1
 )
 # ...and some other information
@@ -89,7 +91,7 @@ Alphabet = TXLWizard.ShapeLibrary.Label.GetLabel(
     ],
     FontSize=50,
     StrokeWidth=3,
-    RoundCaps=True, # Set to False to improve e-Beam performance
+    RoundCaps=False, # Set to False to improve e-Beam performance
     Layer=1
 )
 
@@ -159,6 +161,7 @@ CornerCubeArrayFine.AddPattern(
     Repetitions2=StructureParameters['CornerCubeArray']['Rows']
 )
 
+# Add a label array to label each element of the array pattern above
 TXLWizard.ShapeLibrary.LabelArray.GetLabelArray(
     TXLWriter,
     StructureParameters['CornerCube']['Label'],
@@ -176,9 +179,9 @@ TXLWizard.ShapeLibrary.LabelArray.GetLabelArray(
     ],
     Repetitions1=StructureParameters['CornerCubeArray']['Columns'],
     Repetitions2=StructureParameters['CornerCubeArray']['Rows'],
-    FontSize=16,
+    FontSize=40,
     StrokeWidth=3,
-    RoundCaps=True,# Set to False to improve e-Beam performance
+    RoundCaps=False,# Set to False to improve e-Beam performance
     Layer=1,
     RotationAngle=45
 )

@@ -1,75 +1,78 @@
-\indexentry{TXLWizard.TXLWriter (module)|hyperpage}{17}
-\indexentry{TXLWriter (class in TXLWizard.TXLWriter)|hyperpage}{17}
-\indexentry{AddContentStructure() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{18}
-\indexentry{AddDefinitionStructure() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{18}
-\indexentry{GenerateFiles() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{18}
-\indexentry{TXLWizard.Patterns.AbstractPattern (module)|hyperpage}{19}
-\indexentry{AbstractPattern (class in TXLWizard.Patterns.AbstractPattern)|hyperpage}{19}
-\indexentry{Attributes (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{19}
-\indexentry{DefaultAttributes (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{19}
-\indexentry{GetSVGOutput() (TXLWizard.Patterns.AbstractPattern.AbstractPattern method)|hyperpage}{19}
-\indexentry{GetTXLOutput() (TXLWizard.Patterns.AbstractPattern.AbstractPattern method)|hyperpage}{20}
-\indexentry{ParentStructure (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{20}
-\indexentry{Type (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{20}
-\indexentry{TXLWizard.Patterns.Array (module)|hyperpage}{20}
-\indexentry{Array (class in TXLWizard.Patterns.Array)|hyperpage}{20}
-\indexentry{PositionDelta1 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{21}
-\indexentry{PositionDelta2 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{21}
-\indexentry{ReferencedStructureID (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{21}
-\indexentry{Repetitions1 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{21}
-\indexentry{Repetitions2 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{21}
-\indexentry{Type (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{21}
-\indexentry{TXLWizard.Patterns.Circle (module)|hyperpage}{22}
-\indexentry{Circle (class in TXLWizard.Patterns.Circle)|hyperpage}{22}
-\indexentry{Center (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{EndAngle (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{EndPoint (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{Extended (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{NumberOfPoints (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{PathOnly (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{Radius (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{RoundCaps (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{StartAngle (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{StartPoint (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{Type (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{23}
-\indexentry{TXLWizard.Patterns.Ellipse (module)|hyperpage}{23}
-\indexentry{Ellipse (class in TXLWizard.Patterns.Ellipse)|hyperpage}{23}
-\indexentry{Center (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{EndAngle (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{EndPoint (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{NumberOfPoints (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{RadiusX (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{RadiusY (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{StartAngle (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{StartPoint (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{24}
-\indexentry{Type (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{25}
-\indexentry{TXLWizard.Patterns.Polygon (module)|hyperpage}{25}
-\indexentry{Polygon (class in TXLWizard.Patterns.Polygon)|hyperpage}{25}
-\indexentry{Points (TXLWizard.Patterns.Polygon.Polygon attribute)|hyperpage}{26}
-\indexentry{Type (TXLWizard.Patterns.Polygon.Polygon attribute)|hyperpage}{26}
-\indexentry{TXLWizard.Patterns.Polyline (module)|hyperpage}{26}
-\indexentry{Polyline (class in TXLWizard.Patterns.Polyline)|hyperpage}{26}
-\indexentry{Points (TXLWizard.Patterns.Polyline.Polyline attribute)|hyperpage}{27}
-\indexentry{RoundCaps (TXLWizard.Patterns.Polyline.Polyline attribute)|hyperpage}{27}
-\indexentry{Type (TXLWizard.Patterns.Polyline.Polyline attribute)|hyperpage}{27}
-\indexentry{TXLWizard.Patterns.Reference (module)|hyperpage}{27}
-\indexentry{Reference (class in TXLWizard.Patterns.Reference)|hyperpage}{28}
-\indexentry{ReferencedStructureID (TXLWizard.Patterns.Reference.Reference attribute)|hyperpage}{28}
-\indexentry{Type (TXLWizard.Patterns.Reference.Reference attribute)|hyperpage}{28}
-\indexentry{TXLWizard.Patterns.Structure (module)|hyperpage}{28}
-\indexentry{Structure (class in TXLWizard.Patterns.Structure)|hyperpage}{29}
-\indexentry{AddPattern() (TXLWizard.Patterns.Structure.Structure method)|hyperpage}{29}
-\indexentry{CurrentAttributes (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{29}
-\indexentry{ID (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{30}
-\indexentry{Patterns (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{30}
-\indexentry{TXLOutput (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{30}
-\indexentry{Type (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{30}
-\indexentry{TXLWizard.ShapeLibrary.Label (module)|hyperpage}{30}
-\indexentry{GetLabel() (in module TXLWizard.ShapeLibrary.Label)|hyperpage}{30}
-\indexentry{TXLWizard.ShapeLibrary.EndpointDetectionWindows (module)|hyperpage}{31}
-\indexentry{GetEndpointDetectionWindows() (in module TXLWizard.ShapeLibrary.EndpointDetectionWindows)|hyperpage}{31}
-\indexentry{TXLWizard.ShapeLibrary.AlignmentMarkers (module)|hyperpage}{32}
-\indexentry{GetAlignmentMarkers() (in module TXLWizard.ShapeLibrary.AlignmentMarkers)|hyperpage}{32}
-\indexentry{TXLWizard.TXLConverter (module)|hyperpage}{32}
-\indexentry{TXLConverter (class in TXLWizard.TXLConverter)|hyperpage}{33}
-\indexentry{TXLConverterCLI (class in TXLWizard.TXLConverter)|hyperpage}{33}
+\indexentry{TXLWizard.TXLWriter (module)|hyperpage}{21}
+\indexentry{TXLWriter (class in TXLWizard.TXLWriter)|hyperpage}{21}
+\indexentry{AddContentStructure() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{22}
+\indexentry{AddDefinitionStructure() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{22}
+\indexentry{GenerateFiles() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{23}
+\indexentry{ImportTXLFile() (TXLWizard.TXLWriter.TXLWriter method)|hyperpage}{23}
+\indexentry{TXLWizard.Patterns.AbstractPattern (module)|hyperpage}{24}
+\indexentry{AbstractPattern (class in TXLWizard.Patterns.AbstractPattern)|hyperpage}{24}
+\indexentry{Attributes (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{25}
+\indexentry{DefaultAttributes (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{25}
+\indexentry{GetSVGOutput() (TXLWizard.Patterns.AbstractPattern.AbstractPattern method)|hyperpage}{25}
+\indexentry{GetTXLOutput() (TXLWizard.Patterns.AbstractPattern.AbstractPattern method)|hyperpage}{25}
+\indexentry{ParentStructure (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{25}
+\indexentry{Type (TXLWizard.Patterns.AbstractPattern.AbstractPattern attribute)|hyperpage}{25}
+\indexentry{TXLWizard.Patterns.Array (module)|hyperpage}{25}
+\indexentry{Array (class in TXLWizard.Patterns.Array)|hyperpage}{25}
+\indexentry{PositionDelta1 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{26}
+\indexentry{PositionDelta2 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{26}
+\indexentry{ReferencedStructureID (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{26}
+\indexentry{Repetitions1 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{26}
+\indexentry{Repetitions2 (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{27}
+\indexentry{Type (TXLWizard.Patterns.Array.Array attribute)|hyperpage}{27}
+\indexentry{TXLWizard.Patterns.Circle (module)|hyperpage}{27}
+\indexentry{Circle (class in TXLWizard.Patterns.Circle)|hyperpage}{27}
+\indexentry{Center (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{EndAngle (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{EndPoint (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{Extended (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{NumberOfPoints (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{PathOnly (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{Radius (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{RoundCaps (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{StartAngle (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{StartPoint (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{Type (TXLWizard.Patterns.Circle.Circle attribute)|hyperpage}{28}
+\indexentry{TXLWizard.Patterns.Ellipse (module)|hyperpage}{29}
+\indexentry{Ellipse (class in TXLWizard.Patterns.Ellipse)|hyperpage}{29}
+\indexentry{Center (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{EndAngle (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{EndPoint (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{NumberOfPoints (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{RadiusX (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{RadiusY (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{StartAngle (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{StartPoint (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{Type (TXLWizard.Patterns.Ellipse.Ellipse attribute)|hyperpage}{30}
+\indexentry{TXLWizard.Patterns.Polygon (module)|hyperpage}{30}
+\indexentry{Polygon (class in TXLWizard.Patterns.Polygon)|hyperpage}{30}
+\indexentry{Points (TXLWizard.Patterns.Polygon.Polygon attribute)|hyperpage}{31}
+\indexentry{Type (TXLWizard.Patterns.Polygon.Polygon attribute)|hyperpage}{31}
+\indexentry{TXLWizard.Patterns.Polyline (module)|hyperpage}{31}
+\indexentry{Polyline (class in TXLWizard.Patterns.Polyline)|hyperpage}{32}
+\indexentry{Points (TXLWizard.Patterns.Polyline.Polyline attribute)|hyperpage}{32}
+\indexentry{RoundCaps (TXLWizard.Patterns.Polyline.Polyline attribute)|hyperpage}{33}
+\indexentry{Type (TXLWizard.Patterns.Polyline.Polyline attribute)|hyperpage}{33}
+\indexentry{TXLWizard.Patterns.Reference (module)|hyperpage}{33}
+\indexentry{Reference (class in TXLWizard.Patterns.Reference)|hyperpage}{33}
+\indexentry{ReferencedStructureID (TXLWizard.Patterns.Reference.Reference attribute)|hyperpage}{34}
+\indexentry{Type (TXLWizard.Patterns.Reference.Reference attribute)|hyperpage}{34}
+\indexentry{TXLWizard.Patterns.Structure (module)|hyperpage}{34}
+\indexentry{Structure (class in TXLWizard.Patterns.Structure)|hyperpage}{34}
+\indexentry{AddPattern() (TXLWizard.Patterns.Structure.Structure method)|hyperpage}{35}
+\indexentry{CurrentAttributes (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{35}
+\indexentry{ID (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{35}
+\indexentry{Patterns (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{35}
+\indexentry{TXLOutput (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{35}
+\indexentry{Type (TXLWizard.Patterns.Structure.Structure attribute)|hyperpage}{35}
+\indexentry{TXLWizard.ShapeLibrary.Label (module)|hyperpage}{35}
+\indexentry{GetLabel() (in module TXLWizard.ShapeLibrary.Label)|hyperpage}{36}
+\indexentry{TXLWizard.ShapeLibrary.EndpointDetectionWindows (module)|hyperpage}{36}
+\indexentry{GetEndpointDetectionWindows() (in module TXLWizard.ShapeLibrary.EndpointDetectionWindows)|hyperpage}{37}
+\indexentry{TXLWizard.ShapeLibrary.AlignmentMarkers (module)|hyperpage}{37}
+\indexentry{GetAlignmentMarkers() (in module TXLWizard.ShapeLibrary.AlignmentMarkers)|hyperpage}{37}
+\indexentry{TXLWizard.TXLConverter (module)|hyperpage}{38}
+\indexentry{TXLConverter (class in TXLWizard.TXLConverter)|hyperpage}{38}
+\indexentry{GenerateFiles() (TXLWizard.TXLConverter.TXLConverter method)|hyperpage}{38}
+\indexentry{ParseTXLFile() (TXLWizard.TXLConverter.TXLConverter method)|hyperpage}{38}
+\indexentry{TXLConverterCLI (class in TXLWizard.TXLConverter)|hyperpage}{38}

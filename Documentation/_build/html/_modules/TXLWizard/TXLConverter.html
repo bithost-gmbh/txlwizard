@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.TXLConverter &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.TXLConverter &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -135,7 +135,6 @@
 <span class="sd">Class for parsing TXL files and converting them to html / svg using `TXLWriter`</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-
 <span class="kn">import</span> <span class="nn">TXLWriter</span>
 
 <span class="kn">from</span> <span class="nn">Helpers</span> <span class="kn">import</span> <span class="n">Tuttifrutti</span>
@@ -144,6 +143,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">traceback</span>
+
 
 <div class="viewcode-block" id="TXLConverter"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter">[docs]</a><span class="k">class</span> <span class="nc">TXLConverter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -156,6 +156,23 @@
 <span class="sd">        Path / Filename of the .txl file</span>
 <span class="sd">    LayersToProcess : list of int, optional</span>
 <span class="sd">        if given, only layers in this list are processed / shown</span>
+<span class="sd">    **kwargs:</span>
+<span class="sd">        keyword-arguments passed to the :class:`TXLWizard.TXLWriter.TXLWriter` constructor.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Instatiate a `TXLConverter` instance, parse the TXL file and generate the HTML / SVG files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLConverterInstance = TXLWizard.TXLConverter.TXLConverter(</span>
+<span class="sd">    &gt;&gt;&gt;     FullFilePath,</span>
+<span class="sd">    &gt;&gt;&gt;     GridWidth=500,</span>
+<span class="sd">    &gt;&gt;&gt;     GridHeight=800,</span>
+<span class="sd">    &gt;&gt;&gt;     LayersToProcess=[1,5]</span>
+<span class="sd">    &gt;&gt;&gt; )</span>
+<span class="sd">    &gt;&gt;&gt; TXLConverterInstance.ParseTXLFile()</span>
+<span class="sd">    &gt;&gt;&gt; TXLConverterInstance.GenerateFiles()</span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -289,14 +306,18 @@
         <span class="c1"># key: structure index, value: int, number of references</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_StructReferences</span> <span class="o">=</span> <span class="p">{}</span>
 
+        <span class="c1">#: :class:`TXLWizard.TXLWriter.TXLWriter`: instance of `TXLWriter`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span> <span class="o">=</span> <span class="bp">None</span>
+
         <span class="k">if</span> <span class="s1">&#39;LayersToProcess&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_LayersToProcess</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ParseTXLFile</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;TXLWriter&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_ParseTXLFile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TXLConverter.ParseTXLFile"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter.ParseTXLFile">[docs]</a>    <span class="k">def</span> <span class="nf">ParseTXLFile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Parses the TXL file by processing line by line.</span>
 <span class="sd">        The number of references to structures is counted.</span>
@@ -369,7 +390,7 @@
 
             <span class="n">i2</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_ParseAttribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">CurrentCommandToken</span><span class="p">,</span> <span class="n">CurrentStruct</span><span class="p">,</span> <span class="n">Tokens</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -424,7 +445,7 @@
 
             <span class="c1"># Handle Points not separated by ,</span>
             <span class="k">if</span> <span class="n">ParameterInfo</span><span class="p">[</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Point&#39;</span> <span class="ow">and</span> <span class="n">ParameterValueString</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span>
-                    <span class="s1">&#39;List&#39;</span> <span class="ow">in</span> <span class="n">ParameterInfo</span> <span class="ow">and</span> <span class="n">ParameterInfo</span><span class="p">[</span><span class="s1">&#39;List&#39;</span><span class="p">]):</span>
+                            <span class="s1">&#39;List&#39;</span> <span class="ow">in</span> <span class="n">ParameterInfo</span> <span class="ow">and</span> <span class="n">ParameterInfo</span><span class="p">[</span><span class="s1">&#39;List&#39;</span><span class="p">]):</span>
                 <span class="n">ParameterValueString</span> <span class="o">+=</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">Tokens</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">SkipTokenIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
                 <span class="n">SkipTokenIndex</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">ParameterFound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ParsePatternParameter</span><span class="p">(</span><span class="n">CurrentCommandToken</span><span class="p">,</span> <span class="n">ParameterInfo</span><span class="p">,</span> <span class="n">ParameterValueString</span><span class="p">,</span>
@@ -517,9 +538,13 @@
             <span class="n">Values</span> <span class="o">=</span> <span class="n">ParameterValueString</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
             <span class="n">ParameterValue</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">Values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">Values</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
 
-        <span class="k">return</span> <span class="n">ParameterValue</span></div>
+        <span class="k">return</span> <span class="n">ParameterValue</span>
 
-
+<div class="viewcode-block" id="TXLConverter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate the HTML / SVG files</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="TXLConverterCLI"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.html#TXLWizard.TXLConverter.TXLConverterCLI">[docs]</a><span class="k">class</span> <span class="nc">TXLConverterCLI</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -562,7 +587,7 @@
         <span class="p">}</span>
 
         <span class="c1">#: float: current software version</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_Version</span> <span class="o">=</span> <span class="mf">1.6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Version</span> <span class="o">=</span> <span class="mf">1.7</span>
 
         <span class="c1">#: str: Path / Filename of the file where the configuration is read and stored in the JSON format.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_JSONConfigurationFile</span> <span class="o">=</span> <span class="n">JSONConfigurationFile</span>
@@ -570,12 +595,11 @@
         <span class="c1">#: bool: Flag whether to update the configuration file.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_UpdateConfigurationFile</span> <span class="o">=</span> <span class="n">UpdateConfigurationFile</span>
 
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_LoadConfiguration</span><span class="p">()</span>
         <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">,</span> <span class="n">OverrideConfiguration</span><span class="p">)</span>
         <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">Penrose</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;### TXL Converter v{:1.1f} ###&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Version</span><span class="p">),</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;### TXL Converter v{:1.1f} ###&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Version</span><span class="p">),</span> <span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Converts TXL Files to SVG/HTML&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;written by Esteban Marin (estebanmarin@gmx.ch)&#39;</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -618,9 +642,9 @@
 
         <span class="n">Configuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Full TXL File / Folder Path&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Full TXL File / Folder Path&#39;</span><span class="p">,</span> <span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
         <span class="n">NewTXLFolderPath</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">&#39;If the path is a folder, you can enter the filename separately.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-                                                     <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
+                                             <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewTXLFolderPath</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">NewTXLFolderPath</span> <span class="o">=</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -628,7 +652,7 @@
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFolderPath&#39;</span><span class="p">]):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;TXL Filename&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;TXL Filename&#39;</span><span class="p">,</span> <span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
             <span class="n">NewTXLFilename</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;TXLFilename&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewTXLFilename</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">NewTXLFolderPath</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -638,20 +662,20 @@
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SampleWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;SampleHeight&#39;</span><span class="p">]:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s1">&#39; in um&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="s1">&#39; in um&#39;</span><span class="p">,</span> <span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
             <span class="n">NewValue</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
                 <span class="s1">&#39;used to draw coordinate system</span><span class="se">\n</span><span class="s1">[&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewValue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">Configuration</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">NewValue</span><span class="p">)</span>
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Layers to process&#39;</span><span class="p">,</span><span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_PrintMessage</span><span class="p">(</span><span class="s1">&#39;Layers to process&#39;</span><span class="p">,</span> <span class="s1">&#39;Bold&#39;</span><span class="p">)</span>
         <span class="n">NewLayersToProcess</span> <span class="o">=</span> <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
             <span class="s1">&#39;comma-separated, e.g. 1,4,5. Type -1 for all layers.</span><span class="se">\n</span><span class="s1">[&#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="s1">&#39;]: &#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">NewLayersToProcess</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">Layer</span> <span class="ow">in</span> <span class="n">NewLayersToProcess</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">Layer</span> <span class="ow">in</span> <span class="n">NewLayersToProcess</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
                 <span class="n">Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Layer</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
 
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -675,6 +699,8 @@
             <span class="n">GridHeight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;SampleHeight&#39;</span><span class="p">],</span>
             <span class="n">LayersToProcess</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_Configuration</span><span class="p">[</span><span class="s1">&#39;LayersToProcess&#39;</span><span class="p">]</span>
         <span class="p">)</span>
+        <span class="n">TXLConverterInstance</span><span class="o">.</span><span class="n">ParseTXLFile</span><span class="p">()</span>
+        <span class="n">TXLConverterInstance</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_PrintMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Message</span><span class="p">,</span> <span class="n">Style</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -733,7 +759,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

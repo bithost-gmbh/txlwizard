@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.ShapeLibrary.AlignmentMarkers &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.ShapeLibrary.AlignmentMarkers &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -136,7 +136,7 @@
 <span class="sd">&#39;&#39;&#39;</span>
 
 
-<div class="viewcode-block" id="GetAlignmentMarkers"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html#TXLWizard.ShapeLibrary.AlignmentMarkers.GetAlignmentMarkers">[docs]</a><span class="k">def</span> <span class="nf">GetAlignmentMarkers</span><span class="p">(</span><span class="n">TXLWriter</span><span class="p">,</span> <span class="n">Size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">OffsetSmall</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">OffsetLarge</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="GetAlignmentMarkers"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html#TXLWizard.ShapeLibrary.AlignmentMarkers.GetAlignmentMarkers">[docs]</a><span class="k">def</span> <span class="nf">GetAlignmentMarkers</span><span class="p">(</span><span class="n">TXLWriter</span><span class="p">,</span> <span class="n">Size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">OffsetSmall</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">OffsetLarge</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Add squares that can be used as alignment markers</span>
 
@@ -152,7 +152,7 @@
 <span class="sd">        Defaults to 750</span>
 <span class="sd">    OffsetLarge: float, optional</span>
 <span class="sd">        second offset from center.</span>
-<span class="sd">        Defaults to 1500</span>
+<span class="sd">        Defaults to 3000</span>
 <span class="sd">    Layer: int, optional</span>
 <span class="sd">        Layer the pattern should be rendered in.</span>
 <span class="sd">        Defaults to 1</span>
@@ -170,8 +170,8 @@
     <span class="k">for</span> <span class="n">Offset</span> <span class="ow">in</span> <span class="p">[</span><span class="n">OffsetSmall</span><span class="p">,</span> <span class="n">OffsetLarge</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
             <span class="n">PolygonPoints</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">XOffset</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">OffsetSmall</span>
-            <span class="n">YOffset</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">OffsetSmall</span>
+            <span class="n">XOffset</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">Offset</span>
+            <span class="n">YOffset</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">Offset</span>
 
             <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
                 <span class="n">XOffset</span> <span class="o">-</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
@@ -225,7 +225,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

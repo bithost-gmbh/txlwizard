@@ -20,7 +20,7 @@ class Structure(AbstractPattern.AbstractPattern):
     ID: str
         Unique identification of the structure. Also used when referencing to this structure.
     TXLOutput: bool, optional
-        If set to False, the TXL Output is suppressed.
+        If set to False, the TXL Output is suppressed.\n
         Defaults to True
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.

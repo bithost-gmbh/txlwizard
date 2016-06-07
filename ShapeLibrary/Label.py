@@ -64,7 +64,7 @@ def GetLabel(TXLWriter, Text, OriginPoint=[0, 0], FontSize=100, StrokeWidth=10, 
 
     '''
 
-    ID = TXLWriter._GetAutoStructureID()
+    ID = TXLWriter._GetAutoStructureID('Label')
 
     Label = TXLWriter.AddDefinitionStructure(
         ID, Layer=Layer, StrokeWidth=StrokeWidth)
@@ -161,7 +161,7 @@ def _GetCharacterMap(RoundCaps=False):
             [[0, 1], [2, 1]]
         ],
         'G': [
-            [[2, 2], [0, 2], [0, 0], [2, 0], [2, 1], [0, 1]]
+            [[2, 2], [0, 2], [0, 0], [2, 0], [2, 1], [1, 1]]
         ],
         'H': [
             [[0, 2], [0, 0]],
@@ -188,7 +188,7 @@ def _GetCharacterMap(RoundCaps=False):
             [[0, 0], [0, 2], [2, 0], [2, 2]]
         ],
         'O': [
-            [[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]]
+            [[0, 0], [0, 2], [2, 2], [2, 0], [0, 0], [0, 1]]
         ],
         'P': [
             [[0, 0], [0, 2], [2, 2], [2, 1], [0, 1]]
@@ -197,7 +197,8 @@ def _GetCharacterMap(RoundCaps=False):
             [[2, 0], [2, 2], [0, 2], [0, 1], [2, 1]]
         ],
         'R': [
-            [[0, 0], [0, 2], [2, 2], [2, 1], [0, 1], [2, 0]]
+            [[0, 0], [0, 2], [2, 2], [2, 1], [0, 1]],
+            [[0, 1], [2, 0]]
         ],
         'S': [
             [[2, 1.75], [2, 2], [0, 2], [0, 1], [2, 1], [2, 0], [0, 0], [0, 0.25]]
@@ -227,7 +228,7 @@ def _GetCharacterMap(RoundCaps=False):
             [[0, 2], [2, 2], [0, 0], [2, 0]]
         ],
         '0': [
-            [[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]],
+            [[0, 0], [0, 2], [2, 2], [2, 0], [0, 0], [0, 1]],
             [[0, 0], [2, 2]]
         ],
         '1': [
@@ -254,7 +255,7 @@ def _GetCharacterMap(RoundCaps=False):
             [[0, 2], [2, 2], [0, 0]]
         ],
         '8': [
-            [[0, 2], [2, 2], [0, 0], [2, 0], [0, 2]]
+            [[0, 2], [2, 2], [0, 0], [2, 0], [0, 2], [2, 2]]
         ],
         '9': [
             [[0, 0], [2, 0], [2, 2], [0, 2], [0, 1], [2, 1]]
@@ -274,10 +275,9 @@ def _GetCharacterMap(RoundCaps=False):
         for Character in CharacterMap:
             RoundCharacterMap[Character] = []
             for Polyline in CharacterMap[Character]:
-                tmpPolyline = []
                 for i in range(len(Polyline) - 1):
-                    tmpPolyline.append([Polyline[i], [Polyline[i + 1]]])
-                RoundCharacterMap[Character].append(tmpPolyline)
+                    tmpPolyline = [Polyline[i], Polyline[i + 1]]
+                    RoundCharacterMap[Character].append(tmpPolyline)
         return RoundCharacterMap
     else:
         return CharacterMap

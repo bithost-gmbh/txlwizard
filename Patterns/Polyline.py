@@ -18,7 +18,7 @@ class Polyline(AbstractPattern.AbstractPattern):
     Points: list of list of float
         List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the path
     RoundCaps: bool, optional
-        If set to True, the end of the path is rounded.
+        If set to True, the end of the path is rounded.\n
         Defaults to False.
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TXLWizard.TXLConverter &mdash; TXLWizard 1.6.0 documentation</title>
+  <title>TXLWizard.TXLConverter &mdash; TXLWizard 1.7.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="TXLWizard 1.6.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
         <link rel="prev" title="TXLWizard.ShapeLibrary.AlignmentMarkers" href="../ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html"/> 
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.6.0
+                1.7.0
               </div>
             
           
@@ -177,11 +177,37 @@ html / svg using <a class="reference internal" href="../TXLWriter/TXLWizard.TXLW
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename of the .txl file</li>
 <li><strong>LayersToProcess</strong> (<em>list of int, optional</em>) &#8211; if given, only layers in this list are processed / shown</li>
+<li><strong>**kwargs</strong> &#8211; keyword-arguments passed to the <a class="reference internal" href="../TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter" title="TXLWizard.TXLWriter.TXLWriter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLWriter.TXLWriter</span></code></a> constructor.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Instatiate a <cite>TXLConverter</cite> instance, parse the TXL file and generate the HTML / SVG files</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLConverterInstance</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLConverter</span><span class="o">.</span><span class="n">TXLConverter</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">FullFilePath</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">GridWidth</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">GridHeight</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">LayersToProcess</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TXLConverterInstance</span><span class="o">.</span><span class="n">ParseTXLFile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TXLConverterInstance</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="TXLWizard.TXLConverter.TXLConverter.GenerateFiles">
+<code class="descname">GenerateFiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the HTML / SVG files</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TXLWizard.TXLConverter.TXLConverter.ParseTXLFile">
+<code class="descname">ParseTXLFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverter.ParseTXLFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverter.ParseTXLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the TXL file by processing line by line.
+The number of references to structures is counted.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -255,7 +281,7 @@ Defaults to {}</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.6.0',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

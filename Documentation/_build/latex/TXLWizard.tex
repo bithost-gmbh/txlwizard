@@ -29,8 +29,8 @@
 
 
 \title{TXLWizard Documentation}
-\date{May 20, 2016}
-\release{1.6.0}
+\date{Jun 07, 2016}
+\release{1.7.0}
 \author{Esteban Marin}
 \newcommand{\sphinxlogo}{}
 \renewcommand{\releasename}{Release}
@@ -403,7 +403,7 @@ and at the {\hyperref[Chapters/40_PythonModuleReference:pythonmodulereference]{\
 \capstart
 
 \includegraphics{{Example_Introduction}.png}
-\caption{Generated SVG Image for \titleref{Content/Example\_Introduction.py}}\label{Chapters/20_Examples:id7}\end{figure}
+\caption{Generated SVG Image for \titleref{Content/Example\_Introduction.py}}\label{Chapters/20_Examples:id10}\end{figure}
 
 
 \section{Simple Example}
@@ -437,7 +437,6 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
 \PYG{c+c1}{\PYGZsh{} Import math module for calculations}
 \PYG{k+kn}{import} \PYG{n+nn}{math}
 
-
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
 \PYG{c+c1}{\PYGZsh{} Sample / Structure Parameters \PYGZsh{}}
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
@@ -461,10 +460,9 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{500}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{500}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mf}{0.75e3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{n}{e3}\PYG{p}{]}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{R}\PYG{l+s+si}{\PYGZob{}:d\PYGZcb{}}\PYG{l+s+s1}{C}\PYG{l+s+si}{\PYGZob{}:d\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{R}\PYG{l+s+si}{\PYGZob{}i\PYGZcb{}}\PYG{l+s+s1}{C}\PYG{l+s+si}{\PYGZob{}j\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
-
 
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
 \PYG{c+c1}{\PYGZsh{} Initialize TXLWriter \PYGZsh{}}
@@ -489,10 +487,9 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
     \PYG{p}{]}\PYG{p}{,}
     \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
     \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,}
-    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
     \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
 \PYG{p}{)}
-
 
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Endpoint Detection \PYGZsh{}\PYGZsh{}}
 
@@ -528,15 +525,12 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
     \PYG{n}{Repetitions2}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
 \PYG{p}{)}
 
-
-
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
 \PYG{c+c1}{\PYGZsh{} Generate Output Files \PYGZsh{}}
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
 
 \PYG{c+c1}{\PYGZsh{} Note: The suffix (.txl, .html, .svg) will be appended automatically}
 \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{GenerateFiles}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Masks/Example\PYGZus{}Simple}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
-
 \end{Verbatim}
 
 
@@ -546,19 +540,21 @@ A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlw
 \capstart
 
 \includegraphics{{Example_Simple}.png}
-\caption{Generated SVG Image for \titleref{Content/Example\_Simple.py}}\label{Chapters/20_Examples:id8}\end{figure}
+\caption{Generated SVG Image for \titleref{Content/Example\_Simple.py}}\label{Chapters/20_Examples:id11}\end{figure}
 
 
-\section{Advanced Example}
-\label{Chapters/20_Examples:advanced-example}\label{Chapters/20_Examples:txlwizardexampleadvanced}
+\section{TXLImport Example}
+\label{Chapters/20_Examples:txlimport-example}
 
 \subsection{Introduction}
 \label{Chapters/20_Examples:id4}
-The following code demonstrates an advanced example usage of the \titleref{TXLWizard} for
-generating TXL files with python code.
+The following code demonstrates a simple example usage of the \titleref{TXLWizard} for
+importing existing TXL files and adding an array of labels.
 
-The code can be found in the file \code{Content/Example\_Advanced.py}.
-The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:exampleadvancedsvg]{\crossref{\DUrole{std,std-ref}{Generated SVG Image}}}}.
+The code can be found in the file \code{Content/Example\_ImportTXLFile.py}.
+The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:exampleimportsvg]{\crossref{\DUrole{std,std-ref}{Generated SVG Image}}}}.
+
+A more advanced example is shown in Section {\hyperref[Chapters/20_Examples:txlwizardexampleadvanced]{\crossref{\DUrole{std,std-ref}{Advanced Example}}}}
 
 
 \subsection{Code}
@@ -572,9 +568,110 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 \PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{TXLWriter}
 
 \PYG{c+c1}{\PYGZsh{} Import Pre\PYGZhy{}Defined Shapes / Structures wrapped in functions}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{LabelArray}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Sample / Structure Parameters \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Define all sample parameters}
+\PYG{n}{SampleParameters} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Width}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{n}{e3}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{n}{e3}\PYG{p}{,}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Simple Demo}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{} Define all structure parameters}
+\PYG{n}{StructureParameters} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{500}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{500}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mf}{0.75e3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{n}{e3}\PYG{p}{]}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{R}\PYG{l+s+si}{\PYGZob{}j\PYGZcb{}}\PYG{l+s+s1}{C}\PYG{l+s+si}{\PYGZob{}i\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{} \PYGZob{}i\PYGZcb{} and \PYGZob{}j\PYGZcb{} will be replaced}
+        \PYG{c+c1}{\PYGZsh{} by str.format() with the corresponding auto\PYGZhy{}incremented index}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{100}\PYG{p}{,}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Initialize TXLWriter \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}
+    \PYG{n}{GridWidth}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Width}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{GridHeight}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Import existing TXL file}
+\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{ImportTXLFile}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Masks/Example\PYGZus{}Simple.txl}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} label each array element}
+\PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{LabelArray}\PYG{o}{.}\PYG{n}{GetLabelArray}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,}
+    \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{PositionDelta1}\PYG{o}{=}\PYG{p}{[}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,} \PYG{l+m+mi}{0}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{PositionDelta2}\PYG{o}{=}\PYG{p}{[}
+        \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Repetitions1}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Repetitions2}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CircleArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Generate Output Files \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Note: The suffix (.txl, .html, .svg) will be appended automatically}
+\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{GenerateFiles}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Masks/Example\PYGZus{}ImportTXLFile}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
+
+
+\subsection{Generated SVG Image}
+\label{Chapters/20_Examples:id6}\label{Chapters/20_Examples:exampleimportsvg}\begin{figure}[htbp]
+\centering
+\capstart
+
+\includegraphics{{Example_ImportTXLFile}.png}
+\caption{Generated SVG Image for \titleref{Content/Example\_ImportTXLFile.py}}\label{Chapters/20_Examples:id12}\end{figure}
+
+
+\section{Advanced Example}
+\label{Chapters/20_Examples:advanced-example}\label{Chapters/20_Examples:txlwizardexampleadvanced}
+
+\subsection{Introduction}
+\label{Chapters/20_Examples:id7}
+The following code demonstrates an advanced example usage of the \titleref{TXLWizard} for
+generating TXL files with python code.
+
+The code can be found in the file \code{Content/Example\_Advanced.py}.
+The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:exampleadvancedsvg]{\crossref{\DUrole{std,std-ref}{Generated SVG Image}}}}.
+
+
+\subsection{Code}
+\label{Chapters/20_Examples:id8}
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Import Libraries \PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Import TXLWriter, the main class for generating TXL Output}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{TXLWriter}
+
+\PYG{c+c1}{\PYGZsh{} Import Pre\PYGZhy{}Defined Shapes / Structures wrapped in functions}
 \PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{EndpointDetectionWindows}
-\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{Markers}
 \PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{Label}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{LabelArray}
+\PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{AlignmentMarkers}
 \PYG{k+kn}{import} \PYG{n+nn}{TXLWizard}\PYG{n+nn}{.}\PYG{n+nn}{ShapeLibrary}\PYG{n+nn}{.}\PYG{n+nn}{CornerCube}
 
 \PYG{c+c1}{\PYGZsh{} Import math module for calculations}
@@ -595,24 +692,24 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 \PYG{c+c1}{\PYGZsh{} Define all structure parameters}
 \PYG{n}{StructureParameters} \PYG{o}{=} \PYG{p}{\PYGZob{}}
     \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{BridgeLength}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{8}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ParabolaFocus}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{9}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{XCutoff}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{9}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapX}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{BridgeLength}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{40}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ParabolaFocus}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{45}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{XCutoff}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{45}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapX}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{15}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{AirGapY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{50}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{R}\PYG{l+s+si}{\PYGZob{}:d\PYGZcb{}}\PYG{l+s+s1}{C}\PYG{l+s+si}{\PYGZob{}:d\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} \PYGZob{}:d\PYGZcb{} will be replaced}
-                               \PYG{c+c1}{\PYGZsh{} by str.format() with the corresponding row / column}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{150}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{R}\PYG{l+s+si}{\PYGZob{}i\PYGZcb{}}\PYG{l+s+s1}{C}\PYG{l+s+si}{\PYGZob{}j\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} \PYGZob{}i\PYGZcb{} and \PYGZob{}j\PYGZcb{} will be replaced}
+                               \PYG{c+c1}{\PYGZsh{} by str.format() with the corresponding row / column index}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Layer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{2}
     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
     \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Radius}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Radius}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{25}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Layer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}
     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
     \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{\PYGZob{}}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,}
-        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,}
+        \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{500}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{500}\PYG{p}{,}
         \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mf}{0.75e3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{n}{e3}\PYG{p}{]}
@@ -625,7 +722,8 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
 \PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}
     \PYG{n}{GridWidth}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Width}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
-    \PYG{n}{GridHeight}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{n}{GridHeight}\PYG{o}{=}\PYG{n}{SampleParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Height}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Precision}\PYG{o}{=}\PYG{l+m+mi}{6} \PYG{c+c1}{\PYGZsh{}increase the precision / resolution to 0.000001 (10\PYGZca{}\PYGZhy{}6)}
 \PYG{p}{)}
 
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
@@ -643,7 +741,7 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
     \PYG{p}{]}\PYG{p}{,}
     \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
     \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,}
-    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,}\PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,}\PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
     \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
 \PYG{p}{)}
 \PYG{c+c1}{\PYGZsh{} ...and some other information}
@@ -655,7 +753,7 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
     \PYG{p}{]}\PYG{p}{,}
     \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
     \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
-    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
     \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
 \PYG{p}{)}
 
@@ -725,26 +823,31 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
     \PYG{n}{Repetitions2}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
 \PYG{p}{)}
 
+\PYG{c+c1}{\PYGZsh{} Add a label array to label each element of the array pattern above}
+\PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{LabelArray}\PYG{o}{.}\PYG{n}{GetLabelArray}\PYG{p}{(}
+    \PYG{n}{TXLWriter}\PYG{p}{,}
+    \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{PositionDelta1}\PYG{o}{=}\PYG{p}{[}
+        \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,} \PYG{l+m+mi}{0}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{PositionDelta2}\PYG{o}{=}\PYG{p}{[}
+        \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Repetitions1}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{Repetitions2}\PYG{o}{=}\PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
+    \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{40}\PYG{p}{,}
+    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,}\PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{n}{RotationAngle}\PYG{o}{=}\PYG{l+m+mi}{45}
+\PYG{p}{)}
 
-\PYG{c+c1}{\PYGZsh{} Add Labels to each array element}
-\PYG{k}{for} \PYG{n}{Row} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rows}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{:}
-    \PYG{k}{for} \PYG{n}{Column} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Columns}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{:}
-        \PYG{n}{RowColumnCountLabel} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Label}\PYG{o}{.}\PYG{n}{GetLabel}\PYG{p}{(}
-            \PYG{n}{TXLWriter}\PYG{p}{,}
-            \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Label}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{Row}\PYG{p}{,} \PYG{n}{Column}\PYG{p}{)}\PYG{p}{,}
-            \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
-                \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
-                \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Column} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}
-                \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelXOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}
-                \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayOrigin}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
-                \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCubeArray}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ArrayYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Row} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}
-                \PYG{o}{+} \PYG{n}{StructureParameters}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CornerCube}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LabelYOffset}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,}
-            \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{16}\PYG{p}{,}
-            \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
-            \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,}\PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
-            \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
-            \PYG{n}{RotationAngle}\PYG{o}{=}\PYG{l+m+mi}{45}
-        \PYG{p}{)}
 
 
 \PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}\PYGZsh{}}
@@ -758,12 +861,12 @@ The resulting SVG image is shown in Figure {\hyperref[Chapters/20_Examples:examp
 
 
 \subsection{Generated SVG Image}
-\label{Chapters/20_Examples:id6}\label{Chapters/20_Examples:exampleadvancedsvg}\begin{figure}[htbp]
+\label{Chapters/20_Examples:exampleadvancedsvg}\label{Chapters/20_Examples:id9}\begin{figure}[htbp]
 \centering
 \capstart
 
 \includegraphics{{Example_Advanced}.png}
-\caption{Generated SVG Image for \titleref{Content/Example\_Advanced.py}}\label{Chapters/20_Examples:id9}\end{figure}
+\caption{Generated SVG Image for \titleref{Content/Example\_Advanced.py}}\label{Chapters/20_Examples:id13}\end{figure}
 
 
 \chapter{TXLConverter}
@@ -934,12 +1037,19 @@ Coordinate System Sub-Grid Spacing in um.
 Defaults to 10
 
 
+\item {} 
+\textbf{\texttt{Precision}} (\emph{\texttt{int, optional}}) -- 
+number of digits for float to str conversion / Resolution of TXL file.
+
+Defaults to 4
+
+
 \end{itemize}
 
 \end{description}\end{quote}
 \paragraph{Examples}
 
-Initialize TXLWriter, add a definition structure,
+Initialize TXLWriter
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}
@@ -1036,17 +1146,98 @@ Generate the output files (.txl, .svg, .html).
 The corresponding path will be created if it does not exist
 
 \item {} 
-\textbf{\texttt{TXL}} (\emph{\texttt{Optional{[}bool{]}}}) -- Enable TXL Output
+\textbf{\texttt{TXL}} (\emph{\texttt{bool, optional}}) -- 
+Enable TXL Output.
+
+Defaults to True
+
 
 \item {} 
-\textbf{\texttt{SVG}} (\emph{\texttt{Optional{[}bool{]}}}) -- Enable SVG Output
+\textbf{\texttt{SVG}} (\emph{\texttt{bool, optional}}) -- 
+Enable SVG Output.
+
+Defaults to True
+
 
 \item {} 
-\textbf{\texttt{HTML}} (\emph{\texttt{Optional{[}bool{]}}}) -- Enable HTML Output
+\textbf{\texttt{HTML}} (\emph{\texttt{bool, optional}}) -- 
+Enable HTML Output. If set to \titleref{True},
+also \titleref{SVG} needs to be set to \titleref{True}
+
+Defaults to True
+
 
 \end{itemize}
 
 \end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{ImportTXLFile() (TXLWizard.TXLWriter.TXLWriter method)}
+
+\begin{fulllineitems}
+\phantomsection\label{Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:TXLWizard.TXLWriter.TXLWriter.ImportTXLFile}\pysiglinewithargsret{\bfcode{ImportTXLFile}}{\emph{Filename}, \emph{LayersToProcess={[}{]}}}{}
+Import an existing TXL file for further processing.
+The content structures can be accessed with \titleref{self.\_ContentStructures} (read-only!).
+The order of the content structures is stored in \titleref{self.\_ContentStructuresIndexList} (read-only!).
+The definition structures are stored in \titleref{self.\_Definitions.Structures}
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{Filename}} (\emph{\texttt{str}}) -- Path / Filename of the .txl file to be imported
+
+\item {} 
+\textbf{\texttt{LayersToProcess}} (\emph{\texttt{list of int, optional}}) -- if given, only layers in this list are processed / shown.
+Defaults to {[}{]}
+
+\end{itemize}
+
+\end{description}\end{quote}
+\paragraph{Examples}
+
+Initialize TXLWriter
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{TXLWriter}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+import TXL file \titleref{myPath/mask\_orig.txl}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{ImportTXLFile}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{myPath/mask\PYGZus{}orig.txl}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{LayersToProcess}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{)}
+\end{Verbatim}
+
+Add a pattern to an existing structure
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{MyStructure} \PYG{o}{=} \PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{\PYGZus{}ContentStructures}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{MySuperStructure}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{MyStructure}\PYG{o}{.}\PYG{n}{AddPattern}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Circle}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Center}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Radius}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
+
+Add a label
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{SampleLabelObject} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{ShapeLibrary}\PYG{o}{.}\PYG{n}{Label}\PYG{o}{.}\PYG{n}{GetLabel}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{TXLWriter}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Text}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{This is my text}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{OriginPoint}\PYG{o}{=}\PYG{p}{[}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }        \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{200}\PYG{p}{,} \PYG{l+m+mi}{300}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{20}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\end{Verbatim}
+
+Generate the Output files with name \titleref{mask\_final.(txl\textbar{}html\textbar{}svg)} to the folder \titleref{myPath}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLWriter}\PYG{o}{.}\PYG{n}{GenerateFiles}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{myPath/mask\PYGZus{}final}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}
 
 \end{fulllineitems}
 
@@ -1153,24 +1344,39 @@ Provides an abstract class for \titleref{Pattern} objects.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
-\textbf{\texttt{Layer}} (\emph{\texttt{int, optional}}) -- Specifies the \titleref{Layer} attribute of the pattern.
+\textbf{\texttt{Layer}} (\emph{\texttt{int, optional}}) -- 
+Specifies the \titleref{Layer} attribute of the pattern.
+
 Defaults to None.
 
-\item {} 
-\textbf{\texttt{DataType}} (\emph{\texttt{int, optional}}) -- Specifies the \titleref{DataType} attribute of the pattern.
-Defaults to None.
 
 \item {} 
-\textbf{\texttt{RotationAngle}} (\emph{\texttt{float, optional}}) -- Specifies the \titleref{RotationAngle} attribute of the pattern.
+\textbf{\texttt{DataType}} (\emph{\texttt{int, optional}}) -- 
+Specifies the \titleref{DataType} attribute of the pattern.
+
 Defaults to None.
 
-\item {} 
-\textbf{\texttt{StrokeWidth}} (\emph{\texttt{float, optional}}) -- Specifies the \titleref{StrokeWidth} attribute of the pattern.
-Defaults to None.
 
 \item {} 
-\textbf{\texttt{ScaleFactor}} (\emph{\texttt{float, optional}}) -- Specifies the \titleref{ScaleFactor} attribute of the pattern.
+\textbf{\texttt{RotationAngle}} (\emph{\texttt{float, optional}}) -- 
+Specifies the \titleref{RotationAngle} attribute of the pattern.
+
 Defaults to None.
+
+
+\item {} 
+\textbf{\texttt{StrokeWidth}} (\emph{\texttt{float, optional}}) -- 
+Specifies the \titleref{StrokeWidth} attribute of the pattern.
+
+Defaults to None.
+
+
+\item {} 
+\textbf{\texttt{ScaleFactor}} (\emph{\texttt{float, optional}}) -- 
+Specifies the \titleref{ScaleFactor} attribute of the pattern.
+
+Defaults to None.
+
 
 \end{itemize}
 
@@ -1472,28 +1678,46 @@ specifying \titleref{RoundCaps} or extended by specifying \titleref{Extended} al
 \textbf{\texttt{Radius}} (\emph{\texttt{float}}) -- Radius of the circle
 
 \item {} 
-\textbf{\texttt{StartAngle}} (\emph{\texttt{float, optional}}) -- If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+\textbf{\texttt{StartAngle}} (\emph{\texttt{float, optional}}) -- 
+If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+
 Defaults to None.
 
+
 \item {} 
-\textbf{\texttt{EndAngle}} (\emph{\texttt{float, optional}}) -- If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+\textbf{\texttt{EndAngle}} (\emph{\texttt{float, optional}}) -- 
+If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+
 Defaults to None.
 
+
 \item {} 
-\textbf{\texttt{NumberOfPoints}} (\emph{\texttt{int, optional}}) -- Number of path segments used for drawing the circle.
+\textbf{\texttt{NumberOfPoints}} (\emph{\texttt{int, optional}}) -- 
+Number of path segments used for drawing the circle.
+
 Defaults to None.
 
-\item {} 
-\textbf{\texttt{PathOnly}} (\emph{\texttt{bool, optional}}) -- If set to True, only the arc of the circle is drawn.
-Defaults to False.
 
 \item {} 
-\textbf{\texttt{RoundCaps}} (\emph{\texttt{bool, optional}}) -- If set to True along with \titleref{PathOnly}, the end of the path is rounded.
+\textbf{\texttt{PathOnly}} (\emph{\texttt{bool, optional}}) -- 
+If set to True, only the arc of the circle is drawn.
+
 Defaults to False.
 
+
 \item {} 
-\textbf{\texttt{Extended}} (\emph{\texttt{bool, optional}}) -- If set to True along with \titleref{PathOnly}, the end of the path is extended.
+\textbf{\texttt{RoundCaps}} (\emph{\texttt{bool, optional}}) -- 
+If set to True along with \titleref{PathOnly}, the end of the path is rounded.
+
 Defaults to False.
+
+
+\item {} 
+\textbf{\texttt{Extended}} (\emph{\texttt{bool, optional}}) -- 
+If set to True along with \titleref{PathOnly}, the end of the path is extended.
+
+Defaults to False.
+
 
 \item {} 
 \textbf{\texttt{**kwargs}} -- keyword arguments passed to the {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:TXLWizard.Patterns.AbstractPattern.AbstractPattern]{\crossref{\code{TXLWizard.Patterns.AbstractPattern.AbstractPattern}}}} constructor.
@@ -1671,16 +1895,25 @@ If \titleref{PathOnly} is set to True, only the arc of the ellipse is shown.
 \textbf{\texttt{RadiusY}} (\emph{\texttt{float}}) -- Semi-minor axis of the ellipse in y-direction
 
 \item {} 
-\textbf{\texttt{StartAngle}} (\emph{\texttt{float, optional}}) -- If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+\textbf{\texttt{StartAngle}} (\emph{\texttt{float, optional}}) -- 
+If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+
 Defaults to 0
 
-\item {} 
-\textbf{\texttt{EndAngle}} (\emph{\texttt{float, optional}}) -- If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
-Defaults to 0
 
 \item {} 
-\textbf{\texttt{NumberOfPoints}} (\emph{\texttt{int, optional}}) -- Number of path segments used for drawing the ellipse.
+\textbf{\texttt{EndAngle}} (\emph{\texttt{float, optional}}) -- 
+If given, only a sector is drawn from \titleref{StartAngle} to \titleref{EndAngle}.
+
+Defaults to 0
+
+
+\item {} 
+\textbf{\texttt{NumberOfPoints}} (\emph{\texttt{int, optional}}) -- 
+Number of path segments used for drawing the ellipse.
+
 Defaults to None.
+
 
 \item {} 
 \textbf{\texttt{**kwargs}} -- keyword arguments passed to the {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:TXLWizard.Patterns.AbstractPattern.AbstractPattern]{\crossref{\code{TXLWizard.Patterns.AbstractPattern.AbstractPattern}}}} constructor.
@@ -1951,8 +2184,11 @@ The ends can be rounded by specifying \titleref{RoundCaps}
 \textbf{\texttt{Points}} (\emph{\texttt{list of list of float}}) -- List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the path
 
 \item {} 
-\textbf{\texttt{RoundCaps}} (\emph{\texttt{bool, optional}}) -- If set to True, the end of the path is rounded.
+\textbf{\texttt{RoundCaps}} (\emph{\texttt{bool, optional}}) -- 
+If set to True, the end of the path is rounded.
+
 Defaults to False.
+
 
 \item {} 
 \textbf{\texttt{**kwargs}} -- keyword arguments passed to the {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:TXLWizard.Patterns.AbstractPattern.AbstractPattern]{\crossref{\code{TXLWizard.Patterns.AbstractPattern.AbstractPattern}}}} constructor.
@@ -2188,8 +2424,11 @@ A \titleref{Structure} is a container for \titleref{Pattern} objects.
 \textbf{\texttt{ID}} (\emph{\texttt{str}}) -- Unique identification of the structure. Also used when referencing to this structure.
 
 \item {} 
-\textbf{\texttt{TXLOutput}} (\emph{\texttt{bool, optional}}) -- If set to False, the TXL Output is suppressed.
+\textbf{\texttt{TXLOutput}} (\emph{\texttt{bool, optional}}) -- 
+If set to False, the TXL Output is suppressed.
+
 Defaults to True
+
 
 \item {} 
 \textbf{\texttt{**kwargs}} -- keyword arguments passed to the {\hyperref[Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern:TXLWizard.Patterns.AbstractPattern.AbstractPattern]{\crossref{\code{TXLWizard.Patterns.AbstractPattern.AbstractPattern}}}} constructor.
@@ -2426,7 +2665,7 @@ Defaults to 1
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{p}{]}\PYG{p}{,}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{FontSize}\PYG{o}{=}\PYG{l+m+mi}{150}\PYG{p}{,}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{StrokeWidth}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{,}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{RoundCaps}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{} Set to False to improve e\PYGZhy{}Beam performance}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{Layer}\PYG{o}{=}\PYG{l+m+mi}{1}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
 \end{Verbatim}
@@ -2536,7 +2775,7 @@ Add squares that can be used as alignment markers
 \index{GetAlignmentMarkers() (in module TXLWizard.ShapeLibrary.AlignmentMarkers)}
 
 \begin{fulllineitems}
-\phantomsection\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers:TXLWizard.ShapeLibrary.AlignmentMarkers.GetAlignmentMarkers}\pysiglinewithargsret{\code{TXLWizard.ShapeLibrary.AlignmentMarkers.}\bfcode{GetAlignmentMarkers}}{\emph{TXLWriter}, \emph{Size=10}, \emph{OffsetSmall=750}, \emph{OffsetLarge=1500}, \emph{Layer=1}}{}
+\phantomsection\label{Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers:TXLWizard.ShapeLibrary.AlignmentMarkers.GetAlignmentMarkers}\pysiglinewithargsret{\code{TXLWizard.ShapeLibrary.AlignmentMarkers.}\bfcode{GetAlignmentMarkers}}{\emph{TXLWriter}, \emph{Size=10}, \emph{OffsetSmall=750}, \emph{OffsetLarge=3000}, \emph{Layer=1}}{}
 Add squares that can be used as alignment markers
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -2553,7 +2792,7 @@ Defaults to 750
 
 \item {} 
 \textbf{\texttt{OffsetLarge}} (\emph{\texttt{float, optional}}) -- second offset from center.
-Defaults to 1500
+Defaults to 3000
 
 \item {} 
 \textbf{\texttt{Layer}} (\emph{\texttt{int, optional}}) -- Layer the pattern should be rendered in.
@@ -2647,9 +2886,43 @@ html / svg using {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.T
 \item {} 
 \textbf{\texttt{LayersToProcess}} (\emph{\texttt{list of int, optional}}) -- if given, only layers in this list are processed / shown
 
+\item {} 
+\textbf{\texttt{**kwargs}} -- keyword-arguments passed to the {\hyperref[Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter:TXLWizard.TXLWriter.TXLWriter]{\crossref{\code{TXLWizard.TXLWriter.TXLWriter}}}} constructor.
+
 \end{itemize}
 
 \end{description}\end{quote}
+\paragraph{Examples}
+
+Instatiate a \titleref{TXLConverter} instance, parse the TXL file and generate the HTML / SVG files
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLConverterInstance} \PYG{o}{=} \PYG{n}{TXLWizard}\PYG{o}{.}\PYG{n}{TXLConverter}\PYG{o}{.}\PYG{n}{TXLConverter}\PYG{p}{(}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{FullFilePath}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{GridWidth}\PYG{o}{=}\PYG{l+m+mi}{500}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{GridHeight}\PYG{o}{=}\PYG{l+m+mi}{800}\PYG{p}{,}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }    \PYG{n}{LayersToProcess}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{]}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLConverterInstance}\PYG{o}{.}\PYG{n}{ParseTXLFile}\PYG{p}{(}\PYG{p}{)}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{TXLConverterInstance}\PYG{o}{.}\PYG{n}{GenerateFiles}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+\index{GenerateFiles() (TXLWizard.TXLConverter.TXLConverter method)}
+
+\begin{fulllineitems}
+\phantomsection\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter.GenerateFiles}\pysiglinewithargsret{\bfcode{GenerateFiles}}{}{}
+Generate the HTML / SVG files
+
+\end{fulllineitems}
+
+\index{ParseTXLFile() (TXLWizard.TXLConverter.TXLConverter method)}
+
+\begin{fulllineitems}
+\phantomsection\label{Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter:TXLWizard.TXLConverter.TXLConverter.ParseTXLFile}\pysiglinewithargsret{\bfcode{ParseTXLFile}}{}{}
+Parses the TXL file by processing line by line.
+The number of references to structures is counted.
+
+\end{fulllineitems}
+
 
 \end{fulllineitems}
 

@@ -23,22 +23,22 @@ class Circle(AbstractPattern.AbstractPattern):
     Radius: float
         Radius of the circle
     StartAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to None.
     EndAngle: float, optional
-        If given, only a sector is drawn from `StartAngle` to `EndAngle`.
+        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n
         Defaults to None.
     NumberOfPoints: int, optional
-        Number of path segments used for drawing the circle.
+        Number of path segments used for drawing the circle.\n
         Defaults to None.
     PathOnly: bool, optional
-        If set to True, only the arc of the circle is drawn.
+        If set to True, only the arc of the circle is drawn.\n
         Defaults to False.
     RoundCaps: bool, optional
-        If set to True along with `PathOnly`, the end of the path is rounded.
+        If set to True along with `PathOnly`, the end of the path is rounded.\n
         Defaults to False.
     Extended: bool, optional
-        If set to True along with `PathOnly`, the end of the path is extended.
+        If set to True along with `PathOnly`, the end of the path is extended.\n
         Defaults to False.
     **kwargs
         keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.

@@ -8,6 +8,7 @@ v1.7 (2016-06-07)
 * Add `Precision` attribute in `TXLWizard.TXLWriter.TXLWriter` for specifying the TXL float precision
 * Add Presentation Slides (PDF)
 * Improved font rendering in `TXLWizard.ShapeLibrary.Label` for improved E-Beam Performance
+* Minor Bugfixes
 
 v1.6 (2016-05-20)
 -----------------

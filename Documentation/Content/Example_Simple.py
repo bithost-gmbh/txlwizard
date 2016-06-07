@@ -12,7 +12,6 @@ import TXLWizard.ShapeLibrary.Label
 # Import math module for calculations
 import math
 
-
 #################################
 # Sample / Structure Parameters #
 #################################
@@ -36,10 +35,9 @@ StructureParameters = {
         'ArrayXOffset': 500,
         'ArrayYOffset': -500,
         'ArrayOrigin': [0.75e3, 3e3],
-        'Label': 'R{:d}C{:d}',
+        'Label': 'R{i}C{j}',
     }
 }
-
 
 ########################
 # Initialize TXLWriter #
@@ -64,10 +62,9 @@ SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(
     ],
     FontSize=150,
     StrokeWidth=20,
-    RoundCaps=True, # Set to False to improve e-Beam performance
+    RoundCaps=True,  # Set to False to improve e-Beam performance
     Layer=1
 )
-
 
 ## Endpoint Detection ##
 
@@ -103,12 +100,9 @@ CircleArray.AddPattern(
     Repetitions2=StructureParameters['CircleArray']['Rows']
 )
 
-
-
 #########################
 # Generate Output Files #
 #########################
 
 # Note: The suffix (.txl, .html, .svg) will be appended automatically
 TXLWriter.GenerateFiles('Masks/Example_Simple')
-

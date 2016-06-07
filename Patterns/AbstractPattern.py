@@ -13,19 +13,19 @@ class AbstractPattern(object):
     Parameters
     ----------
     Layer: int, optional
-        Specifies the `Layer` attribute of the pattern.
+        Specifies the `Layer` attribute of the pattern.\n
         Defaults to None.
     DataType: int, optional
-        Specifies the `DataType` attribute of the pattern.
+        Specifies the `DataType` attribute of the pattern.\n
         Defaults to None.
     RotationAngle: float, optional
-        Specifies the `RotationAngle` attribute of the pattern.
+        Specifies the `RotationAngle` attribute of the pattern.\n
         Defaults to None.
     StrokeWidth: float, optional
-        Specifies the `StrokeWidth` attribute of the pattern.
+        Specifies the `StrokeWidth` attribute of the pattern.\n
         Defaults to None.
     ScaleFactor: float, optional
-        Specifies the `ScaleFactor` attribute of the pattern.
+        Specifies the `ScaleFactor` attribute of the pattern.\n
         Defaults to None.
     '''
     def __init__(self,**kwargs):
@@ -73,7 +73,8 @@ class AbstractPattern(object):
         Parameters
         ----------
         OverrideSVGAttributes: dict, optional
-            Dictionary with SVG attributes and values. The key corresponds to the SVG attribute name, the value can be a str or list of str.
+            Dictionary with SVG attributes and values.\n
+            The key corresponds to the SVG attribute name, the value can be a str or list of str.\n
             Defaults to {}
 
         Returns
@@ -116,7 +117,7 @@ class AbstractPattern(object):
         Parameters
         ----------
         ID: str, optional
-            Optional ID for the formatting option.
+            Optional ID for the formatting option.\n
             Defaults to ''
 
         Returns

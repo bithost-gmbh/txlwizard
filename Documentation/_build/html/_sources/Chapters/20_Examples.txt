@@ -63,6 +63,36 @@ Generated SVG Image
     Generated SVG Image for `Content/Example_Simple.py`
 
 
+TXLImport Example
+-----------------
+
+Introduction
+############
+The following code demonstrates a simple example usage of the `TXLWizard` for
+importing existing TXL files and adding an array of labels.
+
+The code can be found in the file :download:`Content/Example_ImportTXLFile.py </Content/Example_ImportTXLFile.py>`.
+The resulting SVG image is shown in Figure :ref:`ExampleImportSVG`.
+
+A more advanced example is shown in Section :ref:`TXLWizardExampleAdvanced`
+
+Code
+####
+.. literalinclude:: /Content/Example_ImportTXLFile.py
+   :linenos:
+
+
+
+.. _ExampleImportSVG:
+
+Generated SVG Image
+###################
+.. figure:: /Content/Masks/Example_ImportTXLFile.png
+
+    Generated SVG Image for `Content/Example_ImportTXLFile.py`
+
+
+
 .. _TXLWizardExampleAdvanced:
 
 Advanced Example
