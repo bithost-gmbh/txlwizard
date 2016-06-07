@@ -36,8 +36,8 @@ StructureParameters = {
         'AirGapY': 1,
         'LabelXOffset': 0,
         'LabelYOffset': 50,
-        'Label': 'R{:d}C{:d}', # {:d} will be replaced
-                               # by str.format() with the corresponding row / column
+        'Label': 'R{i}C{j}', # {i} and {j} will be replaced
+                               # by str.format() with the corresponding row / column index
         'Layer': 2
     },
     'Circle': {
@@ -159,26 +159,30 @@ CornerCubeArrayFine.AddPattern(
     Repetitions2=StructureParameters['CornerCubeArray']['Rows']
 )
 
+TXLWizard.ShapeLibrary.LabelArray.GetLabelArray(
+    TXLWriter,
+    StructureParameters['CornerCube']['Label'],
+    OriginPoint=[
+        StructureParameters['CornerCubeArray']['ArrayOrigin'][0]
+        + StructureParameters['CornerCube']['LabelXOffset'],
+        StructureParameters['CornerCubeArray']['ArrayOrigin'][1]
+        + StructureParameters['CornerCube']['LabelYOffset']
+    ],
+    PositionDelta1=[
+        StructureParameters['CornerCubeArray']['ArrayXOffset'], 0
+    ],
+    PositionDelta2=[
+        0, StructureParameters['CornerCubeArray']['ArrayYOffset']
+    ],
+    Repetitions1=StructureParameters['CornerCubeArray']['Columns'],
+    Repetitions2=StructureParameters['CornerCubeArray']['Rows'],
+    FontSize=16,
+    StrokeWidth=3,
+    RoundCaps=True,# Set to False to improve e-Beam performance
+    Layer=1,
+    RotationAngle=45
+)
 
-# Add Labels to each array element
-for Row in range(1, StructureParameters['CornerCubeArray']['Rows'] + 1):
-    for Column in range(1, StructureParameters['CornerCubeArray']['Columns'] + 1):
-        RowColumnCountLabel = TXLWizard.ShapeLibrary.Label.GetLabel(
-            TXLWriter,
-            StructureParameters['CornerCube']['Label'].format(Row, Column),
-            OriginPoint=[
-                StructureParameters['CornerCubeArray']['ArrayOrigin'][0]
-                + StructureParameters['CornerCubeArray']['ArrayXOffset'] * (Column - 1)
-                + StructureParameters['CornerCube']['LabelXOffset'],
-                StructureParameters['CornerCubeArray']['ArrayOrigin'][1]
-                + StructureParameters['CornerCubeArray']['ArrayYOffset'] * (Row - 1)
-                + StructureParameters['CornerCube']['LabelYOffset']],
-            FontSize=16,
-            StrokeWidth=3,
-            RoundCaps=True,# Set to False to improve e-Beam performance
-            Layer=1,
-            RotationAngle=45
-        )
 
 
 #########################

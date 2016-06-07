@@ -149,9 +149,9 @@ class Structure(AbstractPattern.AbstractPattern):
         AttributeMapping = {
             'Layer': 'LAYER {:d}',
             'DataType': 'DATATYPE {:d}',
-            'RotationAngle': 'ANGLE {:1.2f}',
-            'StrokeWidth': 'WIDTH {:1.4f}',
-            'ScaleFactor': 'MAG {:1.4f}'
+            'RotationAngle': 'ANGLE ' + self._GetFloatFormatString() + '',
+            'StrokeWidth': 'WIDTH ' + self._GetFloatFormatString() + '',
+            'ScaleFactor': 'MAG ' + self._GetFloatFormatString() + ''
         }
         TXL = ''
         for i in Attributes:
@@ -173,7 +173,10 @@ class Structure(AbstractPattern.AbstractPattern):
                     NewCurrentAttributes[j] = CurrentAttributes[j]
             CurrentAttributes = NewCurrentAttributes
             if abs(i._OriginPoint[0]) > 0 or abs(i._OriginPoint[1]) > 0:
-                Transforms = ['translate({:1.4f},{:1.4f})'.format(i._OriginPoint[0], i._OriginPoint[1])]
+                Transforms = [
+                    ('translate(' + self._GetFloatFormatString() + ',' + self._GetFloatFormatString() + ')').format(
+                        i._OriginPoint[0], i._OriginPoint[1])
+                ]
             else:
                 Transforms = []
 
@@ -219,9 +222,11 @@ class Structure(AbstractPattern.AbstractPattern):
                 if i == 'Layer':
                     SVGAttributes['class'].append('Layer{:d}'.format(Attributes[i]))
                 elif i == 'RotationAngle' and PatternType in ['Reference']:
-                    SVGAttributes['transform'].append('rotate({:1.4f})'.format(Attributes[i]))
+                    SVGAttributes['transform'].append(
+                        ('rotate(' + self._GetFloatFormatString() + ')').format(Attributes[i]))
                 elif i == 'ScaleFactor' and PatternType in ['Reference']:
-                    SVGAttributes['transform'].append('scale({:1.4f})'.format(Attributes[i]))
+                    SVGAttributes['transform'].append(
+                        ('scale(' + self._GetFloatFormatString() + ')').format(Attributes[i]))
                     # if i == 'StrokeWidth' and False:
                     #    SVGAttributes['style'].append('stroke-width: {:1.4f}'.format(Attributes[i]))
 
