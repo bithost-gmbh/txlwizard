@@ -29,13 +29,25 @@ TXL File Format:
 * Optimized E-Beam Performance due to `References` to objects and array of replicated objects (`SREF`, `AREF`)
 
 TXLWizard:
+##########
 
 * Create masks with well-structured scripts
 * Flexible Python Scripting
 * Mask-Code easy to read and reusable
 * Automated label generation
 
+TXLConverter:
+#############
 
+* Easily view .txl files with any web browser
+* Zoom / Pan
+* Rapid conversion for efficient mask development
+
+Quickstart / Documentation
+--------------------------
+See the `Presentation_Slides`_ and the documentation at http://txlwizard.bithost.ch/
+
+.. _Presentation_Slides: Presentation_Slides.pdf
 
 Installation
 ------------
@@ -110,7 +122,7 @@ An example output can be seen here:
 
 How to start?
 -------------
-Have a look at the examples in `</Documentation/Chapters/20_Examples.rst>` and consult the `</Documentation/Chapters/40_PythonModuleReference.rst>`.
+Have a look at the examples in `http://txlwizard.bithost.ch/Chapters/20_Examples.html` and consult the `http://txlwizard.bithost.ch/Chapters/40_PythonModuleReference.html`.
 Happy scripting!
 
 
@@ -123,7 +135,7 @@ For existing TXL files, there is a command line interface script that converts t
 
 Usage
 -----
-The usage is very simple. Simply run the python script `TXLWizard/TXLConverterCLI.py`.
+The usage is very simple. Simply run the python script `Tools/TXLConverterCLI.py`.
 The command line interface will allow you to change the configuration as you wish. Furthermore, the configuration is saved
 and restored for a subsequent run.
 
@@ -135,7 +147,7 @@ To use the `TXLConverter` from the command line type
 
 .. code-block:: bash
 
-    python TXLWizard/Tools/TXLConverterCLI.py
+    python Tools/TXLConverterCLI.py
 
 Or if you want to call it in your own python script do
 
