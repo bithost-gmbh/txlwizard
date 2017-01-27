@@ -104,13 +104,13 @@ Example SVG Output
 ------------------
 An example output can be seen here:
 
-.. figure:: /Content/Mask_Example.png
+.. figure:: /Documentation/Content/Mask_Example.png
 
     Example SVG output for a mask
 
 How to start?
 -------------
-Have a look at the examples in Section :ref:`Examples` and consult the :ref:`PythonModuleReference`.
+Have a look at the examples in `</Documentation/Chapters/20_Examples.rst>` and consult the `</Documentation/Chapters/40_PythonModuleReference.rst>`.
 Happy scripting!
 
 
