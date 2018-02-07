@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.Patterns.Structure &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>TXLWizard.Patterns.Structure</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for TXLWizard.Patterns.Structure</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Implements a class for `Structure` objects (`STRUCT`).\n</span>
+<span class="sd">A `Structure` is a container for `Pattern` objects.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/../&#39;</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">AbstractPattern</span>
+<span class="kn">from</span> <span class="nn">Helpers</span> <span class="kn">import</span> <span class="n">Tuttifrutti</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+
+
+<div class="viewcode-block" id="Structure"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure">[docs]</a><span class="k">class</span> <span class="nc">Structure</span><span class="p">(</span><span class="n">AbstractPattern</span><span class="o">.</span><span class="n">AbstractPattern</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implements a class for `Structure` objects.\n</span>
+<span class="sd">    Corresponds to the TXL command `STRUCT`.\n</span>
+<span class="sd">    A `Structure` is a container for `Pattern` objects.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    ID: str</span>
+<span class="sd">        Unique identification of the structure. Also used when referencing to this structure.</span>
+<span class="sd">    TXLOutput: bool, optional</span>
+<span class="sd">        If set to False, the TXL Output is suppressed.\n</span>
+<span class="sd">        Defaults to True</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
+<span class="sd">        Can specify attributes of the current pattern.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">    Create Content Structure</span>
+
+<span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddContentStructure(&#39;MyCircleID&#39;,</span>
+<span class="sd">    ...     TXLOutput = True</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &gt;&gt;&gt; CircleStructure.AddPattern(</span>
+<span class="sd">    ...     &#39;Circle&#39;,</span>
+<span class="sd">    ...     Center=[0, 0],</span>
+<span class="sd">    ...     Radius=50,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Structure&#39;)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Structure</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1">#: str: specifies the type of the pattern. Set to &#39;Structure&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Type</span> <span class="o">=</span> <span class="s1">&#39;Structure&#39;</span>
+
+        <span class="c1">#: str: Unique identification of the structure. Also used when referencing to this structure.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">ID</span>
+
+        <span class="c1">#: list of :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern`: Patterns that are contained in this structure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Patterns</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1">#: bool: If set to False, the TXL Output is suppressed.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TXLOutput</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="c1">#: dict: attribute values of the next pattern to be added. Default values are copied from `self.DefaultAttributes`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s1">&#39;TXLOutput&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">TXLOutput</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLOutput&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Structure.AddPattern"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure.AddPattern">[docs]</a>    <span class="k">def</span> <span class="nf">AddPattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PatternType</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Adds a `Pattern` of type `PatternType` to the structure.</span>
+<span class="sd">        Creates an instance of `TXLWizard.Patterns.{PatternType}.{PatternType}`.</span>
+<span class="sd">        The `kwargs` are passed to the corresponding constructor and allow specifying</span>
+<span class="sd">        pattern parameters as defined in the constructor of the corresponding pattern class</span>
+<span class="sd">        and attributes as defined in :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        PatternType: {&#39;Array&#39;, &#39;Circle&#39;, &#39;Ellipse&#39;, &#39;Polygon&#39;, &#39;Polyline&#39;, &#39;Reference&#39;}</span>
+<span class="sd">            Type of the pattern to be added.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            keyword arguments are passed to the corresponding constructor and allow specifying</span>
+<span class="sd">            pattern parameters as defined in the constructor of the corresponding pattern class</span>
+<span class="sd">            and attributes as defined in :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`TXLWizard.Patterns.{PatternType}.{PatternType}`</span>
+<span class="sd">            returns the created pattern object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">PatternType</span><span class="p">,</span> <span class="n">__package__</span><span class="p">)</span>
+        <span class="n">class_</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PatternType</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ParentStructure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">Pattern</span> <span class="o">=</span> <span class="n">class_</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Patterns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Pattern</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Pattern</span></div>
+
+    <span class="k">def</span> <span class="nf">GetTXLOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">CurrentAttributes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span><span class="p">)</span>
+        <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;STRUCT &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="c1"># TXL += self._GetAttributesTXL(CurrentAttributes)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Patterns</span><span class="p">:</span>
+            <span class="n">NewCurrentAttributes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span><span class="p">)</span>
+            <span class="n">AttributesChanged</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="n">NewCurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">AttributesChanged</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">elif</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">NewCurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">CurrentAttributes</span> <span class="o">=</span> <span class="n">NewCurrentAttributes</span>
+            <span class="k">if</span> <span class="n">AttributesChanged</span><span class="p">:</span>
+                <span class="n">TXL</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetAttributesTXL</span><span class="p">(</span><span class="n">CurrentAttributes</span><span class="p">)</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="n">i</span><span class="o">.</span><span class="n">GetTXLOutput</span><span class="p">()</span>
+        <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;ENDSTRUCT&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">TXL</span>
+
+    <span class="k">def</span> <span class="nf">_GetAttributesTXL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Attributes</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generates the TXL commands for the attributes given in `Attributes`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Attributes: dict</span>
+<span class="sd">            Dictionary with attributes and their values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            TXL commands for the attributes specified</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">AttributeMapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Layer&#39;</span><span class="p">:</span> <span class="s1">&#39;LAYER {:d}&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;DataType&#39;</span><span class="p">:</span> <span class="s1">&#39;DATATYPE {:d}&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;RotationAngle&#39;</span><span class="p">:</span> <span class="s1">&#39;ANGLE &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;StrokeWidth&#39;</span><span class="p">:</span> <span class="s1">&#39;WIDTH &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ScaleFactor&#39;</span><span class="p">:</span> <span class="s1">&#39;MAG &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">}</span>
+        <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Attributes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">TXL</span> <span class="o">+=</span> <span class="n">AttributeMapping</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">TXL</span>
+
+    <span class="k">def</span> <span class="nf">GetSVGOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">CurrentAttributes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span><span class="p">)</span>
+        <span class="n">SVG</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">SVG</span> <span class="o">+=</span> <span class="s1">&#39;&lt;g id=&quot;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Patterns</span><span class="p">:</span>
+            <span class="n">NewCurrentAttributes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="n">NewCurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">NewCurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">CurrentAttributes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">CurrentAttributes</span> <span class="o">=</span> <span class="n">NewCurrentAttributes</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">Transforms</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">(</span><span class="s1">&#39;translate(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Transforms</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetPatternSVGAttributesString</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">CurrentAttributes</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="n">Transforms</span>
+            <span class="p">})</span>
+
+            <span class="n">SVG</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;&lt;g &#39;</span> <span class="o">+</span> <span class="n">SVGAttributes</span> <span class="o">+</span> <span class="s1">&#39;&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;    &#39;</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">GetSVGOutput</span><span class="p">()</span> <span class="o">+</span>
+                    <span class="s1">&#39;&lt;/g&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">SVG</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/g&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">SVG</span>
+
+    <span class="k">def</span> <span class="nf">_GetPatternSVGAttributesString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">PatternType</span><span class="p">,</span> <span class="n">Attributes</span><span class="p">,</span> <span class="n">OverrideSVGAttributes</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate SVG attributes according to the `PatternType` and `Attributes` specified.</span>
+<span class="sd">        SVG attributes can also be overridden or added with `OverrideSVGAttributes`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        PatternType: str</span>
+<span class="sd">            Type of the pattern</span>
+<span class="sd">        Attributes: dict</span>
+<span class="sd">            Attributes of the pattern</span>
+<span class="sd">        OverrideSVGAttributes: dict</span>
+<span class="sd">            Dictionary with SVG attributes that will be added or overridden.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            SVG attributes</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+        <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">,</span> <span class="n">OverrideSVGAttributes</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">Attributes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;Layer&#39;</span><span class="p">:</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Layer{:d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;RotationAngle&#39;</span> <span class="ow">and</span> <span class="n">PatternType</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Reference&#39;</span><span class="p">]:</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">(</span><span class="s1">&#39;rotate(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;ScaleFactor&#39;</span> <span class="ow">and</span> <span class="n">PatternType</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Reference&#39;</span><span class="p">]:</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">(</span><span class="s1">&#39;scale(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                    <span class="c1"># if i == &#39;StrokeWidth&#39; and False:</span>
+                    <span class="c1">#    SVGAttributes[&#39;style&#39;].append(&#39;stroke-width: {:1.4f}&#39;.format(Attributes[i]))</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Structure</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

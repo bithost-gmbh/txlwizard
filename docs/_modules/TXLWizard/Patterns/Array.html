@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.Patterns.Array &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>TXLWizard.Patterns.Array</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for TXLWizard.Patterns.Array</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Implements a class for `Pattern` objects of type `Array` (`AREF`).\n</span>
+<span class="sd">Replicates the referenced structure in two directions.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">AbstractPattern</span>
+
+
+<div class="viewcode-block" id="Array"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Array.html#TXLWizard.Patterns.Array.Array">[docs]</a><span class="k">class</span> <span class="nc">Array</span><span class="p">(</span><span class="n">AbstractPattern</span><span class="o">.</span><span class="n">AbstractPattern</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implements a class for `Pattern` objects of type `Array`.\n</span>
+<span class="sd">    Corresponds to the TXL command `AREF`.\n</span>
+<span class="sd">    Replicates the referenced structure `ReferencedStructureID` in two directions `PositionDelta1` and `PositionDelta2`</span>
+<span class="sd">    for the number of times specified in `Repetitions1` and `Repetitions2`,</span>
+<span class="sd">    starting at `OriginPoint`.\n</span>
+<span class="sd">    The x- and y-coordinates of the replicated objects are calculated as follows:</span>
+<span class="sd">    `OriginPoint+i*PositionDelta1+j*PositionDelta2`</span>
+<span class="sd">    where `i` is an integer that ranges from 0 to `Repetitions1 - 1`</span>
+<span class="sd">    and `j` is an integer that ranges from 0 to `Repetitions2 - 1`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ReferencedStructureID: str</span>
+<span class="sd">        ID of the structure being referenced to</span>
+<span class="sd">    OriginPoint: list of float</span>
+<span class="sd">        x- and y- coordinates of the starting point</span>
+<span class="sd">    PositionDelta1: list of float</span>
+<span class="sd">        x- and y- coordinates of the first replication direction.</span>
+<span class="sd">    PositionDelta2: list of float</span>
+<span class="sd">        x- and y- coordinates of the second replication direction.</span>
+<span class="sd">    Repetitions1: int</span>
+<span class="sd">        Number of replications in the first replication direction</span>
+<span class="sd">    Repetitions2: int</span>
+<span class="sd">        Number of replications in the second replication direction</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
+<span class="sd">        Can specify attributes of the current pattern.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">    Create Definition Structure for Circle that will be reused.</span>
+<span class="sd">    Could also be a content structure.</span>
+
+<span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddDefinitionStructure(&#39;MyCircleID&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; CircleStructure.AddPattern(</span>
+<span class="sd">    ...     &#39;Circle&#39;,</span>
+<span class="sd">    ...     Center=[0, 0],</span>
+<span class="sd">    ...     Radius=50,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">    Create array of the definition structure above with</span>
+<span class="sd">    10 repetitions at distance 100 in x-direction</span>
+<span class="sd">    20 repetitions at distance 200 in y-direction</span>
+
+<span class="sd">    &gt;&gt;&gt; CircleArray = TXLWriter.AddContentStructure(&#39;MyCircleArray&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; CircleArray.AddPattern(</span>
+<span class="sd">    ...     &#39;Array&#39;,</span>
+<span class="sd">    ...     ReferencedStructureID=CircleStructure.ID,</span>
+<span class="sd">    ...     OriginPoint=[40,60],</span>
+<span class="sd">    ...     PositionDelta1=[</span>
+<span class="sd">    ...         100, 0</span>
+<span class="sd">    ...     ],</span>
+<span class="sd">    ...     PositionDelta2=[</span>
+<span class="sd">    ...         0, 200</span>
+<span class="sd">    ...     ],</span>
+<span class="sd">    ...     Repetitions1=10,</span>
+<span class="sd">    ...     Repetitions2=20</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Array.Array object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Array&#39;)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ReferencedStructureID</span><span class="p">,</span> <span class="n">OriginPoint</span><span class="p">,</span> <span class="n">PositionDelta1</span><span class="p">,</span> <span class="n">PositionDelta2</span><span class="p">,</span> <span class="n">Repetitions1</span><span class="p">,</span> <span class="n">Repetitions2</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Array</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1">#: str: specifies the type of the pattern. Set to &#39;Array&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Type</span> <span class="o">=</span> <span class="s1">&#39;Array&#39;</span>
+
+        <span class="c1">#: str: ID of the structure being referenced to</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ReferencedStructureID</span> <span class="o">=</span> <span class="n">ReferencedStructureID</span>
+
+        <span class="c1">#: list of float: x- and y- coordinates of the origin point of the pattern</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span> <span class="o">=</span> <span class="n">OriginPoint</span>
+
+        <span class="c1">#: list of float: x- and y- coordinates of the first replication direction.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta1</span> <span class="o">=</span> <span class="n">PositionDelta1</span>
+
+        <span class="c1">#: list of float: x- and y- coordinates of the second replication direction.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta2</span> <span class="o">=</span> <span class="n">PositionDelta2</span>
+
+        <span class="c1">#: int: Number of replications in the first replication direction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Repetitions1</span> <span class="o">=</span> <span class="n">Repetitions1</span>
+
+        <span class="c1">#: int: Number of replications in the second replication direction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Repetitions2</span> <span class="o">=</span> <span class="n">Repetitions2</span>
+
+    <span class="k">def</span> <span class="nf">GetTXLOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Repetitions1</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">Repetitions2</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;AREF &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ReferencedStructureID</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;) &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;{:d} (&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;) &#39;</span> <span class="o">+</span>
+                    <span class="s1">&#39;{:d} (&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Repetitions1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Repetitions2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;SREF &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ReferencedStructureID</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">TXL</span>
+
+    <span class="k">def</span> <span class="nf">GetSVGOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">SVG</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Repetitions1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Repetitions2</span><span class="p">):</span>
+                <span class="n">OriginPoint</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">PositionDelta2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="p">]</span>
+                <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">({</span>
+                    <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">(</span><span class="s1">&#39;translate(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="n">OriginPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">OriginPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="p">]</span>
+                <span class="p">})</span>
+                <span class="n">SVG</span> <span class="o">+=</span> <span class="p">(</span>
+                           <span class="s1">&#39;&lt;g &#39;</span> <span class="o">+</span> <span class="n">SVGAttributes</span> <span class="o">+</span> <span class="s1">&#39;&gt;&#39;</span> <span class="o">+</span>
+                           <span class="s1">&#39;&lt;use &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ParentStructure</span><span class="o">.</span><span class="n">_GetPatternSVGAttributesString</span><span class="p">(</span><span class="s1">&#39;Reference&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">,</span> <span class="p">{</span>
+                               <span class="s1">&#39;xlink:href&#39;</span><span class="p">:</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ReferencedStructureID</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+                               <span class="c1"># &#39;x&#39;:&#39;{:1.4f}&#39;.format(i*self.PositionDelta1[0]+j*self.PositionDelta2[0]),</span>
+                               <span class="c1"># &#39;y&#39;:&#39;{:1.4f}&#39;.format(i*self.PositionDelta1[1]+j*self.PositionDelta2[1])</span>
+                           <span class="p">})</span> <span class="o">+</span> <span class="s1">&#39;/&gt;&#39;</span> <span class="o">+</span>
+                           <span class="s1">&#39;&lt;/g&gt;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">SVG</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.Patterns.AbstractPattern &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>TXLWizard.Patterns.AbstractPattern</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for TXLWizard.Patterns.AbstractPattern</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Provides an abstract class for `Pattern` objects</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../&#39;</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">Helpers</span> <span class="kn">import</span> <span class="n">Tuttifrutti</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+
+<div class="viewcode-block" id="AbstractPattern"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern.html#TXLWizard.Patterns.AbstractPattern.AbstractPattern">[docs]</a><span class="k">class</span> <span class="nc">AbstractPattern</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Provides an abstract class for `Pattern` objects.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Layer: int, optional</span>
+<span class="sd">        Specifies the `Layer` attribute of the pattern.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    DataType: int, optional</span>
+<span class="sd">        Specifies the `DataType` attribute of the pattern.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    RotationAngle: float, optional</span>
+<span class="sd">        Specifies the `RotationAngle` attribute of the pattern.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    StrokeWidth: float, optional</span>
+<span class="sd">        Specifies the `StrokeWidth` attribute of the pattern.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    ScaleFactor: float, optional</span>
+<span class="sd">        Specifies the `ScaleFactor` attribute of the pattern.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="c1">#: str: specifies the type of the pattern.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Type</span> <span class="o">=</span> <span class="s1">&#39;AbstractPattern&#39;</span>
+
+        <span class="c1">#: list of float, x- and y- coordinates of the origin point of the pattern</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1">#: :class:`TXLWizard.TXLWriter.TXLWriter`: reference to the current `TXLWriter` instance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1">#: :class:`TXLWizard.Patterns.Structure.Structure`, reference to the `Structure` instance containing the current pattern</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ParentStructure</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1">#: dict: default attributes that are copied to `self.Attributes` upon instantiation. Specifies the allowed attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Layer&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s1">&#39;DataType&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s1">&#39;RotationAngle&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s1">&#39;StrokeWidth&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s1">&#39;ScaleFactor&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1">#: dict: attribute values of the current pattern. Default values are copied from `self.DefaultAttributes`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DefaultAttributes</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s1">&#39;TXLWriter&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s1">&#39;ParentStructure&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ParentStructure</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ParentStructure&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_GetSVGAttributesString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">OverrideSVGAttributes</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate a string of attributes for an SVG xml element node.</span>
+<span class="sd">        By default, the `class` attribute is set to [&quot;Pattern&quot;] if the current pattern `self.Type` is not in [&#39;Structure&#39;,&#39;Array&#39;,&#39;Reference&#39;]</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        OverrideSVGAttributes: dict, optional</span>
+<span class="sd">            Dictionary with SVG attributes and values.\n</span>
+<span class="sd">            The key corresponds to the SVG attribute name, the value can be a str or list of str.\n</span>
+<span class="sd">            Defaults to {}</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">           string of attributes for an SVG xml element node</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">Type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Structure&#39;</span><span class="p">,</span> <span class="s1">&#39;Array&#39;</span><span class="p">,</span> <span class="s1">&#39;Reference&#39;</span><span class="p">]:</span>
+            <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Pattern&#39;</span><span class="p">)</span>
+
+        <span class="n">Tuttifrutti</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">,</span> <span class="n">OverrideSVGAttributes</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+
+        <span class="n">SVGAttributesString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">SVGAttributes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+                <span class="n">SVGAttributesString</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">+</span> <span class="s1">&#39;=&quot;&#39;</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39;style&#39;</span><span class="p">:</span>
+                        <span class="n">SVGAttributesString</span> <span class="o">+=</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">SVGAttributesString</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">SVGAttributesString</span> <span class="o">+=</span> <span class="n">SVGAttributes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">SVGAttributesString</span> <span class="o">+=</span> <span class="s1">&#39;&quot; &#39;</span>
+
+        <span class="k">return</span> <span class="n">SVGAttributesString</span>
+
+    <span class="k">def</span> <span class="nf">_GetFloatFormatString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Alias of :func:`TXLWizard.TXLWriter.TXLWriter._GetFloatFormatString`.</span>
+<span class="sd">        Returns a string for formatting a `float`, e.g. `{ID:1.3f}`.</span>
+<span class="sd">        The number of digits is specified by `self._Precision`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ID: str, optional</span>
+<span class="sd">            Optional ID for the formatting option.\n</span>
+<span class="sd">            Defaults to &#39;&#39;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str:</span>
+<span class="sd">            string for use with the `str.format()` function</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TXLWriter</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">(</span><span class="n">ID</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AbstractPattern.GetTXLOutput"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern.html#TXLWizard.Patterns.AbstractPattern.AbstractPattern.GetTXLOutput">[docs]</a>    <span class="k">def</span> <span class="nf">GetTXLOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generates the TXL output commands for the current pattern.</span>
+<span class="sd">        Needs to be implemented for each pattern type separately in the corresponding inheriting class.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            TXL output commands</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="AbstractPattern.GetSVGOutput"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.AbstractPattern.html#TXLWizard.Patterns.AbstractPattern.AbstractPattern.GetSVGOutput">[docs]</a>    <span class="k">def</span> <span class="nf">GetSVGOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generates the SVG output xml for the current pattern.</span>
+<span class="sd">        Needs to be implemented for each pattern type separately in the corresponding inheriting class.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            SVG output xml</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

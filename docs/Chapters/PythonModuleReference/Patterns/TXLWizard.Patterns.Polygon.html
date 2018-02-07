@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.Patterns.Polygon &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
+        <link rel="next" title="TXLWizard.Patterns.Polyline" href="TXLWizard.Patterns.Polyline.html"/>
+        <link rel="prev" title="TXLWizard.Patterns.Ellipse" href="TXLWizard.Patterns.Ellipse.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../40_PythonModuleReference.html">Python Module Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#txlwriter">TXLWriter</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../40_PythonModuleReference.html#patterns">Patterns</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.AbstractPattern.html">TXLWizard.Patterns.AbstractPattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.Array.html">TXLWizard.Patterns.Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.Circle.html">TXLWizard.Patterns.Circle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.Ellipse.html">TXLWizard.Patterns.Ellipse</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TXLWizard.Patterns.Polygon</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.Polyline.html">TXLWizard.Patterns.Polyline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.Reference.html">TXLWizard.Patterns.Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TXLWizard.Patterns.Structure.html">TXLWizard.Patterns.Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#shape-library">Shape Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#txlconverter">TXLConverter</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../40_PythonModuleReference.html">Python Module Reference</a> &raquo;</li>
+      
+    <li>TXLWizard.Patterns.Polygon</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Polygon.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-TXLWizard.Patterns.Polygon">
+<span id="txlwizard-patterns-polygon"></span><h1>TXLWizard.Patterns.Polygon<a class="headerlink" href="#module-TXLWizard.Patterns.Polygon" title="Permalink to this headline">¶</a></h1>
+<p>Implements a class for <cite>Pattern</cite> objects of type <cite>Polygon</cite> (<cite>B</cite>).</p>
+<p>Renders an polygon.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#TXLWizard.Patterns.Polygon.Polygon" title="TXLWizard.Patterns.Polygon.Polygon"><code class="xref py py-obj docutils literal"><span class="pre">Polygon</span></code></a>(Points,&nbsp;**kwargs)</td>
+<td>Implements a class for <cite>Pattern</cite> objects of type <cite>Polygon</cite>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="TXLWizard.Patterns.Polygon.Polygon">
+<em class="property">class </em><code class="descclassname">TXLWizard.Patterns.Polygon.</code><code class="descname">Polygon</code><span class="sig-paren">(</span><em>Points</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/Patterns/Polygon.html#Polygon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.Patterns.Polygon.Polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="TXLWizard.Patterns.AbstractPattern.html#TXLWizard.Patterns.AbstractPattern.AbstractPattern" title="TXLWizard.Patterns.AbstractPattern.AbstractPattern"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.AbstractPattern.AbstractPattern</span></code></a></p>
+<p>Implements a class for <cite>Pattern</cite> objects of type <cite>Polygon</cite>.</p>
+<p>Corresponds to the TXL command <cite>B</cite></p>
+<p>Renders an polygon.</p>
+<p>The boundary is always closed so the last point connects to the starting point</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Points</strong> (<em>list of list of float</em>) &#8211; List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the polygon</li>
+<li><strong>**kwargs</strong> &#8211; keyword arguments passed to the <a class="reference internal" href="TXLWizard.Patterns.AbstractPattern.html#TXLWizard.Patterns.AbstractPattern.AbstractPattern" title="TXLWizard.Patterns.AbstractPattern.AbstractPattern"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.AbstractPattern.AbstractPattern</span></code></a> constructor.
+Can specify attributes of the current pattern.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+</pre></div>
+</div>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create Content Structure for polygon and add Pattern of type <cite>Polygon</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PolygonStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MyPolygonID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PolygonStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;Polygon&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Points</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Polygon.Polygon object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Complex structures can easily be added by generating the polygon points</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PolygonPoints</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Radius</span> <span class="o">=</span> <span class="mf">5.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># AngleRadians goes from 0 to pi in 20 steps</span>
+<span class="gp">... </span>    <span class="n">AngleRadians</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="mf">2.</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">1.</span><span class="o">/</span><span class="mf">20.</span><span class="o">*</span><span class="n">i</span>
+<span class="gp">... </span>    <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+<span class="gp">... </span>        <span class="n">Radius</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">AngleRadians</span><span class="p">),</span><span class="n">Radius</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">AngleRadians</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PolygonStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;Polygon&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Points</span><span class="o">=</span><span class="n">PolygonPoints</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Polygon.Polygon object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Generate Files</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/Patterns/Polygon&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="TXLWizard.Patterns.Polygon.Polygon.Points">
+<code class="descname">Points</code><em class="property"> = None</em><a class="headerlink" href="#TXLWizard.Patterns.Polygon.Polygon.Points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of list of float</em> &#8211; List of points (each point is a list of float, specifying the x- and y-coordinate of the point) that define the polygon</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="TXLWizard.Patterns.Polygon.Polygon.Type">
+<code class="descname">Type</code><em class="property"> = None</em><a class="headerlink" href="#TXLWizard.Patterns.Polygon.Polygon.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; specifies the type of the pattern. Set to &#8216;Polygon&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="TXLWizard.Patterns.Polyline.html" class="btn btn-neutral float-right" title="TXLWizard.Patterns.Polyline" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TXLWizard.Patterns.Ellipse.html" class="btn btn-neutral" title="TXLWizard.Patterns.Ellipse" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

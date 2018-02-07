@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.Patterns.Circle &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>TXLWizard.Patterns.Circle</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for TXLWizard.Patterns.Circle</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Implements a class for `Pattern` objects of type `Circle` (`C`).\n</span>
+<span class="sd">Renders a circle.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">AbstractPattern</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<div class="viewcode-block" id="Circle"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/Patterns/TXLWizard.Patterns.Circle.html#TXLWizard.Patterns.Circle.Circle">[docs]</a><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">AbstractPattern</span><span class="o">.</span><span class="n">AbstractPattern</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implements a class for `Pattern` objects of type `Circle`.\n</span>
+<span class="sd">    Corresponds to the TXL command `C` (`CP` if `PathOnly` is specified, `CPR` if `RoundCaps` and `CPE` if `Extended`).\n</span>
+<span class="sd">    Renders a circle. \n</span>
+<span class="sd">    Optionally, only a sector is shown when specifying `StartAngle` and `EndAngle`.\n</span>
+<span class="sd">    If `NumberOfPoints` is given, the number of path segments defining the circle can be specified.\n</span>
+<span class="sd">    If `PathOnly` is set to True, only the arc of the circle is shown. Optionally, the ends of the path are rounded by</span>
+<span class="sd">    specifying `RoundCaps` or extended by specifying `Extended` along with `PathOnly`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Center: list of float</span>
+<span class="sd">        x- and y-coordinates specifying the center of the circle</span>
+<span class="sd">    Radius: float</span>
+<span class="sd">        Radius of the circle</span>
+<span class="sd">    StartAngle: float, optional</span>
+<span class="sd">        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    EndAngle: float, optional</span>
+<span class="sd">        If given, only a sector is drawn from `StartAngle` to `EndAngle`.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    NumberOfPoints: int, optional</span>
+<span class="sd">        Number of path segments used for drawing the circle.\n</span>
+<span class="sd">        Defaults to None.</span>
+<span class="sd">    PathOnly: bool, optional</span>
+<span class="sd">        If set to True, only the arc of the circle is drawn.\n</span>
+<span class="sd">        Defaults to False.</span>
+<span class="sd">    RoundCaps: bool, optional</span>
+<span class="sd">        If set to True along with `PathOnly`, the end of the path is rounded.\n</span>
+<span class="sd">        Defaults to False.</span>
+<span class="sd">    Extended: bool, optional</span>
+<span class="sd">        If set to True along with `PathOnly`, the end of the path is extended.\n</span>
+<span class="sd">        Defaults to False.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        keyword arguments passed to the :class:`TXLWizard.Patterns.AbstractPattern.AbstractPattern` constructor.</span>
+<span class="sd">        Can specify attributes of the current pattern.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">    Create Content Structure for Circle and add Pattern of type `Circle`</span>
+
+<span class="sd">    &gt;&gt;&gt; CircleStructure = TXLWriter.AddContentStructure(&#39;MyCircleID&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; CircleStructure.AddPattern(</span>
+<span class="sd">    ...     &#39;Circle&#39;,</span>
+<span class="sd">    ...     Center=[0, 0],</span>
+<span class="sd">    ...     Radius=50,</span>
+<span class="sd">    ...     Layer=1</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">    Generate Files</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/Patterns/Circle&#39;)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Center</span><span class="p">,</span> <span class="n">Radius</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Circle</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1">#: str: specifies the type of the pattern. Set to &#39;Circle&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Type</span> <span class="o">=</span> <span class="s1">&#39;Circle&#39;</span>
+
+        <span class="c1">#: list of float: x- and y- coordinates of the origin point of the pattern</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_OriginPoint</span> <span class="o">=</span> <span class="n">Center</span>
+
+        <span class="c1">#: list of float: x- and y-coordinates specifying the center of the circle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Center</span> <span class="o">=</span> <span class="n">Center</span>
+
+        <span class="c1">#: float: Radius of the circle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span> <span class="o">=</span> <span class="n">Radius</span>
+
+        <span class="c1">#: float: If set, only a sector is drawn from `self.StartAngle` to `self.EndAngle`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1">#: float: If set, only a sector is drawn from `self.StartAngle` to `self.EndAngle`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1">#: int: Number of path segments used for drawing the circle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NumberOfPoints</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1">#: bool: If set to True, only the arc of the circle is drawn.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c1">#: bool: If set to True along with `PathOnly`, the end of the path is rounded</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RoundCaps</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c1">#: bool: If set to True along with `PathOnly`, the end of the path is extended</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Extended</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="c1">#: list of float: If `self.StartAngle` and `self.EndAngle` are set, the starting point of the segment arc is calculated</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="c1">#: list of float: If `self.StartAngle` and `self.EndAngle` are set, the ending point of the segment arc is calculated</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;StartAngle&#39;</span><span class="p">,</span> <span class="s1">&#39;EndAngle&#39;</span><span class="p">,</span> <span class="s1">&#39;NumberOfPoints&#39;</span><span class="p">,</span> <span class="s1">&#39;PathOnly&#39;</span><span class="p">,</span> <span class="s1">&#39;RoundCaps&#39;</span><span class="p">,</span> <span class="s1">&#39;Extended&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">/</span> <span class="mf">360.</span> <span class="o">*</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span>
+                               <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">/</span> <span class="mf">360.</span> <span class="o">*</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">/</span> <span class="mf">360.</span> <span class="o">*</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span>
+                             <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">/</span> <span class="mf">360.</span> <span class="o">*</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">GetTXLOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">BoundaryString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">BoundaryStringEnd</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
+            <span class="n">BoundaryString</span> <span class="o">=</span> <span class="s1">&#39;P&#39;</span>
+            <span class="n">BoundaryStringEnd</span> <span class="o">=</span> <span class="n">BoundaryString</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">RoundCaps</span><span class="p">:</span>
+                <span class="n">BoundaryString</span> <span class="o">+=</span> <span class="s1">&#39;R&#39;</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">Extended</span><span class="p">:</span>
+                <span class="n">BoundaryString</span> <span class="o">+=</span> <span class="s1">&#39;E&#39;</span>
+        <span class="n">TXL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;C&#39;</span> <span class="o">+</span> <span class="n">BoundaryString</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
+        <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span>
+            <span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">Center</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
+                <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;(&#39;</span>
+            <span class="n">TXL</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">NumberOfPoints</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;{:d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NumberOfPoints</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
+                <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;) &#39;</span>
+
+        <span class="n">TXL</span> <span class="o">+=</span> <span class="s1">&#39;ENDC&#39;</span> <span class="o">+</span> <span class="n">BoundaryStringEnd</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">TXL</span>
+
+    <span class="k">def</span> <span class="nf">GetSVGOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">SVG</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span><span class="p">)</span> <span class="o">==</span> <span class="mi">360</span><span class="p">:</span>
+            <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="c1"># &#39;cx&#39;:&#39;{:1.4f}&#39;.format(self.Center[0]),</span>
+                <span class="c1"># &#39;cy&#39;:&#39;{:1.4f}&#39;.format(self.Center[1]),</span>
+                <span class="s1">&#39;cx&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;cy&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">),</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
+                <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s1">&#39;fill:none&#39;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="s1">&#39;stroke-width:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">])</span>
+                <span class="p">]</span>
+            <span class="n">SVG</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&lt;circle &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">)</span> <span class="o">+</span>
+                    <span class="s1">&#39; /&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">LargeAngle</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">EndAngle</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartAngle</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">:</span>
+                <span class="n">LargeAngle</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1"># See http://www.w3.org/TR/2003/REC-SVG11-20030114/paths.html#PathDataEllipticalArcCommands</span>
+            <span class="n">SweepFlag</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">SVGAttributes</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;m &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span>
+                     <span class="c1"># &#39;l {:1.4f} {:1.4f} &#39;.format(StartPoint[0], StartPoint[1])+</span>
+                     <span class="p">(</span><span class="s1">&#39;a &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; 0 {:d} {:d} &#39;</span> <span class="o">+</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Radius</span><span class="p">,</span> <span class="n">LargeAngle</span><span class="p">,</span> <span class="n">SweepFlag</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">EndPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">StartPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="c1"># &#39;l {:1.4f} {:1.4f}&#39;.format(self.Center[0],self.Center[1])</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">PathOnly</span><span class="p">:</span>
+                <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s1">&#39;fill:none&#39;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="s1">&#39;stroke-width:&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">Attributes</span><span class="p">[</span><span class="s1">&#39;StrokeWidth&#39;</span><span class="p">])</span>
+                <span class="p">]</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">RoundCaps</span><span class="p">:</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;stroke-linecap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;round&#39;</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">Extended</span><span class="p">:</span>
+                    <span class="n">SVGAttributes</span><span class="p">[</span><span class="s1">&#39;stroke-linecap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;square&#39;</span>
+
+            <span class="n">SVG</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;&lt;path &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetSVGAttributesString</span><span class="p">(</span><span class="n">SVGAttributes</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; /&gt;&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SVG</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

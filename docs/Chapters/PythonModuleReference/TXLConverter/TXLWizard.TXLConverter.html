@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.TXLConverter &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
+        <link rel="prev" title="TXLWizard.ShapeLibrary.AlignmentMarkers" href="../ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../40_PythonModuleReference.html">Python Module Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#txlwriter">TXLWriter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#patterns">Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#shape-library">Shape Library</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../40_PythonModuleReference.html#txlconverter">TXLConverter</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TXLWizard.TXLConverter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../40_PythonModuleReference.html">Python Module Reference</a> &raquo;</li>
+      
+    <li>TXLWizard.TXLConverter</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Chapters/PythonModuleReference/TXLConverter/TXLWizard.TXLConverter.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-TXLWizard.TXLConverter">
+<span id="txlwizard-txlconverter"></span><h1>TXLWizard.TXLConverter<a class="headerlink" href="#module-TXLWizard.TXLConverter" title="Permalink to this headline">¶</a></h1>
+<p>Class for parsing TXL files and converting them to html / svg using <cite>TXLWriter</cite></p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#TXLWizard.TXLConverter.TXLConverter" title="TXLWizard.TXLConverter.TXLConverter"><code class="xref py py-obj docutils literal"><span class="pre">TXLConverter</span></code></a>(Filename,&nbsp;**kwargs)</td>
+<td>Class for parsing TXL files and converting them to</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#TXLWizard.TXLConverter.TXLConverterCLI" title="TXLWizard.TXLConverter.TXLConverterCLI"><code class="xref py py-obj docutils literal"><span class="pre">TXLConverterCLI</span></code></a>([JSONConfigurationFile,&nbsp;...])</td>
+<td>Provides a command line interface for the <cite>TXLConverter</cite> class.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="TXLWizard.TXLConverter.TXLConverter">
+<em class="property">class </em><code class="descclassname">TXLWizard.TXLConverter.</code><code class="descname">TXLConverter</code><span class="sig-paren">(</span><em>Filename</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class for parsing TXL files and converting them to
+html / svg using <a class="reference internal" href="../TXLWriter/TXLWizard.TXLWriter.html#module-TXLWizard.TXLWriter" title="TXLWizard.TXLWriter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLWriter</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename of the .txl file</li>
+<li><strong>LayersToProcess</strong> (<em>list of int, optional</em>) &#8211; if given, only layers in this list are processed / shown</li>
+<li><strong>**kwargs</strong> &#8211; keyword-arguments passed to the <a class="reference internal" href="../TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter" title="TXLWizard.TXLWriter.TXLWriter"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.TXLWriter.TXLWriter</span></code></a> constructor.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLConverter</span>
+</pre></div>
+</div>
+<p>Instatiate a <cite>TXLConverter</cite> instance, parse the TXL file and generate the HTML / SVG files.
+Saves the converted files to <cite>Tests/Results/TXLConverter/</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLConverterInstance</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLConverter</span><span class="o">.</span><span class="n">TXLConverter</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;Tests/SampleFiles/Example_Advanced_Original.txl&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">GridWidth</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">GridHeight</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">LayersToProcess</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TXLConverterInstance</span><span class="o">.</span><span class="n">ParseTXLFile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TXLConverterInstance</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/TXLConverter&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="TXLWizard.TXLConverter.TXLConverter.GenerateFiles">
+<code class="descname">GenerateFiles</code><span class="sig-paren">(</span><em>TargetFolder=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the HTML / SVG files</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>TargetFolder</strong> (<em>str, optional</em>) &#8211; <p>If given, the converted files are stored in the folder specified.</p>
+<p>If not given, the converted files are stored in the same folder as the original file.</p>
+<p>Defaults to None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TXLWizard.TXLConverter.TXLConverter.ParseTXLFile">
+<code class="descname">ParseTXLFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverter.ParseTXLFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverter.ParseTXLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the TXL file by processing line by line.
+The number of references to structures is counted.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="TXLWizard.TXLConverter.TXLConverterCLI">
+<em class="property">class </em><code class="descclassname">TXLWizard.TXLConverter.</code><code class="descname">TXLConverterCLI</code><span class="sig-paren">(</span><em>JSONConfigurationFile='TXLConverterConfiguration.json'</em>, <em>UpdateConfigurationFile=True</em>, <em>OverrideConfiguration={}</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLConverter.html#TXLConverterCLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLConverter.TXLConverterCLI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Provides a command line interface for the <cite>TXLConverter</cite> class.</p>
+<p>The configuration is read and stored in the JSON format in the file specified  in <cite>JSONConfigurationFile</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>JSONConfigurationFile</strong> (<em>str, optional</em>) &#8211; Path / Filename of the file where the configuration is read and stored in the JSON format.
+Defaults to &#8216;TXLConverterConfiguration.json&#8217;</li>
+<li><strong>UpdateConfigurationFile</strong> (<em>bool, optional</em>) &#8211; Flag whether to update the configuration file.
+Defaults to True.</li>
+<li><strong>OverrideConfiguration</strong> (<em>dict, optional</em>) &#8211; Dictionary with configuration options overriding the default / stored configuration.
+Defaults to {}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLConverter</span>
+</pre></div>
+</div>
+<p>Start the command line interface</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLConverter</span><span class="o">.</span><span class="n">TXLConverterCLI</span><span class="p">()</span> 
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html" class="btn btn-neutral" title="TXLWizard.ShapeLibrary.AlignmentMarkers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

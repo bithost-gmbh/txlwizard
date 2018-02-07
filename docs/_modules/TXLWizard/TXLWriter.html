@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.TXLWriter &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Chapters/10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Chapters/20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Chapters/30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Chapters/40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>TXLWizard.TXLWriter</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for TXLWizard.TXLWriter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Controller class for generating TXL / SVG / HTML output.\n</span>
+<span class="sd">Here we can add structures (definitions and content) which will be rendered in the output.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">Patterns</span> <span class="kn">import</span> <span class="n">Definitions</span>
+<span class="kn">from</span> <span class="nn">Patterns</span> <span class="kn">import</span> <span class="n">Structure</span>
+<span class="kn">import</span> <span class="nn">TXLConverter</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+
+<div class="viewcode-block" id="TXLWriter"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter">[docs]</a><span class="k">class</span> <span class="nc">TXLWriter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Controller class for generating TXL / SVG / HTML output.\n</span>
+<span class="sd">    Here we can add structures (definitions and content) which will be rendered in the output.\n</span>
+<span class="sd">    Optionally, a coordinate system grid is drawn.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ShowGrid : bool, optional</span>
+<span class="sd">        Show the coordinate system grid or not.\n</span>
+<span class="sd">        Defaults to True</span>
+<span class="sd">    GridWidth : int, optional</span>
+<span class="sd">        Full width of the coordinate system grid in um.\n</span>
+<span class="sd">        Defaults to 800</span>
+<span class="sd">    GridHeight : int, optional</span>
+<span class="sd">        Full height of the coordinate system grid in um.\n</span>
+<span class="sd">        Defaults to 800</span>
+<span class="sd">    GridSpacing : int, optional</span>
+<span class="sd">        Coordinate Sytem Grid Spacing in um.\n</span>
+<span class="sd">        Defaults to 100</span>
+<span class="sd">    SubGridSpacing : int, optional</span>
+<span class="sd">        Coordinate System Sub-Grid Spacing in um.\n</span>
+<span class="sd">        Defaults to 10</span>
+<span class="sd">    Precision : int, optional</span>
+<span class="sd">        Number of digits for float to str conversion / Resolution of TXL file.\n</span>
+<span class="sd">        Defaults to 4</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    IGNORE:</span>
+
+<span class="sd">        &gt;&gt;&gt; import sys</span>
+<span class="sd">        &gt;&gt;&gt; import os.path</span>
+<span class="sd">        &gt;&gt;&gt; sys.path.append(os.path.abspath(os.path.dirname(__file__)+&#39;/../&#39;))</span>
+
+<span class="sd">    IGNORE</span>
+
+<span class="sd">    Import required Modules</span>
+
+<span class="sd">    &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+
+<span class="sd">    Initialize TXLWriter</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter(</span>
+<span class="sd">    ...    ShowGrid=True, GridWidth=800, GridHeight=800</span>
+<span class="sd">    ... )</span>
+
+<span class="sd">    Add a definition structure and add a pattern of type `Circle`</span>
+
+<span class="sd">    &gt;&gt;&gt; MyDefinitionStructure = TXLWriter.AddDefinitionStructure(&#39;MyDefinition&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; MyDefinitionStructure.AddPattern(&#39;Circle&#39;, Center=[0,0], Radius=20, Layer=3) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">    Add a content structure with a pattern `Reference` to reuse the definition structure.</span>
+
+<span class="sd">    &gt;&gt;&gt; MyContentStructure = TXLWriter.AddContentStructure(&#39;MySuperCircle&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; MyContentStructure.AddPattern(</span>
+<span class="sd">    ...    &#39;Reference&#39;,</span>
+<span class="sd">    ...    ReferencedStructureID=MyDefinitionStructure.ID,</span>
+<span class="sd">    ...    OriginPoint=[20,50]</span>
+<span class="sd">    ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">    &lt;TXLWizard.Patterns.Reference.Reference object at 0x...&gt;</span>
+
+<span class="sd">    Generate the Output files with name `Example_TXLWriter.(txl|html|svg)` to the folder `Tests/Results`</span>
+
+<span class="sd">    &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/TXLWriter/Example_TXLWriter&#39;)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="c1">#: float: current software version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Version</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+        <span class="c1">#: :class:`TXLWizard.Patterns.Definitions.Definitions`: container for definition structures</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span> <span class="o">=</span> <span class="n">Definitions</span><span class="o">.</span><span class="n">Definitions</span><span class="p">()</span>
+
+        <span class="c1">#: bool: Show the coordinate system grid or not</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ShowGrid</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="c1">#: int: Full width of the coordinate system grid in um</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">=</span> <span class="mi">800</span>
+        <span class="c1">#: int: Full height of the coordinate system grid in um</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">=</span> <span class="mi">800</span>
+
+        <span class="c1">#: int: Coordinate Sytem Grid Spacing in um.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_GridSpacing</span> <span class="o">=</span> <span class="mi">100</span>
+
+        <span class="c1">#: int: Coordinate Sytem Sub Grid Spacing in um.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_SubGridSpacing</span> <span class="o">=</span> <span class="mi">10</span>
+
+        <span class="c1">#: int: Width of the SVG Image in pixels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_SVGWidth</span> <span class="o">=</span> <span class="mi">800</span>
+
+        <span class="c1">#: int: Height of the SVG Image in pixels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_SVGHeight</span> <span class="o">=</span> <span class="mi">800</span>
+
+        <span class="c1">#: int: number of digits for float to str conversion / Resolution of TXL file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Precision</span> <span class="o">=</span> <span class="mi">4</span>
+
+        <span class="c1">#: int: incrementing number for automatically created indices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_AutoIndexIncrement</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1">#: dict: dictionary of all content structures</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1">#: list of str: list of indices of content structures, needed for correct order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructuresIndexList</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1">#: dict: dictionary of all helper structures</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1">#: list of str: list of indices of helper structures, needed for correct order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructuresIndexList</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;GridWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;GridHeight&#39;</span><span class="p">,</span> <span class="s1">&#39;GridSpacing&#39;</span><span class="p">,</span> <span class="s1">&#39;SubGridSpacing&#39;</span><span class="p">,</span> <span class="s1">&#39;ShowGrid&#39;</span><span class="p">,</span> <span class="s1">&#39;Precision&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ShowGrid</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_DrawGrid</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_DrawGrid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Draws the coordinate system grids (grid and sub-grid)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">LineWidth</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">1.</span> <span class="o">/</span> <span class="mf">2.</span>
+
+        <span class="n">CoordinateXAxis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_AddHelperStructure</span><span class="p">(</span><span class="s1">&#39;CoordinateXAxis&#39;</span><span class="p">)</span>
+        <span class="n">CoordinateXAxis</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polyline&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">],</span> <span class="n">StrokeWidth</span><span class="o">=</span><span class="n">LineWidth</span><span class="p">)</span>
+
+        <span class="n">CoordinateYAxis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_AddHelperStructure</span><span class="p">(</span><span class="s1">&#39;CoordinateYAxis&#39;</span><span class="p">)</span>
+        <span class="n">CoordinateYAxis</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polyline&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="p">],</span> <span class="n">StrokeWidth</span><span class="o">=</span><span class="n">LineWidth</span><span class="p">)</span>
+
+        <span class="n">Grids</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">GridName</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Grid&#39;</span><span class="p">,</span> <span class="s1">&#39;SubGrid&#39;</span><span class="p">]:</span>
+            <span class="n">Grid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_AddHelperStructure</span><span class="p">(</span><span class="n">GridName</span><span class="p">)</span>
+            <span class="n">Grids</span><span class="p">[</span><span class="n">GridName</span><span class="p">]</span> <span class="o">=</span> <span class="n">Grid</span>
+            <span class="n">GridSpacing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__getattribute__</span><span class="p">(</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">GridName</span> <span class="o">+</span> <span class="s1">&#39;Spacing&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">GridName</span> <span class="o">==</span> <span class="s1">&#39;SubGrid&#39;</span><span class="p">:</span>
+                <span class="n">LineWidth</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="mf">2.</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">/</span> <span class="n">GridSpacing</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">GridSpacing</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">GridSpacing</span><span class="p">]:</span>
+                    <span class="n">Grid</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polyline&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="p">[</span>
+                        <span class="p">[</span><span class="mf">1.</span> <span class="o">*</span> <span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mf">1.</span> <span class="o">*</span> <span class="n">j</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">]</span>
+                    <span class="p">],</span> <span class="n">StrokeWidth</span><span class="o">=</span><span class="n">LineWidth</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">/</span> <span class="n">GridSpacing</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">GridSpacing</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">GridSpacing</span><span class="p">]:</span>
+                    <span class="n">Grid</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polyline&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="p">[</span>
+                        <span class="p">[</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">j</span><span class="p">],</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">j</span><span class="p">]</span>
+                    <span class="p">],</span> <span class="n">StrokeWidth</span><span class="o">=</span><span class="n">LineWidth</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TXLWriter.AddDefinitionStructure"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddDefinitionStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Add definition structure. A definition structure can be referenced by a content structure.\n</span>
+<span class="sd">        A structure corresponds to the &quot;STRUCT&quot; command in the TXL file format.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ID: str</span>
+<span class="sd">            Unique identification of the structure. Must be used when referencing to this structure.</span>
+<span class="sd">        kwargs: dict</span>
+<span class="sd">            Keyword arguments passed to the structure constructor. See :class:`TXLWizard.Patterns.Structure.Structure`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">Structures</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+
+        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">AddStructure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="n">StructureObject</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">StructureObject</span></div>
+
+<div class="viewcode-block" id="TXLWriter.AddContentStructure"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.AddContentStructure">[docs]</a>    <span class="k">def</span> <span class="nf">AddContentStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Add content structure. A content structure can hold patterns that will render in the output.\n</span>
+<span class="sd">        A structure corresponds to the &quot;STRUCT&quot; command in the TXL file format.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ID: str</span>
+<span class="sd">            Unique identification of the structure. Must be used when referencing to this structure.</span>
+<span class="sd">        kwargs: dict</span>
+<span class="sd">            Keyword arguments passed to the structure constructor. See :class:`TXLWizard.Patterns.Structure.Structure`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">StructureObject</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructuresIndexList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">_AddHelperStructure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Add helper structure. Helper structures are only visible in the HTML / SVG Output.\n</span>
+<span class="sd">        A structure corresponds to the &quot;STRUCT&quot; command in the TXL file format.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ID: str</span>
+<span class="sd">            Unique identification of the structure. Must be used when referencing to this structure.</span>
+<span class="sd">        kwargs: dict</span>
+<span class="sd">            keyword arguments passed to the structure constructor</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`TXLWizard.Patterns.Structure.Structure` structure instance</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning! The structure &quot;&#39;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s1">&#39;&quot; already exists and will be overwritten!&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;TXLWriter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">StructureObject</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">Structure</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">StructureObject</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructuresIndexList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span>
+
+<div class="viewcode-block" id="TXLWriter.ImportTXLFile"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.ImportTXLFile">[docs]</a>    <span class="k">def</span> <span class="nf">ImportTXLFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">,</span> <span class="n">LayersToProcess</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Import an existing TXL file for further processing.\n</span>
+<span class="sd">        The content structures can be accessed with `self._ContentStructures` (read-only!).\n</span>
+<span class="sd">        The order of the content structures is stored in `self._ContentStructuresIndexList` (read-only!).\n</span>
+<span class="sd">        The definition structures are stored in `self._Definitions.Structures`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Filename : str</span>
+<span class="sd">            Path / Filename of the .txl file to be imported</span>
+<span class="sd">        LayersToProcess : list of int, optional</span>
+<span class="sd">            if given, only layers in this list are processed / shown.\n</span>
+<span class="sd">            Defaults to []</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        Import required modules</span>
+
+<span class="sd">        &gt;&gt;&gt; import TXLWizard.TXLWriter</span>
+<span class="sd">        &gt;&gt;&gt; import TXLWizard.ShapeLibrary.Label</span>
+
+<span class="sd">        Initialize TXLWriter</span>
+
+<span class="sd">        &gt;&gt;&gt; TXLWriter = TXLWizard.TXLWriter.TXLWriter()</span>
+
+<span class="sd">        import TXL file `myPath/mask_orig.txl`</span>
+
+<span class="sd">        &gt;&gt;&gt; TXLWriter.ImportTXLFile(&#39;Tests/SampleFiles/Example_Simple_Original.txl&#39;, LayersToProcess=[1,3,4])</span>
+
+<span class="sd">        Get an existing structure and add a pattern to it</span>
+
+<span class="sd">        &gt;&gt;&gt; MyStructure = TXLWriter._ContentStructures[&#39;MyCircleArray&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; MyStructure.AddPattern(</span>
+<span class="sd">        ...     &#39;Circle&#39;,</span>
+<span class="sd">        ...     Center=[-100, 0],</span>
+<span class="sd">        ...     Radius=50,</span>
+<span class="sd">        ...     Layer=1</span>
+<span class="sd">        ... ) #doctest: +ELLIPSIS</span>
+<span class="sd">        &lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+
+<span class="sd">        Add a label</span>
+
+<span class="sd">        &gt;&gt;&gt; SampleLabelObject = TXLWizard.ShapeLibrary.Label.GetLabel(</span>
+<span class="sd">        ...     TXLWriter,</span>
+<span class="sd">        ...     Text=&#39;This is my text&#39;,</span>
+<span class="sd">        ...     OriginPoint=[</span>
+<span class="sd">        ...         -200, 300</span>
+<span class="sd">        ...     ],</span>
+<span class="sd">        ...     FontSize=150,</span>
+<span class="sd">        ...     StrokeWidth=20</span>
+<span class="sd">        ... )</span>
+
+<span class="sd">        Generate the Output files with name `ExampleSimple_Modified.(txl|html|svg)` to the folder `Tests/Results`</span>
+
+<span class="sd">        &gt;&gt;&gt; TXLWriter.GenerateFiles(&#39;Tests/Results/TXLWriter/Example_Simple_Modified&#39;)</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">TXLConverterObject</span> <span class="o">=</span> <span class="n">TXLConverter</span><span class="o">.</span><span class="n">TXLConverter</span><span class="p">(</span><span class="n">Filename</span><span class="p">,</span> <span class="n">LayersToProcess</span><span class="o">=</span><span class="n">LayersToProcess</span><span class="p">,</span> <span class="n">TXLWriter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">TXLConverterObject</span><span class="o">.</span><span class="n">ParseTXLFile</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_GetAutoStructureID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Prefix</span><span class="o">=</span><span class="s1">&#39;AutoID&#39;</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generates a unique structure ID.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Prefix: str, optional</span>
+<span class="sd">            Prefix of the ID.\n</span>
+<span class="sd">            Defaults to &#39;AutoID&#39;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            generated ID</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">ID</span> <span class="o">=</span> <span class="n">Prefix</span> <span class="o">+</span> <span class="s1">&#39;_{:d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_AutoIndexIncrement</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_AutoIndexIncrement</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">ID</span>
+
+    <span class="k">def</span> <span class="nf">_GetFloatFormatString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns a string for formatting a `float`, e.g. `{ID:1.3f}`.</span>
+<span class="sd">        The number of digits is specified by `self._Precision`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ID: str, optional</span>
+<span class="sd">            Optional ID for the formatting option.\n</span>
+<span class="sd">            Defaults to &#39;&#39;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str:</span>
+<span class="sd">            string for use with the `str.format()` function</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Precision</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">FloatFormatString</span> <span class="o">=</span> <span class="s1">&#39;{&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:1.&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Precision</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;f}&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">FloatFormatString</span> <span class="o">=</span> <span class="s1">&#39;{&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:1.0f}&#39;</span>
+
+        <span class="k">return</span> <span class="n">FloatFormatString</span>
+
+<div class="viewcode-block" id="TXLWriter.GenerateFiles"><a class="viewcode-back" href="../../Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.html#TXLWizard.TXLWriter.TXLWriter.GenerateFiles">[docs]</a>    <span class="k">def</span> <span class="nf">GenerateFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">,</span> <span class="n">TXL</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">SVG</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">HTML</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">TargetFolder</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate the output files (.txl, .svg, .html).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Filename: str</span>
+<span class="sd">            Path / Filename without extension.</span>
+<span class="sd">            The corresponding path will be created if it does not exist</span>
+<span class="sd">        TXL: bool, optional</span>
+<span class="sd">            Enable TXL Output.\n</span>
+<span class="sd">            Defaults to True</span>
+<span class="sd">        SVG: bool, optional</span>
+<span class="sd">            Enable SVG Output.\n</span>
+<span class="sd">            Defaults to True</span>
+<span class="sd">        HTML: bool, optional</span>
+<span class="sd">            Enable HTML Output. If set to `True`,</span>
+<span class="sd">            also `SVG` needs to be set to `True`\n</span>
+<span class="sd">            Defaults to True</span>
+<span class="sd">        TargetFolder: str, optional</span>
+<span class="sd">            If given, the generated files are stored in the folder specified.\n</span>
+<span class="sd">            If not given, the generated files are stored in the path specified in `Filename`\n</span>
+<span class="sd">            Defaults to None.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">Path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">TargetFolder</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">Path</span> <span class="o">=</span> <span class="n">TargetFolder</span>
+            <span class="n">Filename</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">Path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">Path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">TXL</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_GenerateTXLFile</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">SVG</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_GenerateSVGFile</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">HTML</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_GenerateHTMLFile</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_GenerateTXLFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate the TXL file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Filename: str</span>
+<span class="sd">            Path / Filename without extension.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">Filename</span> <span class="o">+</span> <span class="s1">&#39;.txl&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;LETXTLIB 1.0.0&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;UNIT MICRON&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s1">&#39;RESOLVE &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GetFloatFormatString</span><span class="p">())</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Precision</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;BEGLIB&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;! ### Definitions Start ###&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">GetTXLOutput</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;! ### Definitions End ###&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;! ### Content Structures Start ###&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructuresIndexList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">TXLOutput</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">GetTXLOutput</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;! ### Content Structures End ###&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;ENDLIB&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_GenerateSVGFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate the TXL file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Filename: str</span>
+<span class="sd">            Path / Filename without extension.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># See https://developer.mozilla.org/en-US/docs/Web/SVG</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">Filename</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;svg version=&quot;1.1&quot; baseProfile=&quot;full&quot; width=&quot;800&quot; height=&quot;800&quot; &#39;</span> <span class="o">+</span>
+                <span class="s1">&#39;xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; &#39;</span> <span class="o">+</span>
+                <span class="s1">&#39;id=&quot;SVGImage&quot; viewBox=&quot;{:d} {:d} {:d} {:d}&quot;&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+                                                                      <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridWidth</span><span class="p">),</span>
+                                                                      <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_GridHeight</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            &lt;style type=&quot;text/css&quot;&gt;</span>
+<span class="s1">              &lt;![CDATA[</span>
+<span class="s1">                #HelperStructures{}</span>
+<span class="s1">                #HelperStructures .Pattern{opacity:0.8}</span>
+<span class="s1">                #CoordinateXAxis .Pattern{stroke:#000}</span>
+<span class="s1">                #CoordinateYAxis .Pattern{stroke:#000}</span>
+<span class="s1">                #HelperStructures #Grid .Pattern{opacity:0.1;stroke:#000}</span>
+<span class="s1">                #HelperStructures #SubGrid .Pattern{opacity:0.1;stroke:#188487}</span>
+<span class="s1">                .Pattern{stroke-width:0px;}</span>
+<span class="s1">                .Layer0 .Pattern{fill:#467821;stroke:#467821;}</span>
+<span class="s1">                .Layer1 .Pattern{fill:#348ABD;stroke:#348ABD;}</span>
+<span class="s1">                .Layer2 .Pattern{fill:#E24A33;stroke:#E24A33;}</span>
+<span class="s1">                .Layer3 .Pattern{fill:#A60628;stroke:#A60628;}</span>
+<span class="s1">                .Layer4 .Pattern{fill:#CF4457;stroke:#CF4457;}</span>
+<span class="s1">                .Pattern{opacity:0.6}</span>
+<span class="s1">                /*.Pattern:hover, .Object:hover .Pattern{opacity:0.8}*/</span>
+<span class="s1">              ]]&gt;</span>
+<span class="s1">            &lt;/style&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_Definitions</span><span class="o">.</span><span class="n">GetSVGOutput</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;g transform=&quot;translate({:1.2f},{:1.2f}),matrix(1,0,0,-1,0,0)&quot;&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">1.</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_SVGWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+                                                                                         <span class="mf">1.</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_SVGHeight</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;g id=&quot;HelperStructures&quot;&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructuresIndexList</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_HelperStructures</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">GetSVGOutput</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/g&gt;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;g id=&quot;ContentStructures&quot;&gt;&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructuresIndexList</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">GetSVGOutput</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/g&gt;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/g&gt;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/svg&gt;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_GenerateHTMLFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Filename</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Generate the TXL file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Filename: str</span>
+<span class="sd">            Path / Filename without extension.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">Filename</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">SVGData</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">Filename</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        &lt;head&gt;</span>
+<span class="s1">            &lt;style&gt;</span>
+<span class="s1">                body{margin:0px;padding:0px;}</span>
+<span class="s1">                #SVGImage {box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;}</span>
+<span class="s1">            &lt;/style&gt;</span>
+<span class="s1">        &lt;/head&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+        <span class="n">PanZoom</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/Helpers/svg-pan-zoom.min.js&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">PanZoomJS</span> <span class="o">=</span> <span class="n">PanZoom</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">PanZoom</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        &lt;body&gt;</span>
+<span class="s1">            &lt;script type=&quot;text/javascript&quot;&gt;&#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">PanZoomJS</span> <span class="o">+</span> <span class="s1">&#39;&#39;&#39;&lt;/script&gt;</span>
+<span class="s1">            &lt;div class=&quot;Image&quot;&gt;&#39;&#39;&#39;</span> <span class="o">+</span> <span class="n">SVGData</span> <span class="o">+</span> <span class="s1">&#39;&#39;&#39;&lt;/div&gt;</span>
+<span class="s1">            &lt;script type=&quot;text/javascript&quot;&gt;</span>
+<span class="s1">                var SVGImage = document.getElementById(&#39;SVGImage&#39;);</span>
+<span class="s1">                SVGImage.setAttribute(&quot;height&quot;,&quot;100%&quot;);</span>
+<span class="s1">                SVGImage.setAttribute(&quot;width&quot;,&quot;100%&quot;);</span>
+<span class="s1">                SVGImage.removeAttribute(&quot;viewBox&quot;);</span>
+
+<span class="s1">                svgPanZoom(&#39;#SVGImage&#39;, {</span>
+<span class="s1">                  controlIconsEnabled: true,</span>
+<span class="s1">                  zoomScaleSensitivity: 0.4,</span>
+<span class="s1">                  minZoom: 0.5,</span>
+<span class="s1">                  maxZoom: 10000,</span>
+<span class="s1">                });</span>
+<span class="s1">            &lt;/script&gt;</span>
+<span class="s1">        &lt;/body&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/html&gt;&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

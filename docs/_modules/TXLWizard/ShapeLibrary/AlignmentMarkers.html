@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.ShapeLibrary.AlignmentMarkers &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Chapters/40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>TXLWizard.ShapeLibrary.AlignmentMarkers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for TXLWizard.ShapeLibrary.AlignmentMarkers</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Add squares to `TXLWriter` that can be used as alignment markers.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="GetAlignmentMarkers"><a class="viewcode-back" href="../../../Chapters/PythonModuleReference/ShapeLibrary/TXLWizard.ShapeLibrary.AlignmentMarkers.html#TXLWizard.ShapeLibrary.AlignmentMarkers.GetAlignmentMarkers">[docs]</a><span class="k">def</span> <span class="nf">GetAlignmentMarkers</span><span class="p">(</span><span class="n">TXLWriter</span><span class="p">,</span> <span class="n">Size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">OffsetSmall</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">OffsetLarge</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Add squares that can be used as alignment markers</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    TXLWriter: :class:`TXLWizard.TXLWriter.TXLWriter`</span>
+<span class="sd">        Current Instance of :class:`TXLWizard.TXLWriter.TXLWriter`</span>
+<span class="sd">    Size: float, optional</span>
+<span class="sd">        Size of the markers.\n</span>
+<span class="sd">        Defaults to 10</span>
+<span class="sd">    OffsetSmall: float, optional</span>
+<span class="sd">        first offset from center.\n</span>
+<span class="sd">        Defaults to 750</span>
+<span class="sd">    OffsetLarge: float, optional</span>
+<span class="sd">        second offset from center.\n</span>
+<span class="sd">        Defaults to 3000</span>
+<span class="sd">    Layer: int, optional</span>
+<span class="sd">        Layer the pattern should be rendered in.\n</span>
+<span class="sd">        Defaults to 1</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`TXLWizard.Patterns.Structure.Structure`</span>
+<span class="sd">        `Structure` object containing the patterns representing the alignment markers</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">ID</span> <span class="o">=</span> <span class="s1">&#39;Markers&#39;</span>
+    <span class="n">Markers</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span>
+        <span class="n">ID</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="n">Layer</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">Offset</span> <span class="ow">in</span> <span class="p">[</span><span class="n">OffsetSmall</span><span class="p">,</span> <span class="n">OffsetLarge</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
+            <span class="n">PolygonPoints</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">XOffset</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">Offset</span>
+            <span class="n">YOffset</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">Offset</span>
+
+            <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                <span class="n">XOffset</span> <span class="o">-</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+                <span class="n">YOffset</span> <span class="o">-</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+            <span class="p">])</span>
+            <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                <span class="n">XOffset</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+                <span class="n">YOffset</span> <span class="o">-</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+            <span class="p">])</span>
+            <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                <span class="n">XOffset</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+                <span class="n">YOffset</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+            <span class="p">])</span>
+            <span class="n">PolygonPoints</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+                <span class="n">XOffset</span> <span class="o">-</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+                <span class="n">YOffset</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">*</span> <span class="n">Size</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span>
+            <span class="p">])</span>
+            <span class="n">Markers</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Polygon&#39;</span><span class="p">,</span> <span class="n">Points</span><span class="o">=</span><span class="n">PolygonPoints</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Markers</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

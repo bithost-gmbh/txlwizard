@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TXLWizard.TXLWriter &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Python Module Reference" href="../../40_PythonModuleReference.html"/>
+        <link rel="next" title="TXLWizard.Patterns.AbstractPattern" href="../Patterns/TXLWizard.Patterns.AbstractPattern.html"/>
+        <link rel="prev" title="Python Module Reference" href="../../40_PythonModuleReference.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../10_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../40_PythonModuleReference.html">Python Module Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../40_PythonModuleReference.html#txlwriter">TXLWriter</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TXLWizard.TXLWriter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#patterns">Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#shape-library">Shape Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../40_PythonModuleReference.html#txlconverter">TXLConverter</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../40_PythonModuleReference.html">Python Module Reference</a> &raquo;</li>
+      
+    <li>TXLWizard.TXLWriter</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/Chapters/PythonModuleReference/TXLWriter/TXLWizard.TXLWriter.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-TXLWizard.TXLWriter">
+<span id="txlwizard-txlwriter"></span><h1>TXLWizard.TXLWriter<a class="headerlink" href="#module-TXLWizard.TXLWriter" title="Permalink to this headline">¶</a></h1>
+<p>Controller class for generating TXL / SVG / HTML output.</p>
+<p>Here we can add structures (definitions and content) which will be rendered in the output.</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#TXLWizard.TXLWriter.TXLWriter" title="TXLWizard.TXLWriter.TXLWriter"><code class="xref py py-obj docutils literal"><span class="pre">TXLWriter</span></code></a>(**kwargs)</td>
+<td>Controller class for generating TXL / SVG / HTML output.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="TXLWizard.TXLWriter.TXLWriter">
+<em class="property">class </em><code class="descclassname">TXLWizard.TXLWriter.</code><code class="descname">TXLWriter</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Controller class for generating TXL / SVG / HTML output.</p>
+<p>Here we can add structures (definitions and content) which will be rendered in the output.</p>
+<p>Optionally, a coordinate system grid is drawn.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ShowGrid</strong> (<em>bool, optional</em>) &#8211; <p>Show the coordinate system grid or not.</p>
+<p>Defaults to True</p>
+</li>
+<li><strong>GridWidth</strong> (<em>int, optional</em>) &#8211; <p>Full width of the coordinate system grid in um.</p>
+<p>Defaults to 800</p>
+</li>
+<li><strong>GridHeight</strong> (<em>int, optional</em>) &#8211; <p>Full height of the coordinate system grid in um.</p>
+<p>Defaults to 800</p>
+</li>
+<li><strong>GridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate Sytem Grid Spacing in um.</p>
+<p>Defaults to 100</p>
+</li>
+<li><strong>SubGridSpacing</strong> (<em>int, optional</em>) &#8211; <p>Coordinate System Sub-Grid Spacing in um.</p>
+<p>Defaults to 10</p>
+</li>
+<li><strong>Precision</strong> (<em>int, optional</em>) &#8211; <p>Number of digits for float to str conversion / Resolution of TXL file.</p>
+<p>Defaults to 4</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Import required Modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+</pre></div>
+</div>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">ShowGrid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">GridWidth</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">GridHeight</span><span class="o">=</span><span class="mi">800</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add a definition structure and add a pattern of type <cite>Circle</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddDefinitionStructure</span><span class="p">(</span><span class="s1">&#39;MyDefinition&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span><span class="s1">&#39;Circle&#39;</span><span class="p">,</span> <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Layer</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Add a content structure with a pattern <cite>Reference</cite> to reuse the definition structure.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyContentStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">AddContentStructure</span><span class="p">(</span><span class="s1">&#39;MySuperCircle&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyContentStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="s1">&#39;Reference&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">ReferencedStructureID</span><span class="o">=</span><span class="n">MyDefinitionStructure</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Reference.Reference object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Generate the Output files with name <cite>Example_TXLWriter.(txl|html|svg)</cite> to the folder <cite>Tests/Results</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/TXLWriter/Example_TXLWriter&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="TXLWizard.TXLWriter.TXLWriter.AddContentStructure">
+<code class="descname">AddContentStructure</code><span class="sig-paren">(</span><em>ID</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddContentStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddContentStructure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add content structure. A content structure can hold patterns that will render in the output.</p>
+<p>A structure corresponds to the &#8220;STRUCT&#8221; command in the TXL file format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ID</strong> (<em>str</em>) &#8211; Unique identification of the structure. Must be used when referencing to this structure.</li>
+<li><strong>kwargs</strong> (<em>dict</em>) &#8211; Keyword arguments passed to the structure constructor. See <a class="reference internal" href="../Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure" title="TXLWizard.Patterns.Structure.Structure"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code></a></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure" title="TXLWizard.Patterns.Structure.Structure"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code></a> structure instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure">
+<code class="descname">AddDefinitionStructure</code><span class="sig-paren">(</span><em>ID</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.AddDefinitionStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.AddDefinitionStructure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add definition structure. A definition structure can be referenced by a content structure.</p>
+<p>A structure corresponds to the &#8220;STRUCT&#8221; command in the TXL file format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ID</strong> (<em>str</em>) &#8211; Unique identification of the structure. Must be used when referencing to this structure.</li>
+<li><strong>kwargs</strong> (<em>dict</em>) &#8211; Keyword arguments passed to the structure constructor. See <a class="reference internal" href="../Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure" title="TXLWizard.Patterns.Structure.Structure"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code></a></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../Patterns/TXLWizard.Patterns.Structure.html#TXLWizard.Patterns.Structure.Structure" title="TXLWizard.Patterns.Structure.Structure"><code class="xref py py-class docutils literal"><span class="pre">TXLWizard.Patterns.Structure.Structure</span></code></a> structure instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TXLWizard.TXLWriter.TXLWriter.GenerateFiles">
+<code class="descname">GenerateFiles</code><span class="sig-paren">(</span><em>Filename</em>, <em>TXL=True</em>, <em>SVG=True</em>, <em>HTML=True</em>, <em>TargetFolder=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.GenerateFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.GenerateFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the output files (.txl, .svg, .html).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename without extension.
+The corresponding path will be created if it does not exist</li>
+<li><strong>TXL</strong> (<em>bool, optional</em>) &#8211; <p>Enable TXL Output.</p>
+<p>Defaults to True</p>
+</li>
+<li><strong>SVG</strong> (<em>bool, optional</em>) &#8211; <p>Enable SVG Output.</p>
+<p>Defaults to True</p>
+</li>
+<li><strong>HTML</strong> (<em>bool, optional</em>) &#8211; <p>Enable HTML Output. If set to <cite>True</cite>,
+also <cite>SVG</cite> needs to be set to <cite>True</cite></p>
+<p>Defaults to True</p>
+</li>
+<li><strong>TargetFolder</strong> (<em>str, optional</em>) &#8211; <p>If given, the generated files are stored in the folder specified.</p>
+<p>If not given, the generated files are stored in the path specified in <cite>Filename</cite></p>
+<p>Defaults to None.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TXLWizard.TXLWriter.TXLWriter.ImportTXLFile">
+<code class="descname">ImportTXLFile</code><span class="sig-paren">(</span><em>Filename</em>, <em>LayersToProcess=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/TXLWizard/TXLWriter.html#TXLWriter.ImportTXLFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#TXLWizard.TXLWriter.TXLWriter.ImportTXLFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import an existing TXL file for further processing.</p>
+<p>The content structures can be accessed with <cite>self._ContentStructures</cite> (read-only!).</p>
+<p>The order of the content structures is stored in <cite>self._ContentStructuresIndexList</cite> (read-only!).</p>
+<p>The definition structures are stored in <cite>self._Definitions.Structures</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Filename</strong> (<em>str</em>) &#8211; Path / Filename of the .txl file to be imported</li>
+<li><strong>LayersToProcess</strong> (<em>list of int, optional</em>) &#8211; <p>if given, only layers in this list are processed / shown.</p>
+<p>Defaults to []</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Import required modules</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.TXLWriter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">TXLWizard.ShapeLibrary.Label</span>
+</pre></div>
+</div>
+<p>Initialize TXLWriter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">TXLWriter</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>import TXL file <cite>myPath/mask_orig.txl</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">ImportTXLFile</span><span class="p">(</span><span class="s1">&#39;Tests/SampleFiles/Example_Simple_Original.txl&#39;</span><span class="p">,</span> <span class="n">LayersToProcess</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Get an existing structure and add a pattern to it</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MyStructure</span> <span class="o">=</span> <span class="n">TXLWriter</span><span class="o">.</span><span class="n">_ContentStructures</span><span class="p">[</span><span class="s1">&#39;MyCircleArray&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyStructure</span><span class="o">.</span><span class="n">AddPattern</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;Circle&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">Radius</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Layer</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">&lt;TXLWizard.Patterns.Circle.Circle object at 0x...&gt;</span>
+</pre></div>
+</div>
+<p>Add a label</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SampleLabelObject</span> <span class="o">=</span> <span class="n">TXLWizard</span><span class="o">.</span><span class="n">ShapeLibrary</span><span class="o">.</span><span class="n">Label</span><span class="o">.</span><span class="n">GetLabel</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">TXLWriter</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">Text</span><span class="o">=</span><span class="s1">&#39;This is my text&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">OriginPoint</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">FontSize</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">StrokeWidth</span><span class="o">=</span><span class="mi">20</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Generate the Output files with name <cite>ExampleSimple_Modified.(txl|html|svg)</cite> to the folder <cite>Tests/Results</cite></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TXLWriter</span><span class="o">.</span><span class="n">GenerateFiles</span><span class="p">(</span><span class="s1">&#39;Tests/Results/TXLWriter/Example_Simple_Modified&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Patterns/TXLWizard.Patterns.AbstractPattern.html" class="btn btn-neutral float-right" title="TXLWizard.Patterns.AbstractPattern" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../40_PythonModuleReference.html" class="btn btn-neutral" title="Python Module Reference" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

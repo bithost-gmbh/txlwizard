@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; TXLWizard 1.7.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="TXLWizard 1.7.0 documentation" href="../index.html"/>
+        <link rel="next" title="TXLWizard Examples" href="20_Examples.html"/>
+        <link rel="prev" title="Welcome to TXLWizard’s documentation!" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TXLWizard
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.7.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-does-it-do">What does it do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-should-i-use-it">Why should I use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-pattern-attribute">Structure / Pattern / Attribute</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#structure"><cite>Structure</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pattern"><cite>Pattern</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attribute"><cite>Attribute</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-svg-output">Example SVG Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-start">How to start?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="20_Examples.html">TXLWizard Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30_TXLConverter.html">TXLConverter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40_PythonModuleReference.html">Python Module Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TXLWizard</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/Chapters/10_Introduction.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>This document describes the usage and technical reference of the python program <cite>TXLWizard</cite>
+written by Esteban Marin (<a class="reference external" href="mailto:estebanmarin&#37;&#52;&#48;gmx&#46;ch">estebanmarin<span>&#64;</span>gmx<span>&#46;</span>ch</a>).</p>
+<div class="section" id="what-does-it-do">
+<h2>What does it do?<a class="headerlink" href="#what-does-it-do" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>TXLWizard</cite> provides routines for generating TXL files (.txl) for
+the preparation of E-Beam lithography masks using python code. The TXL files can be processed with BEAMER.
+See the following links:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://genisys-gmbh.com/web/products/beamer.html">http://genisys-gmbh.com/web/products/beamer.html</a></li>
+<li><a class="reference external" href="http://cad035.psi.ch/LB_index.html">http://cad035.psi.ch/LB_index.html</a></li>
+<li><a class="reference external" href="http://cad035.psi.ch/LBDoc/BEAMER_Manual.pdf">http://cad035.psi.ch/LBDoc/BEAMER_Manual.pdf</a></li>
+</ul>
+<p>The <cite>TXLWizard</cite> currently implements version <cite>4.8</cite> of the TextLIB (TXL) standard.</p>
+<p>The generated TXL files are also converted to HTML / SVG for presentation in any modern browser or
+vector graphics application and allow rapid mask development.</p>
+<p>Moreover, a command line interface <cite>TXLConverter</cite> provides conversion of existing TXL files to HTML / SVG
+(See Section <a class="reference internal" href="30_TXLConverter.html#sec-txlconverter"><span class="std std-ref">TXLConverter</span></a>).</p>
+</div>
+<div class="section" id="why-should-i-use-it">
+<h2>Why should I use it?<a class="headerlink" href="#why-should-i-use-it" title="Permalink to this headline">¶</a></h2>
+<p>TXL File Format:</p>
+<ul class="simple">
+<li>Text-based file format</li>
+<li>Can be generated with any scripting language (Python / Matlab / etc.)</li>
+<li>Easy to use</li>
+<li>Optimized E-Beam Performance due to <cite>References</cite> to objects and array of replicated objects (<cite>SREF</cite>, <cite>AREF</cite>)</li>
+</ul>
+<p>TXLWizard:</p>
+<ul class="simple">
+<li>Create masks with well-structured scripts</li>
+<li>Flexible Python Scripting</li>
+<li>Mask-Code easy to read and reusable</li>
+<li>Automated label generation</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>TXLWizard</cite> is written in python and will run in Python version 2.7+ and 3.1+.</p>
+<p>In order to use it, the <cite>TXLWizard</cite> package must be available as
+a python package, i.e. either it must be copied to
+<code class="file docutils literal"><span class="pre">Path_to_my_python_installation/site-packages/</span></code>
+or to the path where your script is located.</p>
+<p>Alternatively, you can also prepend the following command to your python script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;path_to_the_folder_containing_TXLWizard&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Please note that this must be the parent folder containing the TXLWizard.</p>
+</div>
+<div class="section" id="structure-pattern-attribute">
+<h2>Structure / Pattern / Attribute<a class="headerlink" href="#structure-pattern-attribute" title="Permalink to this headline">¶</a></h2>
+<p>The following terms are used throughout this manual:</p>
+<div class="section" id="structure">
+<h3><cite>Structure</cite><a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
+<p>Refers to an object containing one or more <cite>Pattern</cite> objects.
+A <cite>Structure</cite> corresponds to the <cite>STRUCT</cite> command in TXL files.</p>
+</div>
+<div class="section" id="pattern">
+<h3><cite>Pattern</cite><a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<p>Refers to a pattern such as a circle, a polygon, an ellipse, a path, etc.
+The following patterns with the corresponding TXL command in brackets are supported:</p>
+<ul class="simple">
+<li><cite>Circle</cite> (<cite>C</cite>)</li>
+<li><cite>Ellipse</cite> (<cite>ELP</cite>)</li>
+<li><cite>Polygon</cite> (<cite>B</cite>)</li>
+<li><cite>Polyline</cite> (<cite>P</cite>)</li>
+<li><cite>Reference</cite> (<cite>SREF</cite>)</li>
+<li><cite>Array</cite> (<cite>AREF</cite>)</li>
+</ul>
+<p>For more information, supported parameters, etc., see Section <a class="reference internal" href="40_PythonModuleReference.html#pythonmodulereferencepatterns"><span class="std std-ref">Patterns</span></a>.</p>
+</div>
+<div class="section" id="attribute">
+<h3><cite>Attribute</cite><a class="headerlink" href="#attribute" title="Permalink to this headline">¶</a></h3>
+<p>Refers to an property of a <cite>Pattern</cite> determining the visual appearance of the <cite>Pattern</cite>.
+The following attributes with the corresponding TXL command in brackets are supported:</p>
+<ul class="simple">
+<li><cite>Layer</cite> (<cite>LAYER</cite>)</li>
+<li><cite>DataType</cite> (<cite>DATATYPE</cite>)</li>
+<li><cite>RotationAngle</cite> (<cite>ANGLE</cite>)</li>
+<li><cite>StrokeWidth</cite> (<cite>WIDTH</cite>)</li>
+<li><cite>ScaleFactor</cite> (<cite>MAG</cite>)</li>
+</ul>
+<p>Please note that the <cite>TXLWizard</cite> strictly implements the specification of the TXL format.
+This implies some peculiarities, such as</p>
+<ul class="simple">
+<li><cite>Attribute</cite> commands preceed the corresponding <cite>Pattern</cite> in a <cite>Structure</cite> and are valid for all patterns that follow
+unless the attribute value is changed. Therefore, when adding a <cite>Pattern</cite> to a <cite>Structure</cite> with certain attributes,
+the attributes are valid for any subsequently added pattern, unless a different attribute value is specified.</li>
+<li><cite>Attribute</cite> commands are valid for all patterns, except for <cite>Reference</cite> (<cite>SREF</cite>) and <cite>Array</cite> (<cite>AREF</cite>).
+Therefore the attributes of a pattern can only be specified in the structure where the pattern is added / defined.</li>
+<li>The <cite>RotationAngle</cite> attribute applies to each <cite>Pattern</cite> individually and rotates about each <cite>Pattern</cite>&#8216;s individual origin.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="example-svg-output">
+<h2>Example SVG Output<a class="headerlink" href="#example-svg-output" title="Permalink to this headline">¶</a></h2>
+<p>An example output can be seen here:</p>
+<div class="figure" id="id1">
+<img alt="../_images/Mask_Example.png" src="../_images/Mask_Example.png" />
+<p class="caption"><span class="caption-text">Example SVG output for a mask</span></p>
+</div>
+</div>
+<div class="section" id="how-to-start">
+<h2>How to start?<a class="headerlink" href="#how-to-start" title="Permalink to this headline">¶</a></h2>
+<p>Have a look at the examples in Section <a class="reference internal" href="20_Examples.html#examples"><span class="std std-ref">TXLWizard Examples</span></a> and consult the <a class="reference internal" href="40_PythonModuleReference.html#pythonmodulereference"><span class="std std-ref">Python Module Reference</span></a>.
+Happy scripting!</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="20_Examples.html" class="btn btn-neutral float-right" title="TXLWizard Examples" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Welcome to TXLWizard’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Esteban Marin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
