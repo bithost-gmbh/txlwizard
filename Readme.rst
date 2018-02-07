@@ -45,7 +45,7 @@ TXLConverter:
 
 Quickstart / Documentation
 --------------------------
-See the `Presentation_Slides`_ and the documentation at http://txlwizard.bithost.ch/
+See the `Presentation_Slides`_ and the documentation at https://bithost-gmbh.github.io/txlwizard/
 
 .. _Presentation_Slides: Presentation_Slides.pdf
 
@@ -122,7 +122,7 @@ An example output can be seen here:
 
 How to start?
 -------------
-Have a look at the examples in `http://txlwizard.bithost.ch/Chapters/20_Examples.html` and consult the `http://txlwizard.bithost.ch/Chapters/40_PythonModuleReference.html`.
+Have a look at the examples in `https://bithost-gmbh.github.io/txlwizard/Chapters/20_Examples.html` and consult the `https://bithost-gmbh.github.io/txlwizard/Chapters/40_PythonModuleReference.html`.
 Happy scripting!
 
 
